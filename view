@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>MOIMMOIM</title>
+    <link rel="stylesheet" href="moimmoim_body.css">
+</head>
+
+
+<body>
+<!--header 시작-->
+    <header>
+        <div id="header_container">
+            <div id="logo" ><a href="/"><img src="res/img/logo.png" alt="logo" width="200px"></a></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <a href="/" class="header_font">MOIM LIST</a>
+            <a href="/" class="header_font">HOST LIST</a>
+            <div id="login_icon"><a href="/"><img src="res/img/login.png" alt="login" width="50px"></a></div>
+    </header>
+<!--header 끝-->
+
+
+<!--main 시작 -->
+    <main>
+    </main>
+<!--main 끝 -->
+
+
+<!--footer 시작-->
+    <footer>
+        <div id="footer_container"> 
+            <div id="logo" ><a href="/"><img src="res/img/logo_white.png" alt="logo" width="200px"></a></div>
+            <a href="/" class="footer_font">개인정보 처리방침</a>
+            <a href="/" class="footer_font">기타 필요메뉴</a>
+            <a href="/" class="footer_font">메뉴구성</a>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+
+            <!--푸터 메뉴 바 내용은 논의 필요
+                기존: 모임 목록, 모임 글 올리기, 호스트 목록, 마이페이지, 고객센터
+            -->
+    </footer>
+<!--footer 끝-->
+
+</body>
+</html>
+/* Web Font Load*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
+
+/* 전체 공통 설정 (링크 연결된 텍스트 밑줄 X, 텍스트 디폴트 색상 검정)*/
+*{
+  text-decoration-line: none;
+  color: black;
+}
+
+/* body (header, footer, main) 여백 설정 */
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 90px auto 100px;
+  grid-template-areas:
+  'header'
+  'main'
+  'footer';
+}
+main{
+  padding: 0px 12.5%;
+}
+
+/* header, footer 설정 */
+header, footer {
+  padding: 0px; 
+  background: rgb(24, 39, 19);
+  color: white;
+}
+#header_container{
+  width: 1060px;
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  margin-bottom: 16px;
+  text-align: right;
+  justify-content: space-between;
+}
+#logo{
+  margin: 5px 0px;
+}
+.header_font{
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+}
+#footer_container{
+  width: 1060px;
+  margin: 10px auto;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  text-align: right;
+  justify-content: space-between;
+}
+.footer_font{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
