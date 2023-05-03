@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="moimmoimProject.mapper.ProfileMapper">
-    <resultMap id="profileResultMap" type="moimmoimProject.mapper.domain.ProfileDo">
+    <resultMap id="profileResultMap" type="moimmoimProject.domain.ProfileDo">
         <id column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
         <result column="USER_PROFILE_PIC" property="userProfileImage" jdbcType="VARCHAR" />
         <result column="HOST_MOIM_REVIEW_SCORE_AVG" property="userMoimReviewScoreAvg" jdbcType="DOUBLE" />

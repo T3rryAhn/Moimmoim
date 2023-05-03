@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
+//@Mapper
 public interface ReviewMapper {
 
     List<ReviewDo> findByReviewNum(Long userIdNum);

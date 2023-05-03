@@ -1,3 +1,4 @@
+/*
 package moimmoimProject.service;
 
 
@@ -36,3 +37,4 @@ public class UserSimpleProfileAssembler {
         return userSimpleProfileDto;
     }
 }
+*/
