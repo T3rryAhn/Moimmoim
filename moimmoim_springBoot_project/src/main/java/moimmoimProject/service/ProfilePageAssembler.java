@@ -2,7 +2,6 @@ package moimmoimProject.service;
 
 
 import moimmoimProject.domain.*;
-import moimmoimProject.domain.user.*;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.mapper.ProfileMapper;
 import moimmoimProject.mapper.ReviewMapper;
