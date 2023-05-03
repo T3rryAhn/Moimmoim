@@ -1,6 +1,7 @@
 package moimmoimProject.Repository;
 
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import moimmoimProject.domain.moim.Moim;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -11,24 +12,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@RequiredArgsConstructor
 public class JdbcMoimRepository implements MoimRepository {
 
     private final DataSource dataSource;
 
-    public JdbcMoimRepository(DataSource dataSource) {
-        this.dataSource = dataSource;
+    static {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+        }
     }
+
 
     String dbUrl = "jdbc:oracle:thin:@localhost:1521:XE";
 
     @Override
-    public Moim newMoim(Moim moim){
-        String sql = "insert into moim_post values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public void newMoim(Moim moim){
         Connection conn = null;
         PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        String sql = "insert into moim_post values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
         try {
-            conn = getConnection();
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@118.67.133.136:1521:XE", "scott", "tiger");
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setLong(1, moim.getMoim_num());
@@ -50,13 +57,11 @@ public class JdbcMoimRepository implements MoimRepository {
             pstmt.setInt(17, moim.getLocation_num());
 
             pstmt.executeUpdate();
-            return moim;
 
         } catch (Exception e) {
             throw new IllegalStateException(e);
         } finally {
             try {
-                rs.close();
                 pstmt.close();
                 close(conn);
             } catch(Exception e){
@@ -67,7 +72,7 @@ public class JdbcMoimRepository implements MoimRepository {
 
 
     @Override
-    public Moim getMoim(long moim_num){
+    public Moim findById(long moim_num){
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -113,6 +118,55 @@ public class JdbcMoimRepository implements MoimRepository {
         return moim;
     }
 
+    @Override
+    public List<Moim> findByCat(int category_num) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        List<Moim> moimList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM moim_post where category_num = ?";
+            conn = getConnection();
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, category_num);
+
+            while (rs.next()) {
+                Moim moim = new Moim();
+                moim.setMoim_num(rs.getLong(1));
+                moim.setUser_num(rs.getInt(2));
+                moim.setMoim_title(rs.getString(3));
+                moim.setMoim_main(rs.getString(4));
+                moim.setMoim_pictures(rs.getString(5));
+                moim.setMoim_create_date(rs.getDate(6));
+                moim.setMoim_views(rs.getInt(7));
+                moim.setCategory_num(rs.getInt(8));
+                moim.setMoim_start_time(rs.getDate(9));
+                moim.setMoim_end_time(rs.getDate(10));
+                moim.setMoim_member_count(rs.getInt(11));
+                moim.setMoim_member_max(rs.getInt(12));
+                moim.setMoim_price(rs.getInt(13));
+                moim.setMoim_date_join(rs.getDate(14));
+                moim.setMoim_deadline(rs.getDate(15));
+                moim.setMoim_dead_check(rs.getBoolean(16));
+                moim.setLocation_num(rs.getInt(17));
+
+                moimList.add(moim);
+            }
+        } catch (SQLException e) {
+            log.error("db error", e);
+        } finally {
+            try {
+                rs.close();
+                pstmt.close();
+                close(conn);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return moimList;
+    }
 
     @Override
     public Moim update(Moim moim) {

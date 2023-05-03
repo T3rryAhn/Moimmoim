@@ -8,14 +8,18 @@ import java.util.List;
 public interface MoimRepository {
 
 
-    Moim newMoim(Moim moim) throws SQLException;
+    void newMoim(Moim moim);
 
-    Moim getMoim(long moim_num) throws SQLException;
+    Moim findById(long moim_num);
+
+    List<Moim> findByCat(int category_num);
 
     Moim update(Moim moim);
 
     Long delete(Long moim_num) throws SQLException;
 
     List<Moim> findAll() throws SQLException;
+
+
 
 }

@@ -15,6 +15,7 @@
     <body>
 
     <a href="/moim/new">모임 생성</a>
+    <a href="/moim/list">모임 조회</a>
 
     </body>
 </html>

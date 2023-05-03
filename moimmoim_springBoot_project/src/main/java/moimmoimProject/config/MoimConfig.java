@@ -3,7 +3,7 @@ package moimmoimProject.config;
 
 import moimmoimProject.Repository.JdbcMoimRepository;
 import moimmoimProject.Repository.MoimRepository;
-import moimmoimProject.service.moimService.MoimService;
+import moimmoimProject.service.moimService.MoimServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +26,8 @@ public class MoimConfig {
     }
 
     @Bean
-    public MoimService moimService() {
-        return new MoimService(moimRepository());
+    public MoimServiceImpl moimService() {
+        return new MoimServiceImpl(moimRepository());
     }
 
 }
