@@ -20,11 +20,11 @@
         <img id="main-logo" src="imgs/logo.png" />
         <h1 id="wellcome">Wellcome<br>Please LogIn!!</h1>
 
-        <form class="userInfo">
-            <input type="text" placeholder="Type ID" />
-            <input type="password" placeholder="Type password" />
+        <form class="userInfo" action="${pageContext.request.contextPath}/login" method="post">
+            <input type="text" id="userId" name="userId" placeholder="Type ID" />
+            <input type="password" id="userPassword" name="userPassword" placeholder="Type password" />
             <h1 id="confirm-msg">msg</h1>
-            <button id="signup-next-bttn">Kick in yo!</button>
+            <button type="submit" id="signup-next-bttn">Kick in yo!</button>
         </form>
 
         <div id="link-bttn">

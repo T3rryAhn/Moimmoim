@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moimmoimProject.mapper.userMapper.UserProfileMapper">
+    <resultMap id="userProfileResultMap" type="moimmoimProject.domain.user.UserProfileDto">
+        <id property="userIdNum" column="USERID_NUM" />
+        <result property="userName" column="USER_NAME" />
+        <result property="userNickName" column="USER_NICKNAME" />
+        <result property="userProfileImage" column="USER_PROFILE_IMAGE" />
+        <result property="userMoimReviewScoreAvg" column="HOST_MOIM_REVIEW_SCORE_AVG" />
+        <result property="userHostingCount" column="HOSTING_COUNT" />
+        <result property="userBirth" column="YEAR_OF_BIRTH" />
+        <result property="userEmail" column="USER_EMAIL" />
+        <result property="userCreateDate" column="CREATE_DATE" />
+        <result property="phoneNum" column="PHONE_NUM" />
+    </resultMap>
+
+    <select id="getUserProfileDto" resultMap="userProfileResultMap">
+        SELECT U.USERID_NUM, U.USER_NAME, U.USER_NICKNAME, P.USER_PROFILE_IMAGE,
+               P.HOST_MOIM_REVIEW_SCORE_AVG, P.HOSTING_COUNT, P.YEAR_OF_BIRTH, U.USER_EMAIL,
+               U.CREATE_DATE, U.PHONE_NUM
+        FROM USERS U JOIN PROFILE P ON U.USERID_NUM = P.USERID_NUM
+        WHERE U.USERID_NUM = #{userIdNum}
+    </select>
+</mapper>

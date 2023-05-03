@@ -14,16 +14,16 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDo {
-    private Long userIdNum;
-    private String userId;
-    private String userEmail;
-    private String userPassword;
-    private String userName;
-    private String userNickname;
-    private String phoneNum;
-    private String birth;
-    private int categoryNum;
-    private int hostLevelNum;
-    private String location;
-    private Date createDate;
+    private Long userIdNum; // USERID_NUM
+    private String userId; // USER_ID
+    private String userEmail; // USER_EMAIL
+    private String userPassword; // PASSWORD
+    private String userName; // USER_NAME
+    private String userNickname; // USER_NICKNAME
+    private String phoneNum; // PHONE_NUM
+    private String birth; // BIRTH
+    private int categoryNum; // CATEGORY_NUM
+    private int hostLevelNum; // HOST_LEVEL_NUM
+    private String location; // LOCATION_NUM
+    private Date createDate; // CREATE_DATE
 }
