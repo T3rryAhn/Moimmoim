@@ -1,3 +1,4 @@
+/*
 package moimmoimProject.service;
 
 import lombok.RequiredArgsConstructor;
@@ -7,9 +8,10 @@ import moimmoimProject.mapper.UserMapper;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+//@Slf4j
 public class UserService {
     private final UserMapper userMapper;
 
 
 }
+*/

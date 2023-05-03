@@ -1,3 +1,4 @@
+/*
 package moimmoimProject.domain;
 
 import lombok.Data;
@@ -24,3 +25,4 @@ public class User {
 
     }
 }
+*/
