@@ -1,7 +1,10 @@
-package moimmoimProject.domain;
+package moimmoimProject.domain.pageDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.reviewDomain.ReviewDo;
+import moimmoimProject.domain.userDomain.UserProfileDto;
 
 import java.util.List;
 

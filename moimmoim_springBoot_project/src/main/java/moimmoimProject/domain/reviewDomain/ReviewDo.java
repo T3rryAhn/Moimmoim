@@ -1,4 +1,4 @@
-package moimmoimProject.domain;
+package moimmoimProject.domain.reviewDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

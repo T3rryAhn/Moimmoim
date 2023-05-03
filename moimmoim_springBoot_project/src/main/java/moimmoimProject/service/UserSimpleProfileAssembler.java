@@ -1,10 +1,10 @@
-/*
 package moimmoimProject.service;
 
 
-import moimmoimProject.domain.ProfileDo;
-import moimmoimProject.domain.UserDo;
-import moimmoimProject.domain.UserSimpleProfileDto;
+
+import moimmoimProject.domain.userDomain.ProfileDo;
+import moimmoimProject.domain.userDomain.UserDo;
+import moimmoimProject.domain.userDomain.UserSimpleProfileDto;
 import moimmoimProject.mapper.ProfileMapper;
 import moimmoimProject.mapper.UserMapper;
 import org.springframework.stereotype.Service;
@@ -37,4 +37,3 @@ public class UserSimpleProfileAssembler {
         return userSimpleProfileDto;
     }
 }
-*/

@@ -1,8 +1,8 @@
-package moimmoimProject.Repository;
+package moimmoimProject.repository;
 
 
 import lombok.extern.slf4j.Slf4j;
-import moimmoimProject.domain.moim.Moim;
+import moimmoimProject.domain.moimDomain.Moim;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
 import javax.sql.DataSource;

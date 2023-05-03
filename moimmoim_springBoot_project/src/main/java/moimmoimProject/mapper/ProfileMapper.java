@@ -1,6 +1,6 @@
 package moimmoimProject.mapper;
 
-import moimmoimProject.domain.ProfileDo;
+import moimmoimProject.domain.userDomain.ProfileDo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

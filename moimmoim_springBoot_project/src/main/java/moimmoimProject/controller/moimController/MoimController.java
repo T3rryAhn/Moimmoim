@@ -1,6 +1,6 @@
 package moimmoimProject.controller.moimController;
 
-import moimmoimProject.domain.moim.Moim;
+import moimmoimProject.domain.moimDomain.Moim;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

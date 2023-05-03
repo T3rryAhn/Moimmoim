@@ -1,8 +1,8 @@
 package moimmoimProject.config;
 
 
-import moimmoimProject.Repository.JdbcMoimRepository;
-import moimmoimProject.Repository.MoimRepository;
+import moimmoimProject.repository.JdbcMoimRepository;
+import moimmoimProject.repository.MoimRepository;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

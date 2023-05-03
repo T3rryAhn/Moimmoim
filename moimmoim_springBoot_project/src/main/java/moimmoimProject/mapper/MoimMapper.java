@@ -1,7 +1,6 @@
 package moimmoimProject.mapper;
 
-import moimmoimProject.domain.MoimDo;
-import org.apache.ibatis.annotations.Mapper;
+import moimmoimProject.domain.moimDomain.MoimDo;
 
 import java.util.List;
 

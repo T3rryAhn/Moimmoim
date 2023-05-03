@@ -1,7 +1,6 @@
 package moimmoimProject.mapper;
 
-import moimmoimProject.domain.ReviewDo;
-import org.apache.ibatis.annotations.Mapper;
+import moimmoimProject.domain.reviewDomain.ReviewDo;
 
 import java.util.List;
 

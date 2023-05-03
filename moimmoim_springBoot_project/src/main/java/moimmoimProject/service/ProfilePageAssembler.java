@@ -1,14 +1,18 @@
-/*
 package moimmoimProject.service;
 
 
-import moimmoimProject.domain.*;
+import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.pageDomain.ProfilePageDto;
+import moimmoimProject.domain.reviewDomain.ReviewDo;
+import moimmoimProject.domain.userDomain.ProfileDo;
+import moimmoimProject.domain.userDomain.UserProfileDto;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.mapper.ProfileMapper;
 import moimmoimProject.mapper.ReviewMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 public class ProfilePageAssembler {
@@ -51,4 +55,3 @@ public class ProfilePageAssembler {
     }
 
 }
-*/

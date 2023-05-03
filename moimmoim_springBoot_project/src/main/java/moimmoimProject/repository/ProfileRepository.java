@@ -1,6 +1,6 @@
 package moimmoimProject.repository;
 
-import moimmoimProject.domain.ProfileDo;
+import moimmoimProject.domain.userDomain.ProfileDo;
 
 public interface ProfileRepository {
 

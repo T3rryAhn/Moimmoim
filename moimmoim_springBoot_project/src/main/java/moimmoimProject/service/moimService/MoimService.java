@@ -1,8 +1,9 @@
+/*
 package moimmoimProject.service.moimService;
 
 
-import moimmoimProject.Repository.MoimRepository;
-import moimmoimProject.domain.moim.Moim;
+import moimmoimProject.repository.MoimRepository;
+import moimmoimProject.domain.moimDomain.Moim;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -23,3 +24,4 @@ public class MoimService {
         return moimRepository.findAll();
     }
 }
+*/

@@ -1,6 +1,6 @@
 package moimmoimProject.repository;
 
-import moimmoimProject.domain.ReviewDo;
+import moimmoimProject.domain.reviewDomain.ReviewDo;
 
 import java.util.List;
 
