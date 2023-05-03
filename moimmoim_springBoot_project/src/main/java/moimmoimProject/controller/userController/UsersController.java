@@ -1,10 +1,8 @@
 package moimmoimProject.controller.userController;
 
 import lombok.RequiredArgsConstructor;
-import moimmoimProject.domain.user.User;
-import moimmoimProject.mapper.userMapper.UserMapper;
+import moimmoimProject.mapper.UserMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller

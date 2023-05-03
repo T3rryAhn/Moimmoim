@@ -30,9 +30,13 @@ dependencies {
 
 	//Jsp
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+
+  implementation 'org.projectlombok:lombok:1.18.26'
+
 	implementation 'javax.servlet:jstl'
 
 	//dev
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	//lombok

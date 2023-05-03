@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moimmoimProject.mapper.ProfileMapper">
+    <resultMap id="profileResultMap" type="moimmoimProject.domain.ProfileDo">
+        <id column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
+        <result column="USER_PROFILE_PIC" property="userProfileImage" jdbcType="VARCHAR" />
+        <result column="HOST_MOIM_REVIEW_SCORE_AVG" property="userMoimReviewScoreAvg" jdbcType="DOUBLE" />
+        <result column="YEAR_OF_BIRTH" property="userBirth" jdbcType="DATE" />
+        <result column="USER_INTRODUCE" property="userIntroduction" jdbcType="VARCHAR" />
+        <result column="HOST_MOIM_COUNT" property="userHostingCount" jdbcType="BIGINT" />
+
+    </resultMap>
+
+    <select id="findByUserIdNum" parameterType="map" resultMap="profileResultMap">
+        SELECT *
+        FROM PROFILE
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+</mapper>
