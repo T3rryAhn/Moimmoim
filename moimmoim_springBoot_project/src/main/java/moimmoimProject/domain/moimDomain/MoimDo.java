@@ -3,8 +3,11 @@ package moimmoimProject.domain.moimDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Data
@@ -16,12 +19,22 @@ public class MoimDo {
     private String moimTitle;
     private String moimMainContent;
     private String moimImage;
-    private LocalDate moimCreateDate;
+
+    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+    private Date moimCreateDate;
+
     private int moimViewCount;
     private int moimCategoryNum;
-    private LocalDate moimStartDate;
-    private LocalDate moimEndDate;
-    private LocalDate moimDeadLine;
+
+    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+    private Date moimStartDate;
+
+    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+    private Date moimEndDate;
+
+    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+    private Date moimDeadLine;
+
     private int moimMemberCount;
     private int moimMemberMax;
     private int moimPrice;
