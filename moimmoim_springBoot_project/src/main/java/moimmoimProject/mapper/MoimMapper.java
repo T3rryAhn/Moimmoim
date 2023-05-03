@@ -1,6 +1,6 @@
-package moimmoimProject.mapper.userMapper;
+package moimmoimProject.mapper;
 
-import moimmoimProject.domain.user.MoimDo;
+import moimmoimProject.domain.MoimDo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

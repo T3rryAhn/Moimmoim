@@ -1,11 +1,11 @@
-package moimmoimProject.service.userService;
+package moimmoimProject.service;
 
 
-import moimmoimProject.domain.user.ProfileDo;
-import moimmoimProject.domain.user.UserDo;
-import moimmoimProject.domain.user.UserSimpleProfileDto;
-import moimmoimProject.mapper.userMapper.ProfileMapper;
-import moimmoimProject.mapper.userMapper.UserMapper;
+import moimmoimProject.domain.ProfileDo;
+import moimmoimProject.domain.UserDo;
+import moimmoimProject.domain.UserSimpleProfileDto;
+import moimmoimProject.mapper.ProfileMapper;
+import moimmoimProject.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 @Service

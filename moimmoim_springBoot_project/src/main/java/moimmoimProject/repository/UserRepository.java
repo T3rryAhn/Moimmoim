@@ -1,7 +1,7 @@
 package moimmoimProject.repository;
 
-import moimmoimProject.domain.user.ProfileDo;
-import moimmoimProject.domain.user.UserDo;
+import moimmoimProject.domain.ProfileDo;
+import moimmoimProject.domain.UserDo;
 
 import java.util.List;
 

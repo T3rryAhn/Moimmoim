@@ -1,6 +1,6 @@
 package moimmoimProject.repository;
 
-import moimmoimProject.domain.user.MoimDo;
+import moimmoimProject.domain.MoimDo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

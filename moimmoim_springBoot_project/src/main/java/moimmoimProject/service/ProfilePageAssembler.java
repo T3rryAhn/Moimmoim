@@ -1,13 +1,11 @@
-package moimmoimProject.service.userService;
+package moimmoimProject.service;
 
 
+import moimmoimProject.domain.*;
 import moimmoimProject.domain.user.*;
-import moimmoimProject.mapper.userMapper.MoimMapper;
-import moimmoimProject.mapper.userMapper.ProfileMapper;
-import moimmoimProject.mapper.userMapper.ReviewMapper;
-import moimmoimProject.repository.MoimRepository;
-import moimmoimProject.repository.ProfileRepository;
-import moimmoimProject.repository.ReviewRepository;
+import moimmoimProject.mapper.MoimMapper;
+import moimmoimProject.mapper.ProfileMapper;
+import moimmoimProject.mapper.ReviewMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
