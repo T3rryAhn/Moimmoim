@@ -38,6 +38,7 @@ public class MoimDo {
     private int moimMemberCount;
     private int moimMemberMax;
     private int moimPrice;
+    private Date moimDeadline;
     // private LocalDate moimJoinDate;
     private int moimDeadCheck;
     private int moimLocationNum;
