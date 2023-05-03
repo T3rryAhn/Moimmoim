@@ -1,6 +1,6 @@
 package moimmoimProject.controller.moimController;
 
-import moimmoimProject.domain.moimDomain.Moim;
+import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +31,8 @@ public class MoimController {
     }
 
     @PostMapping("/moim/new")
-    public String createNewMoim(@ModelAttribute Moim moim) throws SQLException {
-        moimService.join(moim);
+    public String createNewMoim(@ModelAttribute MoimDo moimDo) throws SQLException {
+        moimService.join(moimDo);
         return "index";
     }
 }

@@ -1,17 +1,15 @@
 package moimmoimProject.repository;
 
-import moimmoimProject.domain.MoimDo;
-import org.springframework.stereotype.Service;
 
+import moimmoimProject.domain.moimDomain.MoimDo;
+
+import java.sql.SQLException;
 import java.util.List;
 
-
 public interface MoimRepository {
-
-    MoimDo save(MoimDo moim);
-    List<MoimDo> findByUserIdNum(Long userIdNum);
-
-    //    Optional<MoimDo> findByName(String name);
-    //    List<MoimDo> findAll();
-    //    List<MoimDo> findByHostId(Long userId);
+    MoimDo newMoim(MoimDo MoimDo) throws SQLException;
+    MoimDo getMoim(long moim_num) throws SQLException;
+    MoimDo update(MoimDo MoimDo);
+    Long delete(Long moim_num) throws SQLException;
+    List<MoimDo> findAll() throws SQLException;
 }
