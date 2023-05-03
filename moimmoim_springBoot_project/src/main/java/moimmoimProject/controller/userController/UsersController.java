@@ -34,7 +34,8 @@ public class UsersController {
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        return "login";
+        System.out.println("컨트롤러 정상 접속");
+        return "userService/login";
     }
 /*
     @PostMapping("login")
@@ -60,7 +61,7 @@ public class UsersController {
 
         if (authenticatedUser == null) {
             model.addAttribute("errorMessage", "Invalid credentials");
-            return "login";
+            return "userService/login";
         } else {
             // Add the authenticated user to the session
             HttpSession session = request.getSession();
