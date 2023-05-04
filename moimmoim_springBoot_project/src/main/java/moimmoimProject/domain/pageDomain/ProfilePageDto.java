@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ProfilePageDto {
-    private final UserProfileDto userProfile;
+    private final UserProfileDto userProfileDto;
     private final String introduction;
     private final List<MoimDo> userMoimList;
     private final List<ReviewDo> userReviewList;
