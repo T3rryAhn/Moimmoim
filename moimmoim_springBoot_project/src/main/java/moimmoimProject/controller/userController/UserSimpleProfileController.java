@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@Controller
+@Controller("/users")
 public class UserSimpleProfileController {
 
     private final UserSimpleProfileAssembler userSimpleProfileAssembler;
@@ -18,7 +18,7 @@ public class UserSimpleProfileController {
         this.userSimpleProfileAssembler = userSimpleProfileAssembler;
     }
 
-    @GetMapping("/users/{userIdNum}")
+    @GetMapping("/{userIdNum}/userSimpleProfile")
     public UserSimpleProfileDto getUserSimpleProfile(@PathVariable Long userIdNum) {
         return userSimpleProfileAssembler.getUserSimpleProfile(userIdNum);
     }
