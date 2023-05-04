@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -50,7 +53,7 @@
       <h1>MyPage</h1>
       <p>
       안녕하세요<br>
-      <span id="username"></span>, <span id="email"></span> 님.
+      ${userDo.userName}, ${userDo.userEmail} 님.
       </p>
     <hr>
     

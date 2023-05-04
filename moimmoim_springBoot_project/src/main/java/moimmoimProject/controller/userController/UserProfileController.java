@@ -20,7 +20,7 @@ public class UserProfileController {
             this.userProfileAssembler = userProfileAssembler;
         }
 
-        @GetMapping("/{userIdNum}/userProfile")
+        @GetMapping("/userProfile/{userIdNum}")
         public String getUserProfile(@PathVariable Long userIdNum, Model model) {
             UserProfileDto userProfileDto = userProfileAssembler.getUserProfile(userIdNum);
             model.addAttribute("userProfileDto", userProfileDto);
