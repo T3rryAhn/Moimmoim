@@ -18,7 +18,7 @@ public class UserSimpleProfileController {
         this.userSimpleProfileAssembler = userSimpleProfileAssembler;
     }
 
-    @GetMapping
+    @GetMapping("/users/{userIdNum}")
     public UserSimpleProfileDto getUserSimpleProfile(@PathVariable Long userIdNum) {
         return userSimpleProfileAssembler.getUserSimpleProfile(userIdNum);
     }
