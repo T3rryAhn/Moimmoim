@@ -22,17 +22,17 @@ public class MoimController {
 
     @GetMapping("/")
     public String hello() {
-        return "index";
+        return "moimService/index";
     }
 
     @GetMapping("/moim/new")
     public String moimForm() {
-        return "moimForm";
+        return "moimService/moimForm";
     }
 
     @PostMapping("/moim/new")
     public String createNewMoim(@ModelAttribute MoimDo moimDo) throws SQLException {
         moimService.join(moimDo);
-        return "index";
+        return "moimService/index";
     }
 }
