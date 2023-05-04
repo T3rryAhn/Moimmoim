@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
     <meta charset="UTF-8" />
     <title>MyPage</title>
-    <link rel="stylesheet" href="css/moimmoim_body.css">
-    <link rel="stylesheet" href="css/mypageUi/moimmoim_ui.css">
+    <link rel="stylesheet" type="text/css" href="/css/moimmoimBody.css">
+    <link rel="stylesheet" type="text/css" href="/css/myPageUi/myPageUi.css">
 </head>
 
 
@@ -34,7 +34,7 @@
 <!--header 시작-->
     <header>
         <div id="header_container">
-            <div id="main-logo" ><a href="/"><img src="imgs/logo.png" alt="logo" width="200px"></a></div>
+            <div id="main-logo" ><a href="/"><img src="/imgs/logo.png" alt="logo" width="200px"></a></div>
             <div></div>
             <div></div>
             <div></div>
@@ -43,7 +43,7 @@
             <div></div>
             <a href="/" class="header_font">MOIM LIST</a>
             <a href="/" class="header_font">HOST LIST</a>
-            <div id="login_icon"><a href="/"><img src="" alt="login" width="50px"></a></div>
+            <div id="login_icon"><a href="/"><img src="/imgs/moimmoimUi/login.png" alt="login" width="50px"></a></div>
     </header>
 <!--header 끝-->
 
@@ -57,7 +57,7 @@
       </p>
     <hr>
     
-    <a href="프로필 페이지 링크"><button>프로필로 이동</button></a>
+    <a href="/profilePage/${userIdNum}"><button>프로필로 이동</button></a>
     <a href="프로필 수정 페이지 링크"><button>프로필 수정하기</button></a>
     <br>
     <a href="결제 및 대금 수령 페이지 링크"><button>결제 및 대금 수령</button></a>
@@ -73,7 +73,7 @@
 <!--footer 시작-->
     <footer>
         <div id="footer_container"> 
-            <div id="whitelogo" ><a href="/"><img src="imgs/whiteLogo.png" alt="logo" width="200px"></a></div>
+            <div id="whitelogo" ><a href="/"><img src="/imgs/whiteLogo.png" alt="logo" width="200px"></a></div>
             <a href="/" class="footer_font">개인정보 처리방침</a>
             <a href="/" class="footer_font">기타 필요메뉴</a>
             <a href="/" class="footer_font">메뉴구성</a>
