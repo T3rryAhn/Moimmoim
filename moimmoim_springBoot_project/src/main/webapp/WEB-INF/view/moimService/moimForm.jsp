@@ -13,26 +13,49 @@
     <div class="container">
     <form action="/moim/new" method="post">
         <div class="form-group">
-            <label for="category_num">카테고리 구분</label>
-            <input type="text" id="category_num" name="category_num" placeholder="이름을입력하세요">
-            <label for="moim_start_time">모임 시작</label>
-            <input type="date" id="moim_start_time" name="moim_start_time" placeholder="이메일을 입력하세요">
-            <label for="moim_end_time">모임 종료</label>
-            <input type="date" id="moim_end_time" name="moim_end_time" placeholder="이름을입력하세요">
-            <label for="moim_title">모임 제목</label>
-            <input type="text" id="moim_title" name="moim_title" placeholder="이름을입력하세요">
-            <label for="moim_member_max">모임 최대 인원</label>
-            <input type="text" id="moim_member_max" name="moim_member_max" placeholder="이메일을 입력하세요">
-            <label for="moim_pictures">사용할 사진</label>
-            <input type="text" id="moim_pictures" name="moim_pictures" placeholder="이름을입력하세요">
-            <label for="location_num">위치</label>
-            <input type="text" id="location_num" name="location_num" placeholder="이메일을 입력하세요">
-            <label for="moim_main">모임 소개</label>
-            <input type="text" id="moim_main" name="moim_main" placeholder="이름을입력하세요">
-            <label for="moim_price">참가 비용</label>
-            <input type="text" id="moim_price" name="moim_price" placeholder="이메일을 입력하세요">
-            <label for="moim_deadline">모집 마감일</label>
-            <input type="date" id="moim_deadline" name="moim_deadline" placeholder="이메일을 입력하세요">
+            <label for="moimCategoryNum">카테고리 구분</label>
+            <input type="number" id="moimCategoryNum" name="moimCategoryNum" placeholder="이름을입력하세요">
+
+            <label for="moimStartDate">모임 시작</label>
+            <input type="date" id="moimStartDate" name="moimStartDate" placeholder="이메일을 입력하세요">
+
+            <label for="moimEndDate">모임 종료</label>
+            <input type="date" id="moimEndDate" name="moimEndDate" placeholder="이름을입력하세요">
+
+            <label for="moimTitle">모임 제목</label>
+            <input type="text" id="moimTitle" name="moimTitle" placeholder="이름을입력하세요">
+
+            <label for="moimMemberMax">모임 최대 인원</label>
+            <input type="int" id="moimMemberMax" name="moimMemberMax" placeholder="이메일을 입력하세요">
+
+            <label for="moimImage">사용할 사진</label>
+            <input type="text" id="moimImage" name="moimImage" placeholder="이름을입력하세요">
+
+            <label for="moimLocationNum">위치</label>
+            <input type="text" id="moimLocationNum" name="moimLocationNum" placeholder="이메일을 입력하세요">
+
+            <label for="moimMainContent">모임 소개</label>
+            <input type="text" id="moimMainContent" name="moimMainContent" placeholder="이름을입력하세요">
+
+            <label for="moimPrice">참가 비용</label>
+            <input type="text" id="moimPrice" name="moimPrice" placeholder="이메일을 입력하세요">
+
+            <label for="moimDeadline">모집 마감일</label>
+            <input type="date" id="moimDeadline" name="moimDeadline" placeholder="이메일을 입력하세요">
+            <!--테스트 용-->
+
+            <label for="moimHostUserIdNum">유저 아이디</label>
+            <input type="number" id="moimHostUserIdNum" name="moimHostUserIdNum" placeholder="이메일을 입력하세요">
+            <label for="moimNum">모임 넘버</label>
+            <input type="number" id="moimNum" name="moimNum" placeholder="이메일을 입력하세요">
+            <label for="moimCreateDate">모집 만든시간</label>
+            <input type="date" id="moimCreateDate" name="moimCreateDate" placeholder="이메일을 입력하세요">
+            <label for="moim_deadline">모집 조회수</label>
+            <input type="number" id="moimViewCount" name="moimViewCount" placeholder="이메일을 입력하세요">
+            <label for="moimLocationNum">모집 장소</label>
+            <input type="number" id="moimLocationNum" name="moimLocationNum" placeholder="이메일을 입력하세요">
+            <label for="moimMemberCount">모집 마감일</label>
+            <input type="number" id="moimMemberCount" name="moimMemberCount" placeholder="이메일을 입력하세요">
 
         </div>
         <button type="submit">등록</button>

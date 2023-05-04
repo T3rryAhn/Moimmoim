@@ -20,26 +20,26 @@ public class MoimDo {
     private String moimMainContent;
     private String moimImage;
 
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+
     private Date moimCreateDate;
 
     private int moimViewCount;
     private int moimCategoryNum;
 
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+
     private Date moimStartDate;
 
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+
     private Date moimEndDate;
 
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
+
     private Date moimDeadLine;
 
     private int moimMemberCount;
     private int moimMemberMax;
     private int moimPrice;
-    private Date moimDeadline;
-    // private LocalDate moimJoinDate;
     private int moimDeadCheck;
+    // private LocalDate moimJoinDate;
     private int moimLocationNum;
-}
+
+    }

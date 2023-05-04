@@ -19,11 +19,9 @@ public class JdbcMoimRepository implements MoimRepository {
         this.dataSource = dataSource;
     }
 
-    String dbUrl = "jdbc:oracle:thin:@localhost:1521:XE";
-
     @Override
     public MoimDo newMoim(MoimDo moimDo){
-        String sql = "insert into moim_post values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into moim_post values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -48,11 +46,12 @@ public class JdbcMoimRepository implements MoimRepository {
             pstmt.setInt(15, moimDo.getMoimDeadCheck());
             pstmt.setInt(16, moimDo.getMoimLocationNum());
 
+
             pstmt.executeUpdate();
-            return moimDo;
+
 
         } catch (Exception e) {
-            throw new IllegalStateException(e);
+
         } finally {
             try {;
                 pstmt.close();
@@ -61,6 +60,7 @@ public class JdbcMoimRepository implements MoimRepository {
                 e.printStackTrace();
             }
         }
+        return moimDo;
     }
 
 

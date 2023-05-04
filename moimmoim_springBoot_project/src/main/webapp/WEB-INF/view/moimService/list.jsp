@@ -14,6 +14,6 @@
 
     <body>
 
-    <a href="/moim/new">모임 생성</a>
+
     </body>
 </html>
