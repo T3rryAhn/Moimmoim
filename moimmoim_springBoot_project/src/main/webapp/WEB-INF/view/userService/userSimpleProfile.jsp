@@ -5,8 +5,8 @@
 </head>
 <body>
     <h1>User Simple Profile</h1>
-    <p>Name: ${userSimpleProfileDto.name}</p>
-    <p>Nickname: ${userSimpleProfileDto.nickName}</p>
-    <img src="${userSimpleProfileDto.profileImage}" alt="User Profile Image" width="200px" height="200px">
+    <p>Name: ${userSimpleProfileDto.userName}</p>
+    <p>Nickname: ${userSimpleProfileDto.userNickName}</p>
+    <img src="${userSimpleProfileDto.userProfileImage}" alt="User Profile Image" width="200px" height="200px">
 </body>
 </html>
