@@ -44,6 +44,7 @@
             <a href="/" class="header_font">MOIM LIST</a>
             <a href="/" class="header_font">HOST LIST</a>
             <div id="login_icon"><a href="/"><img src="/imgs/moimmoimUi/login.png" alt="login" width="50px"></a></div>
+        </div>
     </header>
 <!--header 끝-->
 

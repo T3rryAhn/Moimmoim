@@ -21,10 +21,12 @@
             <a href="/" class="header_font">MOIM LIST</a>
             <a href="/" class="header_font">HOST LIST</a>
             <div id="login_icon"><a href="/"><img src="/imgs/moimmoimUi/login.png" alt="login" width="50px"></a></div>
+        </div>
     </header>
 <!--header 끝-->
 
 <!-- 메인컨텐츠 시작 -->
+<main>
     <h1>ProfilePage</h1>
     <hr>
     <div>
@@ -38,6 +40,10 @@
         <p>CreateDate: &{profilePageDto.userProfileDto.userCreateDate}</p>
         <p>PhoneNumber: &{profilePageDto.userProfileDto.phoneNum}</p>
     </div>
+    <div>
+        <p>Introduce: ${profilePageDto.userIntroduction}</p>
+    </div>
+</main>
 <!-- 메인 컨텐츠 끝 -->
     <!--footer 시작-->
         <footer>
