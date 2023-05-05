@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class ProfileDo {
 
     private Long userIdNum;
-    private String userProfileImage = "default url";
+    private String userProfileImage;
     private String userIntroduction;
     private Double userMoimReviewScoreAvg;
     private int userHostingCount;
