@@ -12,4 +12,5 @@ public interface MoimMapper {
 
     List<MoimDo> findAllByUserIdNum(Long userIdNum);
 
+    MoimDo findByMoimNum(Long moimNum);
 }
