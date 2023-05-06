@@ -15,16 +15,13 @@ import java.nio.file.*;
 
 @Controller
 public class ImageUploadController {
-    private final String UPLOAD_DIR = "C:\\Projects\\InteliJ\\Moimmoim\\moimmoim_springBoot_project\\src\\main\\resources\\static\\imgs\\profile_img";
-
+    private final String UPLOAD_DIR = "/imgs/profile_img";
     @Autowired
     private ProfileMapper profileMapper;
-
     @GetMapping("/profileImg")
     public String index() {
         return "/myPageService/imageUpload";
     }
-
     @PostMapping("/profileImg/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file,
                              @RequestParam("userid_num") Long userIdNum) throws IOException {
@@ -33,15 +30,12 @@ public class ImageUploadController {
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
-
         Path filePath = uploadPath.resolve(fileName);
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
         ProfileDo profileDo = new ProfileDo();
-        profileDo.setUserProfileImage(filePath.toString().replace('\\', '/').substring(UPLOAD_DIR.indexOf("imgs") - 1));
+        profileDo.setUserProfileImage(filePath.toString().replace('\\', '/').substring(UPLOAD_DIR.indexOf("imgs")));
         profileDo.setUserIdNum(userIdNum);
         profileMapper.updateProfileImage(profileDo);
-
         return "redirect:/";
     }
 }
