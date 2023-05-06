@@ -6,7 +6,7 @@
 <body>
     <h1>User Simple Profile</h1>
     <hr/>
-    <img src="${pageContext.request.contextPath}${userSimpleProfileDto.userProfileImage}" alt="User Profile Image" width="200px" height="200px">
+    <img src="/${userSimpleProfileDto.userProfileImage}" alt="User Profile Image" width="200px" height="200px">
     <p>img src: ${userSimpleProfileDto.userProfileImage}</p>
     <p>Name: ${userSimpleProfileDto.userName}</p>
     <p>Nickname: ${userSimpleProfileDto.userNickName}</p>
