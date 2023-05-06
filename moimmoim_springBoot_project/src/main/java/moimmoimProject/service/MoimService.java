@@ -27,4 +27,14 @@ public class MoimService {
     public void createMoim(MoimDo moimDo) {
         moimMapper.createMoim(moimDo);
     }
+
+    public void CountView(Long moimNum){
+        moimMapper.countView(moimNum);
+    }
+
+    public List<MoimDo> getMoimList(Long moimCategoryNum){
+        return moimMapper.findList(moimCategoryNum);
+    }
+
+
 }

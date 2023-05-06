@@ -35,7 +35,7 @@
         WHERE MOIM_NUM = #{moimNum}
     </select>
 
-    <insert id="createMoim" parameterType="map">
+    <insert id="createMoim" parameterType="moimDo">
         <selectKey keyProperty="moimNum" resultType="Long" order="BEFORE">
             SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
         </selectKey>
@@ -48,5 +48,16 @@
         #{moimPrice},#{moimDeadLine},#{moimDeadCheck},#{moimLocationNum})
 
     </insert>
+
+    <update id="countView" parameterType="Long">
+        UPDATE MOIM_POST m
+        set m.MOIM_VIEWS = m.MOIM_VIEWS + 1
+        where m.MOIM_NUM = #{moimNum}
+    </update>
+
+    <select id="findAll" parameterType="map" resultMap="moimResultMap">
+
+
+    </select>
 
 </mapper>
