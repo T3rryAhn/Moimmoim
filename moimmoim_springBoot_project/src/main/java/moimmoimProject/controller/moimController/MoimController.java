@@ -20,7 +20,7 @@ public class MoimController {
         this.moimService = moimService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/moim")
     public String hello() {
         return "moimService/index";
     }

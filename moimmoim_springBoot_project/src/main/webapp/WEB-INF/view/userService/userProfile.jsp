@@ -12,7 +12,8 @@
     <p>HostingCount: ${userProfileDto.userHostingCount}</p>
     <p>Birth: ${userProfileDto.userBirth}</p>
     <p>Email: ${userProfileDto.userEmail}</p>
-    <p>CreateDate: &{userProfileDto.userCreateDate}</p>
-    <p>PhoneNumber: &{userProfileDto.phoneNum}</p>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <p>CreateDate: <fmt:formatDate value="${userProfileDto.userCreateDate}" pattern="yyyy-MM-dd" /></p>
+    <p>PhoneNumber: ${userProfileDto.phoneNum}</p>
 </body>
 </html>
