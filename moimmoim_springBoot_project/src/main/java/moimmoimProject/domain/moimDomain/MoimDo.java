@@ -13,33 +13,23 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MoimDo {
+public class MoimDo {   // DB순서에 맞춘거
     private Long moimNum;
     private Long moimHostUserIdNum;
     private String moimTitle;
     private String moimMainContent;
     private String moimImage;
 
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
     private Date moimCreateDate;
 
     private int moimViewCount;
     private int moimCategoryNum;
-
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
     private Date moimStartDate;
-
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
     private Date moimEndDate;
-
-    @DateTimeFormat(pattern = "YY/MM/DD/HH/MM/SS")
-    private Date moimDeadLine;
-
     private int moimMemberCount;
     private int moimMemberMax;
     private int moimPrice;
-    private Date moimDeadline;
-    // private LocalDate moimJoinDate;
+    private Date moimDeadLine;
     private int moimDeadCheck;
     private int moimLocationNum;
 }

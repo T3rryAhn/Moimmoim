@@ -1,3 +1,4 @@
+/*
 package moimmoimProject.repository;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class MybatisMoimRepository implements MoimRepository {
 
     @Override
     public MoimDo getMoim(long moim_num) throws SQLException {
-        return moimMapper.findAllByMoimId(moim_num);
+        return moimMapper.findAllByMoimNum(moim_num);
     }
 
     @Override
@@ -38,3 +39,4 @@ public class MybatisMoimRepository implements MoimRepository {
         return null;
     }
 }
+*/

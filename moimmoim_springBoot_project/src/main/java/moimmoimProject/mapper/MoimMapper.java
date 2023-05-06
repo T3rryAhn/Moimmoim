@@ -11,8 +11,11 @@ public interface MoimMapper {
     // MoimDo findByMoimNum(Long userIdNum);
 
     List<MoimDo> findAllByUserIdNum(Long userIdNum);
-
-    MoimDo findAllByMoimId(Long MoimNum);
+    MoimDo findAllByMoimNum(Long MoimNum);
+    List<MoimDo> findAll();
+    void createMoim(MoimDo moimDo);
+    void updateMoim(MoimDo moimDo, MoimDo updateDo);
+    void deleteMoim(MoimDo moimDo);
 
 
 }
