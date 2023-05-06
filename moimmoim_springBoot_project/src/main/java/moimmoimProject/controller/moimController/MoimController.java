@@ -1,5 +1,6 @@
 package moimmoimProject.controller.moimController;
 
+import lombok.AllArgsConstructor;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.sql.SQLException;
 
 @Controller
+@AllArgsConstructor
 public class MoimController {
 
     private final MoimService moimService;
-
-    @Autowired
-    public MoimController(MoimService moimService) {
-        this.moimService = moimService;
-    }
 
     @GetMapping("/moim")
     public String hello() {
