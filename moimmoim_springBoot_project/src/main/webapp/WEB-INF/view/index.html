@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="/css/moimmoimBody.css">
+  <title>index.html</title>
+</head>
+
+<body>
+  <!--header 시작-->
+  <header>
+    <div id="header_container">
+        <div id="main-logo" ><a href="/"><img src="/imgs/logo.png" alt="logo" width="200px"></a></div>
+</header>
+<!--header 끝-->
+
+<!--메인 컨텐츠 시작-->
+  <h1>어디로든 문!!!</h1>
+  손쉽게 어디로든 이동해보세요
+  <hr/>
+  <div id="mainPage">
+    <p>mainPage</p>
+    <a href="/main"><button>메인페이지로 이동</button></a>
+  </div>
+  <br>
+
+  <div id="myPage">
+    <p>yPage</p>
+    <form action="/myPage/" method="get">
+      <input type="number" name="userIdNum" value="1" placeholder="userIdNum을 입력하세요" />
+      <button type="submit">사용자 myPage로 이동</button>
+    </form>
+  </div>
+  <br>
+  <img src="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcSMnKf-73AH0Mwpo8llv2g9nl8pdNykZzkKwbc3eNvp1nXOpCF_hLytHjhqAxwgPGbn">
+  <div id="userProfile">
+    <p>userProfilePages</p>
+    <form id="userProfileForm" action="#" method="get">
+      <input type="number" name="userIdNum" value="1" placeholder="userIdNum을 입력하세요" />
+    </form>
+    <button form="userProfileForm" formaction="/ProfilePage/${userIdNum}" type="submit">프로필 페이지 보기</button>
+    <button form="userProfileForm" formaction="/users/userProfile/${userIdNum}" type="submit">사용자 프로필 보기</button>
+    <button form="userProfileForm" formaction="/users/userSimpleProfile/${userIdNum}" type="submit">간단한 사용자 프로필 보기</button>
+  </div>
+</body>
+</html>
