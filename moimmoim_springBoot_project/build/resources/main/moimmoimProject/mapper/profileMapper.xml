@@ -6,7 +6,7 @@
 <mapper namespace="moimmoimProject.mapper.ProfileMapper">
     <resultMap id="profileResultMap" type="moimmoimProject.domain.userDomain.ProfileDo">
         <id column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
-        <result column="USER_PROFILE_PIC" property="userProfileImage" jdbcType="VARCHAR" />
+        <result column="USER_PROFILE_IMAGE" property="userProfileImage" jdbcType="VARCHAR" />
         <result column="HOST_MOIM_REVIEW_SCORE_AVG" property="userMoimReviewScoreAvg" jdbcType="DOUBLE" />
         <result column="YEAR_OF_BIRTH" property="userBirth" jdbcType="DATE" />
         <result column="USER_INTRODUCE" property="userIntroduction" jdbcType="VARCHAR" />
@@ -19,4 +19,8 @@
         FROM PROFILE
         WHERE USERID_NUM = #{userIdNum}
     </select>
+
+    <update id="updateProfileImage" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
+        UPDATE PROFILE SET USER_PROFILE_IMAGE = #{userProfileImage} WHERE USERID_NUM = #{userIdNum}
+    </update>
 </mapper>
