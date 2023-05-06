@@ -1,8 +1,11 @@
 package moimmoimProject.config;
 
 
+import lombok.AllArgsConstructor;
+import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.repository.JdbcMoimRepository;
 import moimmoimProject.repository.MoimRepository;
+import moimmoimProject.repository.MybatisMoimRepository;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,22 +15,20 @@ import javax.sql.DataSource;
 
 
 @Configuration
+@AllArgsConstructor
 public class MoimConfig {
 
-    private DataSource dataSource;
-    @Autowired
-    public MoimConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    private final DataSource dataSource;
+    private final MoimMapper moimMapper;
 
-    @Bean
+    /*@Bean
     public MoimRepository moimRepository() {
-        return new JdbcMoimRepository(dataSource);
+        return new MybatisMoimRepository(moimMapper);
     }
 
     @Bean
     public MoimService moimService() {
         return new MoimService(moimRepository());
     }
-
+*/
 }

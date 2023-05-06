@@ -4,6 +4,7 @@ import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.service.moimService.MoimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,15 @@ public class MoimController {
     @GetMapping("/moim/new")
     public String moimForm() {
         return "moimService/moimForm";
+    }
+
+    @GetMapping("/moim/list")
+    public String moimList(Model model) {
+        //테스트용
+        Long test = 1L;
+        MoimDo moimDo = moimService.getMoim(test);
+        model.addAttribute("testmoim", moimDo);
+        return "moimService/list";
     }
 
     @PostMapping("/moim/new")

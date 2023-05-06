@@ -28,4 +28,11 @@
         FROM MOIM_POST
         WHERE USERID_NUM = #{userIdNum}
     </select>
+
+    <select id="findAllByMoimId" parameterType="map" resultMap="moimResultMap">
+        SELECT *
+        FROM MOIM_POST
+        WHERE MOIM_NUM = #{moimNum}
+    </select>
+
 </mapper>
