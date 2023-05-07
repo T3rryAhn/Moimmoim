@@ -17,4 +17,10 @@ public interface OrderMapper {
 //    String getMaxOrderNum(Long moimNum);
 
     void insertOrder(OrderDo orderDo);
+
+    OrderDo findByOrderNum(Long orderNum);
+
+    void deleteByOrderNum(Long orderNum);
+
+    int countByMoimNumAndOrderStatus(Long moimNum, String 결제_진행중);
 }

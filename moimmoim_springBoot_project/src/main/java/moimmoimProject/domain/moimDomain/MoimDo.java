@@ -42,4 +42,6 @@ public class MoimDo {
     // private LocalDate moimJoinDate;
     private int moimDeadCheck;
     private int moimLocationNum;
+
+
 }

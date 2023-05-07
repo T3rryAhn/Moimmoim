@@ -25,6 +25,17 @@
         FROM MOIM_ORDER
         WHERE MOIM_NUM = #{moimNum}
     </select>
+    <select id="findByOrderNum" parameterType="map" resultMap="orderResultMap">
+        SELECT *
+        FROM MOIM_ORDER
+        WHERE ORDER_NUM = #{orderNum}
+    </select>
+    <select id="deleteByOrderNum" parameterType="map" resultMap="orderResultMap">
+        DELETE
+        FROM MOIM_ORDER
+        WHERE ORDER_NUM = #{orderNum}
+    </select>
+
 
 
 <!--
