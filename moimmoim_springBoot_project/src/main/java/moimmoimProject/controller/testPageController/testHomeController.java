@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class testHomeController {
 
     @GetMapping("/")
-    public String testHome(){
+    public String testHome() {
         return "/testHome";
+    }
+
+    @GetMapping("/ticket/{moimNum}/{userIdNum}")
+    public String testTicket() {
+        return "/ticketService/ticket";
     }
 }
