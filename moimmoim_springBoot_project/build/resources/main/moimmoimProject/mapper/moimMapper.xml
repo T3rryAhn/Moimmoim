@@ -8,17 +8,17 @@
         <id column="MOIM_NUM" property="moimNum" jdbcType="BIGINT" />
         <result column="USERID_NUM" property="moimHostUserIdNum" jdbcType="BIGINT" />
         <result column="MOIM_TITLE" property="moimTitle" jdbcType="VARCHAR" />
-        <result column="MOIM_MAIN" property="moimMainContent" jdbcType="VARCHAR" />
+        <result column="MOIM_MAIN" property="moimMainContent" jdbcType="VARCHAR"/>
         <result column="MOIM_PICTURES" property="moimImage" jdbcType="VARCHAR" />
         <result column="MOIM_CREATE_DATE" property="moimCreateDate" jdbcType="DATE" />
-        <result column="MOIM_VIEWS" property="moimViewCount" jdbcType="BIGINT" />
-        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="INTEGER" />
-        <result column="MOIM_START_TIME" property="moimStartDate" jdbcType="DATE" />
+        <result column="MOIM_VIEWS" property="moimViewCount" jdbcType="BIGINT"  />
+        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="INTEGER"  />
+        <result column="MOIM_START_TIME" property="moimStartDate" jdbcType="DATE"/>
         <result column="MOIM_END_TIME" property="moimEndDate" jdbcType="DATE" />
-        <result column="MOIM_MEMBER_COUNT" property="moimMemberCount" jdbcType="BIGINT" />
+        <result column="MOIM_MEMBER_COUNT" property="moimMemberCount" jdbcType="BIGINT"/>
         <result column="MOIM_MEMBER_MAX" property="moimMemberMax" jdbcType="BIGINT" />
         <result column="MOIM_PRICE" property="moimPrice" jdbcType="BIGINT" />
-        <result column="MOIM_DEADLINE" property="moimDeadline" jdbcType="DATE" />
+        <result column="MOIM_DEADLINE" property="moimDeadLine" jdbcType="DATE"/>
         <result column="MOIM_DEAD_CHECK" property="moimDeadCheck" jdbcType="INTEGER" />
         <result column="LOCATION_NUM" property="moimLocationNum" jdbcType="BIGINT" />
     </resultMap>
@@ -28,9 +28,65 @@
         FROM MOIM_POST
         WHERE USERID_NUM = #{userIdNum}
     </select>
-    <select id="findByMoimNum" parameterType="map" resultMap="moimResultMap">
+
+    <select id="findAllByMoimNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
     </select>
+
+    <insert id="createMoim" parameterType="moimDo">
+        <selectKey keyProperty="moimNum" resultType="Long" order="BEFORE">
+            SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+
+        INSERT INTO MOIM_POST
+        VALUES(#{moimNum},#{moimHostUserIdNum},
+        #{moimTitle},#{moimMainContent},#{moimImage},
+        to_date(sysdate,'yy/mm/dd'),#{moimViewCount},#{moimCategoryNum},
+        #{moimStartDate},#{moimEndDate},#{moimMemberCount},#{moimMemberMax},
+        #{moimPrice},#{moimDeadLine},#{moimDeadCheck},#{moimLocationNum})
+
+    </insert>
+
+    <update id="countView" parameterType="Long">
+        UPDATE MOIM_POST m
+        set m.MOIM_VIEWS = m.MOIM_VIEWS + 1
+        where m.MOIM_NUM = #{moimNum}
+    </update>
+
+    <select id="findList" parameterType="map" resultMap="moimResultMap">
+        SELECT *
+        FROM MOIM_POST
+        WHERE CATEGORY_NUM = #{moimCategoryNum}
+    </select>
+
+    <update id="deleteMoim" parameterType="map">
+        DELETE
+        FROM MOIM_POST
+        WHERE MOIM_NUM = #{moimNum}
+    </update>
+
+    <select id="moimList" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT MOIM_POST.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+                     FROM MOIM_POST
+                     WHERE CATEGORY_NUM = #{moimCategoryNum}
+                     ORDER BY MOIM_NUM DESC
+                     ) MOIM_POST
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+    <select id="moimListCnt" resultType="int">
+        SELECT count(*)
+        FROM MOIM_POST
+    </select>
+
+
 </mapper>
