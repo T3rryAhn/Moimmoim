@@ -70,7 +70,11 @@
     <div id="ticketing">
       <h3>ticketPage</h3>
       <button onclick="goToTicket(moimNum.value, userIdNum.value)">티켓 보기</button>
+      <button onclick="goToBuyPage(moimNum.value)">구매 페이지</button>
+
     </div>
+
+
 
   </main>
   <!--메인 끝-->
@@ -96,7 +100,12 @@
     }
 
     function goToTicket(moimNum, userIdNum) {
-      const url = '/ticket/' + moimNum + '/' + userIdNum;
+      const url = 'test/ticket/' + moimNum + '/' + userIdNum;
+      window.location.href = url;
+    }
+
+    function goToBuyPage(moimNum) {
+      const url = '/buyPage/' + moimNum ;
       window.location.href = url;
     }
   </script>

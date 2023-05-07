@@ -31,10 +31,10 @@ public class BuyPageController {
         this.orderMapper = orderMapper;
     }
     @GetMapping("/buyPage/{moimNum}")
-    public String showBuyPage(@PathVariable Long moimNum, Model model, Principal principal){
-        String userIdNum = principal.getName(); // 세션에 저장된 Principal 정보에서  가져옵니다.
-        UserDo userDo = userMapper.findByUserIdNum(Long.parseLong(userIdNum));
-        MoimDo moimDo = moimMapper.findByMoimNum(moimNum);
+    public String showBuyPage(@PathVariable Long moimNum, Model model){
+
+//        UserDo userDo = userMapper.findByUserIdNum(userIdNum);
+        MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
 
         int maximumCapacity = moimDo.getMoimMemberMax() - moimDo.getMoimMemberCount();
 
@@ -57,8 +57,8 @@ public class BuyPageController {
             return redirectUrl;
         }
 
-        model.addAttribute("userDo", userDo);
+//        model.addAttribute("userDo", userDo);
         model.addAttribute("moimDo", moimDo);
-        return "buyPage";
+        return "ticketService/buyPage";
     }
 }
