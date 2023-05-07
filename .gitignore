@@ -17,5 +17,5 @@
 /moimmoim_springBoot_project/.gradle/buildOutputCleanup/buildOutputCleanup.lock
 /moimmoim_springBoot_project/.gradle/buildOutputCleanup/cache.properties
 /moimmoim_springBoot_project/.gradle/vcs-1/gc.properties
-application.properties
-application.properties
+
+/moimmoim_springBoot_project/src/main/resources/application.properties
