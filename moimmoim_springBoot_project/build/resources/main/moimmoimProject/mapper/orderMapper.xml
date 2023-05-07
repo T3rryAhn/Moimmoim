@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moimmoimProject.mapper.OrderMapper">
+    <resultMap id="orderResultMap" type="moimmoimProject.domain.ticketDomain.OrderDo">
+        <id column="ORDER_NUM" property="orderNum" jdbcType="BIGINT" />
+        <result column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
+        <result column="MOIM_NUM" property="moimNum" jdbcType="BIGINT" />
+        <result column="ORDER_DATE" property="orderDate" jdbcType="DATE" />
+        <result column="ORDER_STATUS" property="orderStatus" jdbcType="VARCHAR" />
+        <result column="ORDER_PRICE" property="orderPrice" jdbcType="BIGINT" />
+        <result column="ORDER_RECEIPTCHECK" property="orderReceiptCheck" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="findByUserIdNum" parameterType="map" resultMap="orderResultMap">
+        SELECT *
+        FROM MOIM_ORDER
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+    <select id="findByMoimNum" parameterType="map" resultMap="orderResultMap">
+        SELECT *
+        FROM MOIM_ORDER
+        WHERE MOIM_NUM = #{moimNum}
+    </select>
+    <select id="findByOrderNum" parameterType="map" resultMap="orderResultMap">
+        SELECT *
+        FROM MOIM_ORDER
+        WHERE ORDER_NUM = #{orderNum}
+    </select>
+    <select id="deleteByOrderNum" parameterType="map" resultMap="orderResultMap">
+        DELETE
+        FROM MOIM_ORDER
+        WHERE ORDER_NUM = #{orderNum}
+    </select>
+
+
+
+<!--
+최대 주문 확인용
+<select id="maxOrderNum" parameterType="map" resultType="string">
+        SELECT COALESCE(MAX(SUBSTR(ORDER_NUM, -3)), '000') AS MAX_ORDER_SEQ
+        FROM MOIM_ORDER
+        WHERE ORDER_NUM LIKE #{orderNumPrefix}||'%'
+    </select>-->
+
+    <!--db 주입 -->
+    <insert id="insertOrder" parameterType="moimmoimProject.domain.ticketDomain.OrderDo">
+        INSERT INTO ORDER_TB(ORDER_NUM, MOIM_NUM, USER_ID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
+        VALUES(#{orderNum}, #{moimNum}, #{userIdNum}, #{orderDate}, #{orderStatus}, #{orderPrice}, #{orderReceiptCheck})
+    </insert>
+</mapper>

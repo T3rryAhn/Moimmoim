@@ -4,6 +4,7 @@ package moimmoimProject.domain.userDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
 public class UserDo {
     private Long userIdNum;
     private String userId;
@@ -26,4 +28,5 @@ public class UserDo {
     private int hostLevelNum;
     private String location;
     private Date createDate;
+
 }
