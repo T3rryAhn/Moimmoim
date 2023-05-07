@@ -36,6 +36,12 @@
         WHERE ORDER_NUM = #{orderNum}
     </select>
 
+    <select id="countByMoimNumAndOrderStatus" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM MOIM_ORDER
+        WHERE MOIM_NUM = #{moimNum} AND ORDER_STATUS = #{orderStatus}
+    </select>
+
 
 
 <!--

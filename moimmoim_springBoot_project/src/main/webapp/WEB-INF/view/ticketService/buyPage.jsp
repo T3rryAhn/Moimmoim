@@ -9,12 +9,13 @@
 </head>
 <body>
 <h2>모임 티켓 구매 페이지</h2>
+<hr/>
 
 <!-- 모임 정보 -->
 <h3>모임 정보</h3>
 <p>제목: ${moimDo.moimTitle}</p>
-<p>날짜: ${moimDo.moimDate}</p>
-<p>장소: ${moimDo.moimPlace}</p>
+<p>날짜: ${moimDo.moimStartDate}</p>
+<p>장소: ${moimDo.moimLocationNum}</p>
 <p>인원: ${moimDo.moimMemberCount}명 / ${moimDo.moimMemberMax}명</p>
 
 <!-- 결제 금액 -->

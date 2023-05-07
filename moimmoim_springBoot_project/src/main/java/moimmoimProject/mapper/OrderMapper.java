@@ -22,5 +22,5 @@ public interface OrderMapper {
 
     void deleteByOrderNum(Long orderNum);
 
-    int countByMoimNumAndOrderStatus(Long moimNum, String 결제_진행중);
+    int countByMoimNumAndOrderStatus(Long moimNum, String orderStatus);
 }

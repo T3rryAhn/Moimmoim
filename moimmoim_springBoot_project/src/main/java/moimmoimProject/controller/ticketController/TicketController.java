@@ -1,4 +1,4 @@
 package moimmoimProject.controller.ticketController;
 
-public class ticketController {
+public class TicketController {
 }

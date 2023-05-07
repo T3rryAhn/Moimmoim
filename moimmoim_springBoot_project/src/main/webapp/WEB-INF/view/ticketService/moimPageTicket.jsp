@@ -6,16 +6,17 @@
 <!-- 티켓 -->
 <div class="ticket">
   <div class="ticket-left">
-    <img src="imgs/logo.png" alt="ticket" style="width: 80px; height: auto; display: block;" >
+    <img src="/imgs/moimmoimUi/whitelogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;" >
     <b style="display: inline-block;">Ticket</b>
-    <p>date: moimDo.moimStartDate<br>
+    <br><br><br>
+    <p>date: ${moimDo.moimStartDate}<br>
     time: <br>
-    location: moimDo.moimLocationNum</p>
+    location: ${moimDo.moimLocationNum}</p>
   </div>
   <div class="ticket-right">
-    <p>moimDo.moimTitle</p>
+    <p>${moimDo.moimTitle}</p>
     <p>호스트</p>
-    <p><a href="#">호스트의 userSimpleProfile</a></p>
+    <p><a href="/users/userSimpleProfile/${moimDo.moimHostUserIdNum}">${moimDo.moimHostUserIdNum}의 userSimpleProfile</a></p>
   </div>
 </div>
 
