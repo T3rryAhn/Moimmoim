@@ -6,20 +6,36 @@
 <html lang="ko">
 
     <head>
-        <title>login-form</title>
+        <title>test</title>
     </head>
     <title>Spring Boot Application</title>
     </head>
 
     <body>
     <form action="/moim/getMoim/list" method="get">
-        <div class="form-group">
+            <label for="cat1">카테고리</label>
+            <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+            <button type="submit">먹기</button>
+    </form>
 
-            <label for="moimCategoryNum">카테고리</label>
-            <input type="int" id="moimCategoryNum" name="moimCategoryNum" placeholder="이름을입력하세요">
+    <form action="/moim/getMoim/list" method="get">
+            <input type="hidden" id="cat" name="moimCategoryNum" value=2>
+            <button type="submit">보기</button>
+    </form>
 
-        </div>
-        <button type="submit">등록</button>
+    <form action="/moim/getMoim/list" method="get">
+            <input type="hidden" id="cat" name="moimCategoryNum" value=3>
+            <button type="submit">배우기</button>
+    </form>
+
+    <form action="/moim/getMoim/list" method="get">
+            <input type="hidden" id="cat" name="moimCategoryNum" value=4>
+            <button type="submit">힐링하기</button>
+    </form>
+
+    <form action="/moim/getMoim/list" method="get">
+            <input type="hidden" id="cat" name="moimCategoryNum" value=5>
+            <button type="submit">체험하기</button>
     </form>
 
     <a href="/moim/new">모임 생성</a>

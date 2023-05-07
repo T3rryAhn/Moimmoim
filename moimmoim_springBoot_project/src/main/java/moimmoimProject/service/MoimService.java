@@ -36,9 +36,6 @@ public class MoimService {
     public void deleteMoim(Long moimNum){
         moimMapper.deleteMoim(moimNum);
     }
-    public List<MoimDo> getMoimList(int moimCategoryNum){
-        return moimMapper.findList(moimCategoryNum);
-    }
 
     public int moimListCnt(){
         return moimMapper.moimListCnt();
