@@ -29,7 +29,7 @@
         WHERE USERID_NUM = #{userIdNum}
     </select>
 
-    <select id="findAllByMoimId" parameterType="map" resultMap="moimResultMap">
+    <select id="findAllByMoimNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
@@ -55,9 +55,38 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
-    <select id="findAll" parameterType="map" resultMap="moimResultMap">
-
-
+    <select id="findList" parameterType="map" resultMap="moimResultMap">
+        SELECT *
+        FROM MOIM_POST
+        WHERE CATEGORY_NUM = #{moimCategoryNum}
     </select>
+
+    <update id="deleteMoim" parameterType="map">
+        DELETE
+        FROM MOIM_POST
+        WHERE MOIM_NUM = #{moimNum}
+    </update>
+
+    <select id="moimList" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT MOIM_POST.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+                     FROM MOIM_POST
+                     WHERE CATEGORY_NUM = #{moimCategoryNum}
+                     ORDER BY MOIM_NUM DESC
+                     ) MOIM_POST
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+    <select id="moimListCnt" resultType="int">
+        SELECT count(*)
+        FROM MOIM_POST
+    </select>
+
 
 </mapper>

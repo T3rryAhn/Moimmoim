@@ -14,18 +14,18 @@
     <table border="1">
         <tr>
             <th>글번호</th>
+            <th>유저 넘버</th>
             <th>모임 제목</th>
-            <th>이동</th>
             <th>작성시간</th>
         </tr>
-        <c:forEach items="${list}" var="list">
+
         <tr>
-            <td>${list.moimNum}</td>
-            <td>${list.moimTitle}</td>
-            <td><a href="/moim/getMoim/${list.moimNum}">${list.moimTitle}</a></td>
-            <td>${list.moimCreateDate}</td>
+            <td>${moimDo.moimNum}</td>
+            <td>${moimDo.moimHostUserIdNum}</td>
+            <td>${moimDo.moimTitle}</td>
+            <td>${moimDo.moimCreateDate}</td>
         </tr>
-        </c:forEach>
+
 
     </body>
 
