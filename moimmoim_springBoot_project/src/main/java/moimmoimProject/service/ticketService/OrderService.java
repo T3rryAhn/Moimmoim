@@ -4,8 +4,6 @@ import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +17,7 @@ public class OrderService {
     }
 
     //주문번호 생성기
-    private Long createOrderNum(LocalDateTime orderDate, Long moimNum, Long userIdNum) {
+    private String createOrderNum(LocalDateTime orderDate, Long moimNum, Long userIdNum) {
         // yymmdd/moimNum(8자리)/userIdNum(8자리) 형태로 생성합니다.
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
         String dateString = orderDate.format(formatter);
@@ -27,7 +25,7 @@ public class OrderService {
 
 
         // orderNumString을 Long으로 변환해서 반환합니다.
-        return Long.parseLong(orderNumString);
+        return orderNumString;
     }
 
     //주문 생성 서비스
@@ -36,7 +34,7 @@ public class OrderService {
         LocalDateTime orderDate = LocalDateTime.now();
 
         // 주문번호를 생성합니다.
-        Long orderNum = createOrderNum(orderDate, moimNum, userIdNum);
+        String orderNum = createOrderNum(orderDate, moimNum, userIdNum);
 
         // 주문상태를 "결제 진행중"으로 초기화합니다.
         String orderStatus = "결제 진행중";
@@ -70,7 +68,7 @@ public class OrderService {
     }
 
     // 주문 취소 서비스
-    public void cancelOrder(Long orderNum) {
+    public void cancelOrder(String orderNum) {
         OrderDo order = orderMapper.findByOrderNum(orderNum);
 
         // 주문이 존재하는지 확인
