@@ -24,4 +24,5 @@ public interface MoimMapper {
 
     public int moimListCnt();
 
+    MoimDo findByMoimNum(Long moimNum);
 }
