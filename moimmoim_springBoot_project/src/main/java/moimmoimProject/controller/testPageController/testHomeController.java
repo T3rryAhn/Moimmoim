@@ -12,7 +12,7 @@ public class testHomeController {
         return "/testHome";
     }
 
-    @GetMapping("/ticket")
+    @GetMapping("/ticket/{moimNum}/{userIdNum}")
     public String testTicket() {
         return "/ticketService/ticket";
     }
