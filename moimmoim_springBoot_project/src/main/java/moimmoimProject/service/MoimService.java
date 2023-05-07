@@ -36,7 +36,7 @@ public class MoimService {
     public void deleteMoim(Long moimNum){
         moimMapper.deleteMoim(moimNum);
     }
-    public List<MoimDo> getMoimList(Long moimCategoryNum){
+    public List<MoimDo> getMoimList(int moimCategoryNum){
         return moimMapper.findList(moimCategoryNum);
     }
 
@@ -44,7 +44,7 @@ public class MoimService {
         return moimMapper.moimListCnt();
     }
 
-    public List<MoimDo> moimList(Criteria cri,Long moimCategoryNum){
+    public List<Map<String, Object>> moimList(Criteria cri,int moimCategoryNum){
         return moimMapper.moimList(cri,moimCategoryNum);
     }
 

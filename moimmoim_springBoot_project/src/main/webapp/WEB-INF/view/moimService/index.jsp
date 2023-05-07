@@ -1,8 +1,7 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@page import="java.util.*"%>
-    <%
-        request.setCharacterEncoding("UTF-8");
-    %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,7 +12,7 @@
     </head>
 
     <body>
-    <form action="/moim/getMoim/list" method="post">
+    <form action="/moim/getMoim/list" method="get">
         <div class="form-group">
 
             <label for="moimCategoryNum">카테고리</label>

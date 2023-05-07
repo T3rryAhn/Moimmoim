@@ -1,27 +1,21 @@
 package moimmoimProject.domain.moimDomain;
 
-import lombok.Data;
-
 public class Criteria {
 
-
+    // 특정 페이지 조회를 위한 클래스
     private int page; // 현재 페이지 번호
     private int perPageNum; // 페이지당 보여줄 게시글의 개수
-    private int pageStart;
 
     public int getPageStart() {
         // 특정 페이지의 범위를 정하는 구간, 현재 페이지의 게시글 시작 번호
         // 0 ~ 10 , 10 ~ 20 이런식으로
-        pageStart = (this.page - 1) * perPageNum;
-        return pageStart;
+        return (this.page -1) * perPageNum;
     }
 
     public Criteria() {
         // 기본 생성자 : 최초 게시판에 진입시 필요한 기본값
         this.page = 1;
         this.perPageNum = 2;
-        this.pageStart = 0;
-
     }
 
     // 현재 페이지 번호 page : getter, setter
@@ -55,13 +49,8 @@ public class Criteria {
 
     }
 
-
     @Override
     public String toString() {
-        return "Criteria{" +
-                "page=" + page +
-                ", perPageNum=" + perPageNum +
-                ", pageStart=" + pageStart +
-                '}';
+        return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
     }
 }
