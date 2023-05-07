@@ -25,6 +25,7 @@
             <td>${moimDo.moimTitle}</td>
             <td>${moimDo.moimCreateDate}</td>
         </tr>
+    </table>
 
 
     </body>

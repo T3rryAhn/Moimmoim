@@ -1,5 +1,7 @@
 package moimmoimProject.domain.moimDomain;
 
+import moimmoimProject.domain.moimDomain.Criteria;
+
 public class Paging {
 
     private int totalCount; // 게시판 전체 데이터 개수

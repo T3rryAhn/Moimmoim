@@ -14,13 +14,13 @@ public interface MoimMapper {
 
     List<MoimDo> findAllByUserIdNum(Long userIdNum);    // 유저의 모임들 찾기
     MoimDo findAllByMoimNum(Long MoimNum);              // 모임 찾기
-    List<MoimDo> findList(Long moimCategoryNum);        // 모든 모임 리스트
+    List<MoimDo> findList(int moimCategoryNum);        // 모든 모임 리스트
     void createMoim(MoimDo moimDo);                     // 모임 작성
     void updateMoim(MoimDo moimDo, MoimDo updateDo);    // 모임 수정
     void deleteMoim(Long moimNum);                     // 모임 삭제
     void countView(Long moimNum);                      // 조회수 카운트
 
-    public List<MoimDo> moimList(Criteria cri, Long moimCategoryNum);
+    public List<Map<String, Object>> moimList(Criteria cri, int moimCategoryNum);
 
     public int moimListCnt();
 

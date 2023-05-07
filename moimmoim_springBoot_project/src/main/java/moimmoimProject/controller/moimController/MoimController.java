@@ -32,20 +32,19 @@ public class MoimController {
         return "moimService/moimForm";
     }   // 모임 생성 페이지로 이동
 
-    @PostMapping("/moim/getMoim/list")    // 모임 리스트
-    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
-        List<MoimDo> moimDoList = moimService.getMoimList(moimCategoryNum);
-        int boardListCnt = moimService.moimListCnt();
-        model.addAttribute("moimDoList",moimDoList);
+    @GetMapping("/moim/getMoim/list")    // 모임 리스트
+    public String moimList(@Param("moimCategoryNum") int moimCategoryNum, Model model, Criteria cri) {
+        int moimListCnt = moimService.moimListCnt();
         Paging paging = new Paging();
         paging.setCri(cri);
-        paging.setTotalCount(boardListCnt);
+        paging.setTotalCount(moimListCnt);
 
-        List<MoimDo> list = moimService.moimList(cri,moimCategoryNum);
+        List<Map<String, Object>> list = moimService.moimList(cri,moimCategoryNum);
 
+        model.addAttribute("moimCategoryNum",moimCategoryNum);
         model.addAttribute("list", list);
         model.addAttribute("paging", paging);
-        return "moimService/list";  // 페이지 삽입해야함
+        return "moimService/list";
     }
     @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
     public String findMoimByUserId(@PathVariable("moimHostUserIdNum") Long userNum, Model model){
