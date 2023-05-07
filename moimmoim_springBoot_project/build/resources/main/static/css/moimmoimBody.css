@@ -1,0 +1,67 @@
+/* Web Font Load*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
+
+/* 전체 공통 설정 (링크 연결된 텍스트 밑줄 X, 텍스트 디폴트 색상 검정)*/
+*{
+  text-decoration-line: none;
+  color: black;
+}
+
+/* body (header, footer, main) 여백 설정 */
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 90px auto 100px;
+  grid-template-areas:
+  'header'
+  'main'
+  'footer';
+}
+main{
+  padding: 0px 12.5%;
+}
+
+/* header, footer 설정 */
+header, footer {
+  padding: 0px; 
+  background: rgb(24, 39, 19);
+  color: white;
+}
+#header_container{
+  width: 1060px;
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  margin-bottom: 16px;
+  text-align: right;
+  justify-content: space-between;
+}
+#logo{
+  margin: 5px 0px;
+}
+.header_font{
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+}
+#footer_container{
+  width: 1060px;
+  margin: 10px auto;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  text-align: right;
+  justify-content: space-between;
+}
+.footer_font{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
