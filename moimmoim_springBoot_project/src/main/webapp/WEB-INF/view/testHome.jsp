@@ -14,7 +14,7 @@
   <!--header 시작-->
   <header>
     <div id="header_container">
-      <div id="main-logo"><a href="/"><img src="imgs/logo.png" alt="logo" width="200px"></a></div>
+      <div id="main-logo"><a href="/"><img src="imgs/moimmoimUi/logo.png" alt="logo" width="200px"></a></div>
     </div>
   </header>
   <!--header 끝-->
