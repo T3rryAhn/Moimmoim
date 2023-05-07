@@ -162,22 +162,22 @@ var pwInput = document.getElementById("pwInput");
 var firstPwInput;
 pwInput.addEventListener("input",function(){
     var pwRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    var pw = pwInput.value;
-    //8자~20자 검사
-    if(pw.length<8 || pw.length >20){
-       cnfirmMsg.innerHTML ="8~20자만 가능합니다.";
-       console.log(pwRegex.test(pw));
-       inputCountArry[3]=0;
-   }
-    else if(!pwRegex.test(pw)){
-        alert("숫자,대문자,소문자,특수문자를 포함해야합니다.");
-        inputCountArry[3]=0;
-    }
-   else{
-        firstPwInput = pw;
-        cnfirmMsg.innerHTML ="사용가능";
-         inputCountArry[3]=1;
-    }
+         var pw = pwInput.value;
+         //8자~20자 검사
+         if(pw.length<8 || pw.length >20){
+            cnfirmMsg.innerHTML ="8~20자만 가능합니다.";
+            console.log(pwRegex.test(pw));
+            inputCountArry[3]=0;
+        }
+         else if(!pwRegex.test(pw)){
+             alert("숫자,대문자,소문자,특수문자를 포함해야합니다.");
+             inputCountArry[3]=0;
+         }
+        else{
+             firstPwInput = pw;
+             cnfirmMsg.innerHTML ="사용가능";
+              inputCountArry[3]=1;
+         }
 });
 //비밀번호 중복검사
 var pwReInput = document.getElementById("pwReInput");

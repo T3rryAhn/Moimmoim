@@ -111,12 +111,11 @@ loginBttn.addEventListener("click",function(){
     success:function(response){
     console.log(response);
     //회원일 시 메인페이지로 이동
-    if(response!=""){
+    if(response!=""{
       location.href="/";
-    }
+    })
     //회원이 아닐 시 로그인페이지로 이동
     else if(response ==""){
-     alert("회원이 아닙니다. 로그인 정보를 확인하세요");
      location.href="login";
     }
     },

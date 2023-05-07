@@ -37,5 +37,5 @@
 
     </main>
 </body>js/
- <script src="userService/signup1InputValidate.js"></script>
+ <script src="js/userService/signup1InputValidate.js"></script>
 </html>
