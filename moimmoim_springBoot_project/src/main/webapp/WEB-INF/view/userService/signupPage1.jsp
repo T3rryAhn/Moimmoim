@@ -36,6 +36,6 @@
         </form>
 
     </main>
-</body>
- <script src="js/userService/signup1InputValidate.js"></script>
+</body>js/
+ <script src="userService/signup1InputValidate.js"></script>
 </html>

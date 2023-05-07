@@ -21,8 +21,8 @@
         <h1 id="wellcome">Wellcome<br>Please LogIn!!</h1>
 
         <form class="userInfo">
-            <input type="text" placeholder="Type ID" />
-            <input type="password" placeholder="Type password" />
+            <input type="text" id="idInput" placeholder="Type ID" />
+            <input type="password" id ="pwInput" placeholder="Type password" />
             <h1 id="confirm-msg">msg</h1>
             <button id="signup-next-bttn">Kick in yo!</button>
         </form>
@@ -35,5 +35,5 @@
     </main>
 
 </body>
-
+<script src = "js/loginService/loginInputValidate.js"></script>
 </html>
