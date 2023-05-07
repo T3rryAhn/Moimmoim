@@ -3,9 +3,10 @@ package moimmoimProject.domain.moimDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -16,15 +17,19 @@ public class MoimDo {   // DB순서에 맞춘거
     private String moimTitle;
     private String moimMainContent;
     private String moimImage;
-    private Timestamp moimCreateDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime moimCreateDate;
     private int moimViewCount;
     private int moimCategoryNum;
-    private Timestamp moimStartDate;
-    private Timestamp moimEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime moimStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime moimEndDate;
     private int moimMemberCount;
     private int moimMemberMax;
     private int moimPrice;
-    private Timestamp moimDeadLine;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime moimDeadLine;
     private int moimDeadCheck;
     private int moimLocationNum;
 
