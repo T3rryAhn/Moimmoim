@@ -5,19 +5,19 @@
 <head lang="kr">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/loginPage.css" />
-    <link rel="icon" href="imgs/logo.png"/>
+    <link rel="stylesheet" href="css/userService/loginPage.css" />
+    <link rel="icon" href="imgs/userService/logo.png"/>
     <title>moimmoim login</title>
 
 </head>
 
 <body>
     <header id="header">
-        <a href=""><img id="logo" src="imgs/logo.png"></a>
+        <a href=""><img id="logo" src="imgs/userService/logo.png"></a>
     </header>
     <main>
 
-        <img id="main-logo" src="imgs/logo.png" />
+        <img id="main-logo" src="imgs/userService/logo.png" />
         <h1 id="wellcome">Wellcome<br>Please LogIn!!</h1>
 
         <form class="userInfo">
@@ -32,16 +32,7 @@
             <button id="find-id-bttn">find id</button>
             <button id="find-pw-bttn">find pw</button>
         </div>
-
-
-
     </main>
-
-
-    <!-- <footer id="footer">
-        <a href="https://www.naver.com/"><img id="whitelogo" src="imgs/whiteLogo.png"></a>
-        <span id="copyright">Copyright © MOIM MOIM. All Rights Reserved.</span>
-    </footer> -->
 
 </body>
 

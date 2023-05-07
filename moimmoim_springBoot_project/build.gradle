@@ -34,8 +34,10 @@ dependencies {
   	implementation 'org.projectlombok:lombok:1.18.26'
 	implementation 'javax.servlet:jstl'
 
-	//dev
+	//javaMapil api 추가
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+	//dev
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	//lombok
