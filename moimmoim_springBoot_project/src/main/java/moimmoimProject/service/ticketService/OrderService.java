@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class OrderService {
@@ -17,10 +19,10 @@ public class OrderService {
     }
 
     //주문번호 생성기
-    private Long createOrderNum(Date orderDate, Long moimNum, Long userIdNum) {
+    private Long createOrderNum(LocalDateTime orderDate, Long moimNum, Long userIdNum) {
         // yymmdd/moimNum(8자리)/userIdNum(8자리) 형태로 생성합니다.
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
-        String dateString = dateFormat.format(orderDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
+        String dateString = orderDate.format(formatter);
         String orderNumString = dateString + "/" + String.format("%08d", moimNum) + "/" + String.format("%08d", userIdNum);
 
 
@@ -31,7 +33,7 @@ public class OrderService {
     //주문 생성 서비스
     public OrderDo createOrderDo(Long moimNum, Long userIdNum, int orderPrice) {
         // 주문 생성일시를 구합니다.
-        Date orderDate = new Date(System.currentTimeMillis());
+        LocalDateTime orderDate = LocalDateTime.now();
 
         // 주문번호를 생성합니다.
         Long orderNum = createOrderNum(orderDate, moimNum, userIdNum);
