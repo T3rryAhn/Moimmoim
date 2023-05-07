@@ -1,38 +1,74 @@
 package moimmoimProject.controller.moimController;
 
+import lombok.AllArgsConstructor;
+import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.MoimDo;
-import moimmoimProject.service.moimService.MoimService;
-import org.springframework.beans.factory.annotation.Autowired;
+import moimmoimProject.domain.moimDomain.Paging;
+import moimmoimProject.service.MoimService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 @Controller
+@AllArgsConstructor
 public class MoimController {
 
     private final MoimService moimService;
 
-    @Autowired
-    public MoimController(MoimService moimService) {
-        this.moimService = moimService;
-    }
-
-    @GetMapping("/")
+    @GetMapping("/moim")
     public String hello() {
-        return "index";
-    }
+        return "moimService/index";
+    }   // 테스트 용
 
     @GetMapping("/moim/new")
     public String moimForm() {
-        return "moimForm";
+        return "moimService/moimForm";
+    }   // 모임 생성 페이지로 이동
+
+    @PostMapping("/moim/getMoim/list")    // 모임 리스트
+    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
+        List<MoimDo> moimDoList = moimService.getMoimList(moimCategoryNum);
+        int boardListCnt = moimService.moimListCnt();
+        model.addAttribute("moimDoList",moimDoList);
+        Paging paging = new Paging();
+        paging.setCri(cri);
+        paging.setTotalCount(boardListCnt);
+
+        List<MoimDo> list = moimService.moimList(cri,moimCategoryNum);
+
+        model.addAttribute("list", list);
+        model.addAttribute("paging", paging);
+        return "moimService/list";  // 페이지 삽입해야함
+    }
+    @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
+    public String findMoimByUserId(@PathVariable("moimHostUserIdNum") Long userNum, Model model){
+        List<MoimDo> MoimList= moimService.getMoimByUserIdNum(userNum);
+        model.addAttribute("moimList", MoimList);
+        return "";  // 페이지 삽입해야함
+    }
+    @GetMapping("moim/getMoim/{moimNum}")    // 유저 넘버로 모임 리스트를 찾음
+    public String findMoimByMoimNum(@PathVariable("moimNum") Long moimNum, Model model){
+        MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);
+        model.addAttribute("moimDo", moimDo);
+        return "moimService/detailMoim";  // 페이지 삽입해야함
     }
 
-    @PostMapping("/moim/new")
-    public String createNewMoim(@ModelAttribute MoimDo moimDo) throws SQLException {
-        moimService.join(moimDo);
-        return "index";
+    @PostMapping("/moim/new")               // 새로운 모임 생성
+    public String createNewMoim(@Param("MoimDo") MoimDo moimDo){
+        moimService.createMoim(moimDo);
+        return "moimService/index";
     }
+
+    @GetMapping("/moim/count/{moimNum}")          // 조회수 카운트
+    public void countView(@PathVariable("moimNum") Long moimNum){
+        moimService.CountView(moimNum);
+    }
+
 }

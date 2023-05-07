@@ -13,9 +13,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserSimpleProfileDto {
     private final Long userId_num;
-    private final String name;
-    private final String nickName;
-    private final String profileImage;
+    private final String userName;
+    private final String userNickName;
+    private final String userProfileImage;
 
 }
 
