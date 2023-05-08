@@ -3,6 +3,7 @@ package moimmoimProject.service.ticketService;
 import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +30,7 @@ public class OrderService {
     }
 
     //주문 생성 서비스
+    @Transactional
     public OrderDo createOrderDo(Long moimNum, Long userIdNum, int orderPrice) {
         // 주문 생성일시를 구합니다.
         LocalDateTime orderDate = LocalDateTime.now();

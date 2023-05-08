@@ -12,6 +12,15 @@
 
     <!-- 자바 스크립트 -->
     <script type="text/javascript">
+
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+          window.location.back();
+        }
+      };
+
+
+
     let isCanceled = false;
 
     window.addEventListener('beforeunload', function(event) {
@@ -22,7 +31,21 @@
 
          cancelOrder();
       }
+
+       // 세션 종료 요청 보내기
+              $.ajax({
+                  type: "POST",
+                  url: "/endSession",
+                  async: false,
+                  error: function(xhr, status, error) {
+                      alert("세션 종료 중 오류가 발생했습니다.");
+                  }
+              });
     });
+
+    function goBack(){
+        window.history.back();
+    }
 
     function cancelOrder() {
       // 주문이 취소됩니다라는 알림창을 표시합니다.
@@ -38,7 +61,7 @@
           },
           success: function(data) {
             // 결제 취소가 완료되면 알림창이 닫힌 후 뒤로 이동합니다.
-             window.history.go(-1);
+             window.history.back;
           },
           error: function(xhr, status, error) {
             alert("결제 취소 중 오류가 발생했습니다.");
@@ -73,6 +96,7 @@
 
     <meta charset="UTF-8">
 
+
     <title>모임 티켓 구매 페이지</title>
 </head>
 <body>
@@ -106,7 +130,7 @@
      <button onclick="requestPay()">결제하기</button> <!-- 결제하기 버튼 생성 -->
 
     <!-- 취소 버튼 -->
-    <button type="button" onclick="cancelOrder()">취소하기</button>
+    <button type="button" onclick="goBack()">취소하기</button>
 </div>
 
 
