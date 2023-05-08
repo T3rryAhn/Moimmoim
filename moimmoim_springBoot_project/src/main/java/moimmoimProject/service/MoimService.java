@@ -2,6 +2,7 @@ package moimmoimProject.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.AllArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.LocationDo;
@@ -55,6 +56,7 @@ public class MoimService {
     public List<LocationDo> getLocList(List<Map<String, Object>> moimList){
         List<LocationDo> list = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         int i = 0;
         while (true) {
             MoimDo convertedMoimDo = objectMapper.convertValue(moimList.get(i), MoimDo.class);

@@ -33,5 +33,4 @@ public class MoimDo {   // DB순서에 맞춘거
     private int moimDeadCheck;
     private int moimLocationNum;
 
-
 }

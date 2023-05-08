@@ -50,6 +50,7 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.12'
 
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }
 
 tasks.named('test') {
