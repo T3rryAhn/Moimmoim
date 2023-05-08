@@ -1,81 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="/css/ticketCss/ticket.css">
 
 <!DOCTYPE html>
 <html>
 <head>
+
+    <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+    <!-- 자바 스크립트 -->
+    <script type="text/javascript">
+    let isCanceled = false;
+
+    window.addEventListener('beforeunload', function(event) {
+      if (!isCanceled) {
+        event.preventDefault();
+        event.returnValue = "주문이 취소됩니다.";
+
+
+         cancelOrder();
+      }
+    });
+
+    function cancelOrder() {
+      // 주문이 취소됩니다라는 알림창을 표시합니다.
+      if (!isCanceled) {
+        isCanceled = true;
+        alert("주문이 취소됩니다.");
+
+        $.ajax({
+          type: "POST",
+          url: "/cancelOrder",
+          data: {
+            orderNum: "${orderNum}"
+          },
+          success: function(data) {
+            // 결제 취소가 완료되면 알림창이 닫힌 후 뒤로 이동합니다.
+             window.history.go(-1);
+          },
+          error: function(xhr, status, error) {
+            alert("결제 취소 중 오류가 발생했습니다.");
+          }
+        });
+      }
+    }
+
+    <!-- 아임포트 연동 -->
+        IMP.init("imp62670576"); // 가맹점 식별코드
+
+        function requestPay() {
+            IMP.request_pay({
+              pg: "html5_inicis",
+              pay_method: "card",
+              merchant_uid: "${orderNum}",   // 주문번호
+              name: "${moimDo.moimTitle}",
+              amount: ${moimDo.moimPrice},                         // 숫자 타입
+              buyer_email: "${userDo.userEmail}",
+              buyer_name: "${userDo.userName}",
+              buyer_tel: "${userDo.phoneNum}",
+              buyer_addr: "${userDo.location}",
+              buyer_postcode: ""
+
+            }, function (rsp) { // callback
+              //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+
+            });
+          }
+    </script>
+
+
     <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>모임 티켓 구매 페이지</title>
 </head>
 <body>
 <h2>모임 티켓 구매 페이지</h2>
 <hr/>
 
-<!-- 모임 정보 -->
-<h3>모임 정보</h3>
-<p>제목: ${moimDo.moimTitle}</p>
-<p>날짜: ${moimDo.moimStartDate}</p>
-<p>장소: ${moimDo.moimLocationNum}</p>
-<p>인원: ${moimDo.moimMemberCount}명 / ${moimDo.moimMemberMax}명</p>
+<div class="ticket">
+    <div class="ticket-left">
+       <img src="/imgs/moimmoimUi/whitelogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;" >
+       <b style="display: inline-block;">Ticket</b>
+       <br><br><br>
+       <p>date: ${moimDo.moimStartDate}<br>
+       time: <br>
+       location: ${moimDo.moimLocationNum}</p>
+     </div>
+     <div class="ticket-right">
+       <p>${moimDo.moimTitle}</p>
+       <p>호스트</p>
+       <p><a href="/users/userSimpleProfile/${moimDo.moimHostUserIdNum}">${moimDo.moimHostUserIdNum}의 userSimpleProfile</a></p>
+     </div>
+</div>
+<hr/>
+<div class="pay">
+    <!-- 결제 금액 -->
+    <h3>결제 금액</h3>
+    <p>금액: ${moimDo.moimPrice}원</p>
 
-<!-- 결제 금액 -->
-<h3>결제 금액</h3>
-<p>금액: ${moimDo.moimPrice}원</p>
 
-<!-- 결제 수단 -->
-<h3>결제 수단</h3>
-<form action="/pay" method="post">
-    <input type="hidden" name="moimNum" value="${moimDo.moimNum}"/>
-    <input type="hidden" name="moimPrice" value="${moimDo.moimPrice}"/>
-    <select name="payMethod">
-        <option value="credit">KSP</option>
-    </select>
-    <button type="submit">결제하기</button>
-</form>
 
-<!-- 취소 버튼 -->
-<button type="button" onclick="cancelOrder()">취소하기</button>
 
-<!-- 자바 스크립트 -->
-<script type="text/javascript">
-let isCanceled = false;
+     <button onclick="requestPay()">결제하기</button> <!-- 결제하기 버튼 생성 -->
 
-window.addEventListener('beforeunload', function(event) {
-  if (!isCanceled) {
-    event.preventDefault();
-    event.returnValue = "주문이 취소됩니다.";
+    <!-- 취소 버튼 -->
+    <button type="button" onclick="cancelOrder()">취소하기</button>
+</div>
 
-    // 사용자가 확인 버튼을 누르면 취소 이벤트를 실행하고 뒤로 이동합니다.
-    setTimeout(() => {
-      cancelOrder();
-      window.history.back();
-    }, 100);
-  }
-});
-
-function cancelOrder() {
-  // 주문이 취소됩니다라는 알림창을 표시합니다.
-  if (!isCanceled) {
-    isCanceled = true;
-    alert("주문이 취소됩니다.");
-
-    $.ajax({
-      type: "POST",
-      url: "/cancelOrder",
-      data: {
-        orderNum: "${orderNum}"
-      },
-      success: function(data) {
-        // 결제 취소가 완료되면 알림창이 닫힌 후 뒤로 이동합니다.
-         window.history.back();
-      },
-      error: function(xhr, status, error) {
-        alert("결제 취소 중 오류가 발생했습니다.");
-      }
-    });
-  }
-}
-</script>
 
 </body>
 </html>
