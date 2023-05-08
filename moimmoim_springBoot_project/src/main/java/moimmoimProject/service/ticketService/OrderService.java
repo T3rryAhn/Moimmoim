@@ -83,6 +83,12 @@ public class OrderService {
             return;
         }
 
+        // 결제 완료 인지 확인
+        if ("결제 완료".equals(order.getOrderStatus())) {
+            // 결제 완료면 아무 작업도 수행하지 않습니다.
+            return;
+        }
+
         // 주문 상태를 '결제 취소'로 변경
         order.setOrderStatus("결제 취소");
 

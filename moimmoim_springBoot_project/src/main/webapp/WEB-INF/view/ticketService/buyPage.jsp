@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>모임 티켓 구매 페이지</title>
 </head>
 <body>
@@ -33,42 +33,48 @@
     <button type="submit">결제하기</button>
 </form>
 
+<!-- 취소 버튼 -->
+<button type="button" onclick="cancelOrder()">취소하기</button>
 
-
-<!-- 구매 실패 메시지 -->
-
-<c:if test="${not empty errorMsg}">
-    <script type="text/javascript">
-        alert("${errorMsg}");
-        history.back();
-    </script>
-</c:if>
-
+<!-- 자바 스크립트 -->
 <script type="text/javascript">
-    window.onbeforeunload = function() {
-        return "정말로 페이지를 나가시겠습니까?";
-    };
+let isCanceled = false;
 
-    $(document).ready(function() {
-        $(window).on('unload', function() {
-            var orderNum = "${orderNum}";
+window.addEventListener('beforeunload', function(event) {
+  if (!isCanceled) {
+    event.preventDefault();
+    event.returnValue = "주문이 취소됩니다.";
 
-            $.ajax({
-                url: "/cancelOrder",
-                method: "POST",
-                data: {},
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("X-CSRF-Token", $("meta[name='_csrf']").attr("content"));
-                },
-                success: function(result) {
-                    alert(result);
-                },
-                error: function(xhr, status, error) {
-                    alert("주문 취소 중 오류가 발생했습니다.");
-                }
-            });
-        });
+    // 사용자가 확인 버튼을 누르면 취소 이벤트를 실행하고 뒤로 이동합니다.
+    setTimeout(() => {
+      cancelOrder();
+      window.history.back();
+    }, 100);
+  }
+});
+
+function cancelOrder() {
+  // 주문이 취소됩니다라는 알림창을 표시합니다.
+  if (!isCanceled) {
+    isCanceled = true;
+    alert("주문이 취소됩니다.");
+
+    $.ajax({
+      type: "POST",
+      url: "/cancelOrder",
+      data: {
+        orderNum: "${orderNum}"
+      },
+      success: function(data) {
+        // 결제 취소가 완료되면 알림창이 닫힌 후 뒤로 이동합니다.
+         window.history.back();
+      },
+      error: function(xhr, status, error) {
+        alert("결제 취소 중 오류가 발생했습니다.");
+      }
     });
+  }
+}
 </script>
 
 </body>

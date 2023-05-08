@@ -84,8 +84,8 @@ public class BuyPageController {
         String orderNum = (String) session.getAttribute("orderNum");
 
         if (orderNum != null) {
-            session.removeAttribute("orderNum");
             orderService.cancelOrder(orderNum);
+            session.removeAttribute("orderNum");
             return "주문이 취소되었습니다.";
         } else {
             return "주문이 존재하지 않습니다.";
