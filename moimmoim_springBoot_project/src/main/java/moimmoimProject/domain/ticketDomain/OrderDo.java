@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDo {
-    private Long orderNum;
+    private String orderNum;
     private Long userIdNum;
     private Long moimNum;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
