@@ -61,12 +61,6 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
-    <select id="findList" parameterType="map" resultMap="moimResultMap">
-        SELECT *
-        FROM MOIM_POST
-        WHERE CATEGORY_NUM = #{moimCategoryNum}
-    </select>
-
     <update id="deleteMoim" parameterType="map">
         DELETE
         FROM MOIM_POST
@@ -93,6 +87,13 @@
         SELECT count(*)
         FROM MOIM_POST
     </select>
+
+    <select id="findLocationName" resultType="LocationDo">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE LOCATION_NUM = #{moimLocationNum}
+    </select>
+
 
 
 </mapper>

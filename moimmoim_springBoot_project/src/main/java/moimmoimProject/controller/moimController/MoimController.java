@@ -2,6 +2,7 @@ package moimmoimProject.controller.moimController;
 
 import lombok.AllArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
+import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.moimDomain.Paging;
 import moimmoimProject.service.MoimService;
@@ -40,8 +41,9 @@ public class MoimController {
         paging.setTotalCount(moimListCnt);
 
         List<Map<String, Object>> list = moimService.moimList(cri,moimCategoryNum);
+        List<LocationDo> locList = moimService.getLocList(list);
 
-        model.addAttribute("moimCategoryNum",moimCategoryNum);
+        model.addAttribute("locList",locList);
         model.addAttribute("list", list);
         model.addAttribute("paging", paging);
         return "moimService/list";

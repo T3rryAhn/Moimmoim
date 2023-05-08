@@ -48,6 +48,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'	// 테스트 의존성 추가
 	testCompileOnly 'org.projectlombok:lombok:1.18.12'
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
 }
 
 tasks.named('test') {
