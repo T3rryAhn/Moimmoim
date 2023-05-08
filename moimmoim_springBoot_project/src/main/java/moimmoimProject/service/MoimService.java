@@ -7,11 +7,10 @@ import lombok.AllArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.mapper.MoimMapper;
-import moimmoimProject.repository.MoimRepository;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +30,7 @@ public class MoimService {
     }
 
     public void createMoim(MoimDo moimDo) {
+        moimDo.setMoimCreateDate(LocalDateTime.now());
         moimMapper.createMoim(moimDo);
     }
 
@@ -45,7 +45,7 @@ public class MoimService {
         return moimMapper.moimListCnt();
     }
 
-    public List<Map<String, Object>> moimList(Criteria cri,int moimCategoryNum){
+    public List<Map<String, Object>> moimList(Criteria cri,Long moimCategoryNum){
         return moimMapper.moimList(cri,moimCategoryNum);
     }
 
@@ -69,6 +69,23 @@ public class MoimService {
             }
         }
         return list;
+    }
+
+    public String getCatName(int moimCategoryNum){
+        String catName="";
+        switch (moimCategoryNum){
+            case 1 : catName = "먹기";
+                break;
+            case 2 : catName = "보기";
+                break;
+            case 3 : catName = "배우기";
+                break;
+            case 4 : catName = "힐링하기";
+                break;
+            case 5 : catName = "체험하기";
+                break;
+        }
+        return catName;
     }
 
 }

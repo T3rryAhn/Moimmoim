@@ -26,10 +26,6 @@
             <label for="moimImage">모임 이미지</label>
             <input type="text" id="moimImage" name="moimImage" placeholder="이메일을 입력하세요">
 
-
-            <label for="moimViewCount">조회수</label>
-            <input type="int" id="moimViewCount" name="moimViewCount" placeholder="이메일을 입력하세요">
-
             <label for="moimCategoryNum">카테고리</label>
             <input type="int" id="moimCategoryNum" name="moimCategoryNum" placeholder="이름을입력하세요">
 
@@ -39,9 +35,6 @@
             <label for="moimEndDate">모집 종료 시간</label>
             <input type="datetime-local" id="moimEndDate" name="moimEndDate" placeholder="이메일을 입력하세요">
 
-            <label for="moimMemberCount">모임 현재 인원</label>
-            <input type="int" id="moimMemberCount" name="moimMemberCount" placeholder="이메일을 입력하세요">
-
             <label for="moimMemberMax">모임 최대 인원</label>
             <input type="int" id="moimMemberMax" name="moimMemberMax" placeholder="이름을입력하세요">
 
@@ -50,9 +43,6 @@
 
             <label for="moimDeadLine">모임 마감 시간</label>
             <input type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="이름을입력하세요">
-
-            <label for="moimDeadCheck">모임 마감 여부</label>
-            <input type="int" id="moimDeadCheck" name="moimDeadCheck" placeholder="이메일을 입력하세요">
 
             <label for="moimLocationNum">위치</label>
             <input type="int" id="moimLocationNum" name="moimLocationNum" placeholder="이메일을 입력하세요">

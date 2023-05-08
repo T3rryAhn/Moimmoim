@@ -11,21 +11,24 @@
 
     <body>
 
-    <table border="1">
-        <tr>
-            <th>글번호</th>
-            <th>유저 넘버</th>
-            <th>모임 제목</th>
-            <th>작성시간</th>
-        </tr>
 
-        <tr>
-            <td>${moimDo.moimNum}</td>
-            <td>${moimDo.moimHostUserIdNum}</td>
-            <td>${moimDo.moimTitle}</td>
-            <td>${moimDo.moimCreateDate}</td>
-        </tr>
-    </table>
+           <p> 모임 넘버 : ${moimDo.moimNum}</p>
+           <p> 모임 만든 유저 아이디 : ${moimDo.moimHostUserIdNum}</p>
+           <p> 모임 제목 : ${moimDo.moimTitle}</p>
+           <p> 모임 소개 글 : ${moimDo.moimMainContent}</p>
+           <p> 모임 이미지 : ${moimDo.moimImage}</p>
+           <p> 모임 만든시간 : ${moimDo.moimCreateDate}</p>
+           <p> 모임 조회수 : ${moimDo.moimViewCount}</p>
+           <p> 모임 카테고리 : ${moimDo.moimCategoryNum},${category}</p>
+           <p> 모임 시작 시간 : ${moimDo.moimStartDate}</p>
+           <p> 모임 종료 시간 : ${moimDo.moimEndDate}</p>
+           <p> 모임 참가한 인원 수 : ${moimDo.moimMemberCount}</p>
+           <p> 모임 최대 인원 수 : ${moimDo.moimMemberMax}</p>
+           <p> 모임 가격 : ${moimDo.moimPrice}</p>
+           <p> 모임 마감일 : ${moimDo.moimDeadLine}</p>
+           <p> 모임 마감 여부 : ${moimDo.moimDeadCheck}</p>
+           <p> 모임 지역 번호 : ${moimDo.moimLocationNum}, ${locationDo.location_name}</p>
+
 
     <!-- 구매 실패 메시지 -->
     <c:if test="${not empty errorMsg}">

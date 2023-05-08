@@ -17,19 +17,17 @@ public interface MoimMapper {
 
     MoimDo findAllByMoimNum(Long moimNum);              // 모임 찾기
 
-    List<MoimDo> findList(int moimCategoryNum);        // 모든 모임 리스트
-
     void createMoim(MoimDo moimDo);                     // 모임 작성
 
-    void updateMoim(MoimDo moimDo, MoimDo updateDo);    // 모임 수정
 
     void deleteMoim(Long moimNum);                     // 모임 삭제
 
     void countView(Long moimNum);                      // 조회수 카운트
 
-    List<Map<String, Object>> moimList(Criteria cri, int moimCategoryNum);   // 페이징한 모임 리스트 조회
-    int moimListCnt();                           // 모임 총 갯수
+    List<Map<String, Object>> moimList(Criteria cri, Long moimCategoryNum);   // 페이징한 모임 리스트 조회
+    int moimListCnt();                                 // 모임 총 갯수
 
-    LocationDo findLocationName(MoimDo moimDo);
+    LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환
 
+    void plusMemberCount(Long moimNum);
 }
