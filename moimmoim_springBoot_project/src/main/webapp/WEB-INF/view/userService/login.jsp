@@ -31,8 +31,8 @@
 
         <div id="link-bttn">
             <button id="signup-bttn" onclick="location.href='signup'">sign up</button>
-            <button id="find-id-bttn">find id</button>
-            <button id="find-pw-bttn">find pw</button>
+            <button id="find-id-bttn" onclick="location.href='findId'">find id</button>
+            <button id="find-pw-bttn"onclick"location.href='findPw'">find pw</button>
         </div>
     </main>
 

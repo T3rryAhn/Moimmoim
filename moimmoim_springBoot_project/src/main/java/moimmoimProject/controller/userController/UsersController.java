@@ -35,6 +35,7 @@ public class UsersController {
         return "userService/signupPage2";
     }
 
+
     //아이디 중복 검사
     @GetMapping("signup/idCheck")
     @ResponseBody
