@@ -34,7 +34,7 @@ public class BuyPageController {
     public String showBuyPage(@PathVariable Long moimNum, Model model, Principal principal){
         String userIdNum = principal.getName(); // 세션에 저장된 Principal 정보에서  가져옵니다.
         UserDo userDo = userMapper.findByUserIdNum(Long.parseLong(userIdNum));
-        MoimDo moimDo = moimMapper.findByMoimNum(moimNum);
+        MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
 
         int maximumCapacity = moimDo.getMoimMemberMax() - moimDo.getMoimMemberCount();
 

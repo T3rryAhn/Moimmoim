@@ -89,12 +89,12 @@
 
     <!-- 모임 목록 -->
         <ol class="list">
-            <c:forEach items="${list}" var="list">
+            <c:forEach items="${list}" var="list" varStatus="status">
             <li>
                 <figure>
                     <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="host_photo">
                     <div class="host_info">
-                        <div class="host_level">${list.moimLocationNum}</div>        <!--장소-->
+                        <div class="host_level">${locList[status.index].location_name}</div>        <!--장소-->
                         <div class="host_reputation">
                             <span class="host_stars">${list.moimStartDate}</span>        <!--모임 시작 시간-->
                         </div>
@@ -106,7 +106,7 @@
             </c:forEach>
         </ol>
         <hr>
-
+        <!--페이징 시작 -->
         <ul class="paging">
             <c:if test="${paging.prev}">
                 <span><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'>이전</a></span>
@@ -118,7 +118,7 @@
                 <span><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'>다음</a></span>
             </c:if>
         </ul>
-
+        <!--페이징 끝 -->
     </main>
 
 

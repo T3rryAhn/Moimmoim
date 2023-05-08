@@ -82,5 +82,12 @@
         FROM MOIM_POST
     </select>
 
+    <select id="findLocationName" resultType="LocationDo">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE LOCATION_NUM = #{moimLocationNum}
+    </select>
+
+
 
 </mapper>
