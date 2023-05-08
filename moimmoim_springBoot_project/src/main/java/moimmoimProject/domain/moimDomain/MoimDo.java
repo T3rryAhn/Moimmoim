@@ -31,7 +31,10 @@ public class MoimDo {   // DB순서에 맞춘거
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime moimDeadLine;
     private int moimDeadCheck;
-    private int moimLocationNum;
+    private Long moimLocationNum;
 
+    public String DateToString(){
+        return moimCreateDate.toString();
+    }
 }
 

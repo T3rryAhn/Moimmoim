@@ -12,8 +12,8 @@
     </head>
 
     <body>
+    <h2> --카테고리별 리스트 조회-- </h2>
     <form action="/moim/getMoim/list" method="get">
-            <label for="cat1">카테고리</label>
             <input type="hidden" id="cat" name="moimCategoryNum" value=1>
             <button type="submit">먹기</button>
     </form>
@@ -37,11 +37,17 @@
             <input type="hidden" id="cat" name="moimCategoryNum" value=5>
             <button type="submit">체험하기</button>
     </form>
+    <hr/>
 
-    <a href="/moim/new">모임 생성</a>
+    <h2> --모임 생성-- </h2>
+    <form action="/moim/new" method="get">
+                    <button type="submit">모임생성</button>
+        </form>
+    <hr/>
 
+    <h2> --모임 상세 보기-- </h2>
     <form action="/moim/getMoim/getMoim" method="get">
-                <input type="hidden" id="detail" name="moimNum" value=2>
+                <input type="int" id="detail" name="moimNum" placeholder="모임 넘버 입력">
                 <button type="submit">모임상세</button>
     </form>
 

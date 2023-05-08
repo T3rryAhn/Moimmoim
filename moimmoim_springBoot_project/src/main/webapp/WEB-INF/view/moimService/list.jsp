@@ -1,5 +1,6 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -86,7 +87,6 @@
 
 
     </div>
-
     <!-- 모임 목록 -->
         <ol class="list">
             <c:forEach items="${list}" var="list" varStatus="status">
@@ -96,7 +96,7 @@
                     <div class="host_info">
                         <div class="host_level">${locList[status.index].location_name}</div>        <!--장소-->
                         <div class="host_reputation">
-                            <span class="host_stars">${list.moimStartDate}</span>        <!--모임 시작 시간-->
+                            <span class="host_stars">${list.moimCreateDate}</span>        <!--모임 시작 시간-->
                         </div>
                         <div class="host_name">${list.moimTitle}</div>              <!--모임 제목-->
                         <div class="host_introduction">${list.moimMainContent}</div> <!--모임 소개-->

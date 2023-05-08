@@ -7,6 +7,7 @@ import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.moimDomain.Paging;
 import moimmoimProject.service.MoimService;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +30,13 @@ public class MoimController {
 
     @GetMapping("/moim/new")
     public String moimForm() {
-        return "moimService/moimForm";
+        return "moimService/moimWrite";
     }   // 모임 생성 페이지로 이동
 
     @GetMapping("/moim/getMoim/list")    // 모임 리스트
     public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
+        if(moimCategoryNum==null) moimCategoryNum = 1L;     // 카테고리 default 값
+
         int moimListCnt = moimService.moimListCnt();
         Paging paging = new Paging();
         paging.setCri(cri);
