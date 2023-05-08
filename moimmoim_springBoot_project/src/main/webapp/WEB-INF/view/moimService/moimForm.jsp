@@ -33,10 +33,10 @@
             <input type="int" id="moimCategoryNum" name="moimCategoryNum" placeholder="이름을입력하세요">
 
             <label for="moimStartDate">모임 시작 시간</label>
-            <input type="date" id="moimStartDate" name="moimStartDate" placeholder="이메일을 입력하세요">
+            <input type="datetime-local" id="moimStartDate" name="moimStartDate" placeholder="이메일을 입력하세요">
 
             <label for="moimEndDate">모집 종료 시간</label>
-            <input type="date" id="moimEndDate" name="moimEndDate" placeholder="이메일을 입력하세요">
+            <input type="datetime-local" id="moimEndDate" name="moimEndDate" placeholder="이메일을 입력하세요">
 
             <label for="moimMemberCount">모임 현재 인원</label>
             <input type="int" id="moimMemberCount" name="moimMemberCount" placeholder="이메일을 입력하세요">
@@ -48,7 +48,7 @@
             <input type="int" id="moimPrice" name="moimPrice" placeholder="이메일을 입력하세요">
 
             <label for="moimDeadLine">모임 마감 시간</label>
-            <input type="date" id="moimDeadLine" name="moimDeadLine" placeholder="이름을입력하세요">
+            <input type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="이름을입력하세요">
 
             <label for="moimDeadCheck">모임 마감 여부</label>
             <input type="int" id="moimDeadCheck" name="moimDeadCheck" placeholder="이메일을 입력하세요">

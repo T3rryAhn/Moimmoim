@@ -18,9 +18,9 @@ public interface OrderMapper {
 
     void insertOrder(OrderDo orderDo);
 
-    OrderDo findByOrderNum(Long orderNum);
+    OrderDo findByOrderNum(String orderNum);
 
-    void deleteByOrderNum(Long orderNum);
+    void deleteByOrderNum(String orderNum);
 
-    int countByMoimNumAndOrderStatus(Long moimNum, String 결제_진행중);
+    int countByMoimNumAndOrderStatus(Long moimNum, String orderStatus);
 }

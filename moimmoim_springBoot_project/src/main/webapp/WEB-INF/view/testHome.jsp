@@ -14,7 +14,7 @@
   <!--header 시작-->
   <header>
     <div id="header_container">
-      <div id="main-logo"><a href="/"><img src="imgs/logo.png" alt="logo" width="200px"></a></div>
+      <div id="main-logo"><a href="/"><img src="imgs/moimmoimUi/logo.png" alt="logo" width="200px"></a></div>
     </div>
   </header>
   <!--header 끝-->
@@ -47,6 +47,13 @@
     <input type="number" name="userIdNum" value="1" id="userIdNum" placeholder="userIdNum을 입력하세요" />
     <br><br>
   </form>
+  <b>모임번호 입력</b>
+  <form  method="get">
+      <label for="moimNum">userIdNum:</label>
+      <input type="number" name="moimNum" value="1" id="moimNum" placeholder="moimNum을 입력하세요" />
+      <br><br>
+  </form>
+
     <div id="myPage">
       <h3>myPage</h3>
       <button onclick="goToMyPage(userIdNum.value)">마이페이지 보기</button>
@@ -59,6 +66,16 @@
       <button onclick="goToUserProfile(userIdNum.value)">사용자 프로필 보기</button>
       <button onclick="goToUserSimpleProfile(userIdNum.value)">간단한 사용자 프로필 보기</button>
     </div>
+
+    <div id="ticketing">
+      <h3>ticketPage</h3>
+      <button onclick="goToTicket(moimNum.value, userIdNum.value)">티켓 보기</button>
+      <button onclick="goToBuyPage(moimNum.value)">구매 페이지</button>
+
+    </div>
+
+
+
   </main>
   <!--메인 끝-->
 
@@ -79,6 +96,16 @@
 
     function goToUserSimpleProfile(userIdNum) {
       const url = '/users/userSimpleProfile/' + userIdNum;
+      window.location.href = url;
+    }
+
+    function goToTicket(moimNum, userIdNum) {
+      const url = 'test/ticket/' + moimNum + '/' + userIdNum;
+      window.location.href = url;
+    }
+
+    function goToBuyPage(moimNum) {
+      const url = '/buyPage/' + moimNum ;
       window.location.href = url;
     }
   </script>

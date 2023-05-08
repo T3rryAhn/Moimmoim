@@ -34,7 +34,7 @@
 <!--header 시작-->
     <header>
         <div id="header_container">
-            <div id="main-logo" ><a href="/"><img src="/imgs/logo.png" alt="logo" width="200px"></a></div>
+            <div id="main-logo" ><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="200px"></a></div>
             <div></div>
             <div></div>
             <div></div>
@@ -74,7 +74,7 @@
 <!--footer 시작-->
     <footer>
         <div id="footer_container"> 
-            <div id="whitelogo" ><a href="/"><img src="/imgs/whiteLogo.png" alt="logo" width="200px"></a></div>
+            <div id="whitelogo" ><a href="/"><img src="/imgs/moimmoimUi/whiteLogo.png" alt="logo" width="200px"></a></div>
             <a href="/" class="footer_font">개인정보 처리방침</a>
             <a href="/" class="footer_font">기타 필요메뉴</a>
             <a href="/" class="footer_font">메뉴구성</a>

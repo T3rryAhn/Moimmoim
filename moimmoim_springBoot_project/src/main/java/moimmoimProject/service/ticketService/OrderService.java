@@ -4,8 +4,8 @@ import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class OrderService {
@@ -17,24 +17,24 @@ public class OrderService {
     }
 
     //주문번호 생성기
-    private Long createOrderNum(Date orderDate, Long moimNum, Long userIdNum) {
+    private String createOrderNum(LocalDateTime orderDate, Long moimNum, Long userIdNum) {
         // yymmdd/moimNum(8자리)/userIdNum(8자리) 형태로 생성합니다.
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
-        String dateString = dateFormat.format(orderDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
+        String dateString = orderDate.format(formatter);
         String orderNumString = dateString + "/" + String.format("%08d", moimNum) + "/" + String.format("%08d", userIdNum);
 
 
         // orderNumString을 Long으로 변환해서 반환합니다.
-        return Long.parseLong(orderNumString);
+        return orderNumString;
     }
 
     //주문 생성 서비스
     public OrderDo createOrderDo(Long moimNum, Long userIdNum, int orderPrice) {
         // 주문 생성일시를 구합니다.
-        Date orderDate = new Date(System.currentTimeMillis());
+        LocalDateTime orderDate = LocalDateTime.now();
 
         // 주문번호를 생성합니다.
-        Long orderNum = createOrderNum(orderDate, moimNum, userIdNum);
+        String orderNum = createOrderNum(orderDate, moimNum, userIdNum);
 
         // 주문상태를 "결제 진행중"으로 초기화합니다.
         String orderStatus = "결제 진행중";
@@ -68,7 +68,7 @@ public class OrderService {
     }
 
     // 주문 취소 서비스
-    public void cancelOrder(Long orderNum) {
+    public void cancelOrder(String orderNum) {
         OrderDo order = orderMapper.findByOrderNum(orderNum);
 
         // 주문이 존재하는지 확인
@@ -80,6 +80,12 @@ public class OrderService {
         // 이미 주문이 취소되었는지 확인
         if ("결제 취소".equals(order.getOrderStatus())) {
             // 이미 취소된 주문이면 아무 작업도 수행하지 않습니다.
+            return;
+        }
+
+        // 결제 완료 인지 확인
+        if ("결제 완료".equals(order.getOrderStatus())) {
+            // 결제 완료면 아무 작업도 수행하지 않습니다.
             return;
         }
 
