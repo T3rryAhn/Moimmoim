@@ -40,5 +40,12 @@
 
     <a href="/moim/new">모임 생성</a>
 
+    <form action="/moim/getMoim/getMoim" method="get">
+                <input type="hidden" id="detail" name="moimNum" value=2>
+                <button type="submit">모임상세</button>
+    </form>
+
+
+
     </body>
 </html>
