@@ -33,7 +33,7 @@ public class MoimController {
     }   // 모임 생성 페이지로 이동
 
     @GetMapping("/moim/getMoim/list")    // 모임 리스트
-    public String moimList(@Param("moimCategoryNum") int moimCategoryNum, Model model, Criteria cri) {
+    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
         int moimListCnt = moimService.moimListCnt();
         Paging paging = new Paging();
         paging.setCri(cri);
@@ -42,9 +42,10 @@ public class MoimController {
         List<Map<String, Object>> list = moimService.moimList(cri,moimCategoryNum);
         List<LocationDo> locList = moimService.getLocList(list);
 
-        model.addAttribute("locList",locList);
-        model.addAttribute("list", list);
-        model.addAttribute("paging", paging);
+        model.addAttribute("moimCategoryNum",moimCategoryNum);      // 페이징 용
+        model.addAttribute("locList",locList);                      // 지역 리스트
+        model.addAttribute("list", list);                           // 모임 리스트
+        model.addAttribute("paging", paging);                       // 페이징 정보
         return "moimService/list";
     }
     @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음

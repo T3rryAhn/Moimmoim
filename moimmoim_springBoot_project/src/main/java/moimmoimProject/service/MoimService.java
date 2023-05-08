@@ -45,7 +45,7 @@ public class MoimService {
         return moimMapper.moimListCnt();
     }
 
-    public List<Map<String, Object>> moimList(Criteria cri,int moimCategoryNum){
+    public List<Map<String, Object>> moimList(Criteria cri,Long moimCategoryNum){
         return moimMapper.moimList(cri,moimCategoryNum);
     }
 

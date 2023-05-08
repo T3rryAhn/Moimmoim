@@ -24,7 +24,7 @@ public interface MoimMapper {
 
     void countView(Long moimNum);                      // 조회수 카운트
 
-    List<Map<String, Object>> moimList(Criteria cri, int moimCategoryNum);   // 페이징한 모임 리스트 조회
+    List<Map<String, Object>> moimList(Criteria cri, Long moimCategoryNum);   // 페이징한 모임 리스트 조회
     int moimListCnt();                                 // 모임 총 갯수
 
     LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환

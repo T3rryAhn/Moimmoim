@@ -12,7 +12,7 @@
         <result column="MOIM_PICTURES" property="moimImage" jdbcType="VARCHAR" />
         <result column="MOIM_CREATE_DATE" property="moimCreateDate" jdbcType="DATE" />
         <result column="MOIM_VIEWS" property="moimViewCount" jdbcType="BIGINT"  />
-        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="INTEGER"  />
+        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="BIGINT"  />
         <result column="MOIM_START_TIME" property="moimStartDate" jdbcType="DATE"/>
         <result column="MOIM_END_TIME" property="moimEndDate" jdbcType="DATE" />
         <result column="MOIM_MEMBER_COUNT" property="moimMemberCount" jdbcType="BIGINT"/>
