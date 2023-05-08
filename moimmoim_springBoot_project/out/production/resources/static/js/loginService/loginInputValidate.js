@@ -30,7 +30,7 @@ idInput.addEventListener("blur",function(){
         else if (value.length < 4 || value.length > 20) {
             console.log("4~20자 까지만 가능합니다.");
             cnfirmMsg.innerHTML = "4~20자 까지만 가능합니다.";
-             sendCodeBttn.disabled=true;
+             loginBttn.disabled=true;
              inputCountArry[0]=0;
         }
         //형식에 맞는지 검사 완료
