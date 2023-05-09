@@ -19,7 +19,8 @@
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <a href="#" class="header_login login">LOG IN</a>        </div>
+            <a href="#" class="header_login login">LOG IN</a>
+         </div>
     </div>
 
     <!--로그인 후 헤더-->
