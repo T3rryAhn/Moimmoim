@@ -12,7 +12,7 @@
         <result column="MOIM_PICTURES" property="moimImage" jdbcType="VARCHAR" />
         <result column="MOIM_CREATE_DATE" property="moimCreateDate" jdbcType="DATE" />
         <result column="MOIM_VIEWS" property="moimViewCount" jdbcType="BIGINT"  />
-        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="INTEGER"  />
+        <result column="CATEGORY_NUM" property="moimCategoryNum" jdbcType="BIGINT"  />
         <result column="MOIM_START_TIME" property="moimStartDate" jdbcType="DATE"/>
         <result column="MOIM_END_TIME" property="moimEndDate" jdbcType="DATE" />
         <result column="MOIM_MEMBER_COUNT" property="moimMemberCount" jdbcType="BIGINT"/>
@@ -46,12 +46,17 @@
             SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
         </selectKey>
 
-        INSERT INTO MOIM_POST
-        VALUES(#{moimNum},#{moimHostUserIdNum},
+        INSERT INTO MOIM_POST(
+        MOIM_NUM, USERID_NUM, MOIM_TITLE, MOIM_MAIN,
+        MOIM_PICTURES, MOIM_CREATE_DATE, CATEGORY_NUM,
+        MOIM_START_TIME, MOIM_END_TIME, MOIM_MEMBER_MAX,
+        MOIM_PRICE, MOIM_DEADLINE, LOCATION_NUM)
+        VALUES(
+        #{moimNum},#{moimHostUserIdNum},
         #{moimTitle},#{moimMainContent},#{moimImage},
-        to_date(sysdate,'yy/mm/dd'),#{moimViewCount},#{moimCategoryNum},
-        #{moimStartDate},#{moimEndDate},#{moimMemberCount},#{moimMemberMax},
-        #{moimPrice},#{moimDeadLine},#{moimDeadCheck},#{moimLocationNum})
+        #{moimCreateDate},#{moimCategoryNum},
+        #{moimStartDate},#{moimEndDate},#{moimMemberMax},
+        #{moimPrice},#{moimDeadLine},#{moimLocationNum})
 
     </insert>
 
@@ -60,12 +65,6 @@
         set m.MOIM_VIEWS = m.MOIM_VIEWS + 1
         where m.MOIM_NUM = #{moimNum}
     </update>
-
-    <select id="findList" parameterType="map" resultMap="moimResultMap">
-        SELECT *
-        FROM MOIM_POST
-        WHERE CATEGORY_NUM = #{moimCategoryNum}
-    </select>
 
     <update id="deleteMoim" parameterType="map">
         DELETE
@@ -93,6 +92,19 @@
         SELECT count(*)
         FROM MOIM_POST
     </select>
+
+    <select id="findLocationName" resultType="LocationDo">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE LOCATION_NUM = #{moimLocationNum}
+    </select>
+
+    <update id="plusMemberCount">
+        UPDATE MOIM_POST m
+        set m.MOIM_MEMBER_COUNT = m.MOIM_MEMBER_COUNT + 1
+        where m.MOIM_NUM = #{moimNum}
+    </update>
+
 
 
 </mapper>

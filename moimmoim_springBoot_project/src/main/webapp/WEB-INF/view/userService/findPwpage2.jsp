@@ -15,7 +15,7 @@
 
 <body>
     <header id="header">
-        <a href=""><img id="logo" src="imgs/userService/logo.png"></a>
+        <a href="/"><img id="logo" src="imgs/userService/logo.png"></a>
     </header>
     <main>
             <img id="main-logo" src="imgs/userService/logo.png" />
@@ -30,7 +30,7 @@
             <div id="link-bttn">
                 <button id="signup-bttn" onclick="location.href='signup'">sign up</button>
                 <button id="find-id-bttn" onclick="location.href='findId'">find id</button>
-                <button id="find-pw-bttn"onclick="location.href='findPw1'">find pw</button>
+                <button id="find-pw-bttn"onclick="location.href='login'">log in</button>
             </div>
         </main>
 
