@@ -12,4 +12,17 @@
         and user_email = #{user.userEmail}
     </select>
 
+    <select id="findPw" resultType="UserDo">
+        select *
+        from users
+        where user_id = #{user.userId}
+        and user_email = #{user.userEmail}
+    </select>
+
+    <update id="resetPw">
+        update users
+        set password = #{newPassword}
+        where userid_num = #{userIdNum}
+    </update>
+
 </mapper>
