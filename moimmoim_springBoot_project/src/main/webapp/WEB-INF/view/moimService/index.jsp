@@ -51,7 +51,12 @@
                 <button type="submit">모임상세</button>
     </form>
 
-
+    <h2> --파일 업로드-- </h2>
+        <form action="uploadFormAction" method="post" enctype="multipart/form-data">
+                    <input type="file" name= 'uploadFile' multiple>
+                    <button>submit</button>
+            </form>
+        <hr/>
 
     </body>
 </html>

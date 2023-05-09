@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -79,6 +81,22 @@ public class MoimController {
     @GetMapping("/moim/count/{moimNum}")          // 조회수 카운트
     public void countView(@PathVariable("moimNum") Long moimNum){
         moimService.CountView(moimNum);
+    }
+
+    @PostMapping("uploadFormAction")
+    public String uploadFormPost(MultipartFile[] uploadFile, Model model) {
+        String uploadFolder="C:\\upload";
+        for (MultipartFile multipartFile : uploadFile) {
+
+            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+
+            try{
+                multipartFile.transferTo(saveFile);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return "moimService/index";
     }
 
 }
