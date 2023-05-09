@@ -15,37 +15,23 @@
 <body>
 <!--헤더 시작-->
 <header>
-    <!--로그인 전 화면-->
-    <!-- <div id="header_container">
-        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
-        <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
-            <a href="#" class="header_login sign_in">회원가입</a>
-            <a href="#" class="header_login login">로그인</a>
-        </div>
-    </div> -->
-
-    <!--로그인 전 화면-->
+    <!--로그인 전 헤더-->
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
             <a href="#" class="header_login login">LOG IN</a>
-            <!-- <a href="#" class="header_login login">로그인</a> -->
-
         </div>
     </div>
 
-
-    <!--로그인 후 화면-->
+    <!--로그인 후 헤더-->
     <!-- <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
             <a href="#" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <div id="mypage_icon"><a href="/"><img src="res/img/mypage.png" alt="mypage" width="40px"></a></div>
+            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
         </div>
     </div> -->
 </header>
@@ -54,7 +40,7 @@
 <main>
     <div class="container">
     <div class="section_title">
-        <img src="res/img/bar.png"; class="green_bar"> 모임글 작성하기
+        <img src="\imgs\moimmoimUi\bar.png"; class="green_bar"> 모임글 작성하기
     </div>
     <form action="/moim/new" method="post">
         <div class="form-group">
@@ -113,7 +99,7 @@
     <footer>
         <div id="footer_container">
             <div class="fotter_logo_menu">
-                <a href="#"><img src="res/img/logo_white.png" alt="logo" width="200px"></a>
+                <a href="#"><img src="\imgs\moimmoimUi\logo_white.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
