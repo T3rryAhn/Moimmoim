@@ -11,7 +11,7 @@
 
     <body>
 
-
+    <!-- test -->
            <p> 모임 넘버 : ${moimDo.moimNum}</p>
            <p> 모임 만든 유저 아이디 : ${moimDo.moimHostUserIdNum}</p>
            <p> 모임 제목 : ${moimDo.moimTitle}</p>
