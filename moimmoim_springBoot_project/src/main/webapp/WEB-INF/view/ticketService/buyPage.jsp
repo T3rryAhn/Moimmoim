@@ -1,74 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="/css/ticketCss/ticket.css">
-
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>모임 티켓 구매 페이지</title>
+    <link rel="stylesheet" type="text/css" href="/css/ticketCss/ticket.css">
 
     <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
-        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
-    <!-- 자바 스크립트 -->
     <script type="text/javascript">
-
-    window.onpageshow = function(event) {
-        if (event.persisted) {
-          window.location.back();
+        function refreshShowBuyPage() {
+            location.reload();
         }
-      };
 
+        function showAlert(message, callback) {
+            alert(message);
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }
 
+        const errorMsg = '<%= request.getAttribute("errorMsg") %>';
 
-    let isCanceled = false;
+        if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
+            showAlert(errorMsg, <%= request.getAttribute("errorCallback") %>);
+            closeBuyPageModal();
+        }
 
-    window.addEventListener('beforeunload', function(event) {
-      if (!isCanceled) {
-        event.preventDefault();
-        event.returnValue = "주문이 취소됩니다.";
+        let isCanceled = false;
 
-
-         cancelOrder();
-      }
-
-       // 세션 종료 요청 보내기
-              $.ajax({
-                  type: "POST",
-                  url: "/endSession",
-                  async: false,
-                  error: function(xhr, status, error) {
-                      alert("세션 종료 중 오류가 발생했습니다.");
-                  }
-              });
-    });
-
-    function goBack(){
-        window.history.back();
-    }
-
-    function cancelOrder() {
-      // 주문이 취소됩니다라는 알림창을 표시합니다.
-      if (!isCanceled) {
-        isCanceled = true;
-        alert("주문이 취소됩니다.");
-
-        $.ajax({
-          type: "POST",
-          url: "/cancelOrder",
-          data: {
-            orderNum: "${orderNum}"
-          },
-          success: function(data) {
-            // 결제 취소가 완료되면 알림창이 닫힌 후 뒤로 이동합니다.
-             window.history.back;
-          },
-          error: function(xhr, status, error) {
-            alert("결제 취소 중 오류가 발생했습니다.");
-          }
+        window.addEventListener('beforeunload', function(event) {
+            if (!isCanceled && !goingBack) {
+                event.preventDefault();
+                event.returnValue = "주문이 취소됩니다.";
+                cancelOrder();
+            }
         });
-      }
-    }
+
+        function goBack() {
+             // 오류 메시지 초기화
+                if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
+                    errorMsg = null;
+                }
+            window.history.back();
+        }
+
+        function cancelOrder() {
+            if (!isCanceled) {
+                isCanceled = true;
+                alert("주문이 취소됩니다.");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/cancelOrder",
+                    data: {
+                        orderNum: "${orderNum}"
+                    },
+                    success: function(data) {
+                        closeBuyPageModal();
+                    },
+                    error: function(xhr, status, error) {
+                        alert("결제 취소 중 오류가 발생했습니다.");
+                    }
+                });
+            }
+        }
+
+        function closeBuyPageModal() {
+            //모달 창 닫힐때 주문 취소
+            cancelOrder();
+
+            const modal = parent.document.getElementById("buy-page-modal");
+            const iframe = parent.document.getElementById("buy-page-iframe");
+            iframe.src = "";
+            modal.style.display = "none";
+        }
 
     <!-- 아임포트 연동 -->
         IMP.init("imp62670576"); // 가맹점 식별코드
@@ -87,7 +96,12 @@
               buyer_postcode: ""
 
             }, function (rsp) { // callback
-              //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+              if (rsp.success) {
+                          // 결제 성공 시 로직 작성 (서버에 결제 결과 전송, DB 업데이트 등)
+                      } else {
+                          // 결제 실패 시 로직 작성
+                          alert("결제에 실패하였습니다.");
+                      }
 
             });
           }

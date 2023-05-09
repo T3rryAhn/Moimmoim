@@ -9,49 +9,43 @@
 <!-- 자바스크립트 -->
 <script>
 
+
     //페이지 로드시 오류 메시지 검출
-    window.onload = function() {
-        checkErrorMessage();
-    };
+   window.onpageshow = function(event) {
+     checkErrorMessage();
+   };
 
     //에러 메시지가 있으면 표시
     function checkErrorMessage() {
         const errorMsg = "<%= request.getAttribute("errorMsg") %>";
         if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
             alert(errorMsg);
-            location.reload();
+
         }
     }
 
-    function openBuyPageModal() {
-      const errorMsg = '<%= request.getAttribute("errorMsg") %>';
-      if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
-        alert(errorMsg);
-        location.reload();
-      } else {
-        const userIdNum = '${userDo.userIdNum}';
-        const moimNum = '${moimDo.moimNum}';
-        const url = `/buyPage/${moimNum}?userIdNum=${userIdNum}`;
+   function openBuyPageModal() {
+       const userIdNum = '${userDo.userIdNum}';
+       const moimNum = '${moimDo.moimNum}';
+       const orderNum = '${orderNum}';
+       const url = `/buyPage/${moimNum}?userIdNum=${userIdNum}&orderNum=${orderNum}`;
 
-        // 모달 열기
-        const modal = document.getElementById("buy-page-modal");
-        const iframe = document.getElementById("buy-page-iframe");
-        iframe.src = url;
-        modal.style.display = "block";
+       // 모달 열기
+       const modal = document.getElementById("buy-page-modal");
+       const iframe = document.getElementById("buy-page-iframe");
+       iframe.src = url;
+       modal.style.display = "block";
+   }
+
+    // 모달 외부를 클릭하면 모달을 닫습니다.
+    window.onclick = function(event) {
+      const modal = document.getElementById("buy-page-modal");
+      if (event.target == modal) {
+        closeBuyPageModal();
       }
     }
 
-    function closeBuyPageModal() {
-      const modal = document.getElementById("buy-page-modal");
-      const iframe = document.getElementById("buy-page-iframe");
-      iframe.src = "";
-      modal.style.display = "none";
-    }
 
-    // 구매 취소 버튼
-    function cancelBuyPage() {
-        location.reload();
-    }
 </script>
 <!-- 자바스크립트 끝-->
 
@@ -95,23 +89,6 @@
   </div>
 </div>
 
-<!-- JavaScript for the Buy Page Modal -->
-<script>
-function closeBuyPageModal() {
-  const modal = document.getElementById("buy-page-modal");
-  const iframe = document.getElementById("buy-page-iframe");
-  iframe.src = "";
-  modal.style.display = "none";
-}
-
-// 모달 외부를 클릭하면 모달을 닫습니다.
-window.onclick = function(event) {
-  const modal = document.getElementById("buy-page-modal");
-  if (event.target == modal) {
-    closeBuyPageModal();
-  }
-}
-</script>
 
 </body>
 </html>
