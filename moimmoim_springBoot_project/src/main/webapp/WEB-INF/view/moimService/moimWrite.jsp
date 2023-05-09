@@ -8,9 +8,7 @@
     <title>MOIMMOIM :: 모임글 작성하기</title>
     <link rel="stylesheet" href="/css/moimCss/moim_write.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
-    </script>
 </head>
-
 
 <body>
 <!--헤더 시작-->
@@ -21,8 +19,7 @@
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <a href="#" class="header_login login">LOG IN</a>
-        </div>
+            <a href="#" class="header_login login">LOG IN</a>        </div>
     </div>
 
     <!--로그인 후 헤더-->
@@ -98,8 +95,8 @@
 <!-- 푸터 시작-->
     <footer>
         <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="\imgs\moimmoimUi\logo_white.png" alt="logo" width="200px"></a>
+            <div class="footer_logo_menu">
+                <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
