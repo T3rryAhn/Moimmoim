@@ -106,4 +106,8 @@ public class MoimService {
         });
     }
 
+    public List<ImageDTO> imageList(Long moimNum){
+        return moimMapper.imageList(moimNum);
+    }
+
 }

@@ -31,6 +31,8 @@ public interface MoimMapper {
 
     void plusMemberCount(Long moimNum);
 
-    public void imageEnroll(ImageDTO dto);
+    void imageEnroll(ImageDTO dto);
+
+    List<ImageDTO> imageList(Long moimNum);
 
 }

@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import moimmoimProject.domain.moimDomain.*;
 import moimmoimProject.service.MoimService;
 import org.apache.ibatis.annotations.Param;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,7 +68,9 @@ public class MoimController {
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
         moimService.CountView(moimNum);                                                 // 조회수 증가
+        List<ImageDTO> imageList = moimService.imageList(moimNum);
 
+        model.addAttribute("imageList", imageList);
         model.addAttribute("category", category);
         model.addAttribute("locationDo", locationDo);
         model.addAttribute("moimDo", moimDo);
@@ -88,7 +91,7 @@ public class MoimController {
     @PostMapping("uploadFormAction")
     public String uploadFormPost(MultipartFile[] uploadFile, Model model) {
 
-        String uploadFolder="C:\\upload";
+        String uploadFolder="D:\\OneDrive\\GitHub\\Moimmoim\\moimmoim_springBoot_project\\src\\main\\resources\\static\\imgs\\moim_img";
         // 폴더 생성
         File uploadPath =  new File(uploadFolder, getFolder());
         log.info("upload path : " + uploadPath);
@@ -107,8 +110,9 @@ public class MoimController {
 
             UUID uuid = UUID.randomUUID();                              //UUID 생성
             imageDTO.setUuid(uuid.toString());      // 객체에 삽입
+
             uploadFileName = uuid.toString() + "-" + uploadFileName;
-            imageDTO.setUploadPath(uploadPath.toString());  // 객체에 삽입
+            imageDTO.setUploadPath(uploadPath.toString()+"\\");  // 객체에 삽입
 
             File saveFile = new File(uploadPath,uploadFileName);                              // 폴더 안에 하위 폴더를 만든 후 저장
             // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());     // 그냥 폴더에 저장

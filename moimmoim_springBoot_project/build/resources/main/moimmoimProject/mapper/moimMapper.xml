@@ -114,6 +114,12 @@
 
     </insert>
 
+    <select id="imageList" resultType="ImageDTO">
+        SELECT *
+        FROM IMAGE
+        WHERE MOIM_NUM = #{moimNum}
+    </select>
+
 
 
 
