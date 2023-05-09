@@ -39,7 +39,7 @@
         <div class="box box1">
             <h1 class="moim_title">
                 <img src="\imgs\moimmoimUi\bar.png"; class="green_bar">
-                서울의 숨겨진 자전거 드라이브 명소<!--모임 제목 : ${moimDo.moimTitle}--></h1>
+                ${moimDo.moimTitle}</h1>
         </div>
         <div class="box box2">
             <img src="res/img/image1.jpg" alt="moim_photo" class="moim_photo" >
@@ -50,7 +50,7 @@
                     <dl class="moim_creator">
                         <dt class="moim_creator_title">모임 만든이</dt>
                         <dd class="moim_creator_content">
-                            <a href="#">Som Kim <!--모임 만든 유저 아이디 ${moimDo.moimHostUserIdNum}--></a></dd>
+                            <a href="#"> ${moimDo.moimHostUserIdNum}</a></dd>
                     </dl>
                 </div>
                 <div class="detail_box middle">
@@ -70,11 +70,11 @@
 
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 현재 모임 참가 인원</dt>
-                            <dd class="moim_info_content">5명<!--${moimDo.moimMemberCount}--></dd>
+                            <dd class="moim_info_content">${moimDo.moimMemberCount}명</dd>
                         </dl>
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 모임 최대 참가 인원</dt>
-                            <dd class="moim_info_content">10명<!--${moimDo.moimMemberMax}--></dd>
+                            <dd class="moim_info_content">${moimDo.moimMemberMax}명</dd>
                         </dl>
                     </div>
                 </div>
