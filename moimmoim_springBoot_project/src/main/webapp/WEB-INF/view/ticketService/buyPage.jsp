@@ -33,19 +33,27 @@
         let isCanceled = false;
 
         window.addEventListener('beforeunload', function(event) {
-            if (!isCanceled && !goingBack) {
+            if (!isCanceled) {
                 event.preventDefault();
                 event.returnValue = "주문이 취소됩니다.";
                 cancelOrder();
             }
         });
 
+        window.onbeforeunload = function (event) {
+            if (!isCanceled && !goingBack) {
+              event.preventDefault();
+              event.returnValue = "주문이 취소됩니다.";
+              cancelOrder();
+            }
+          };
+
         function goBack() {
              // 오류 메시지 초기화
                 if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
                     errorMsg = null;
                 }
-            window.history.back();
+            closeBuyPageModal();
         }
 
         function cancelOrder() {
@@ -64,6 +72,7 @@
                     },
                     error: function(xhr, status, error) {
                         alert("결제 취소 중 오류가 발생했습니다.");
+                        closeBuyPageModal();
                     }
                 });
             }
