@@ -16,7 +16,7 @@
 
 <body>
     <header id="header">
-        <a href="https://www.naver.com/"><img id="logo" src="imgs/userService/logo.png"></a>
+        <a href="/"><img id="logo" src="imgs/userService/logo.png"></a>
     </header>
     <main>
 
