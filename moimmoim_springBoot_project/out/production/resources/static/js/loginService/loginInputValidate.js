@@ -112,6 +112,7 @@ loginBttn.addEventListener("click",function(){
     console.log(response);
     //회원일 시 메인페이지로 이동
     if(response!=""){
+        alert(response);
       location.href="/";
     }
     //회원이 아닐 시 로그인페이지로 이동
@@ -121,7 +122,7 @@ loginBttn.addEventListener("click",function(){
     }
     },
     error:function(error){
-    console.log("error");
+    console.log(error);
     }
  });
 });
