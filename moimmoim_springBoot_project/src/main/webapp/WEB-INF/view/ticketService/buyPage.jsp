@@ -12,8 +12,13 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
     <script type="text/javascript">
+        // 에러메시지 전역변수
+        const errorMsg = '<%= request.getAttribute("errorMsg") %>';
+
         function refreshShowBuyPage() {
-            location.reload();
+            errorMsg = null;
+            //alert(errorMsg);
+            closeBuyPageModal();
         }
 
         function showAlert(message, callback) {
@@ -23,7 +28,6 @@
             }
         }
 
-        const errorMsg = '<%= request.getAttribute("errorMsg") %>';
 
         if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
             showAlert(errorMsg, <%= request.getAttribute("errorCallback") %>);

@@ -11,19 +11,8 @@
 
     <!-- JavaScript -->
     <script>
-        // 페이지 로드시 오류 메시지 검출
-        window.onpageshow = function(event) {
-            checkErrorMessage();
-        };
 
-        // 에러 메시지가 있으면 표시
-        function checkErrorMessage() {
-            const errorMsg = "<%= request.getAttribute("errorMsg") %>";
-            if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
-                alert(errorMsg);
-            }
-        }
-
+        // 모달 열기
         function openBuyPageModal() {
             const userIdNum = '${userDo.userIdNum}';
             const moimNum = '${moimDo.moimNum}';
@@ -40,6 +29,7 @@
             window.history.pushState(null, null, url);
         }
 
+        /* 주석처리로 기능해제해놓음.
         // 모달 외부를 클릭하면 모달을 닫습니다.
         window.onclick = function(event) {
             const modal = document.getElementById("buy-page-modal");
@@ -47,6 +37,7 @@
                 closeBuyPageModal();
             }
         }
+        */
 
         function closeBuyPageModal() {
             const modal = document.getElementById("buy-page-modal");
