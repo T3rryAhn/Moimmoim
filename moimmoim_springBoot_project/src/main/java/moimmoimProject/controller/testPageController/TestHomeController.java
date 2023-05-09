@@ -27,6 +27,10 @@ public class TestHomeController {
     public String testHome() {
         return "/testHome";
     }
+    @GetMapping("/main")
+    public String mainPage() {
+        return "/main";
+    }
 
     @GetMapping("/test/ticket/{moimNum}/{userIdNum}")
     public ModelAndView testTicket(@PathVariable Long moimNum, @PathVariable Long userIdNum) {
