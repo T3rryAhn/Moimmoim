@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.UUID;
 
 @Controller
 public class ImageUploadController {
@@ -22,7 +24,7 @@ public class ImageUploadController {
     public String index() {
         return "/myPageService/imageUpload";
     }
-    @PostMapping("/profileImg/upload")
+    /*@PostMapping("/profileImg/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file,
                              @RequestParam("userid_num") Long userIdNum) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -37,5 +39,40 @@ public class ImageUploadController {
         profileDo.setUserIdNum(userIdNum);
         profileMapper.updateProfileImage(profileDo);
         return "redirect:/";
+    }*/
+
+    private boolean checkImageType(File file) {
+        try {
+            String contentType = Files.probeContentType(file.toPath());
+            return contentType.startsWith("image");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @PostMapping("/uploadAction")
+    public void uploadPost(MultipartFile[] uploadFile) {
+        String uploadFolder = "C:\\upload";
+        File uploadPath = new File(uploadFolder);
+        if(uploadPath.exists() == false) {
+            uploadPath.mkdirs();
+        }
+        for(MultipartFile multipartFile : uploadFile) {
+            String uploadFileName = multipartFile.getOriginalFilename();
+
+            UUID uuid = UUID.randomUUID();
+
+            uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+            File saveFile = new File(uploadPath, uploadFileName);
+            if(checkImageType(saveFile)) {
+                try {
+                    multipartFile.transferTo(saveFile);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 }
