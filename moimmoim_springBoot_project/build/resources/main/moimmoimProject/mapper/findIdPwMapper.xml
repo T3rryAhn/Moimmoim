@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="moimmoimProject.mapper.FindIdPwMapper">
+
+    <select id="checkUser" resultType="UserDo">
+        select *
+        from users
+        where user_name = #{user.userName}
+        and user_email = #{user.userEmail}
+    </select>
+
+    <select id="findPw" resultType="UserDo">
+        select *
+        from users
+        where user_id = #{user.userId}
+        and user_email = #{user.userEmail}
+    </select>
+
+    <update id="resetPw">
+        update users
+        set password = #{newPassword}
+        where userid_num = #{userIdNum}
+    </update>
+
+</mapper>
