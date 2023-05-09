@@ -40,6 +40,8 @@ public class BuyPageController {
 
         int maximumCapacity = moimDo.getMoimMemberMax() - moimDo.getMoimMemberCount();
 
+
+
         //정원이 다찼는지 비교
         if(moimDo.getMoimMemberMax() == moimDo.getMoimMemberCount()){
            // 정원이 다찼으면 구매 불가능

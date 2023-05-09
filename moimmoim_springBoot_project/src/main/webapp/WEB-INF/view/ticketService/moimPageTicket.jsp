@@ -4,6 +4,7 @@
 
  <!-- css -->
  <link rel="stylesheet" type="text/css" href="/css/ticketCss/ticket.css">
+ <link rel="stylesheet" type="text/css" href="/css/ticketCss/moimPageTicket.css">
 
 <!-- 자바스크립트 -->
 <script>
@@ -18,23 +19,39 @@
         const errorMsg = "<%= request.getAttribute("errorMsg") %>";
         if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
             alert(errorMsg);
+            location.reload();
         }
     }
 
-    //에러 메시지가 있으면 페이지 이동을 막기
-    function checkBeforeSubmit(event) {
-        const errorMsg = '<%= request.getAttribute("errorMsg") %>';
-        if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
-            event.preventDefault();
-            alert(errorMsg);
-            location.href = '/buyPage'
-        } else {
-            const userIdNum = '${userDo.userIdNum}';
-            const moimNum = '${moimDo.moimNum}';
-            location.href = `/buyPage/${moimNum}?userIdNum=${userIdNum}`;
-        }
+    function openBuyPageModal() {
+      const errorMsg = '<%= request.getAttribute("errorMsg") %>';
+      if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
+        alert(errorMsg);
+        location.reload();
+      } else {
+        const userIdNum = '${userDo.userIdNum}';
+        const moimNum = '${moimDo.moimNum}';
+        const url = `/buyPage/${moimNum}?userIdNum=${userIdNum}`;
+
+        // 모달 열기
+        const modal = document.getElementById("buy-page-modal");
+        const iframe = document.getElementById("buy-page-iframe");
+        iframe.src = url;
+        modal.style.display = "block";
+      }
     }
 
+    function closeBuyPageModal() {
+      const modal = document.getElementById("buy-page-modal");
+      const iframe = document.getElementById("buy-page-iframe");
+      iframe.src = "";
+      modal.style.display = "none";
+    }
+
+    // 구매 취소 버튼
+    function cancelBuyPage() {
+        location.reload();
+    }
 </script>
 <!-- 자바스크립트 끝-->
 
@@ -65,10 +82,36 @@
     <!-- 티켓 끝-->
 
 <!-- 구매 버튼 -->
+<button onclick="openBuyPageModal()" style="float:right; font-size: 30px;" ${moimDo.moimMemberMax == moimDo.moimMemberCount ? 'disabled' : ''}>
+  ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '구매하기'}
+</button>
 
-<button onclick="checkBeforeSubmit(event)" style="float:right; font-size: 30px;">
-        ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '구매하기'}
-    </button>
+
+<!-- Buy Page Modal -->
+<div id="buy-page-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeBuyPageModal()">&times;</span>
+    <iframe id="buy-page-iframe" src="" width="100%" height="100%"></iframe>
+  </div>
+</div>
+
+<!-- JavaScript for the Buy Page Modal -->
+<script>
+function closeBuyPageModal() {
+  const modal = document.getElementById("buy-page-modal");
+  const iframe = document.getElementById("buy-page-iframe");
+  iframe.src = "";
+  modal.style.display = "none";
+}
+
+// 모달 외부를 클릭하면 모달을 닫습니다.
+window.onclick = function(event) {
+  const modal = document.getElementById("buy-page-modal");
+  if (event.target == modal) {
+    closeBuyPageModal();
+  }
+}
+</script>
 
 </body>
 </html>
