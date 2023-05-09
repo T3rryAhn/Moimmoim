@@ -19,7 +19,6 @@ public interface MoimMapper {
 
     void createMoim(MoimDo moimDo);                     // 모임 작성
 
-
     void deleteMoim(Long moimNum);                     // 모임 삭제
 
     void countView(Long moimNum);                      // 조회수 카운트

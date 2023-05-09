@@ -91,6 +91,7 @@
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
+        WHERE CATEGORY_NUM = #{moimCategoryNum}
     </select>
 
     <select id="findLocationName" resultType="LocationDo">
