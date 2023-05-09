@@ -21,7 +21,7 @@
     </select>
 
     <insert id ="addUserStep1"  >
-        insert into users(user_id,user_email,user_password)
+        insert into users(user_id,user_email,password)
         values(#{user.userId},#{user.userEmail},#{user.userPassword})
     </insert>
 

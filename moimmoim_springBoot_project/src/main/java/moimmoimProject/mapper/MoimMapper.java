@@ -1,6 +1,7 @@
 package moimmoimProject.mapper;
 
 import moimmoimProject.domain.moimDomain.Criteria;
+import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import org.apache.ibatis.annotations.Mapper;
@@ -29,4 +30,7 @@ public interface MoimMapper {
     LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환
 
     void plusMemberCount(Long moimNum);
+
+    public void imageEnroll(ImageDTO dto);
+
 }

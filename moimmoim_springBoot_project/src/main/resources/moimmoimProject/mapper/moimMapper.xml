@@ -106,6 +106,15 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
+    <insert id="imageEnroll">
+        <selectKey resultType="Long" keyProperty="moimNum" order="AFTER">
+            SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into IMAGE(UUID, UPLOADPATH, FILENAME, MOIM_NUM) values (#{uuid}, #{uploadPath}, #{fileName}, 1)
+
+    </insert>
+
+
 
 
 </mapper>

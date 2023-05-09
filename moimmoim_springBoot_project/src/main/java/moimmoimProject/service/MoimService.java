@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.AllArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
+import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.domain.moimDomain.MoimDo;
@@ -93,13 +94,16 @@ public class MoimService {
         return catName;
     }
 
-    @WebServlet("/UploadService")
-    public class UploadService {
-        protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String fileName = request.getParameter("file");
-            System.out.println(fileName);
+    public void imageEnroll(List<ImageDTO> list){
 
+
+        if(list == null || list.size() <= 0) {
+            return;
         }
+
+        list.forEach(attach ->{
+            moimMapper.imageEnroll(attach);
+        });
     }
 
 }

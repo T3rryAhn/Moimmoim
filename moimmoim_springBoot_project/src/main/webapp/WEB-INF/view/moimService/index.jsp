@@ -53,8 +53,11 @@
 
     <h2> --파일 업로드-- </h2>
         <form action="uploadFormAction" method="post" enctype="multipart/form-data">
-                    <input type="file" name= 'uploadFile' multiple>
-                    <button>submit</button>
+                   <label for="sigFile">대표사진</label>
+                   <input type="file" name="sigFile" id="sigFile" style="display:none"/>
+                   <label for="uploadFile">소개 사진</label>
+                   <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
+                   <button>submit</button>
             </form>
         <hr/>
 

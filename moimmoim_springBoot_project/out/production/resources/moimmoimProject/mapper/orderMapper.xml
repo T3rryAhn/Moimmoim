@@ -5,13 +5,13 @@
 
 <mapper namespace="moimmoimProject.mapper.OrderMapper">
     <resultMap id="orderResultMap" type="moimmoimProject.domain.ticketDomain.OrderDo">
-        <id column="ORDER_NUM" property="orderNum" jdbcType="BIGINT" />
+        <id column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR" />
         <result column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
         <result column="MOIM_NUM" property="moimNum" jdbcType="BIGINT" />
         <result column="ORDER_DATE" property="orderDate" jdbcType="DATE" />
         <result column="ORDER_STATUS" property="orderStatus" jdbcType="VARCHAR" />
         <result column="ORDER_PRICE" property="orderPrice" jdbcType="BIGINT" />
-        <result column="ORDER_RECEIPTCHECK" property="orderReceiptCheck" jdbcType="VARCHAR" />
+        <result column="ORDER_RECEIPT_CHECK" property="orderReceiptCheck" jdbcType="VARCHAR" />
 
     </resultMap>
 
@@ -54,7 +54,7 @@
 
     <!--db 주입 -->
     <insert id="insertOrder" parameterType="moimmoimProject.domain.ticketDomain.OrderDo">
-        INSERT INTO ORDER_TB(ORDER_NUM, MOIM_NUM, USER_ID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
+        INSERT INTO MOIM_ORDER(ORDER_NUM, MOIM_NUM, USER_ID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
         VALUES(#{orderNum}, #{moimNum}, #{userIdNum}, #{orderDate}, #{orderStatus}, #{orderPrice}, #{orderReceiptCheck})
     </insert>
 </mapper>

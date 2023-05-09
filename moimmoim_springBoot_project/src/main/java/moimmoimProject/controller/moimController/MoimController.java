@@ -1,10 +1,8 @@
 package moimmoimProject.controller.moimController;
 
 import lombok.AllArgsConstructor;
-import moimmoimProject.domain.moimDomain.Criteria;
-import moimmoimProject.domain.moimDomain.LocationDo;
-import moimmoimProject.domain.moimDomain.MoimDo;
-import moimmoimProject.domain.moimDomain.Paging;
+import lombok.extern.log4j.Log4j2;
+import moimmoimProject.domain.moimDomain.*;
 import moimmoimProject.service.MoimService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,11 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.sql.*;
+import java.util.Date;
 
 @Controller
 @AllArgsConstructor
+@Log4j2
 public class MoimController {
 
     private final MoimService moimService;
@@ -86,18 +87,49 @@ public class MoimController {
 
     @PostMapping("uploadFormAction")
     public String uploadFormPost(MultipartFile[] uploadFile, Model model) {
-        String uploadFolder="C:\\upload";
-        for (MultipartFile multipartFile : uploadFile) {
 
-            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+        String uploadFolder="C:\\upload";
+        // 폴더 생성
+        File uploadPath =  new File(uploadFolder, getFolder());
+        log.info("upload path : " + uploadPath);
+
+        if(uploadPath.exists() == false){
+            uploadPath.mkdirs();
+        }
+        List<ImageDTO> list = new ArrayList<>();
+
+        for (MultipartFile multipartFile : uploadFile) {
+            ImageDTO imageDTO = new ImageDTO();
+
+            String uploadFileName = multipartFile.getOriginalFilename();
+            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+            imageDTO.setFileName(uploadFileName);   // 객체에 삽입
+
+            UUID uuid = UUID.randomUUID();                              //UUID 생성
+            imageDTO.setUuid(uuid.toString());      // 객체에 삽입
+            uploadFileName = uuid.toString() + "-" + uploadFileName;
+            imageDTO.setUploadPath(uploadPath.toString());  // 객체에 삽입
+
+            File saveFile = new File(uploadPath,uploadFileName);                              // 폴더 안에 하위 폴더를 만든 후 저장
+            // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());     // 그냥 폴더에 저장
 
             try{
                 multipartFile.transferTo(saveFile);
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }
+            list.add(imageDTO);
+        }   // end for
+
+        moimService.imageEnroll(list);
         return "moimService/index";
+    }
+
+    private String getFolder(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String str = sdf.format(date);
+        return str.replace("-",File.separator);
     }
 
 }

@@ -1,6 +1,7 @@
 package moimmoimProject.mapper;
 
 import lombok.extern.slf4j.Slf4j;
+import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.userDomain.UserDo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,6 @@ class FindIdPwMapperTest {
         user.setUserEmail("test@test.com");
         UserDo findUser = findIdPwMapper.checkUser(user);
         Assertions.assertEquals("test1", findUser.getUserId());
-
-
 
     }
 
