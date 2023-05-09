@@ -125,8 +125,8 @@
 <!-- 푸터 시작-->
     <footer>
         <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="res/img/logo_white.png" alt="logo" width="200px"></a>
+            <div class="footer_logo_menu">
+                <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>

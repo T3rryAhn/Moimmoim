@@ -99,7 +99,7 @@ header, footer {
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;

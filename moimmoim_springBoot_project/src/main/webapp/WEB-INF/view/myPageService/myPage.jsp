@@ -73,21 +73,17 @@
 
 <!--footer 시작-->
     <footer>
-        <div id="footer_container"> 
-            <div id="whitelogo" ><a href="/"><img src="/imgs/moimmoimUi/whiteLogo.png" alt="logo" width="200px"></a></div>
-            <a href="/" class="footer_font">개인정보 처리방침</a>
-            <a href="/" class="footer_font">기타 필요메뉴</a>
-            <a href="/" class="footer_font">메뉴구성</a>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+        <div id="footer_container">
+            <div class="footer_logo_menu">
+                <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
+                <a href="#" class="footer_font">개인정보 처리방침</a>
+                <a href="#" class="footer_font">기타 필요메뉴</a>
+                <a href="#" class="footer_font">메뉴구성</a>
+            </div>
+            <div>
+                <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+            </div>
         </div>
-            <!--푸터 메뉴 바 내용은 논의 필요
-                기존: 모임 목록, 모임 글 올리기, 호스트 목록, 마이페이지, 고객센터
-            -->
     </footer>
 <!--footer 끝-->
 
