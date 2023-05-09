@@ -12,6 +12,15 @@
     <!-- JavaScript -->
     <script>
 
+        window.addEventListener('message', function(event) {
+          if (event.data === 'closeModal') {
+            const moimNum = '<%= request.getAttribute("moimNum") %>';
+                    const userIdNum = '<%= request.getAttribute("userIdNum") %>';
+                    location.href = '/test/ticket/' + moimNum + '/' + userIdNum;
+
+          }
+        }, false);
+
         // 모달 열기
         function openBuyPageModal() {
             const userIdNum = '${userDo.userIdNum}';

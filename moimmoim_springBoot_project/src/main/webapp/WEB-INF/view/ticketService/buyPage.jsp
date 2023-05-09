@@ -13,26 +13,14 @@
 
     <script type="text/javascript">
         // 에러메시지 전역변수
-        const errorMsg = '<%= request.getAttribute("errorMsg") %>';
-
-        function refreshShowBuyPage() {
-            errorMsg = null;
-            //alert(errorMsg);
-            closeBuyPageModal();
-        }
-
-        function showAlert(message, callback) {
-            alert(message);
-            if (typeof callback === 'function') {
-                callback();
-            }
-        }
-
+        let errorMsg = '<%= request.getAttribute("errorMsg") %>';
 
         if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
-            showAlert(errorMsg, <%= request.getAttribute("errorCallback") %>);
-            closeBuyPageModal();
+            alert(errorMsg);
+            errorMsg = null;
+
         }
+
 
         let isCanceled = false;
 
@@ -53,10 +41,6 @@
           };
 
         function goBack() {
-             // 오류 메시지 초기화
-                if (errorMsg && errorMsg.trim() !== 'null' && errorMsg.trim() !== '') {
-                    errorMsg = null;
-                }
             closeBuyPageModal();
         }
 
@@ -83,7 +67,6 @@
         }
 
         function closeBuyPageModal() {
-            //모달 창 닫힐때 주문 취소
             cancelOrder();
 
             const modal = parent.document.getElementById("buy-page-modal");

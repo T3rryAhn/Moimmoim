@@ -46,8 +46,7 @@ public class BuyPageController {
         if(moimDo.getMoimMemberMax() == moimDo.getMoimMemberCount()){
            // 정원이 다찼으면 구매 불가능
             model.addAttribute("errorMsg", "해당 모임은 정원이 가득 찼습니다.");
-            model.addAttribute("errorCallback", "refreshShowBuyPage");
-            //return "/ticketService/moimPageTicket";
+            return "/ticketService/ticketErrorPage";
         }
         else {
             // 결제 진행중인 주문 목록의 수를 가져옵니다.
@@ -57,15 +56,12 @@ public class BuyPageController {
             if (countOfOrderInProgress >= maximumCapacity) {
                 // 결제 진행중인 주문 목록의 수가 남는 티켓 수보다 크면 구매가 불가능합니다.
                 model.addAttribute("errorMsg", "다른 회원이 결제중입니다. 나중에 다시 시도해주세요.");
-                model.addAttribute("errorCallback", "refreshShowBuyPage");
-                //return "/ticketService/moimPageTicket";
+                return "/ticketService/ticketErrorPage";
             }
             else{
                 // createOrderDo() 호출하여 OrderDo 객체 생성 후 orderNum 값을 가져와서 세션에 저장
                 OrderDo orderDo = orderService.createOrderDo(moimDo.getMoimNum(), userDo.getUserIdNum(), moimDo.getMoimPrice());
                 model.addAttribute("orderNum", orderDo.getOrderNum()); // 세션 대신 모델에 주문 번호 추가
-
-
             }
         }
 
