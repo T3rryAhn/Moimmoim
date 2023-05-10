@@ -32,13 +32,14 @@
     <div>
         <p>Name: ${profilePageDto.userProfileDto.userName}</p>
         <p>Nickname: ${profilePageDto.userProfileDto.userNickName}</p>
-        <img src="${profilePageDto.userProfileDto.userProfileImage}" alt="User Profile Image" width="200px" height="200px">
+        <img src=/files/${profilePageDto.userProfileDto.userProfileImage} alt="User_Profile_Image" width="200px" height="200px">
+        <%--<img src="/imgs/profile_img/default_img.jpg" alt="User Profile Image" width="200px" height="200px">--%>
         <p>MoimReviewScore: ${profilePageDto.userProfileDto.userMoimReviewScoreAvg}</p>
         <p>HostingCount: ${profilePageDto.userProfileDto.userHostingCount}</p>
         <p>Birth: ${profilePageDto.userProfileDto.userBirth}</p>
         <p>Email: ${profilePageDto.userProfileDto.userEmail}</p>
-        <p>CreateDate: &{profilePageDto.userProfileDto.userCreateDate}</p>
-        <p>PhoneNumber: &{profilePageDto.userProfileDto.phoneNum}</p>
+        <p>CreateDate: ${profilePageDto.userProfileDto.userCreateDate}</p>
+        <p>PhoneNumber: ${profilePageDto.userProfileDto.phoneNum}</p>
     </div>
     <div>
         <p>Introduce: ${profilePageDto.userIntroduction}</p>
