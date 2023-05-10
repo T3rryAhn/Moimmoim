@@ -66,7 +66,7 @@
             <a href="/" class="more_button">MORE ></a>
         </div>
         <div class="popular_list">
-            <div class="popular left"><a href="/">
+            <div class="popular left"><a href=/moim/getMoim/getMoim/${moimDo.moimNum}>
                 <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
                 <%--MOIM_POST의 MOIM_PICTURES가 대표사진으로 뜨도록--%>
                 <div class="moim_info">

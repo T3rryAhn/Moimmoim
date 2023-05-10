@@ -51,13 +51,13 @@ public class MoimController {
         model.addAttribute("paging", paging);                       // 페이징 정보
         return "moimService/list";
     }
-    @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
+    @PostMapping("/moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
     public String findMoimByUserId(@PathVariable("moimHostUserIdNum") Long userNum, Model model){
         List<MoimDo> MoimList= moimService.getMoimByUserIdNum(userNum);
         model.addAttribute("moimList", MoimList);
         return "";  // 페이지 삽입해야함
     }
-    @GetMapping("moim/getMoim/getMoim")    // 유저 넘버로 모임 리스트를 찾음
+    @GetMapping("/moim/getMoim/getMoim")    // 유저 넘버로 모임 리스트를 찾음
     public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환

@@ -19,7 +19,13 @@
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
+            <a href="#" class="header_menu">고객센터</a>
+            <c:if test="${sessionScope.userIdNum==null}">
+                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
     </div>
 
