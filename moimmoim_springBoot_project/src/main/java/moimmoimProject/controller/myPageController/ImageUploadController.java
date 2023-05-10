@@ -60,7 +60,7 @@ public class ImageUploadController {
         } else {
             userIdNum = Long.parseLong(userId);
         }
-        String uploadFolder = "C:\\upload";
+        String uploadFolder = "C:\\upload\\profile_img";
         File uploadPath = new File(uploadFolder);
         if(uploadPath.exists() == false) {
             uploadPath.mkdirs();
@@ -77,10 +77,10 @@ public class ImageUploadController {
                 try {
                     multipartFile.transferTo(saveFile);
                     ProfileDo profileDo = new ProfileDo();
-                    profileDo.setUserProfileImage(uploadFolder+"\\"+uploadFileName);
+                    profileDo.setUserProfileImage(uploadFolder.substring(10)+"\\"+uploadFileName);
                     profileDo.setUserIdNum(userIdNum);
                     profileMapper.updateProfileImage(profileDo);
-                    System.out.println(uploadFolder+"\\"+uploadFileName);
+                    System.out.println(uploadFolder.substring(10)+"\\"+uploadFileName);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
