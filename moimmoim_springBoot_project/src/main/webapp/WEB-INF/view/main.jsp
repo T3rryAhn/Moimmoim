@@ -62,6 +62,7 @@
         <div class="popular_list">
             <div class="popular left"><a href="/">
                 <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
+                <%--MOIM_POST의 MOIM_PICTURES가 대표사진으로 뜨도록--%>
                 <div class="moim_info">
                     <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
                 </div>
