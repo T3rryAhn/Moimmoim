@@ -29,9 +29,9 @@
            <p> 모임 마감 여부 : ${moimDo.moimDeadCheck}</p>
            <p> 모임 지역 번호 : ${moimDo.moimLocationNum}, ${locationDo.location_name}</p>
            <c:forEach items="${imageList}" var="ImageDTO">
-                <img src=${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image" >
+                <img src="\files\${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName}" alt="My Image" >
            </c:forEach>
-           <img src="\files\801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >
+           <img src="\files\2023\05\10\801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >
     <!-- 구매 실패 메시지 -->
     <c:if test="${not empty errorMsg}">
         <p style="color: red">${errorMsg}</p>

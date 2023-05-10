@@ -112,7 +112,7 @@ public class MoimController {
             imageDTO.setUuid(uuid.toString());      // 객체에 삽입
 
             uploadFileName = uuid.toString() + "-" + uploadFileName;
-            imageDTO.setUploadPath(uploadPath.toString()+"\\");  // 객체에 삽입
+            imageDTO.setUploadPath(uploadPath.toString().substring(10)+"\\");  // 객체에 삽입
 
             File saveFile = new File(uploadPath,uploadFileName);                              // 폴더 안에 하위 폴더를 만든 후 저장
             // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());     // 그냥 폴더에 저장
