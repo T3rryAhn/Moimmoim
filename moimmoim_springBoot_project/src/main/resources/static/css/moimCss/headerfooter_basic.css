@@ -61,6 +61,9 @@ header, footer {
   padding: 20px 0px;
   letter-spacing: -0.5px;
 }
+.header_menu:hover{
+  background-color: rgb(17, 151, 65);
+}
 /* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
 .here{
   background-color: rgb(17, 151, 65);
