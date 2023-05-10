@@ -6,8 +6,8 @@
 </head>
 <body>
 <div class="uploadDiv">
-    <input type="file" name="uploadFile" />
-    <input type="number" name="useridNum" />
+    file : <input type="file" name="uploadFile" /><br />
+    userid_num : <input type="text" name="userid_num" id="userid_num" />
 </div>
 
 <button id="uploadBtn">Upload</button>
@@ -37,13 +37,18 @@
         $("#uploadBtn").on("click", function(e) {
             var formData = new FormData();
             var inputFile = $("input[name='uploadFile']");
+            var userIdNum = $("input[name='userid_num']").val();
             var files = inputFile[0].files;
             console.log(files);
+            console.log(userIdNum.value);
             for(var i = 0; i < files.length; i++) {
                 if(!checkExtension(files[i].name, files[i].size)){
                     return false;
                 }
                 formData.append("uploadFile", files[i]);
+            }
+            if(!isNaN(userIdNum)) {
+                formData.append("userid_num", userIdNum);
             }
 
             $.ajax({
@@ -61,5 +66,3 @@
 </script>
 </body>
 </html>
-
-

@@ -52,7 +52,14 @@ public class ImageUploadController {
     }
 
     @PostMapping("/uploadAction")
-    public void uploadPost(MultipartFile[] uploadFile) {
+    public String uploadPost(MultipartFile[] uploadFile,
+                             @RequestParam("userid_num") String userId) {
+        Long userIdNum;
+        if(userId == null || userId.equals("undefined")) {
+            userIdNum = null;
+        } else {
+            userIdNum = Long.parseLong(userId);
+        }
         String uploadFolder = "C:\\upload";
         File uploadPath = new File(uploadFolder);
         if(uploadPath.exists() == false) {
@@ -69,10 +76,16 @@ public class ImageUploadController {
             if(checkImageType(saveFile)) {
                 try {
                     multipartFile.transferTo(saveFile);
+                    ProfileDo profileDo = new ProfileDo();
+                    profileDo.setUserProfileImage(uploadFolder+"\\"+uploadFileName);
+                    profileDo.setUserIdNum(userIdNum);
+                    profileMapper.updateProfileImage(profileDo);
+                    System.out.println(uploadFolder+"\\"+uploadFileName);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
         }
+        return "redirect:/";
     }
 }
