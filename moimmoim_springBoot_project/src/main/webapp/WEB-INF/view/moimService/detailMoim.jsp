@@ -28,8 +28,11 @@
            <p> 모임 마감일 : ${moimDo.moimDeadLine}</p>
            <p> 모임 마감 여부 : ${moimDo.moimDeadCheck}</p>
            <p> 모임 지역 번호 : ${moimDo.moimLocationNum}, ${locationDo.location_name}</p>
-           <img src=/files/${moimDo.moimImage} alt="My Image" style="width:100px; height:100px;">
 
+           <h2> 대표사진</h2>
+           <img src=/files/${moimDo.moimImage} alt="My Image" style="width:100px; height:100px;">
+           </hr>
+           <h2>사진들</h2>
            <c:forEach items="${imageList}" var="ImageDTO">
                 <img src=/files/${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image"style="width:100px; height:100px;">
            </c:forEach>

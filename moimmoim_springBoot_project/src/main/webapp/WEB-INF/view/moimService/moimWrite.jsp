@@ -56,7 +56,7 @@
     <div class="section_title">
         <img src="res/img/bar.png"; class="green_bar"> 모임글 작성하기
     </div>
-    <form action="/moim/new" method="post">
+    <form action="/moim/new" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <div class="box box1">
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
@@ -85,9 +85,12 @@
                 <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요.">
             </div>
             <div class="box box8">
-                <label for="moimImage" class="form_name">사용할 사진</label>
-                <input class="textbox" type="text" id="moimImage" name="moimImage" placeholder="모임 사진을 업로드 해주세요.">
+               <label for="sigFile">대표사진</label>
+               <input type="file" name="sigFile" id="sigFile" style="display:none"/>
+               <label for="uploadFile">소개 사진</label>
+               <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
             </div>
+
             <div class="box box9">
                 <label for="moimTitle" class="form_name">모임 제목</label>
                 <input class="textbox title" type="text" id="moimTitle" name="moimTitle" placeholder="모임 제목을 작성해 주세요.">

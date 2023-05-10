@@ -6,7 +6,6 @@ import moimmoimProject.domain.moimDomain.*;
 import moimmoimProject.service.MoimService;
 import org.apache.ibatis.annotations.Param;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.sql.*;
 import java.util.Date;
 
 @Controller
@@ -68,8 +65,10 @@ public class MoimController {
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
-        moimService.CountView(moimNum);                                                 // 조회수 증가
+        moimService.CountView(moimNum);// 조회수 증가
         List<ImageDTO> imageList = moimService.imageList(moimNum);
+
+
 
         model.addAttribute("imageList", imageList);
         model.addAttribute("category", category);
@@ -79,8 +78,19 @@ public class MoimController {
     }
 
     @PostMapping("/moim/new")               // 새로운 모임 생성
-    public String createNewMoim(@Param("MoimDo") MoimDo moimDo){
+    public String createNewMoim(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile){
+        File uploadPath =  moimService.makeFolder();    // 폴더 생성
+        List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
+
+        String path = moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
+        moimDo.setMoimImage(path);
         moimService.createMoim(moimDo);
+        for (MultipartFile multipartFile : uploadFile) {    // 사진들 파일 업로드
+            ImageDTO imageDTO = moimService.makePath(multipartFile,uploadPath,moimDo.getMoimNum());
+            list.add(imageDTO);
+        }   // end for
+
+        moimService.imageEnroll(list);
         return "moimService/index";
     }
 
@@ -89,63 +99,24 @@ public class MoimController {
         moimService.CountView(moimNum);
     }
 
-    @PostMapping("uploadFormAction")
+    /*@PostMapping("uploadFormAction")
     public String uploadFormPost(@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile, Model model) {
 
-        String uploadFolder="C:\\upload\\";
-        // 폴더 생성
-        File uploadPath =  new File(uploadFolder, getFolder());
-        log.info("upload path : " + uploadPath);
 
-        if(uploadPath.exists() == false){
-            uploadPath.mkdirs();
-        }
+        File uploadPath =  moimService.makeFolder();    // 폴더 생성
 
-        List<ImageDTO> list = new ArrayList<>();
+        List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
 
-        String uploadFileName2 = sigFile.getOriginalFilename();
-        uploadFileName2 = uploadFileName2.substring(uploadFileName2.lastIndexOf("\\")+1);
-        UUID uuid2 = UUID.randomUUID();                              //UUID 생성
+        moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
 
-        uploadFileName2 = uuid2.toString() + "-" + sigFile.getOriginalFilename();
-
-        String path = uploadPath.toString().substring(9)+"\\" + uploadFileName2;
-        moimService.imageInsert(path);
-        uploadFileName2 = uuid2.toString() + "-" + sigFile.getOriginalFilename();
-        File saveFile2 = new File(uploadPath,uploadFileName2);
-        try {
-            sigFile.transferTo(saveFile2);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        for (MultipartFile multipartFile : uploadFile) {
-            ImageDTO imageDTO = new ImageDTO();
-
-            String uploadFileName = multipartFile.getOriginalFilename();
-            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
-            imageDTO.setFileName(uploadFileName);   // 객체에 삽입
-
-            UUID uuid = UUID.randomUUID();                              //UUID 생성
-            imageDTO.setUuid(uuid.toString());      // 객체에 삽입
-
-            uploadFileName = uuid.toString() + "-" + uploadFileName;
-            imageDTO.setUploadPath(uploadPath.toString().substring(9)+"\\");  // 객체에 삽입
-            log.info(uploadPath);
-            File saveFile = new File(uploadPath,uploadFileName);                              // 폴더 안에 하위 폴더를 만든 후 저장
-            // File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());     // 그냥 폴더에 저장
-
-            try{
-                multipartFile.transferTo(saveFile);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+        for (MultipartFile multipartFile : uploadFile) {    // 사진들 파일 업로드
+            ImageDTO imageDTO = moimService.makePath(multipartFile,uploadPath);
             list.add(imageDTO);
         }   // end for
 
-        moimService.imageEnroll(list);
+        moimService.imageEnroll(list);      // IMAGE 태이블에 삽입
         return "moimService/index";
-    }
+    }*/
 
     private String getFolder(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
