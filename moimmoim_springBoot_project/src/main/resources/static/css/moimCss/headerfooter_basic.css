@@ -60,10 +60,15 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
+  border: 1px solid black;
 }
-/* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
+.header_menu:hover{
+  background-color: darkgreen;
+  border: 1px solid darkgreen;
+}
 .here{
   background-color: rgb(17, 151, 65);
+  border: 1px solid rgb(17, 151, 65);
 }
 
 .header_login {
