@@ -140,7 +140,7 @@ public class MoimService {
             e.printStackTrace();
         }
         return imageDTO;
-    }
+    }       // 사진들 ImageDTO 삽입 및 파일 생성
 
     public String makePathSig(MultipartFile sigFile, File uploadPath){
         String uploadFileName2 = sigFile.getOriginalFilename();
@@ -160,18 +160,14 @@ public class MoimService {
             throw new RuntimeException(e);
         }
         return path;
-    }
-
-    public void mkePathList(MultipartFile sigFile, File uploadPath){
-
-    }
+    }                           // 대표 사진 설정 및 파일 생성
 
     private String getFolder(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String str = sdf.format(date);
         return str.replace("-",File.separator);
-    }
+    }                                                                  // 폴더 경로 생성
 
     public File makeFolder() {
         String uploadFolder="C:\\upload\\";
@@ -183,6 +179,9 @@ public class MoimService {
             uploadPath.mkdirs();
         }
         return uploadPath;
-    }
+    }                                                                   // 저장 경로
 
+    public List<LocationDo> locList1(){
+        return moimMapper.locList1();
+    }
 }

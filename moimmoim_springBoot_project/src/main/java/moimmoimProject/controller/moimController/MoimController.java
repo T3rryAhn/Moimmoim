@@ -31,7 +31,9 @@ public class MoimController {
     }   // 테스트 용
 
     @GetMapping("/moim/new")
-    public String moimForm() {
+    public String moimForm(Model model) {
+        List<LocationDo> locList1 = moimService.locList1();
+        model.addAttribute("locList1",locList1);
         return "moimService/moimWrite";
     }   // 모임 생성 페이지로 이동
 
@@ -99,30 +101,5 @@ public class MoimController {
         moimService.CountView(moimNum);
     }
 
-    /*@PostMapping("uploadFormAction")
-    public String uploadFormPost(@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile, Model model) {
-
-
-        File uploadPath =  moimService.makeFolder();    // 폴더 생성
-
-        List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
-
-        moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
-
-        for (MultipartFile multipartFile : uploadFile) {    // 사진들 파일 업로드
-            ImageDTO imageDTO = moimService.makePath(multipartFile,uploadPath);
-            list.add(imageDTO);
-        }   // end for
-
-        moimService.imageEnroll(list);      // IMAGE 태이블에 삽입
-        return "moimService/index";
-    }*/
-
-    private String getFolder(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String str = sdf.format(date);
-        return str.replace("-",File.separator);
-    }
 
 }

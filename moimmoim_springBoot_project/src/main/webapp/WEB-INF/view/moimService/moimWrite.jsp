@@ -1,4 +1,6 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -60,9 +62,23 @@
         <div class="form-group">
             <div class="box box1">
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
-                <input class="textbox" type="text" id="moimCategoryNum" name="moimCategoryNum" placeholder="모임 카테고리를 선택해 주세요 (또는 작성해 주세요? )">
+                <select name="moimCategoryNum">
+                    <option value="">카테고리를 선택하세요.</option>
+                    <option value="1">먹기</option>
+                    <option value="2">보기</option>
+                    <option value="3">배우기</option>
+                    <option value="4">힐링하기</option>
+                    <option value="5">체험하기</option>
+                </select>
             </div>
-                <input class="textbox" type="text" id="moimLocationNum" name="moimLocationNum" placeholder="모임의 시작 위치를 선택해 주세요.">
+            <div class="box box2">
+                <label for="moimLocationNum" class="form_name">지역 선택</label>
+                <select name="moimLocationNum" id="moimLocationNum">
+                   <option value="">시작 지역을 선택하세요.</option>
+                     <c:forEach var="list" items="${locList1}">
+                     	<option value="${list.locationNum}">${list.locationName}</option>
+                    </c:forEach>
+                 </select>
             </div>
             <div class="box box3">
                 <label for="moimStartDate" class="form_name">모임 시작일</label>

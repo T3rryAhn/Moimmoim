@@ -37,4 +37,6 @@ public interface MoimMapper {
 
     void insertImage(String path, Long moimNum);
 
+    List<LocationDo> locList1 ();
+
 }

@@ -110,7 +110,8 @@
         <selectKey resultType="Long" keyProperty="moimNum" order="AFTER">
             SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-        insert into IMAGE(UUID, UPLOADPATH, FILENAME, MOIM_NUM) values (#{uuid}, #{uploadPath}, #{fileName}, #{moimNum})
+        insert into IMAGE(UUID, UPLOADPATH, FILENAME, MOIM_NUM)
+        values (#{uuid}, #{uploadPath}, #{fileName}, #{moimNum})
 
     </insert>
 
@@ -120,7 +121,7 @@
         WHERE MOIM_NUM = #{moimNum}
     </select>
     
-    <select id="1LocList" resultType="String">
+    <select id="locList1" resultType="LocationDo">
         SELECT *
         FROM MOIM_LOCATION
         WHERE FRONTCODE = 1100000000
