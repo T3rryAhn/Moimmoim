@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,7 +46,12 @@
             <a href="#" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu here">HOST LIST</a>
             <a href="#" class="header_menu">고객센터</a>
-            <div id="login_icon"><a href="/"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            <c:if test="${sessionScope.userIdNum==null}">
+            <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
     </div>
 </header>

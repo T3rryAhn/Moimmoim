@@ -19,4 +19,8 @@
         FROM PROFILE
         WHERE USERID_NUM = #{userIdNum}
     </select>
+
+    <update id="updateProfileImage" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
+        UPDATE PROFILE SET USER_PROFILE_IMAGE = #{userProfileImage} WHERE USERID_NUM = #{userIdNum}
+    </update>
 </mapper>
