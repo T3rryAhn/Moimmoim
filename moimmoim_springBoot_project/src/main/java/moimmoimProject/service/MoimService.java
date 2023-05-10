@@ -110,4 +110,8 @@ public class MoimService {
         return moimMapper.imageList(moimNum);
     }
 
+    public void imageInsert(String path) {
+        moimMapper.insertImage(path,1L);    // 모임 넘버 세션에서 받아야함
+    }
+
 }

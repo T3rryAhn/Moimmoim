@@ -62,8 +62,6 @@
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
                 <input class="textbox" type="text" id="moimCategoryNum" name="moimCategoryNum" placeholder="모임 카테고리를 선택해 주세요 (또는 작성해 주세요? )">
             </div>
-            <div class="box box2">
-                <label for="moimLocationNum" class="form_name">위치</label>
                 <input class="textbox" type="text" id="moimLocationNum" name="moimLocationNum" placeholder="모임의 시작 위치를 선택해 주세요.">
             </div>
             <div class="box box3">

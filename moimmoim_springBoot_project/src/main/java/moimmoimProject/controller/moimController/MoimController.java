@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.sql.*;
@@ -89,7 +90,7 @@ public class MoimController {
     }
 
     @PostMapping("uploadFormAction")
-    public String uploadFormPost(MultipartFile[] uploadFile, Model model) {
+    public String uploadFormPost(@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile, Model model) {
 
         String uploadFolder="C:\\upload\\";
         // 폴더 생성
@@ -99,7 +100,24 @@ public class MoimController {
         if(uploadPath.exists() == false){
             uploadPath.mkdirs();
         }
+
         List<ImageDTO> list = new ArrayList<>();
+
+        String uploadFileName2 = sigFile.getOriginalFilename();
+        uploadFileName2 = uploadFileName2.substring(uploadFileName2.lastIndexOf("\\")+1);
+        UUID uuid2 = UUID.randomUUID();                              //UUID 생성
+
+        uploadFileName2 = uuid2.toString() + "-" + sigFile.getOriginalFilename();
+
+        String path = uploadPath.toString().substring(9)+"\\" + uploadFileName2;
+        moimService.imageInsert(path);
+        uploadFileName2 = uuid2.toString() + "-" + sigFile.getOriginalFilename();
+        File saveFile2 = new File(uploadPath,uploadFileName2);
+        try {
+            sigFile.transferTo(saveFile2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         for (MultipartFile multipartFile : uploadFile) {
             ImageDTO imageDTO = new ImageDTO();

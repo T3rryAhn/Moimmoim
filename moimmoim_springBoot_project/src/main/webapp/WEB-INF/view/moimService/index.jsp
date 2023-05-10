@@ -55,6 +55,7 @@
         <form action="uploadFormAction" method="post" enctype="multipart/form-data">
                    <label for="sigFile">대표사진</label>
                    <input type="file" name="sigFile" id="sigFile" style="display:none"/>
+
                    <label for="uploadFile">소개 사진</label>
                    <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
                    <button>submit</button>

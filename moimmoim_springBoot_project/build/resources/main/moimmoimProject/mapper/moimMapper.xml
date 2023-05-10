@@ -119,7 +119,18 @@
         FROM IMAGE
         WHERE MOIM_NUM = #{moimNum}
     </select>
+    
+    <select id="1LocList" resultType="String">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE FRONTCODE = 1100000000
+    </select>
 
+    <update id="insertImage">
+        UPDATE MOIM_POST m
+        set m.MOIM_PICTURES = #{path}
+        WHERE m.MOIM_NUM = #{moimNum}
+    </update>
 
 
 

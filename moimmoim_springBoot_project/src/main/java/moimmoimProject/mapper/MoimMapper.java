@@ -35,4 +35,6 @@ public interface MoimMapper {
 
     List<ImageDTO> imageList(Long moimNum);
 
+    void insertImage(String path, Long moimNum);
+
 }
