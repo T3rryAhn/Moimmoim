@@ -80,7 +80,11 @@
                 FROM (
                      SELECT *
                      FROM MOIM_POST
-                     WHERE CATEGORY_NUM = #{moimCategoryNum}
+        ]]>
+                     <where>
+                        <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+                    </where>
+        <![CDATA[
                      ORDER BY MOIM_NUM DESC
                      ) MOIM_POST
                 WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
@@ -91,7 +95,9 @@
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
-        WHERE CATEGORY_NUM = #{moimCategoryNum}
+        <where>
+            <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+        </where>
     </select>
 
     <select id="findLocationName" resultType="LocationDo">
@@ -132,6 +138,22 @@
         set m.MOIM_PICTURES = #{path}
         WHERE m.MOIM_NUM = #{moimNum}
     </update>
+
+    <select id="findAll" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT MOIM_POST.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+                     FROM MOIM_POST
+                     ORDER BY MOIM_NUM DESC
+                     ) MOIM_POST
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
 
 
 

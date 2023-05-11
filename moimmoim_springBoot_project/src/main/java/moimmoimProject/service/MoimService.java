@@ -184,4 +184,8 @@ public class MoimService {
     public List<LocationDo> locList1(){
         return moimMapper.locList1();
     }
+
+    public List<Map<String, Object>> findAll(Criteria cri){
+        return moimMapper.findAll(cri);
+    }
 }
