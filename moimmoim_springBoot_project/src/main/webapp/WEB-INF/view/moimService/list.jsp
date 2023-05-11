@@ -95,6 +95,7 @@
         <ol class="list">
             <c:forEach items="${list}" var="list" varStatus="status">
             <li>
+            <a href="getMoim?moimNum=${list.moimNum}">
                 <figure>
                     <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="host_photo">
                     <div class="host_info">
@@ -106,6 +107,7 @@
                         <div class="host_introduction">${list.moimMainContent}</div> <!--모임 소개-->
                     </div>
                 </figure>
+                </a>
             </li>
             </c:forEach>
         </ol>
