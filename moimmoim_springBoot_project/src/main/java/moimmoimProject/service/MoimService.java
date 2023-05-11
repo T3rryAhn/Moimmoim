@@ -76,6 +76,10 @@ public class MoimService {
         return list;
     }
 
+    public List<MoimDo> getMoimByCategory(Long moimCategoryNum) {
+        return moimMapper.findByCategory(moimCategoryNum);
+    }
+
     public String getCatName(int moimCategoryNum){
         String catName="";
         switch (moimCategoryNum){
@@ -188,4 +192,5 @@ public class MoimService {
     public List<Map<String, Object>> findAll(Criteria cri){
         return moimMapper.findAll(cri);
     }
+
 }
