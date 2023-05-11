@@ -48,7 +48,7 @@
         <div class="form-group">
             <div class="box box1">
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
-                <select name="moimCategoryNum">
+                <select name="moimCategoryNum" class="select_box">
                     <option value="">카테고리를 선택하세요.</option>
                     <option value="1">먹기</option>
                     <option value="2">보기</option>
@@ -59,7 +59,7 @@
             </div>
             <div class="box box2">
                 <label for="moimLocationNum" class="form_name">지역 선택</label>
-                <select name="moimLocationNum" id="moimLocationNum">
+                <select name="moimLocationNum" id="moimLocationNum" class="select_box">
                    <option value="">시작 지역을 선택하세요.</option>
                      <c:forEach var="list" items="${locList1}">
                      	<option value="${list.locationNum}">${list.locationName}</option>
@@ -87,7 +87,7 @@
                 <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요.">
             </div>
             <div class="box box8">
-               <label for="sigFile">대표사진</label>
+               <label for="sigFile" class="form_name">대표사진</label>
                <input type="file" name="sigFile" id="sigFile" style="display:none"/>
                <label for="uploadFile">소개 사진</label>
                <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />

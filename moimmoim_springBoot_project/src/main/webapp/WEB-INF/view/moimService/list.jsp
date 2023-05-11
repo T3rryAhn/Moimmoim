@@ -9,7 +9,6 @@
     <meta charset="UTF-8" />
     <title>MOIMMOIM HOST LIST</title>
     <link rel="stylesheet" href="/css/moimCss/moimlist.css">
-    <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_moimlist.css">
 
     <script>
@@ -61,7 +60,7 @@
                         <button class="search_button">
                             <img src="\imgs\moimmoimUi\search2.png" class="search_icon"alt="search" width="30px" height="30px">
                         </button>
-                        <!-- <input type="submit"/>  이거 어떤 역할인가요..? 어떻게 적용시켜야 할지 모르겠어요.-->
+                        <!-- <input type="submit"/>  이거.. 어떻게 적용시켜야 할지 모르겠어요ㅠ_ㅠ -->
                     </div>
                 </form>
             </div>
@@ -104,16 +103,21 @@
                         <div class="moim_location">서울시 종로구 평창동 <!--${locList[status.index].locationName}장소--></div>
                         <div class="title">페루 쉐프가 소개해주는 페루 음식 <!--${list.moimTitle}모임 제목--> </div>
                         <div class="moim_time">2023년 6월 18일 11시 <!--${list.moimCreateDate}모임 시작 시간--> </div>
-                        <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> </div>
-                        <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> </div>
-<!-- JSTL 수정 필요!! -->
+                        <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> <!-- JSTL 수정 필요 --> </div>
+                        <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> <!-- JSTL 수정 필요 --> </div>
                     </div>
                 </figure></a>
             </li>
             </c:forEach>
         </ol>
+        <!--모임 작성 버튼-->
+        <div class="create_moim">
+            <button class="create_moim"><a href="#">
+                <img src="\imgs\moimmoimUi\createMoim.png" alt="create moim" width="55px" height="53px">
+            </a></button>
+        </div>
 
-        <!--페이징 수정중 -->
+        <!--페이징 -->
         <div>
             <ul class="paging">
                 <c:if test="${paging.prev}">
