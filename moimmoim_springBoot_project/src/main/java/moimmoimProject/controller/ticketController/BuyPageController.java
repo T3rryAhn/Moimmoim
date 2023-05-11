@@ -83,4 +83,16 @@ public class BuyPageController {
             return "주문이 존재하지 않습니다.";
         }
     }
+
+    @PostMapping("/updateOrderStatus")
+    public void updateOrder(@RequestParam String orderNum, String orderStatus) {
+        orderStatus = "결제 완료";
+        orderMapper.updateOrderStatus(orderNum, orderStatus);
+
+    }
+
+    @PostMapping("/buySuccess")
+    public String showBuySuccessPage() {
+        return "ticketService/buySuccess";
+    }
 }

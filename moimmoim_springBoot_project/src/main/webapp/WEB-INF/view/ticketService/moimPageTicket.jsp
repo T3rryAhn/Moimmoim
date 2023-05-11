@@ -38,6 +38,17 @@
             window.history.pushState(null, null, url);
         }
 
+        // 이벤트 리스너를 추가하여 'buySuccess' 메시지를 처리합니다.
+        window.addEventListener('message', function(event) {
+          if (event.data === 'buySuccess') {
+            // 결제 성공 시 실행할 코드를 이곳에 추가하세요.
+            const successUrl = '/buySuccess'; // 여기에 성공 페이지 URL을 입력하세요.
+            const iframe = document.getElementById("buy-page-iframe");
+            iframe.src = successUrl;
+            iframe.contentWindow.location.reload();
+          }
+        }, false);
+
         /* 주석처리로 기능해제해놓음.
         // 모달 외부를 클릭하면 모달을 닫습니다.
         window.onclick = function(event) {

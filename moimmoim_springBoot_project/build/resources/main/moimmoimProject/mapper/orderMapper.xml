@@ -57,4 +57,11 @@
         INSERT INTO MOIM_ORDER(ORDER_NUM, MOIM_NUM, USER_ID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
         VALUES(#{orderNum}, #{moimNum}, #{userIdNum}, #{orderDate}, #{orderStatus}, #{orderPrice}, #{orderReceiptCheck})
     </insert>
+
+    <!--주문상태 업데이트-->
+    <insert id="updateOrderStatus" parameterType="map">
+        UPDATE MOIM_ORDER
+        SET ORDER_STATUS = #{orderStatus}
+        WHERE ORDER_NUM = #{orderNum}
+    </insert>
 </mapper>
