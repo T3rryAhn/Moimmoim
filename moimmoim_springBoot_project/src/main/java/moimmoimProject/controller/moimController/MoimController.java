@@ -37,7 +37,7 @@ public class MoimController {
 
     @GetMapping("/moim/getMoim/list")    // 모임 리스트
     public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
-        if(moimCategoryNum==null) moimCategoryNum = 1L;     // 카테고리 default 값
+        if(moimCategoryNum==null) moimCategoryNum = 6L;     // 카테고리 default 값
 
         // 이게 int 이여야 함
         int moimListCnt = moimService.moimListCnt(moimCategoryNum);
@@ -54,6 +54,8 @@ public class MoimController {
         model.addAttribute("paging", paging);                       // 페이징 정보
         return "moimService/list";
     }
+
+
     @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
     public String findMoimByUserId(@PathVariable("moimHostUserIdNum") Long userNum, Model model){
         List<MoimDo> MoimList= moimService.getMoimByUserIdNum(userNum);
@@ -99,5 +101,6 @@ public class MoimController {
     public void countView(@PathVariable("moimNum") Long moimNum){
         moimService.CountView(moimNum);
     }
+
 
 }

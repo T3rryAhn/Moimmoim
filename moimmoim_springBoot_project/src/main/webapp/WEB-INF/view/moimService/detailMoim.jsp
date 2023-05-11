@@ -34,6 +34,16 @@
     </div> -->
 </header>
 <main>
+
+    <!--
+    대표사진 src = /files/${moimDo.moimImage}
+    사진들
+       <c:forEach items="${imageList}" var="ImageDTO">
+            <img src=/files/${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image"style="width:100px; height:100px;">
+       </c:forEach>
+    <img src="/files/2023/05/10/801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >
+    -->
+
     <div class="container">
     <div class="form-group">
         <div class="box box1">
@@ -42,7 +52,7 @@
                 ${moimDo.moimTitle}</h1>
         </div>
         <div class="box box2">
-            <img src="res/img/image1.jpg" alt="moim_photo" class="moim_photo" >
+            <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
         </div>
         <div class="box box3">
             <div >
@@ -96,7 +106,7 @@
                 <div class="detail_box bottom">
                     <dl class="moim_info">
                         <dt class="moim_info_title"> 모임 위치</dt>
-                        <dd class="moim_info_content">서울특별시 종로구 평창동<!--${moimDo.moimLocationNum}, ${locationDo.location_name}--></dd>
+                        <dd class="moim_info_content">서울특별시 종로구 평창동<!--${moimDo.moimLocationNum}, ${locationDo.locationName}--></dd>
                     </dl>
                     <p class="created_date">모임 생성 일시: 2023년 5월 9일 <!--${moimDo.moimCreateDate}--></p>
                 </div>
@@ -127,16 +137,6 @@
 </div>
 </main>
 
-           <h2> 대표사진</h2>
-           <img src=/files/${moimDo.moimImage} alt="My Image" style="width:100px; height:100px;">
-           </hr>
-           <h2>사진들</h2>
-           <c:forEach items="${imageList}" var="ImageDTO">
-                <img src=/files/${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image"style="width:100px; height:100px;">
-           </c:forEach>
-
-           <!--<img src="/files/2023/05/10/801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >-->
-
 <!--
        <p> 모임 넘버 : ${moimDo.moimNum}</p>
        <p> 모임 만든 유저 아이디 : ${moimDo.moimHostUserIdNum}</p>
@@ -153,7 +153,7 @@
        <p> 모임 가격 : ${moimDo.moimPrice}</p>
        <p> 모임 마감일 : ${moimDo.moimDeadLine}</p>
        <p> 모임 마감 여부 : ${moimDo.moimDeadCheck}</p>
-       <p> 모임 지역 번호 : ${moimDo.moimLocationNum}, ${locationDo.location_name}</p>
+       <p> 모임 지역 번호 : ${moimDo.moimLocationNum}, ${locationDo.locationName}</p>
 -->
 
 <!-- 구매 실패 메시지 -->

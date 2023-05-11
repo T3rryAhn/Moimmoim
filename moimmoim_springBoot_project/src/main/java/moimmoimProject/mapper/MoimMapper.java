@@ -39,4 +39,6 @@ public interface MoimMapper {
 
     List<LocationDo> locList1 ();
 
+    List<Map<String, Object>> findAll(Criteria cri);
+
 }
