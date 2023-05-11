@@ -15,28 +15,8 @@
     <link rel="stylesheet" href="/css/main/mainpage.css">
     <link rel="stylesheet" href="/css/main/body.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
-    <script>
-        function openTab(evt, tabName) {
-            // 모든 탭 컨텐츠를 숨김
-            var tabcontent = document.getElementsByClassName("tabcontent");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-
-            // 모든 탭 버튼에서 active 클래스 제거
-            var tablinks = document.getElementsByClassName("tablinks");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-
-            // 선택된 탭 버튼에 active 클래스 추가
-            evt.currentTarget.classList.add("active");
-
-            // 선택된 탭 컨텐츠에 active 클래스 추가
-            var selectedTab = document.getElementById(tabName);
-            selectedTab.classList.add("active");
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="js/main/main.js"></script>
 </head>
 <body>
 <!--헤더 시작-->
@@ -66,27 +46,46 @@
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> POPULAR MOIM</div>
             <a href="/" class="more_button">MORE ></a>
         </div>
-        <div class="popular_list">
-            <div class="popular left"><a href="/">
-                <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
-                <%--MOIM_POST의 MOIM_PICTURES가 대표사진으로 뜨도록--%>
-                <div class="moim_info">
-                    <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                </div>
-            </a></div>
-            <div class="popular middle"><a href="/">
-                <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="popular_photo">
-                <div class="moim_info">
-                    <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                </div>
-            </a></div>
-            <div class="popular right"><a href="/">
-                <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="popular_photo">
-                <div class="moim_info">
-                    <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                </div>
-            </a></div>
-        </div>
+        <ol class="list">
+            <c:forEach items="${moimListPopular}" var="list" varStatus="status">
+                <li class="popular"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                    <figure>
+                        <img src="/files/${i.moimImage}" alt="사진1"; class="popular_photo">
+                        <div class="moim_info">
+                            <div class="moim_title">${list.moimTitle}</div>
+                        </div>
+                    </figure>
+                </a>
+                </li>
+            </c:forEach>
+<%--            <li class="popular"><a href="#">
+                <figure>
+                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
+                    <div class="moim_info">
+                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
+                    </div>
+                </figure>
+            </a>
+            </li>
+            <li class="popular"><a href="#">
+                <figure>
+                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="popular_photo">
+                    <div class="moim_info">
+                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
+                    </div>
+                </figure>
+            </a>
+            </li>
+            <li class="popular"><a href="#">
+                <figure>
+                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="popular_photo">
+                    <div class="moim_info">
+                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
+                    </div>
+                </figure>
+            </a>
+            </li>--%>
+        </ol>
     </div>
     <!--POPULAR MOIM 끝-->
 
@@ -108,184 +107,84 @@
         </div>
         <!--카테고리별 컨텐츠-->
         <div id="tab1" class="tabcontent active">
-            <div class="cat_moim_list">
-                <div class="cat_moim left"><a href="/">
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">먹기</div>
-                        <div class="moim_title">먹기 탭입니다</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim right"><a href="/">
-                    <img src="/imgs/moim_img/image4.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-            </div>
+            <ol class="moim_list">
+            <c:forEach items="${moimListEat}" var="list" varStatus="status">
+                    <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                        <figure>
+                            <img src="/files/${list.moimImage}" alt="사진1" class="photo">
+                            <div class="moim_info">
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_price">${list.moimPrice}원/1명</div>
+                            </div>
+                        </figure>
+                    </a></li>
+             </c:forEach>
+            </ol>
         </div>
         <div id="tab2" class="tabcontent">
-            <div class="cat_moim_list">
-                <div class="cat_moim left"><a href="/">
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">보기</div>
-                        <div class="moim_title">보기 탭입니다!</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim right"><a href="/">
-                    <img src="/imgs/moim_img/image4.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-            </div>
+            <ol class="moim_list">
+                <c:forEach items="${moimListLook}" var="list" varStatus="status">
+                    <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                        <figure>
+                            <img src="/files/${list.moimImage}" alt="사진1" class="photo">
+                            <div class="moim_info">
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_price">${list.moimPrice}원/1명</div>
+                            </div>
+                        </figure>
+                    </a></li>
+                </c:forEach>
+            </ol>
         </div>
         <div id="tab3" class="tabcontent">
-            <div class="cat_moim_list">
-                <div class="cat_moim left"><a href="/">
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">배우기</div>
-                        <div class="moim_title">배우기 탭입니다!</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim right"><a href="/">
-                    <img src="/imgs/moim_img/image4.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-            </div>
+            <ol class="moim_list">
+                <c:forEach items="${moimListLearn}" var="list" varStatus="status">
+                    <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                        <figure>
+                            <img src="/files/${list.moimImage}" alt="사진1" class="photo">
+                            <div class="moim_info">
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_price">${list.moimPrice}원/1명</div>
+                            </div>
+                        </figure>
+                    </a></li>
+                </c:forEach>
+            </ol>
         </div>
         <div id="tab4" class="tabcontent">
-            <div class="cat_moim_list">
-                <div class="cat_moim left"><a href="/">
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">힐링하기</div>
-                        <div class="moim_title">힐링하기 탭입니다.</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim right"><a href="/">
-                    <img src="/imgs/moim_img/image4.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-            </div>
+            <ol class="moim_list">
+                <c:forEach items="${moimListHeal}" var="list" varStatus="status">
+                    <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                        <figure>
+                            <img src="/files/${list.moimImage}" alt="사진1" class="photo">
+                            <div class="moim_info">
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_price">${list.moimPrice}원/1명</div>
+                            </div>
+                        </figure>
+                    </a></li>
+                </c:forEach>
+            </ol>
         </div>
         <div id="tab5" class="tabcontent">
-            <div class="cat_moim_list">
-                <div class="cat_moim left"><a href="/">
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">체험하기</div>
-                        <div class="moim_title">체험하기 탭입니다.</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim middle"><a href="/">
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-                <div class="cat_moim right"><a href="/">
-                    <img src="/imgs/moim_img/image4.jpg" alt="사진1"; class="photo">
-                    <div class="moim_info">
-                        <div class="moim_location_price">서울시 관악구</div>
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                        <div class="moim_location_price">20,000원/1인</div>
-                    </div>
-                </a></div>
-            </div>
+            <ol class="moim_list">
+                <c:forEach items="${moimListActive}" var="list" varStatus="status">
+                    <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
+                        <figure>
+                            <img src="/files/${i.moimImage}" alt="사진1" class="photo">
+                            <div class="moim_info">
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_price">${list.moimPrice}원/1명</div>
+                            </div>
+                        </figure>
+                    </a></li>
+                </c:forEach>
+            </ol>
         </div>
 
     </div>

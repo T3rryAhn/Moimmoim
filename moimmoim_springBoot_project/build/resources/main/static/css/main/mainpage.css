@@ -1,7 +1,10 @@
+/* Web Font Load*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
 /* main 설정 */
 /* 메인페이지 메뉴 공용*/
 .moims_container {
-  width: 1060px;                         
+  width: 1060px;
   height: 420px;
   margin: 50px auto;
 }
@@ -32,45 +35,33 @@
   letter-spacing: -0.5px;
 }
 
-
-/* POPULAR MOIM */
-.popular_list{
+/* popular moim */
+ol,
+ul {
+  list-style: none;
+  margin:0px;
+  padding: 0px;
+}
+.list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px;
+}
+.list figure{
+  width: 100%;
+  align-items:flex-start;
+  width: 345px;
+  height: 268px;
+  margin: 5px 0px;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: baseline;
-  align-content: center;
-}
-.left{
-  border-right: 3px solid white;
-}
-.middle{
-  border-left: 3px solid white;
-  border-right: 3px solid white;
-}
-.right{
-  border-left: 3px solid white;
+  flex-direction: column;
 }
 .popular_photo{
   width: 100%;
-  width: 350px;
+  width: 348px;
   height: 233px;
   margin: 3px 0px;
-  border-radius: 10px; 
-}
-.moim_location_price{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgb(153, 153, 153);
-  line-height: 20px;
-}
-.moim_title{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgb(51, 51, 51);
-  line-height: 25px;
+  border-radius: 10px;
 }
 
 /* MOIM lIST */
@@ -84,8 +75,7 @@
   justify-content: space-evenly;
   align-items: baseline;
   align-content: center;
-  }
-
+}
 .tab button {
   width: 300px;
   height: 47px;
@@ -93,7 +83,7 @@
   color: black;
   cursor: pointer;
   padding: 10px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 0.5px solid lightgray;
   text-align: center;
   font-family: 'Noto Sans KR', sans-serif;
@@ -117,7 +107,12 @@
   display: block;
 }
 
-/* 카테고리별 컨텐츠*/
+/* 카테고리별 모임 */
+.moim_list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 6px;
+}
 .cat_moim_list{
   display: flex;
   flex-wrap: nowrap;
@@ -130,17 +125,31 @@
   height: 270px;
   margin: 5px 0px;
 }
-.left{
-  border-right: 3px solid white;
-}
-.middle{
-  border-left: 3px solid white;
-  border-right: 3px solid white;
-}
-.right{
-  border-left: 3px solid white;
+.cat_moim figure{
+  width: 100%;
+  align-items: flex-start;
+  width: 260.5px;
+  height: 260px;
+  margin: 5px 0px;
+  display: flex;
+  flex-direction: column;
 }
 .photo{
-  width: 100%;
+  width: 260.5px;
   height: 150px;
 }
+.moim_location, .moim_price{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(153, 153, 153);
+  line-height: 20px;
+}
+.moim_title{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(51, 51, 51);
+  line-height: 25px;
+}
+

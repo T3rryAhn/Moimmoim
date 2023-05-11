@@ -23,16 +23,11 @@ import java.util.*;
 public class TestHomeController {
     private final MoimMapper moimMapper;
     private final UserMapper userMapper;
-    private final MoimService moimService;
 
 
     @GetMapping("/")
     public String testHome() {
         return "/testHome";
-    }
-    @GetMapping("/main")
-    public String mainPage() {
-        return "/main";
     }
 
     @GetMapping("/test/ticket/{moimNum}/{userIdNum}")

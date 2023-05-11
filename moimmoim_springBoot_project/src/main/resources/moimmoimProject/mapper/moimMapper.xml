@@ -35,10 +35,16 @@
         WHERE MOIM_NUM = #{moimNum}
     </select>
 
-    <select id="findByMoimNum" parameterType="map" resultMap="moimResultMap">
+    <select id="findAllbyPopular" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
         SELECT *
-        FROM MOIM_POST
-        WHERE MOIM_NUM = #{moimNum}
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 4 AND MOIM_DEAD_CHECK=0
+        ]]>
     </select>
 
     <insert id="createMoim" parameterType="moimDo">
@@ -155,6 +161,17 @@
         ]]>
     </select>
 
+    <select id="findByCategory" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 5 AND CATEGORY_NUM = #{moimCategoryNum} AND MOIM_DEAD_CHECK=0
+        ]]>
+    </select>
 
 
 </mapper>

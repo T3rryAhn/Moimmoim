@@ -12,7 +12,7 @@ import java.util.Map;
 @Mapper
 public interface MoimMapper {
 
-    // MoimDo findByMoimNum(Long userIdNum);
+    List<MoimDo> findAllbyPopular();
 
     List<MoimDo> findAllByUserIdNum(Long userIdNum);    // 유저의 생성 모임들 찾기
 
@@ -40,5 +40,7 @@ public interface MoimMapper {
     List<LocationDo> locList1 ();
 
     List<Map<String, Object>> findAll(Criteria cri);
+
+    List<MoimDo> findByCategory(Long moimCategoryNum);
 
 }
