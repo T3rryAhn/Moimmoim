@@ -32,8 +32,8 @@
         <div class="search_bar">
             <img src="res/img/search.png" width="37.33px">
             <form action="/moim/getMoim/list" method="get">
-            <input type="text" placeholder="검색해보세요" id= "keyword" name="keyword" ${pageMaker.keyword}>
-            <input type="hidden" id="cat" name="moimCategoryNum" value=7>
+                <input type="text" placeholder="검색해보세요" id= "keyword" name="keyword">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=7>
             <input type="submit"/>
             </form>
         </div>

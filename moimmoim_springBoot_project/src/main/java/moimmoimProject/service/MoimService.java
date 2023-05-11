@@ -50,8 +50,8 @@ public class MoimService {
         return moimMapper.moimListCnt(moimCategoryNum,keyword);
     }
 
-    public List<Map<String, Object>> moimList(String keyword, Criteria cri,Long moimCategoryNum){
-        return moimMapper.moimList(cri, moimCategoryNum, keyword);
+    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri){
+        return moimMapper.moimList(moimCategoryNum, keyword, cri);
     }
 
     public LocationDo findLocName(MoimDo moimDo){

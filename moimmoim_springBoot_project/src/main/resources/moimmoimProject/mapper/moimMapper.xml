@@ -23,6 +23,15 @@
         <result column="LOCATION_NUM" property="moimLocationNum" jdbcType="BIGINT" />
     </resultMap>
 
+    <select id="findAllex" parameterType="moimDo">
+        SELECT *
+        FROM MOIM_POST
+        <where>
+            <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+        </where>
+    </select>
+
     <select id="findAllByUserIdNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
@@ -82,8 +91,8 @@
                      FROM MOIM_POST
         ]]>
                      <where>
-                         <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
-                         <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+                         <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+                         <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
                      </where>
         <![CDATA[
                      ORDER BY MOIM_NUM DESC
