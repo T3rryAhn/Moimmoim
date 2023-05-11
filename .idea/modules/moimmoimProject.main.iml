@@ -4,6 +4,11 @@
     <output url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/out/production/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/generated" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/resources" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/generated" isTestSource="false" generated="true" />
