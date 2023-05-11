@@ -37,7 +37,7 @@ public class MoimController {
     public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
         if(moimCategoryNum==null) moimCategoryNum = 1L;     // 카테고리 default 값
 
-        int moimListCnt = moimService.moimListCnt();
+        int moimListCnt = moimService.moimListCnt(moimCategoryNum);
         Paging paging = new Paging();
         paging.setCri(cri);
         paging.setTotalCount(moimListCnt);

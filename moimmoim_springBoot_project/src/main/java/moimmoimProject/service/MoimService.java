@@ -41,8 +41,8 @@ public class MoimService {
         moimMapper.deleteMoim(moimNum);
     }
 
-    public int moimListCnt(){
-        return moimMapper.moimListCnt();
+    public int moimListCnt(Long moimCategoryNum){
+        return moimMapper.moimListCnt(moimCategoryNum);
     }
 
     public List<Map<String, Object>> moimList(Criteria cri,Long moimCategoryNum){
