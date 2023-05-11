@@ -9,6 +9,7 @@
     <meta charset="UTF-8" />
     <title>MOIMMOIM HOST LIST</title>
     <link rel="stylesheet" href="/css/moimCss/moimlist.css">
+    <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_moimlist.css">
 
     <script>
