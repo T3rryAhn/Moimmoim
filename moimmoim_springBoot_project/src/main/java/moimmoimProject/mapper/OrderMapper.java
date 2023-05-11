@@ -23,4 +23,6 @@ public interface OrderMapper {
     void deleteByOrderNum(String orderNum);
 
     int countByMoimNumAndOrderStatus(Long moimNum, String orderStatus);
+
+    void updateOrderStatus(@Param("orderNum") String orderNum, @Param("orderStatus") String orderStatus);
 }

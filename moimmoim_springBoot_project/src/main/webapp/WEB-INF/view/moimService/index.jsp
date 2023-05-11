@@ -51,7 +51,9 @@
                 <button type="submit">모임상세</button>
     </form>
 
+    <h2> --파일 업로드-- </h2>
 
+        <hr/>
 
     </body>
 </html>

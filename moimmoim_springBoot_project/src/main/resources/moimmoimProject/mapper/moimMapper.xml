@@ -91,6 +91,7 @@
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
+        WHERE CATEGORY_NUM = #{moimCategoryNum}
     </select>
 
     <select id="findLocationName" resultType="LocationDo">
@@ -103,6 +104,33 @@
         UPDATE MOIM_POST m
         set m.MOIM_MEMBER_COUNT = m.MOIM_MEMBER_COUNT + 1
         where m.MOIM_NUM = #{moimNum}
+    </update>
+
+    <insert id="imageEnroll">
+        <selectKey resultType="Long" keyProperty="moimNum" order="AFTER">
+            SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into IMAGE(UUID, UPLOADPATH, FILENAME, MOIM_NUM)
+        values (#{uuid}, #{uploadPath}, #{fileName}, #{moimNum})
+
+    </insert>
+
+    <select id="imageList" resultType="ImageDTO">
+        SELECT *
+        FROM IMAGE
+        WHERE MOIM_NUM = #{moimNum}
+    </select>
+    
+    <select id="locList1" resultType="LocationDo">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE FRONTCODE = 1100000000
+    </select>
+
+    <update id="insertImage">
+        UPDATE MOIM_POST m
+        set m.MOIM_PICTURES = #{path}
+        WHERE m.MOIM_NUM = #{moimNum}
     </update>
 
 

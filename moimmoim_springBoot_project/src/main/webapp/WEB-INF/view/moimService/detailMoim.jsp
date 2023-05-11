@@ -116,11 +116,11 @@
 평창동은 전체의 65%가 개발제한구역이다. 즉, 평창동 전체에서 35%의 구역에만 주민들이 살고 있다는 뜻이다. 본래는 북한산 국립공원 인근 지역이다보니 개발제한구역의 비율이 더 높았으나, 1968년에 김신조 일당이 이 인근 지역을 침투한 이후로 청와대 궁전의 뒤편에 사람이 사는 마을이 있어야 침투로가 없어질 것이라고 생각하여 정부 차원에서 마을을 활성화시켰다. (424자)
             </div>
         </div>
-        <div class="box box5">
-            <a href="#" class="ticket">
-                티켓이 들어갈 부분입니다.
-            </a>
+
+        <div>
+          <jsp:include page="/WEB-INF/view/ticketService/moimPageTicket.jsp" />
         </div>
+
         <div class="box box6">
             <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>
         </div>
@@ -133,6 +133,15 @@
 </div>
 </main>
 
+           <h2> 대표사진</h2>
+           <img src=/files/${moimDo.moimImage} alt="My Image" style="width:100px; height:100px;">
+           </hr>
+           <h2>사진들</h2>
+           <c:forEach items="${imageList}" var="ImageDTO">
+                <img src=/files/${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image"style="width:100px; height:100px;">
+           </c:forEach>
+
+           <!--<img src="/files/2023/05/10/801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >-->
 
 <!--
        <p> 모임 넘버 : ${moimDo.moimNum}</p>

@@ -98,4 +98,7 @@ public class OrderService {
         orderMapper.deleteByOrderNum(orderNum);
     }
 
+    //주문 상태 업데이트
+
+
 }
