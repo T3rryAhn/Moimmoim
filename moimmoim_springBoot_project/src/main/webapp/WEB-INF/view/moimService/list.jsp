@@ -4,30 +4,48 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>MOIMMOIM MOIM LIST</title>
-    <link rel="stylesheet" href="/css/moimCss/hostlist.css">
-    <link rel="stylesheet" href="/css/moimCss/body_search.css">
+    <title>MOIMMOIM HOST LIST</title>
+    <link rel="stylesheet" href="moimlist.css">
+    <link rel="stylesheet" href="headerfooter_moimlist.css">
     <script>
+        function openTab(evt, tabName) {
+        // 모든 탭 버튼에서 active 클래스 제거
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        // 선택된 탭 버튼에 active 클래스 추가
+        evt.currentTarget.classList.add("active");
+        }
     </script>
 </head>
-
 
 <body>
 <!--헤더 시작-->
 <header>
+    <!--로그인 전 헤더-->
     <div id="header_container">
-        <div id="header_logo"><a href="#"><img src="res/img/logo.png" alt="logo" width="180px"></a></div>
+        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu here">HOST LIST</a>
-            <a href="#" class="header_menu">고객센터</a>
-            <div id="login_icon"><a href="#"><img src="res/img/login.png" alt="login" width="50px"></a></div>
+            <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
+            <a href="#" class="header_menu">HOST LIST</a>
+            <a href="#" class="header_login login">LOG IN</a>
         </div>
     </div>
+
+    <!--로그인 후 헤더-->
+    <!-- <div id="header_container">
+        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
+        <div class="header_bar">
+            <a href="#" class="header_menu">MOIM LIST</a>
+            <a href="#" class="header_menu">HOST LIST</a>
+            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
+        </div>
+    </div> -->
+
     <div id="search">
         <div class="search_bar">
             <img src="res/img/search.png" width="37.33px">
