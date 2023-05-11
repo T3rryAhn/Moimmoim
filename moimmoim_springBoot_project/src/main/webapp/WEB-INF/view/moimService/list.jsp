@@ -94,7 +94,7 @@
                 <figure>
                     <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="host_photo">
                     <div class="host_info">
-                        <div class="host_level">${locList[status.index].location_name}</div>        <!--장소-->
+                        <div class="host_level">${locList[status.index].locationName}</div>        <!--장소-->
                         <div class="host_reputation">
                             <span class="host_stars">${list.moimCreateDate}</span>        <!--모임 시작 시간-->
                         </div>
