@@ -14,6 +14,7 @@
     <title>MoimMoim 메인 페이지</title>
     <link rel="stylesheet" href="/css/main/mainpage.css">
     <link rel="stylesheet" href="/css/main/body.css">
+    <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
     <script>
         function openTab(evt, tabName) {
             // 모든 탭 컨텐츠를 숨김
@@ -66,7 +67,7 @@
             <a href="/" class="more_button">MORE ></a>
         </div>
         <div class="popular_list">
-            <div class="popular left"><a href=/moim/getMoim/getMoim/${moimDo.moimNum}>
+            <div class="popular left"><a href="/">
                 <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
                 <%--MOIM_POST의 MOIM_PICTURES가 대표사진으로 뜨도록--%>
                 <div class="moim_info">
@@ -298,6 +299,9 @@
             <a href="#" class="footer_font">개인정보 처리방침</a>
             <a href="#" class="footer_font">기타 필요메뉴</a>
             <a href="#" class="footer_font">메뉴구성</a>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
         </div>
         <div>
             <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>

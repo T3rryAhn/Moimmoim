@@ -31,9 +31,7 @@ public class TestHomeController {
         return "/testHome";
     }
     @GetMapping("/main")
-    public String mainPage(Criteria cri, Long moimCategoryNum) {
-        List<Map<String, Object>> moimDoList = moimService.moimList(cri, moimCategoryNum);
-
+    public String mainPage() {
         return "/main";
     }
 
