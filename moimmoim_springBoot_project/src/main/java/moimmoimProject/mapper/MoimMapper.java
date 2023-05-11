@@ -41,4 +41,6 @@ public interface MoimMapper {
 
     List<Map<String, Object>> findAll(Criteria cri);
 
+
+
 }
