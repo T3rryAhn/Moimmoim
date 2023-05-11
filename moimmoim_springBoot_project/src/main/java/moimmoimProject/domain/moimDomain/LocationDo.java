@@ -8,7 +8,11 @@ import lombok.Data;
 public class LocationDo {
 
     private int locationNum;
-    private String location_name;
+    private String locationName;
     private int frontCode;
     private String Destination;
+
+    public LocationDo(){
+
+    }
 }
