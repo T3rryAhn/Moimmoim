@@ -39,7 +39,10 @@ public interface MoimMapper {
 
     List<Map<String, Object>> findAll(Criteria cri);
 
-    List<MoimDo> findAllex(String keyword, Long moimCategoryNum);
+    void joinMoim(Long joinNum, MoimDo moimDo);
+
+    List<Map<String, Object>> findJoinMoim(Long joinNum, String keyword, Criteria cri);
+
 
 
 

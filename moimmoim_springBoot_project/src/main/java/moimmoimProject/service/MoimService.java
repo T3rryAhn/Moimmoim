@@ -50,8 +50,12 @@ public class MoimService {
         return moimMapper.moimListCnt(moimCategoryNum,keyword);
     }
 
-    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri){
+    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword, Criteria cri){
         return moimMapper.moimList(moimCategoryNum, keyword, cri);
+    }
+
+    public List<Map<String, Object>> findJoinMoim(Long joinNum, String keyword, Criteria cri){       // 내가 참가한 모임 구매 컨트롤러에 추가해야 함
+        return moimMapper.findJoinMoim(joinNum, keyword, cri);
     }
 
     public LocationDo findLocName(MoimDo moimDo){
@@ -184,8 +188,15 @@ public class MoimService {
     public List<LocationDo> locList1(){
         return moimMapper.locList1();
     }
-
     public List<Map<String, Object>> findAll(Criteria cri){
         return moimMapper.findAll(cri);
+    }
+
+    public void joinMoim(Long joinNum, MoimDo moimDo) {
+        moimMapper.joinMoim(joinNum, moimDo);                           // 태리님과 병합
+    }
+
+    public void plusMember(Long moimNum){                               // 태리님과 병합
+        moimMapper.plusMemberCount(moimNum);
     }
 }
