@@ -74,6 +74,7 @@ public class MoimController {
         model.addAttribute("category", category);
         model.addAttribute("locationDo", locationDo);
         model.addAttribute("moimDo", moimDo);
+        model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
         return "moimService/detailMoim";  // 페이지 삽입해야함
     }
 
