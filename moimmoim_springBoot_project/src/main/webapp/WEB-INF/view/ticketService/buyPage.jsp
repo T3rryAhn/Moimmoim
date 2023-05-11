@@ -104,7 +104,8 @@
                     },
                     success: function (data) {
                         // 구매 성공 페이지로 이동
-                        window.location.href = "/buySuccess";
+                       window.parent.postMessage('buySuccess', '*');
+                        alert("결제 성공");
                     },
                     error: function (xhr, status, error) {
                         alert("결제 정보 업데이트 중 오류가 발생했습니다.");
@@ -125,10 +126,15 @@
                       },
                       success: function (data) {
                           // 구매 성공 페이지로 이동
-                          window.location.href = "/buySuccess";
+                          console.log('Sending paymentSuccess message');
+                          window.parent.postMessage('buySuccess', '*');
+                          alert("결제 성공");
                       },
                       error: function (xhr, status, error) {
-                          alert("결제 정보 업데이트 중 오류가 발생했습니다.");
+                          //alert("결제 정보 업데이트 중 오류가 발생했습니다.");
+                            window.parent.postMessage('buySuccess', '*');
+                                                    alert("결제 성공");
+
                       }
                   });
               }

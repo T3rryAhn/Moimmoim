@@ -88,10 +88,11 @@ public class BuyPageController {
     public void updateOrder(@RequestParam String orderNum, String orderStatus) {
         orderStatus = "결제 완료";
         orderMapper.updateOrderStatus(orderNum, orderStatus);
+
     }
 
     @PostMapping("/buySuccess")
     public String showBuySuccessPage() {
-        return "/buySuccess";
+        return "ticketService/buySuccess";
     }
 }
