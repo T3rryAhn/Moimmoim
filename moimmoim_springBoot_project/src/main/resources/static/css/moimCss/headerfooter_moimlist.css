@@ -75,7 +75,6 @@ header, footer {
   font-family: 'Montserrat', sans-serif;
   margin: 15px 10px;
   font-size: 14px;
-  /* padding: 5px 0px; */
   padding: 6px 0px;
   text-align: center;
   border-radius: 20px;
@@ -86,7 +85,7 @@ header, footer {
 }
 .login{
   background-color: rgb(17, 151, 65);
-  color:white;
+  color: white;
 }
 
 #mypage_icon {
