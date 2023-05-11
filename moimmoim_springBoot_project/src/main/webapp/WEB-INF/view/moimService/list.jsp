@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <title>MOIMMOIM HOST LIST</title>
-    <link rel="stylesheet" href="moimlist.css">
-    <link rel="stylesheet" href="headerfooter_moimlist.css">
+    <link rel="stylesheet" href="/css/moimCss/moimlist.css">
+    <link rel="stylesheet" href="/css/moimCss/headerfooter_moimlist.css">
+
     <script>
         function openTab(evt, tabName) {
         // 모든 탭 버튼에서 active 클래스 제거
@@ -30,125 +31,109 @@
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
-            <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
+            <a href="/moim/getMoim/list" class="header_menu here">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
             <a href="#" class="header_login login">LOG IN</a>
         </div>
     </div>
+    <!-- 로그인 버튼 색상 수정 필요 :: class="header_login login" -->
+
 
     <!--로그인 후 헤더-->
     <!-- <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
+            <a href="#" class="header_menu here">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
             <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
         </div>
     </div> -->
+    <!-- 로그인 버튼 간격 조정 필요 -->
 
     <div id="search">
         <div class="search_bar">
-            <img src="res/img/search.png" width="37.33px">
-            <form action="/moim/getMoim/list" method="get">
-                <input type="text" placeholder="검색해보세요" id= "keyword" name="keyword">
-                <input type="hidden" id="cat" name="moimCategoryNum" value=7>
-            <input type="submit"/>
-            </form>
+            <div class="search_box">
+                <form action="/moim/getMoim/list" method="get">
+                    <div class="search_form">
+                        <input type="search" placeholder="모임을 검색해 보세요" id= "keyword" name="keyword">
+                        <input type="hidden" id="cat" name="moimCategoryNum" value=7>
+                        <button class="search_button">
+                            <img src="\imgs\moimmoimUi\search2.png" class="search_icon"alt="search" width="30px" height="30px">
+                        </button>
+                        <!-- <input type="submit"/>  이거 어떤 역할인가요..? 어떻게 적용시켜야 할지 모르겠어요.-->
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </header>
 <!--헤더 끝-->
 
-
 <main>
 <!-- HOST LIST 시작-->
     <div class="main_container">
-    <!--툴바(필터 및 정렬 기능)-->
-    <div class="toolbar">
-        <!-- 호스트리스트 필터 -->
-        <div class="filter">
-            <div class="dropdown">
-                <button class="dropbtn">
-                    <span class="dropbtn_icon">호스트 레벨</span>
-                </button>
-                <div class="dropdown-hostlevel">
-                    <a>뉴비 호스트</a>
-                    <a>주니어 호스트</a>
-                    <a>시니어 호스트</a>
-                    <a>슈퍼 호스트</a>
-                </div>
-            </div>
-            <!-- 별점리스트 필터 -->
-            <div class="dropdown">
-                <button class="dropbtn">
-                    <span class="dropbtn_icon">별점</span>
-                </button>
-                <div class="dropdown-stars">
-                    <a><span class="stars">3</span>점 이상</a>
-                    <a><span class="stars">3.5</span>점 이상</a>
-                    <a><span class="stars">4</span>점 이상</a>
-                    <a><span class="stars">4.5</span>점 이상</a>
-                </div>
+        <!--카테고리 이동-->
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'tab1')">🍴 먹기</button>
+            <button class="tablinks" onclick="openTab(event, 'tab2')">🎞 보기</button>
+            <button class="tablinks" onclick="openTab(event, 'tab3')">🎨 배우기</button>
+            <button class="tablinks" onclick="openTab(event, 'tab4')">🎈 힐링하기</button>
+            <button class="tablinks" onclick="openTab(event, 'tab5')">🎠 체험하기</button>
+        </div>
+        <!--정렬 버튼-->
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="\imgs\moimmoimUi\sort.png" alt="사진1"; class="sort_image" width="30px" height="25px;">
+            </button>
+            <div class="dropdown-sort">
+                <a>정렬기준 1</a>
+                <a>정렬기준 2</a>
+                <a>정렬기준 3</a>
+                <a>정렬기준 4</a>
             </div>
         </div>
-        <div class="sort">
-            <div class="dropdown">
-                <button class="dropbtn">
-                    <span class="dropbtn_icon">정렬 기준</span>
-                </button>
-                <div class="dropdown-sort">
-                    <a>정렬기준 1</a>
-                    <a>정렬기준 2</a>
-                    <a>정렬기준 3</a>
-                    <a>정렬기준 4</a>
-                </div>
-            </div>
 
-        </div>
-
-
-
-    </div>
-    <!-- 모임 목록 -->
+        <!--모임 리스트 -->
         <ol class="list">
             <c:forEach items="${list}" var="list" varStatus="status">
             <li>
-                <figure>
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="host_photo">
-                    <div class="host_info">
-                        <div class="host_level">${locList[status.index].locationName}</div>        <!--장소-->
-                        <div class="host_reputation">
-                            <span class="host_stars">${list.moimCreateDate}</span>        <!--모임 시작 시간-->
-                        </div>
-                        <div class="host_name">${list.moimTitle}</div>              <!--모임 제목-->
-                        <div class="host_introduction">${list.moimMainContent}</div> <!--모임 소개-->
+                <a href="#"><figure>
+                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
+                    <div class="info">
+                        <div class="moim_location">서울시 종로구 평창동 <!--${locList[status.index].locationName}장소--></div>
+                        <div class="title">페루 쉐프가 소개해주는 페루 음식 <!--${list.moimTitle}모임 제목--> </div>
+                        <div class="moim_time">2023년 6월 18일 11시 <!--${list.moimCreateDate}모임 시작 시간--> </div>
+                        <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> </div>
+                        <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> </div>
+<!-- JSTL 수정 필요!! -->
                     </div>
-                </figure>
+                </figure></a>
             </li>
             </c:forEach>
         </ol>
-        <hr>
-        <!--페이징 시작 -->
-        <ul class="paging">
-            <c:if test="${paging.prev}">
-                <span><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'>이전</a></span>
-            </c:if>
-            <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                <span><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${num}"/>'>${num}</a></span>
-            </c:forEach>
-            <c:if test="${paging.next && paging.endPage>0}">
-                <span><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'>다음</a></span>
-            </c:if>
-        </ul>
-        <!--페이징 끝 -->
+
+        <!--페이징 수정중 -->
+        <div>
+            <ul class="paging">
+                <c:if test="${paging.prev}">
+                    <button><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'><img src="res/img/prevPage.png" class="paging_icon" alt="prev"></a></button>
+                </c:if>
+                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                    <button class="paging_num"><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${num}"/>'>${num}</a></button>
+                </c:forEach>
+                <c:if test="${paging.next && paging.endPage>0}">
+                    <button><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'><img src="res/img/nextPage.png" class="paging_icon" alt="next"></a></button>
+                </c:if>
+            </ul>
+        </div>
     </main>
 
 
 <!-- 푸터 시작-->
     <footer>
         <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="res/img/logo_white.png" alt="logo" width="200px"></a>
+            <div class="footer_logo_menu">
+                <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>

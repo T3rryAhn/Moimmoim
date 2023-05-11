@@ -1,7 +1,6 @@
 /* Web Font Load*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
-
 /* 전체 공통 설정 (링크 연결된 텍스트 밑줄 X, 텍스트 디폴트 색상 검정)*/
 *{
   text-decoration-line: none;
@@ -60,7 +59,7 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
-  border: 1px solid black;
+  border: 1px solid rgb(24, 39, 19);
 }
 .header_menu:hover{
   background-color: darkgreen;

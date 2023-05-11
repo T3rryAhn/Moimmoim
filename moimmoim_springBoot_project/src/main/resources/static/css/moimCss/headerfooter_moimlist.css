@@ -73,6 +73,27 @@ header, footer {
   margin-left: 30px;
 }
 
+.header_login {
+  width: 85px;
+  height: 18px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 15px 10px;
+  font-size: 14px;
+  /* padding: 5px 0px; */
+  padding: 6px 0px;
+  text-align: center;
+  border-radius: 20px;
+}
+.sign_in{
+  background-color: rgb(249, 255, 246);
+  color:rgb(24, 39, 19);
+}
+.login{
+  background-color: rgb(17, 151, 65);
+  color:white;
+}
+
+
 
 /*search 부분*/
 #search{
@@ -130,6 +151,7 @@ input {
   margin: auto;
 }
 
+
 input.img-button {
   background: url("res/img/image.png") no-repeat;
   border: none;
@@ -154,7 +176,8 @@ button{
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.fotter_logo_menu,
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;
