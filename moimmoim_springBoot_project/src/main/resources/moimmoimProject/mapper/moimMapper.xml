@@ -82,8 +82,9 @@
                      FROM MOIM_POST
         ]]>
                      <where>
-                        <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
-                    </where>
+                         <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+                         <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+                     </where>
         <![CDATA[
                      ORDER BY MOIM_NUM DESC
                      ) MOIM_POST
@@ -97,6 +98,7 @@
         FROM MOIM_POST
         <where>
             <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
         </where>
     </select>
 

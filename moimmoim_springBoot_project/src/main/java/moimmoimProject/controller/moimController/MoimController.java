@@ -36,16 +36,16 @@ public class MoimController {
     }   // 모임 생성 페이지로 이동
 
     @GetMapping("/moim/getMoim/list")    // 모임 리스트
-    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
+    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum,@Param("keyword") String keyword, Model model, Criteria cri) {
         if(moimCategoryNum==null) moimCategoryNum = 6L;     // 카테고리 default 값
-
+        if(keyword==null) keyword = "";
         // 이게 int 이여야 함
-        int moimListCnt = moimService.moimListCnt(moimCategoryNum);
+        int moimListCnt = moimService.moimListCnt(moimCategoryNum,keyword);
         Paging paging = new Paging();
         paging.setCri(cri);
         paging.setTotalCount(moimListCnt);
 
-        List<Map<String, Object>> list = moimService.moimList(cri,moimCategoryNum);
+        List<Map<String, Object>> list = moimService.moimList(keyword, cri, moimCategoryNum);
         List<LocationDo> locList = moimService.getLocList(list);
 
         model.addAttribute("moimCategoryNum",moimCategoryNum);      // 페이징 용
