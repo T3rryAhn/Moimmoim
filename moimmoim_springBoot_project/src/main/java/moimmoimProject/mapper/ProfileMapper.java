@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface ProfileMapper {
 
     ProfileDo findByUserIdNum(@Param("userIdNum") Long userIdNum);
+    void updateProfileImage(ProfileDo profileDo);
 }
