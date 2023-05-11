@@ -46,12 +46,12 @@ public class MoimService {
         moimMapper.deleteMoim(moimNum);
     }
 
-    public int moimListCnt(Long moimCategoryNum){
-        return moimMapper.moimListCnt(moimCategoryNum);
+    public int moimListCnt(Long moimCategoryNum,String keyword){
+        return moimMapper.moimListCnt(moimCategoryNum,keyword);
     }
 
-    public List<Map<String, Object>> moimList(Criteria cri,Long moimCategoryNum){
-        return moimMapper.moimList(cri,moimCategoryNum);
+    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri){
+        return moimMapper.moimList(moimCategoryNum, keyword, cri);
     }
 
     public LocationDo findLocName(MoimDo moimDo){

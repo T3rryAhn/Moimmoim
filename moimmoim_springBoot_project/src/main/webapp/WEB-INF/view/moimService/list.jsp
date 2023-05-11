@@ -31,7 +31,11 @@
     <div id="search">
         <div class="search_bar">
             <img src="res/img/search.png" width="37.33px">
-            <input type="search" placeholder="호스트를 검색해 보세요">
+            <form action="/moim/getMoim/list" method="get">
+                <input type="text" placeholder="검색해보세요" id= "keyword" name="keyword">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=7>
+            <input type="submit"/>
+            </form>
         </div>
     </div>
 </header>
