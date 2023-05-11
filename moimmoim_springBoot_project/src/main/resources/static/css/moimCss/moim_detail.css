@@ -5,6 +5,9 @@
   font-family: 'Noto Sans kr', sans-serif;
   font-size: 16px;
 }
+form{
+    margin: 0px;
+}
 .container {
   width: 1060px;
   height: auto;
