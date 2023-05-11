@@ -1,6 +1,7 @@
 package moimmoimProject.mapper;
 
 import moimmoimProject.domain.moimDomain.Criteria;
+import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,7 +20,6 @@ public interface MoimMapper {
 
     void createMoim(MoimDo moimDo);                     // 모임 작성
 
-
     void deleteMoim(Long moimNum);                     // 모임 삭제
 
     void countView(Long moimNum);                      // 조회수 카운트
@@ -30,4 +30,13 @@ public interface MoimMapper {
     LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환
 
     void plusMemberCount(Long moimNum);
+
+    void imageEnroll(ImageDTO imageDTO);
+
+    List<ImageDTO> imageList(Long moimNum);
+
+    void insertImage(String path, Long moimNum);
+
+    List<LocationDo> locList1 ();
+
 }

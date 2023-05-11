@@ -1,24 +1,24 @@
 package moimmoimProject.controller.moimController;
 
 import lombok.AllArgsConstructor;
-import moimmoimProject.domain.moimDomain.Criteria;
-import moimmoimProject.domain.moimDomain.LocationDo;
-import moimmoimProject.domain.moimDomain.MoimDo;
-import moimmoimProject.domain.moimDomain.Paging;
+import lombok.extern.log4j.Log4j2;
+import moimmoimProject.domain.moimDomain.*;
 import moimmoimProject.service.MoimService;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.util.*;
 
 @Controller
 @AllArgsConstructor
+@Log4j2
 public class MoimController {
 
     private final MoimService moimService;
@@ -29,7 +29,9 @@ public class MoimController {
     }   // 테스트 용
 
     @GetMapping("/moim/new")
-    public String moimForm() {
+    public String moimForm(Model model) {
+        List<LocationDo> locList1 = moimService.locList1();
+        model.addAttribute("locList1",locList1);
         return "moimService/moimWrite";
     }   // 모임 생성 페이지로 이동
 
@@ -37,6 +39,7 @@ public class MoimController {
     public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, Model model, Criteria cri) {
         if(moimCategoryNum==null) moimCategoryNum = 1L;     // 카테고리 default 값
 
+        // 이게 int 이여야 함
         int moimListCnt = moimService.moimListCnt(moimCategoryNum);
         Paging paging = new Paging();
         paging.setCri(cri);
@@ -62,8 +65,12 @@ public class MoimController {
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
-        moimService.CountView(moimNum);                                                 // 조회수 증가
+        moimService.CountView(moimNum);// 조회수 증가
+        List<ImageDTO> imageList = moimService.imageList(moimNum);
 
+
+
+        model.addAttribute("imageList", imageList);
         model.addAttribute("category", category);
         model.addAttribute("locationDo", locationDo);
         model.addAttribute("moimDo", moimDo);
@@ -71,8 +78,19 @@ public class MoimController {
     }
 
     @PostMapping("/moim/new")               // 새로운 모임 생성
-    public String createNewMoim(@Param("MoimDo") MoimDo moimDo){
+    public String createNewMoim(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile){
+        File uploadPath =  moimService.makeFolder();    // 폴더 생성
+        List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
+
+        String path = moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
+        moimDo.setMoimImage(path);
         moimService.createMoim(moimDo);
+        for (MultipartFile multipartFile : uploadFile) {    // 사진들 파일 업로드
+            ImageDTO imageDTO = moimService.makePath(multipartFile,uploadPath,moimDo.getMoimNum());
+            list.add(imageDTO);
+        }   // end for
+
+        moimService.imageEnroll(list);
         return "moimService/index";
     }
 

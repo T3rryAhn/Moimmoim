@@ -127,6 +127,15 @@
 </div>
 </main>
 
+           <h2> 대표사진</h2>
+           <img src=/files/${moimDo.moimImage} alt="My Image" style="width:100px; height:100px;">
+           </hr>
+           <h2>사진들</h2>
+           <c:forEach items="${imageList}" var="ImageDTO">
+                <img src=/files/${ImageDTO.uploadPath}${ImageDTO.uuid}-${ImageDTO.fileName} alt="My Image"style="width:100px; height:100px;">
+           </c:forEach>
+
+           <!--<img src="/files/2023/05/10/801d6934-86a7-4671-af9e-15a5ecf4481b-2.jpg" alt="My Image" >-->
 
 <!--
        <p> 모임 넘버 : ${moimDo.moimNum}</p>

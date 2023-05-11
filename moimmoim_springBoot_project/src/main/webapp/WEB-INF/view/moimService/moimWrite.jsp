@@ -1,4 +1,6 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -42,15 +44,27 @@
     <div class="section_title">
         <img src="\imgs\moimmoimUi\bar.png"; class="green_bar"> 모임글 작성하기
     </div>
-    <form action="/moim/new" method="post">
+    <form action="/moim/new" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <div class="box box1">
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
-                <input class="textbox" type="text" id="moimCategoryNum" name="moimCategoryNum" placeholder="모임 카테고리를 선택해 주세요 (또는 작성해 주세요? )">
+                <select name="moimCategoryNum">
+                    <option value="">카테고리를 선택하세요.</option>
+                    <option value="1">먹기</option>
+                    <option value="2">보기</option>
+                    <option value="3">배우기</option>
+                    <option value="4">힐링하기</option>
+                    <option value="5">체험하기</option>
+                </select>
             </div>
             <div class="box box2">
-                <label for="moimLocationNum" class="form_name">위치</label>
-                <input class="textbox" type="text" id="moimLocationNum" name="moimLocationNum" placeholder="모임의 시작 위치를 선택해 주세요.">
+                <label for="moimLocationNum" class="form_name">지역 선택</label>
+                <select name="moimLocationNum" id="moimLocationNum">
+                   <option value="">시작 지역을 선택하세요.</option>
+                     <c:forEach var="list" items="${locList1}">
+                     	<option value="${list.locationNum}">${list.locationName}</option>
+                    </c:forEach>
+                 </select>
             </div>
             <div class="box box3">
                 <label for="moimStartDate" class="form_name">모임 시작일</label>
@@ -73,9 +87,12 @@
                 <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요.">
             </div>
             <div class="box box8">
-                <label for="moimImage" class="form_name">사용할 사진</label>
-                <input class="textbox" type="text" id="moimImage" name="moimImage" placeholder="모임 사진을 업로드 해주세요.">
+               <label for="sigFile">대표사진</label>
+               <input type="file" name="sigFile" id="sigFile" style="display:none"/>
+               <label for="uploadFile">소개 사진</label>
+               <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
             </div>
+
             <div class="box box9">
                 <label for="moimTitle" class="form_name">모임 제목</label>
                 <input class="textbox title" type="text" id="moimTitle" name="moimTitle" placeholder="모임 제목을 작성해 주세요.">
