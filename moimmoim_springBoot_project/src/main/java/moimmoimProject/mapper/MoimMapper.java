@@ -12,8 +12,6 @@ import java.util.Map;
 @Mapper
 public interface MoimMapper {
 
-    // MoimDo findByMoimNum(Long userIdNum);
-
     List<MoimDo> findAllByUserIdNum(Long userIdNum);    // 유저의 생성 모임들 찾기
 
     MoimDo findAllByMoimNum(Long moimNum);              // 모임 찾기

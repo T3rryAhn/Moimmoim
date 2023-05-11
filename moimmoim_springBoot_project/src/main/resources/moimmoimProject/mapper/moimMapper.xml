@@ -44,12 +44,6 @@
         WHERE MOIM_NUM = #{moimNum}
     </select>
 
-    <select id="findByMoimNum" parameterType="map" resultMap="moimResultMap">
-        SELECT *
-        FROM MOIM_POST
-        WHERE MOIM_NUM = #{moimNum}
-    </select>
-
     <insert id="createMoim" parameterType="moimDo">
         <selectKey keyProperty="moimNum" resultType="Long" order="BEFORE">
             SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL

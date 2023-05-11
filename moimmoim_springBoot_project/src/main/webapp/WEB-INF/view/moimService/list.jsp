@@ -1,6 +1,7 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -101,10 +102,14 @@
                     <div class="host_info">
                         <div class="host_level">${locList[status.index].locationName}</div>        <!--장소-->
                         <div class="host_reputation">
-                            <span class="host_stars">${list.moimCreateDate}</span>        <!--모임 시작 시간-->
+                            <span class="host_stars">
+                                <tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /> <!--모임 시작 시간-->
+                            </span>
                         </div>
                         <div class="host_name">${list.moimTitle}</div>              <!--모임 제목-->
-                        <div class="host_introduction">${list.moimMainContent}</div> <!--모임 소개-->
+                        <div class="host_introduction">${list.moimPrice}원</div> <!--모임 소개-->
+                        <div class="host_introduction">${list.moimMemberCount}명</div> <!--모임 소개-->
+
                     </div>
                 </figure>
                 </a>

@@ -79,7 +79,7 @@ public class MoimService {
     public String getCatName(int moimCategoryNum){
         String catName="";
         switch (moimCategoryNum){
-            case 1 : catName = "먹기";
+            case 1 : catName = "\uD83C\uDF74 먹기";
                 break;
             case 2 : catName = "보기";
                 break;

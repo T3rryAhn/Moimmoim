@@ -1,5 +1,6 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -71,11 +72,11 @@
                     <div>
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 모임 시작 시간</dt>
-                            <dd class="moim_info_content">2023년 5월 16일 13:00  ${moimDo.moimStartDate}</dd>
+                            <dd class="moim_info_content">2023년 5월 16일 13:00  <tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></dd>
                         </dl>
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 모임 종료 시간</dt>
-                            <dd class="moim_info_content">2023년 5월 16일 20:00  ${moimDo.moimEndDate}</dd>
+                            <dd class="moim_info_content">2023년 5월 16일 20:00  <tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></dd>
                         </dl>
 
                         <dl class="moim_info">
