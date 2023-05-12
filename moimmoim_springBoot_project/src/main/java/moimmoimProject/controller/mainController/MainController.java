@@ -31,10 +31,10 @@ public class MainController {
 
         model.addAttribute("moimListPopular", moimListPopular);
         model.addAttribute("moimListEat", moimListEat); // 4개 먹기 리스트
-        model.addAttribute("moimListLook", moimListLook);// 4개 먹기 리스트
-        model.addAttribute("moimListLearn", moimListLearn);// 4개 먹기 리스트
-        model.addAttribute("moimListHeal", moimListHeal);// 4개 먹기 리스트
-        model.addAttribute("moimListActive", moimListActive);// 4개 먹기 리스트 // moimListActive[0]?
+        model.addAttribute("moimListLook", moimListLook);// 4개 보기 리스트
+        model.addAttribute("moimListLearn", moimListLearn);// 4개 배우기 리스트
+        model.addAttribute("moimListHeal", moimListHeal);// 4개 힐링하기 리스트
+        model.addAttribute("moimListActive", moimListActive);// 4개 체험하기 리스트
 
         return "/main";
     }
