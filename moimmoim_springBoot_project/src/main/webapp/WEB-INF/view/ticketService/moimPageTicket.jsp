@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ticketCss/moimPageTicket.css">
 
     <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
 
         window.addEventListener('message', function(event) {
@@ -69,6 +70,15 @@
             // 추가한 URL 삭제
             window.history.back();
         }
+
+    //간단 프로필 로드
+    $(document).ready(function() {
+        const userIdNum = '${moimDo.moimHostUserIdNum}';
+        $.get(`/users/userSimpleProfile/${userIdNum}`, function(data) {
+            $('#user-profile').html(data);
+        });
+    });
+
     </script>
     <!-- JavaScript 끝-->
 
@@ -91,8 +101,9 @@
         <!-- 티켓 오른-->
         <div class="ticket-right">
             <p>${moimDo.moimTitle}</p>
+            <br><br>
             <p>호스트</p>
-            <p><a href="/users/userSimpleProfile/${moimDo.moimHostUserIdNum}">${moimDo.moimHostUserIdNum}의 userSimpleProfile</a></p>
+            <div id="user-profile"style="width: 50%; height: 50%;"></div>
         </div>
     </div>
     <!-- 티켓 끝-->

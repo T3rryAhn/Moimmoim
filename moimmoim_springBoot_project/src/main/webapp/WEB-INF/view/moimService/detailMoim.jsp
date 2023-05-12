@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
 
     <script>
+    //티켓 삽입을 위한 스크립트
       $(document).ready(function() {
         $.get("/test/ticket/${moimDo.moimNum}/${userIdNum}", function(data) {
           $("#insertContent").html(data);
