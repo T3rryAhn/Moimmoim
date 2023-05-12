@@ -23,6 +23,15 @@
         <result column="LOCATION_NUM" property="moimLocationNum" jdbcType="BIGINT" />
     </resultMap>
 
+    <select id="findAllex" parameterType="moimDo">
+        SELECT *
+        FROM MOIM_POST
+        <where>
+            <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+        </where>
+    </select>
+
     <select id="findAllByUserIdNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
@@ -35,10 +44,16 @@
         WHERE MOIM_NUM = #{moimNum}
     </select>
 
-    <select id="findByMoimNum" parameterType="map" resultMap="moimResultMap">
+    <select id="findAllbyPopular" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
         SELECT *
-        FROM MOIM_POST
-        WHERE MOIM_NUM = #{moimNum}
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 4 AND MOIM_DEAD_CHECK=0
+        ]]>
     </select>
 
     <insert id="createMoim" parameterType="moimDo">
@@ -80,7 +95,12 @@
                 FROM (
                      SELECT *
                      FROM MOIM_POST
-                     WHERE CATEGORY_NUM = #{moimCategoryNum}
+        ]]>
+                     <where>
+                         <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+                         <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
+                     </where>
+        <![CDATA[
                      ORDER BY MOIM_NUM DESC
                      ) MOIM_POST
                 WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
@@ -91,6 +111,10 @@
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
+        <where>
+            <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+        </where>
     </select>
 
     <select id="findLocationName" resultType="LocationDo">
@@ -105,6 +129,74 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
+    <insert id="imageEnroll">
+        <selectKey resultType="Long" keyProperty="moimNum" order="AFTER">
+            SELECT MOIM_NUM_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into IMAGE(UUID, UPLOADPATH, FILENAME, MOIM_NUM)
+        values (#{uuid}, #{uploadPath}, #{fileName}, #{moimNum})
 
+    </insert>
+
+    <select id="imageList" resultType="ImageDTO">
+        SELECT *
+        FROM IMAGE
+        WHERE MOIM_NUM = #{moimNum}
+    </select>
+    
+    <select id="locList1" resultType="LocationDo">
+        SELECT *
+        FROM MOIM_LOCATION
+        WHERE FRONTCODE = 1100000000
+    </select>
+
+    <update id="insertImage">
+        UPDATE MOIM_POST m
+        set m.MOIM_PICTURES = #{path}
+        WHERE m.MOIM_NUM = #{moimNum}
+    </update>
+
+    <select id="findAll" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT MOIM_POST.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+                     FROM MOIM_POST
+                     ORDER BY MOIM_NUM DESC
+                     ) MOIM_POST
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+
+    <select id="findByCategory" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 5 AND CATEGORY_NUM = #{moimCategoryNum} AND MOIM_DEAD_CHECK=0
+        ]]>
+    </select>
+
+    <insert id="joinMoim">
+        <selectKey resultType="Long" keyProperty="no" order="BEFORE">
+            SELECT MOIM_MEM_NO_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into MOIM_MEM(MOIMHOSTUSERIDNUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
+        values (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
+    </insert>
+
+
+    <select id="findMoimed" resultType="Long">
+        SELECT MOIM_NUM
+        FROM MOIM_MEM
+        WHERE JOIN_NUM = #{joinNum}
+    </select>
 
 </mapper>

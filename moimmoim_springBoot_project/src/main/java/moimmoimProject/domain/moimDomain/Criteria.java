@@ -1,5 +1,9 @@
 package moimmoimProject.domain.moimDomain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+
 public class Criteria {
 
     // 특정 페이지 조회를 위한 클래스
@@ -48,6 +52,7 @@ public class Criteria {
         }
 
     }
+
 
     @Override
     public String toString() {

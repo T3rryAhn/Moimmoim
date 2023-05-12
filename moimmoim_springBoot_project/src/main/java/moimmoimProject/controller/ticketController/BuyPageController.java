@@ -1,6 +1,7 @@
 package moimmoimProject.controller.ticketController;
 
 import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.moimDomain.MoimMemDo;
 import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
@@ -33,7 +34,15 @@ public class BuyPageController {
 
     }
     @GetMapping("/buyPage/{moimNum}")
-    public String showBuyPage(@PathVariable Long moimNum, @RequestParam Long userIdNum, Model model) {
+    public String showBuyPage(@PathVariable Long moimNum, HttpSession session, Model model) {
+
+        Long userIdNum = (Long) session.getAttribute("userIdNum");
+
+        if(userIdNum == null) {
+            // 여기에 로그인하지 않은 사용자를 위한 처리를 작성합니다.
+            model.addAttribute("errorMsg", "로그인 필요.");
+            return "/login"; // 예: 로그인 페이지로 리다이렉트
+        }
 
         UserDo userDo = userMapper.findByUserIdNum(userIdNum);
         MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
@@ -82,5 +91,27 @@ public class BuyPageController {
         } else {
             return "주문이 존재하지 않습니다.";
         }
+    }
+
+    @PostMapping("/updateOrderStatus")
+    public void updateOrder(@RequestParam String orderNum, String orderStatus) {
+        orderStatus = "결제 완료";
+        orderMapper.updateOrderStatus(orderNum, orderStatus);
+
+    }
+
+    @PostMapping("/buySuccess")
+    public String showBuySuccessPage(@RequestParam String orderNum, HttpSession session) {
+        //  Long userIdNum = (Long) session.getAttribute("userIdNum");      // 세션에서 받음
+        Long userIdNum = 1L;    // 테스트 용
+        String[] parts = orderNum.split("/");
+        Long moimNum = Long.parseLong((parts[1]));
+        moimMapper.plusMemberCount(moimNum);
+
+        MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
+        moimMapper.joinMoim(userIdNum, moimDo);
+
+
+        return "location.reaload();";
     }
 }

@@ -112,5 +112,11 @@ public class UsersController {
 
         return ResponseEntity.ok().body("success");
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/main";
+    }
 }
 

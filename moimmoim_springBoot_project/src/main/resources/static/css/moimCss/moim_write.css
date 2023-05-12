@@ -44,7 +44,13 @@ input[type="date"]{
   height: 40px;
   font-weight: 700;
   line-height: 38px;
-
+}
+.select_box{
+  width: 361.33px;
+  height: 46.33px;
+  border: 1px lightgray solid;
+  border-radius: 5px;
+  padding: 5px;
 }
 .textbox{
   width: 350px;

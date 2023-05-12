@@ -37,7 +37,11 @@
             <input type="hidden" id="cat" name="moimCategoryNum" value=5>
             <button type="submit">체험하기</button>
     </form>
-    <hr/>
+
+    <form action="/moim/getMoim/list" method="get">
+            <input type="hidden" id="cat" name="moimCategoryNum" value=6>
+            <button type="submit">전체보기</button>
+    </form>
 
     <h2> --모임 생성-- </h2>
     <form action="/moim/new" method="get">
@@ -51,7 +55,9 @@
                 <button type="submit">모임상세</button>
     </form>
 
+    <h2> --파일 업로드-- </h2>
 
+        <hr/>
 
     </body>
 </html>

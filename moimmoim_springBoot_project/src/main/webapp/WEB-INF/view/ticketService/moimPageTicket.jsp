@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <html>
 <head>
 
@@ -10,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ticketCss/moimPageTicket.css">
 
     <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
 
         window.addEventListener('message', function(event) {
@@ -38,6 +40,17 @@
             window.history.pushState(null, null, url);
         }
 
+        // 이벤트 리스너를 추가하여 'buySuccess' 메시지를 처리합니다.
+        window.addEventListener('message', function(event) {
+          if (event.data === 'buySuccess') {
+            // 결제 성공 시 실행할 코드를 이곳에 추가하세요.
+            const successUrl = '/buySuccess'; // 여기에 성공 페이지 URL을 입력하세요.
+            const iframe = document.getElementById("buy-page-iframe");
+            iframe.src = successUrl;
+            iframe.contentWindow.location.reload();
+          }
+        }, false);
+
         /* 주석처리로 기능해제해놓음.
         // 모달 외부를 클릭하면 모달을 닫습니다.
         window.onclick = function(event) {
@@ -57,6 +70,15 @@
             // 추가한 URL 삭제
             window.history.back();
         }
+
+    //간단 프로필 로드
+    $(document).ready(function() {
+
+        $.get(`/users/userSimpleProfile/${moimDo.moimHostUserIdNum}`, function(data) {
+            $('#user-profile').html(data);
+        });
+    });
+
     </script>
     <!-- JavaScript 끝-->
 
@@ -79,8 +101,9 @@
         <!-- 티켓 오른-->
         <div class="ticket-right">
             <p>${moimDo.moimTitle}</p>
+            <br><br>
             <p>호스트</p>
-            <p><a href="/users/userSimpleProfile/${moimDo.moimHostUserIdNum}">${moimDo.moimHostUserIdNum}의 userSimpleProfile</a></p>
+            <div id="user-profile"style="width: 50%; height: 50%;"></div>
         </div>
     </div>
     <!-- 티켓 끝-->
