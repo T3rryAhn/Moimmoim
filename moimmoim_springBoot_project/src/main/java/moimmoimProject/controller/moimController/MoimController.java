@@ -30,6 +30,8 @@ public class MoimController {
         return "moimService/index";
     }   // 테스트 용
 
+
+
     @GetMapping("/moim/new")
     public String moimForm(Model model) {
         List<LocationDo> locList1 = moimService.locList1();
@@ -51,6 +53,7 @@ public class MoimController {
         List<LocationDo> locList = moimService.getLocList(list);
 
         model.addAttribute("moimCategoryNum",moimCategoryNum);      // 페이징 용
+        moimCategoryNum = null;
         model.addAttribute("locList",locList);                      // 지역 리스트
         model.addAttribute("list", list);                           // 모임 리스트
         model.addAttribute("paging", paging);                       // 페이징 정보
