@@ -65,7 +65,7 @@
     <a href="내가 만든 모임 페이지 링크"><button>내가 만든 모임</button></a>
     <br>
     <a href="리뷰 페이지 링크"><button>리뷰 모아보기</button></a>
-    <a href="내가 참가한 모임 페이지 링크"><button>내가 참가한 모임</button></a>
+    <a href="myPage/myJoinMoim"><button>내가 참가한 모임</button></a>
     <br>
     </main>
 <!--main 끝 -->

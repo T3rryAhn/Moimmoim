@@ -1,6 +1,7 @@
 package moimmoimProject.controller.ticketController;
 
 import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.moimDomain.MoimMemDo;
 import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
@@ -100,11 +101,16 @@ public class BuyPageController {
     }
 
     @PostMapping("/buySuccess")
-    public String showBuySuccessPage(@RequestParam String orderNum) {
-
+    public String showBuySuccessPage(@RequestParam String orderNum, HttpSession session) {
+        //  Long userIdNum = (Long) session.getAttribute("userIdNum");      // 세션에서 받음
+        Long userIdNum = 1L;    // 테스트 용
         String[] parts = orderNum.split("/");
         Long moimNum = Long.parseLong((parts[1]));
         moimMapper.plusMemberCount(moimNum);
+
+        MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
+        moimMapper.joinMoim(userIdNum, moimDo);
+
 
         return "location.reaload();";
     }
