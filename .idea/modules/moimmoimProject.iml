@@ -7,11 +7,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/out" />
     </content>
-    <content url="file://$MODULE_DIR$/../../moimmoim_springBoot_project">
-      <excludeFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/.gradle" />
-      <excludeFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/out" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

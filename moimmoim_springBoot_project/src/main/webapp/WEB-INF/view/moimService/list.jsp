@@ -1,6 +1,7 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -97,12 +98,13 @@
         <ol class="list">
             <c:forEach items="${list}" var="list" varStatus="status">
             <li>
-                <a href="#"><figure>
+                <a href="getMoim?moimNum=${list.moimNum}">
+                <figure>
                     <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
                     <div class="info">
                         <div class="moim_location">서울시 종로구 평창동 <!--${locList[status.index].locationName}장소--></div>
                         <div class="title">페루 쉐프가 소개해주는 페루 음식 <!--${list.moimTitle}모임 제목--> </div>
-                        <div class="moim_time">2023년 6월 18일 11시 <!--${list.moimCreateDate}모임 시작 시간--> </div>
+                        <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                         <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> <!-- JSTL 수정 필요 --> </div>
                         <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> <!-- JSTL 수정 필요 --> </div>
                     </div>
