@@ -33,7 +33,15 @@ public class BuyPageController {
 
     }
     @GetMapping("/buyPage/{moimNum}")
-    public String showBuyPage(@PathVariable Long moimNum, @RequestParam Long userIdNum, Model model) {
+    public String showBuyPage(@PathVariable Long moimNum, HttpSession session, Model model) {
+
+        Long userIdNum = (Long) session.getAttribute("userIdNum");
+
+        if(userIdNum == null) {
+            // 여기에 로그인하지 않은 사용자를 위한 처리를 작성합니다.
+            model.addAttribute("errorMsg", "로그인 필요.");
+            return "/login"; // 예: 로그인 페이지로 리다이렉트
+        }
 
         UserDo userDo = userMapper.findByUserIdNum(userIdNum);
         MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);

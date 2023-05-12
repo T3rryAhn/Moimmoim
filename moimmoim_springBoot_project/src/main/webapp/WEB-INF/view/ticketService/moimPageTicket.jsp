@@ -73,8 +73,8 @@
 
     //간단 프로필 로드
     $(document).ready(function() {
-        const userIdNum = '${moimDo.moimHostUserIdNum}';
-        $.get(`/users/userSimpleProfile/${userIdNum}`, function(data) {
+
+        $.get(`/users/userSimpleProfile/${moimDo.moimHostUserIdNum}`, function(data) {
             $('#user-profile').html(data);
         });
     });
