@@ -50,7 +50,7 @@
             <c:forEach items="${moimListPopular}" var="list" varStatus="status">
                 <li class="popular"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
                     <figure>
-                        <img src="/files/${i.moimImage}" alt="사진1"; class="popular_photo">
+                        <img src="/files/${list.moimImage}" alt="사진1"; class="popular_photo">
                         <div class="moim_info">
                             <div class="moim_title">${list.moimTitle}</div>
                         </div>

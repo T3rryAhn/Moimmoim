@@ -26,7 +26,7 @@
 
     <insert id="insertProfileDefault" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
         INSERT INTO PROFILE
-        VAULES (
+        VALUES (
             #{userIdNum},
             '/default_image.png',
             (select avg(star) from users u, review r
@@ -39,4 +39,5 @@
             where u.userid_num = m.userid_num and u.userid_num = ${userIdNum})
         )
     </insert>
+
 </mapper>
