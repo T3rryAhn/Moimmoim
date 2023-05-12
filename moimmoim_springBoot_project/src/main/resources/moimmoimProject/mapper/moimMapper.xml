@@ -100,6 +100,9 @@
                          <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
                          <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
                      </where>
+                    <trim prefix="ORDER BY">
+                        <if test="sorting == 1">  A.WB_SALE_COUNT DESC </if>
+                    </trim>
         <![CDATA[
                      ORDER BY MOIM_NUM DESC
                      ) MOIM_POST

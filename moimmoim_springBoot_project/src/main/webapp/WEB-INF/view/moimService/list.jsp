@@ -102,10 +102,10 @@
                 <img src="\imgs\moimmoimUi\sort.png" alt="사진1"; class="sort_image" width="30px" height="25px;">
             </button>
             <div class="dropdown-sort">
-                <a>정렬기준 1</a>
-                <a>정렬기준 2</a>
-                <a>정렬기준 3</a>
-                <a>정렬기준 4</a>
+                <a href="/moim/getMoim/list">
+                   <input type="hidden" id="sort" name="sorting" value=0>최신순</a>
+                <a href="/moim/getMoim/list">
+                   <input type="hidden" id="sort" name="sorting" value=1>조회순</a>
             </div>
         </div>
 
