@@ -30,8 +30,8 @@ public class MoimService {
         return moimMapper.findAllByMoimNum(moimNum);
     }
 
-    public List<MoimDo> getMoimByUserIdNum(Long userNum){
-        return moimMapper.findAllByUserIdNum(userNum);
+    public List<MoimDo> getMoimByUserIdNum(Long userIdNum){
+        return moimMapper.findAllByUserIdNum(userIdNum);
     }
 
     public void createMoim(MoimDo moimDo) {

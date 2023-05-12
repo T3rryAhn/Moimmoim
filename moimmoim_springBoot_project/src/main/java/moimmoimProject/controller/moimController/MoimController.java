@@ -68,7 +68,7 @@ public class MoimController {
         model.addAttribute("moimList", MoimList);
         return "";  // 페이지 삽입해야함
     }
-    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 리스트를 찾음
+    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 찾음
     public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model, HttpSession session){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환

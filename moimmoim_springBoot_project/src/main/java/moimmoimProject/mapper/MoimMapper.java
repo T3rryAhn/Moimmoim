@@ -50,4 +50,8 @@ public interface MoimMapper {
     List<MoimDo> findAllex(String keyword, Long moimCategoryNum);
 
     List<Long> findMoimed(Long joinNum);
+
+    List<Long> findByHost(Long userIdNum);
+
+    List<Map<String, Object>> joinMoimList(Long moimCategoryNum, String keyword, Criteria cri, Long sorting);
 }
