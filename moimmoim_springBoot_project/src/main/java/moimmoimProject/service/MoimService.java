@@ -50,7 +50,7 @@ public class MoimService {
         return moimMapper.moimListCnt(moimCategoryNum,keyword);
     }
 
-    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword, Criteria cri){
+    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri){
         return moimMapper.moimList(moimCategoryNum, keyword, cri);
     }
 
@@ -80,10 +80,14 @@ public class MoimService {
         return list;
     }
 
+    public List<MoimDo> getMoimByCategory(Long moimCategoryNum) {
+        return moimMapper.findByCategory(moimCategoryNum);
+    }
+
     public String getCatName(int moimCategoryNum){
         String catName="";
         switch (moimCategoryNum){
-            case 1 : catName = "\uD83C\uDF74 먹기";
+            case 1 : catName = "먹기";
                 break;
             case 2 : catName = "보기";
                 break;

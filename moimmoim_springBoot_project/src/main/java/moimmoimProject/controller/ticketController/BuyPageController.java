@@ -92,7 +92,12 @@ public class BuyPageController {
     }
 
     @PostMapping("/buySuccess")
-    public String showBuySuccessPage() {
-        return "ticketService/buySuccess";
+    public String showBuySuccessPage(@RequestParam String orderNum) {
+
+        String[] parts = orderNum.split("/");
+        Long moimNum = Long.parseLong((parts[1]));
+        moimMapper.plusMemberCount(moimNum);
+
+        return "location.reaload();";
     }
 }

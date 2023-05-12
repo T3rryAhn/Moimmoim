@@ -116,6 +116,14 @@
                   //alert("결제에 실패하였습니다.");
 
                   //실패해도 성공한것처럼 하기. 테스트용
+                  $.ajax({
+                                          type: "POST",
+                                          url: "/buySuccess",
+                                          data: {
+                                              orderNum: "${orderNum}",
+
+                                          }
+                      });
                    $.ajax({
                       type: "POST",
                       url: "/updateOrderStatus",
@@ -124,6 +132,9 @@
                           imp_uid: rsp.imp_uid, // 아임포트에서 발급한 고유 번호
                           status: "결제 완료"
                       },
+
+
+
                       success: function (data) {
                           // 구매 성공 페이지로 이동
                           console.log('Sending paymentSuccess message');
@@ -134,6 +145,7 @@
                           //alert("결제 정보 업데이트 중 오류가 발생했습니다.");
                             window.parent.postMessage('buySuccess', '*');
                                                     alert("결제 성공");
+                            window.parent.location.href = "redirect:moim/getMoim/getMoim";
 
                       }
                   });

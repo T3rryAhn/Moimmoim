@@ -1,8 +1,11 @@
 package moimmoimProject.controller.testPageController;
 
+import lombok.RequiredArgsConstructor;
+import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
+import moimmoimProject.mapper.ProfileMapper;
 import moimmoimProject.mapper.UserMapper;
 import moimmoimProject.service.MoimService;
 import moimmoimProject.service.userService.UserService;
@@ -12,16 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.util.*;
+
 @Controller
+@RequiredArgsConstructor
 public class TestHomeController {
     private final MoimMapper moimMapper;
     private final UserMapper userMapper;
 
-    TestHomeController(MoimMapper moimMapper, UserMapper userMapper) {
-
-        this.moimMapper = moimMapper;
-        this.userMapper = userMapper;
-    }
 
     @GetMapping("/")
     public String testHome() {

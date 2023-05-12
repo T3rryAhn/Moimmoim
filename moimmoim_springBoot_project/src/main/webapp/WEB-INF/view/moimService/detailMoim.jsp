@@ -1,6 +1,9 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -10,6 +13,14 @@
     <title>MOIMMOIM :: 모임글 보기</title>
     <link rel="stylesheet" href="/css/moimCss/moim_detail.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
+
+    <script>
+      $(document).ready(function() {
+        $.get("/test/ticket/${moimDo.moimNum}/${userIdNum}", function(data) {
+          $("#insertContent").html(data);
+        });
+      });
+    </script>
 </head>
 
 <body>
@@ -20,7 +31,13 @@
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
+            <a href="#" class="header_menu">고객센터</a>
+            <c:if test="${sessionScope.userIdNum==null}">
+                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
     </div>
 
@@ -122,9 +139,8 @@
             </div>
         </div>
 
-        <div>
-          <jsp:include page="/WEB-INF/view/ticketService/moimPageTicket.jsp" />
-        </div>
+          <div id="insertContent"></div>
+
 
         <div class="box box6">
             <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>

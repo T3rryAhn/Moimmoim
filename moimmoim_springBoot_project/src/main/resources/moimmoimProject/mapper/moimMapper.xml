@@ -23,6 +23,15 @@
         <result column="LOCATION_NUM" property="moimLocationNum" jdbcType="BIGINT" />
     </resultMap>
 
+    <select id="findAllex" parameterType="moimDo">
+        SELECT *
+        FROM MOIM_POST
+        <where>
+            <if test="moimCategoryNum != 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+        </where>
+    </select>
+
     <select id="findAllByUserIdNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
@@ -33,6 +42,18 @@
         SELECT *
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
+    </select>
+
+    <select id="findAllbyPopular" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 4 AND MOIM_DEAD_CHECK=0
+        ]]>
     </select>
 
     <insert id="createMoim" parameterType="moimDo">
@@ -148,6 +169,18 @@
                 WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
                 )
             WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+
+    <select id="findByCategory" parameterType="map" resultMap="moimResultMap">
+        <![CDATA[
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM MOIM_POST
+                 ORDER BY MOIM_VIEWS DESC
+             ) MOIM_POST
+        WHERE ROWNUM < 5 AND CATEGORY_NUM = #{moimCategoryNum} AND MOIM_DEAD_CHECK=0
         ]]>
     </select>
 
