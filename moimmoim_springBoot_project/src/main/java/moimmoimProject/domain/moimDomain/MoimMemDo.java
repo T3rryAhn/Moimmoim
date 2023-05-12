@@ -11,4 +11,8 @@ public class MoimMemDo {
     private int reviewCheck;
     private Long joinNum;
     private Long no;
+
+    public MoimMemDo() {
+
+    }
 }

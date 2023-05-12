@@ -188,39 +188,15 @@
         <selectKey resultType="Long" keyProperty="no" order="BEFORE">
             SELECT MOIM_MEM_NO_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-        insert into MOIM_MEM(USERID_NUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
-        values (#{userIdNum}, #{moimNum}, #{reviewCheck}, #{joinNum}, 0)
+        insert into MOIM_MEM(MOIMHOSTUSERIDNUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
+        values (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
     </insert>
 
-    <select id="findJoinMoim" parameterType="map" resultMap="moimResultMap">
-        <![CDATA[
-            SELECT *
-            FROM (
-                SELECT MOIM_POST.*, ROWNUM rnum
-                FROM (
-                     SELECT *
-                     FROM (
-                            SELECT *
-                            FROM MOIM_MEM
-                            WHERE JOIN_NUM = #{joinNum}
-                           ) MOIM_POST
-        ]]>
-                    <where>
-                        <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
-                        <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
-                    </where>
-        <![CDATA[
-                     ORDER BY MOIM_NUM DESC
-                     ) MOIM_POST
-                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
-                )
-            WHERE rnum > #{cri.pageStart}
-        ]]>
+
+    <select id="findMoimed" resultType="Long">
+        SELECT MOIM_NUM
+        FROM MOIM_MEM
+        WHERE JOIN_NUM = #{joinNum}
     </select>
-
-
-
-
-
 
 </mapper>
