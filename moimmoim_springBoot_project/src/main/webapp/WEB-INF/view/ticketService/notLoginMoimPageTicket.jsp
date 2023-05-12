@@ -54,7 +54,7 @@
 
 <!-- 구매 버튼 -->
 <button onclick="openBuyPageModal()" style="float:right; font-size: 30px;" ${moimDo.moimMemberMax == moimDo.moimMemberCount ? 'disabled' : ''}>
-  ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '구매하기'}
+  ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '로그인 필요'}
 </button>
 
 
