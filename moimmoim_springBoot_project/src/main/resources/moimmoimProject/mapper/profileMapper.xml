@@ -23,4 +23,20 @@
     <update id="updateProfileImage" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
         UPDATE PROFILE SET USER_PROFILE_IMAGE = #{userProfileImage} WHERE USERID_NUM = #{userIdNum}
     </update>
+
+    <insert id="insertProfileDefault" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
+        INSERT INTO PROFILE
+        VAULES (
+            #{userIdNum},
+            '/default_image.png',
+            (select avg(star) from users u, review r
+            where u.userid_num = r.userid_num and u.userid_num = ${userIdNum}),
+            (SELECT SUBSTR(BIRTH, 1, 4)
+            FROM USERS
+            WHERE USERID_NUM = ${userIdNum}),
+            '안녕하세요',
+            (select count(moim_num) from users u, moim_post m
+            where u.userid_num = m.userid_num and u.userid_num = ${userIdNum})
+        )
+    </insert>
 </mapper>
