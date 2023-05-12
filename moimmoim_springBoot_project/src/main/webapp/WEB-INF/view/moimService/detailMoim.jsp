@@ -1,5 +1,6 @@
 <%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -89,11 +90,11 @@
                     <div>
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 모임 시작 시간</dt>
-                            <dd class="moim_info_content">2023년 5월 16일 13:00  ${moimDo.moimStartDate}</dd>
+                            <dd class="moim_info_content"><tf:formatDateTime value="${moimDo.moimStartDate}" pattern="yyyy-MM-dd HH:mm" /></dd>
                         </dl>
                         <dl class="moim_info">
                             <dt class="moim_info_title"> 모임 종료 시간</dt>
-                            <dd class="moim_info_content">2023년 5월 16일 20:00  ${moimDo.moimEndDate}</dd>
+                            <dd class="moim_info_content"><tf:formatDateTime value="${moimDo.moimEndDate}" pattern="yyyy-MM-dd HH:mm" /></dd>
                         </dl>
 
                         <dl class="moim_info">
@@ -109,24 +110,24 @@
                 <div class="detail_box middle">
                     <dl class="moim_info">
                         <dt class="moim_info_title">모임 가격</dt>
-                        <dd class="moim_info_content">20,000  ${moimDo.moimPrice}원/1인</dd>
+                        <dd class="moim_info_content">${moimDo.moimPrice}원/1인</dd>
                     </dl>
                     <dl class="moim_info">
                         <dt class="moim_info_title">모집 마감일</dt>
-                        <dd class="moim_info_content">2023년 5월 14일  ${moimDo.moimDeadLine}</dd>
+                        <dd class="moim_info_content"><tf:formatDateTime value="${moimDo.moimDeadLine}" pattern="yyyy-MM-dd" /></dd>
                     </dl>
 
                     <dl class="moim_info">
                         <dt class="moim_info_title">모집 마감 여부</dt>
-                        <dd class="moim_info_content">모집중  ${moimDo.moimDeadCheck}</dd>
+                        <dd class="moim_info_content">모집중 ${moimDo.moimDeadCheck}</dd>
                     </dl>
                 </div>
                 <div class="detail_box bottom">
                     <dl class="moim_info">
                         <dt class="moim_info_title"> 모임 위치</dt>
-                        <dd class="moim_info_content">서울특별시 종로구 평창동  ${moimDo.moimLocationNum}, ${locationDo.locationName}</dd>
+                        <dd class="moim_info_content">${locationDo.locationName}</dd>
                     </dl>
-                    <p class="created_date">모임 생성 일시: 2023년 5월 9일  ${moimDo.moimCreateDate}</p>
+                    <p class="created_date"><tf:formatDateTime value="${moimDo.moimCreateDate}" pattern="yyyy-MM-dd" /></p>
                 </div>
 
             </div>
