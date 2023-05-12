@@ -77,22 +77,22 @@
         <div class="tab">
             <form action="/moim/getMoim/list" method="get">
                 <input type="hidden" id="cat" name="moimCategoryNum" value=1>
-                <button class="tablinks active" onclick="openTab(event, 'tab1')">🍴 먹기</button>
+                <button class="tablinks" onclick="openTab(event, 'tab2')">🍴 먹기</button>
             </form>
             <form action="/moim/getMoim/list" method="get">
-                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <input type="hidden" id="cat" name="moimCategoryNum" value=2>
                 <button class="tablinks" onclick="openTab(event, 'tab2')">🎞 보기</button>
             </form>
             <form action="/moim/getMoim/list" method="get">
-                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <input type="hidden" id="cat" name="moimCategoryNum" value=3>
                 <button class="tablinks" onclick="openTab(event, 'tab3')">🎨 배우기</button>
             </form>
             <form action="/moim/getMoim/list" method="get">
-                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <input type="hidden" id="cat" name="moimCategoryNum" value=4>
                 <button class="tablinks" onclick="openTab(event, 'tab4')">🎈 힐링하기</button>
             </form>
             <form action="/moim/getMoim/list" method="get">
-                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <input type="hidden" id="cat" name="moimCategoryNum" value=5>
                 <button class="tablinks" onclick="openTab(event, 'tab5')">🎠 체험하기</button>
             </form>
         </div>
