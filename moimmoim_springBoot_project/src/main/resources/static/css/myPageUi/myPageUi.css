@@ -1,15 +1,206 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
-
-button {
-  background-color: rgb(17, 151, 65);
-  border: none;
-  padding: 10px 20px;
-  text-align: left;
-  font-size: 20px;
-  font-weight: 700;
-  margin:4px 2px;
-  width: 300px;
-  height: 80px;
-  border-radius: 10px;
+*{
+  text-decoration-line: none;
+  color: black;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 60px auto 100px;
+  grid-template-areas: 'header' 'main' 'footer';
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+header {
+  grid-area: header;
+  padding: 0px;
+background: rgb(24, 39, 19);
+color: white;
+}
+#header_container{
+width: 1060px;
+margin: 0 auto;
+align-items: center;
+display: flex;
+margin-bottom: 16px;
+text-align: right;
+justify-content: space-between;
+}
+#logo{
+width: 180px;
+margin: 3px 0px;
+align-items: center;
+align-self: flex-start;
 }
 
+#login_icon{
+width: 40px;
+margin: 4px 0px 0px 30px;
+}
+
+.header_font{
+font-family: 'Montserrat', sans-serif;
+color: rgb(255, 255, 255);
+font-size: 23px;
+width: 180px;
+height: 20px;
+text-align: center;
+padding: 20px 0px;
+
+}
+
+footer {
+grid-area: footer;
+padding: 0px;
+background: rgb(24, 39, 19);
+color: white;
+
+}
+#footer_container{
+width: 1060px;
+margin: 10px auto;
+position: relative;
+align-items: center;
+align-content: center;
+display: flex;
+text-align: right;
+justify-content: space-between;
+
+}
+.footer_font{
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 12px;
+font-weight: 400;
+color: rgb(255, 255, 255);
+}
+
+main {
+  grid-area: main;
+  width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  grid-gap: 0px 40px;
+  justify-content: center;
+}
+.section_profile {
+  /* background-color: aquamarine; */
+  width: 184.84px;
+  height: 900px;
+
+  position: relative;
+
+}
+.profile_list{
+  /* display: flex; */
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-content: center;
+  padding-top: 30px;
+}
+
+
+.one, .two{
+  border-bottom: 1px dashed gray;
+
+}
+
+.picture{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile_info{
+  height: 150px;
+  white-space: nowrap;
+  padding: 5px;
+  position: relative;
+}
+
+.moimcount::before{
+  content: "/";
+  margin: 0 0.5px;
+  padding-right: 2px;
+}
+
+.avgstar, .moimcount{
+  display: inline-block;
+
+}
+
+.profile_text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+  line-height: 2;
+
+}
+
+.level {
+  color: rgb(71, 190, 31);
+}
+
+.nick {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.interestedcat {
+  font-weight: bolder;
+}
+
+.rightpart{
+  margin-top: 100px;
+}
+.section_header {
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 20px;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.section_title {
+  display: flex;
+  height: 26px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 22px;
+  align-items: center;
+  align-content: center;
+
+}
+
+.green_bar {
+  height: 80%;
+  margin-right: 5px;
+}
+
+
+button {
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(24, 39, 19);
+  color: white;
+  margin: 2px;
+  margin-top: 20px;
+}
+.profile_manager{
+  margin-bottom: 50px;
+}
+.moim_n_reviews{
+  margin-bottom: 50px;
+}
