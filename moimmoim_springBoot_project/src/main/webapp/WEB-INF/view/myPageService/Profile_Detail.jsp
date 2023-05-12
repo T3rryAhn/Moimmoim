@@ -73,14 +73,14 @@
             <div class="open_moim_list">
                 <c:choose>
                 <c:when test="${fn:length(moimDoList)>3}">
-                    <c:forEach items="${moimDoList}" var="moimDo" varStatus="status">
+                    <c:forEach items="${moimDoList}" var="moimDo" varStatus="openstatus">
                         <c:if test="${moimDo.moimDeadCheck eq 0}">
-                        <c:if test="${status.index le 3}">
+                        <c:if test="${openstatus.index le 3}">
                             <div class="open_moim">
                                 <a href="/">
                                     <img src="/files/${moimDo.moimImage}" alt="Picture 1" class="photo">
                                     <div class="moim_info">
-                                        <div class="moim_location_price">${locationList[status.index]}</div>
+                                        <div class="moim_location_price">${locationList[openstatus.index]}</div>
                                         <div class="moim_title">${moimDo.moimTitle}</div>
                                         <div class="moim_location_price">${moimDo.moimPrice}won/person</div>
                                     </div>
@@ -91,14 +91,14 @@
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach var="moimDoList" items="${moimDoList}" varStatus="status">
+                    <c:forEach var="moimDo" items="${moimDoList}" varStatus="openstatus">
                     <c:if test="${moimDo.moimDeadCheck eq 0}">
                     <div class="open_moim"><a href="/">
-                        <img src="/files/${moimDoList.moimImage}" alt="사진1"; class="photo">
+                        <img src="/files/${moimDo.moimImage}" alt="사진1"; class="photo">
                         <div class="moim_info">
-                            <div class="moim_location_price">${locationList[status.index]}</div>
-                            <div class="moim_title">${moimDoList.moimTitle}</div>
-                            <div class="moim_location_price">${moimDoList.moimPrice}원/1인</div>
+                            <div class="moim_location_price">${locationList[openstatus.index]}</div>
+                            <div class="moim_title">${moimDo.moimTitle}</div>
+                            <div class="moim_location_price">${moimDo.moimPrice}원/1인</div>
                         </div>
                     </a></div>
                     </c:if>
@@ -137,14 +137,14 @@
             <div class="closed_moim_list">
                 <c:choose>
                     <c:when test="${fn:length(moimDoList)>3}">
-                        <c:forEach items="${moimDoList}" var="moimDo" varStatus="status">
+                        <c:forEach items="${moimDoList}" var="moimDo" varStatus="closedstatus">
                             <c:if test="${moimDo.moimDeadCheck eq 1}">
-                                <c:if test="${status.index le 3}">
-                                    <div class="open_moim">
+                                <c:if test="${closedstatus.index le 2}">
+                                    <div class="closed_moim">
                                         <a href="/">
                                             <img src="/files/${moimDo.moimImage}" alt="Picture 1" class="photo">
                                             <div class="moim_info">
-                                                <div class="moim_location_price">${locationList[status.index]}</div>
+                                                <div class="moim_location_price">${locationList[closedstatus.index]}</div>
                                                 <div class="moim_title">${moimDo.moimTitle}</div>
                                                 <div class="moim_location_price">${moimDo.moimPrice}won/person</div>
                                             </div>
@@ -155,14 +155,14 @@
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach var="moimDoList" items="${moimDoList}" varStatus="status">
+                        <c:forEach var="moimDo" items="${moimDoList}" varStatus="closedstatus">
                             <c:if test="${moimDo.moimDeadCheck eq 1}">
-                                <div class="open_moim"><a href="/">
-                                    <img src="/files/${moimDoList.moimImage}" alt="사진1"; class="photo">
+                                <div class="closed_moim"><a href="/">
+                                    <img src="/files/${moimDo.moimImage}" alt="사진1"; class="photo">
                                     <div class="moim_info">
-                                        <div class="moim_location_price">${locationList[status.index]}</div>
-                                        <div class="moim_title">${moimDoList.moimTitle}</div>
-                                        <div class="moim_location_price">${moimDoList.moimPrice}원/1인</div>
+                                        <div class="moim_location_price">${locationList[closedstatus.index]}</div>
+                                        <div class="moim_title">${moimDo.moimTitle}</div>
+                                        <div class="moim_location_price">${moimDo.moimPrice}원/1인</div>
                                     </div>
                                 </a></div>
                             </c:if>

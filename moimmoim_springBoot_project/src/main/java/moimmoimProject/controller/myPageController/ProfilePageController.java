@@ -42,10 +42,10 @@ public class ProfilePageController {
         List<String> categoryList = new ArrayList<>();
         String categoryName = moimService.getCatName(profilePageDto.getUserProfileDto().getUserCategoryNum());
         String hostLevelName = profileService.getHostLevelName(profilePageDto.getUserProfileDto().getUserHostLevelNum());
-
         for (int i = 0; i < moimDoList.size(); i++) {
             locationList.add(moimService.findLocName(moimDoList.get(i)).getLocationName());
             categoryList.add(moimService.getCatName(moimDoList.get(i).getMoimCategoryNum()));
+            System.out.println(moimDoList.get(i));
         }
 
 
