@@ -77,7 +77,7 @@
                 <div class="detail_box middle">
                     <dl class="moim_info">
                         <dt class="moim_info_title"> 모임 카테고리</dt>
-                        <a href="#"><dd class="moim_info_content category">🍴 ${moimDo.moimCategoryNum},${category}</dd></a>
+                        <a href="#"><dd class="moim_info_content category">🍴 ${moimDo.moimCategoryNum}. ${category}</dd></a>
                     </dl>
                     <div>
                         <dl class="moim_info">
@@ -132,8 +132,9 @@
             </div>
         </div>
 
+        <div class="box box5">
           <div id="insertContent"></div>
-
+        </div>
 
         <div class="box box6">
             <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>
