@@ -74,14 +74,14 @@ public class MoimController {
 
 
         // 세션에서 사용자 ID를 검색합니다.
-//        Long userIdNum = (Long) session.getAttribute("userIdNum");
-//        model.addAttribute("userIdNum", userIdNum);
+        Long userIdNum = (Long) session.getAttribute("userIdNum");
+        model.addAttribute("userIdNum", userIdNum);
 
         model.addAttribute("imageList", imageList);
         model.addAttribute("category", category);
         model.addAttribute("locationDo", locationDo);
         model.addAttribute("moimDo", moimDo);
-        model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
+//        model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
 
         return "moimService/detailMoim";  // 페이지 삽입해야함
     }

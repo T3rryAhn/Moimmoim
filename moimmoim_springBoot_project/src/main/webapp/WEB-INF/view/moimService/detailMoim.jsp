@@ -17,7 +17,7 @@
     <script>
     //티켓 삽입을 위한 스크립트
       $(document).ready(function() {
-        $.get("/test/ticket/${moimDo.moimNum}/${userIdNum}", function(data) {
+        $.get("/ticket/forDetailMoim/${moimDo.moimNum}", function(data) {
           $("#insertContent").html(data);
         });
       });
