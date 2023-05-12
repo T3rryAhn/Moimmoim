@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,24 +33,26 @@ public class ProfilePageController {
     @GetMapping("/{userIdNum}")
     public String getProfilePage(@PathVariable Long userIdNum, Model model) {
         ProfileDo profileDo = profileMapper.findByUserIdNum(userIdNum);
-        List<MoimDo> moimDoList = moimService.getMoimByUserIdNum(userIdNum);
-        List<LocationDo> locationDoList = null;
-        List<String> categoryList = null;
-        String categoryName = moimService.getCatName(userIdNum.intValue());
-        String hostLevelName = profileService.getHostLevelName(userIdNum.intValue());
+        if(profileDo == null) {
+            profileMapper.insertProfileDefault(userIdNum); // 회원가입 직후에 프로필 객체가 없을 경우, 설정한 임의의 디폴트 값 insert
+        }
+        ProfilePageDto profilePageDto = profilePageAssembler.getProfilePage(userIdNum);
+        List<MoimDo> moimDoList = profilePageDto.getUserMoimList();
+        List<String> locationList = new ArrayList<>();
+        List<String> categoryList = new ArrayList<>();
+        String categoryName = moimService.getCatName(profilePageDto.getUserProfileDto().getUserCategoryNum());
+        String hostLevelName = profileService.getHostLevelName(profilePageDto.getUserProfileDto().getUserHostLevelNum());
 
-        for(int i = 0; i < moimDoList.size(); i++) {
-            locationDoList.add(moimService.findLocName(moimDoList.get(i)));
+        for (int i = 0; i < moimDoList.size(); i++) {
+            locationList.add(moimService.findLocName(moimDoList.get(i)).getLocationName());
             categoryList.add(moimService.getCatName(moimDoList.get(i).getMoimCategoryNum()));
         }
 
-        if(profileDo == null) {
-            profileMapper.insertProfileDefault(userIdNum);
-        }
-        ProfilePageDto profilePageDto = profilePageAssembler.getProfilePage(userIdNum);
+
         model.addAttribute("profilePageDto", profilePageDto);
-        model.addAttribute("category", categoryList);
-        model.addAttribute("locationDo", locationDoList);
+        model.addAttribute("moimDoList", moimDoList);
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("locationList", locationList);
         model.addAttribute("categoryName", categoryName);
         model.addAttribute("hostLevelName", hostLevelName);
 
