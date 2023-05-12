@@ -13,16 +13,16 @@ form{
   height: auto;
 }
 .form-group{
-  padding: 40px 70px;
+  padding: 40px 40px;
   display: grid;
-  grid-template-columns: 2fr 1.3fr;
+  grid-template-columns: 2fr 1.45fr;
   grid-template-areas:
   'box1 box1'
   'box2 box3'
   'box4 box4'
   'box5 box5' 
   'box6 box7'; 
-  grid-gap: 20px 35px;  
+  grid-gap: 20px 25px;
 }
 p {
   display: block;
@@ -64,10 +64,13 @@ p {
 .moim_creator_title{
   font-weight: bold;
   margin-right: 20px;
-  width: 90px;
+  width: 100px;
+  font-size: 20px;
 }
 .moim_creator_content{
-  margin: 0px;  
+  margin: 0px;
+  font-size: 20px;
+
 }
 .moim_info{
   display: flex;
@@ -76,17 +79,15 @@ p {
 }
 .moim_info_title{
   font-weight: bold;
-  font-size: 14px;
   margin-right: 20px;
-  width: 120px;
+  width: 140px;
 }
 .moim_info_content{
-  font-size: 14px;
   margin: 0px;  
 }
 .created_date{
   color: gray;
-  font-size: 12px;
+  font-size: 13px;
   text-align: right;
   margin-top: 20px;
 }
@@ -102,7 +103,7 @@ p {
   padding: 5px;
 }
 .moim_title{
-  font-size: 25px;
+  font-size: 26px;
   margin: 0px;
 }
 .green_bar {
@@ -111,7 +112,8 @@ p {
   top: 2px;
 }
 .moim_photo{
-  width: 100%;
+  width: 555px;
+  height: 410px;
 }
 .ticket{
   width: 600px;
@@ -141,6 +143,7 @@ p {
 .box3{
   /* background-color:rgb(235, 255, 243); */
   grid-area: box3;
+  width: 409px
 }
 .box4{
   /* background-color: red; */
@@ -149,7 +152,7 @@ p {
 .box5{
   /* background-color:rgb(71, 80, 87); */
   grid-area: box5;
-  margin-bottom: 25px;
+  margin: 0px auto 25px auto;
 }
 .box6{
   /* background-color:rgb(139, 223, 36); */

@@ -39,6 +39,7 @@ public class MyPageController {
         return "/myPageService/myPage";
     }
 
+
     @GetMapping("myPage/myJoinMoim")
     public String myJoinMoim(HttpSession session, String keyword, Criteria cri, Model model){
         //  Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
