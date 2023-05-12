@@ -75,11 +75,26 @@
     <div class="main_container">
         <!--카테고리 이동-->
         <div class="tab">
-            <button class="tablinks active" onclick="openTab(event, 'tab1')">🍴 먹기</button>
-            <button class="tablinks" onclick="openTab(event, 'tab2')">🎞 보기</button>
-            <button class="tablinks" onclick="openTab(event, 'tab3')">🎨 배우기</button>
-            <button class="tablinks" onclick="openTab(event, 'tab4')">🎈 힐링하기</button>
-            <button class="tablinks" onclick="openTab(event, 'tab5')">🎠 체험하기</button>
+            <form action="/moim/getMoim/list" method="get">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <button class="tablinks active" onclick="openTab(event, 'tab1')">🍴 먹기</button>
+            </form>
+            <form action="/moim/getMoim/list" method="get">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <button class="tablinks" onclick="openTab(event, 'tab2')">🎞 보기</button>
+            </form>
+            <form action="/moim/getMoim/list" method="get">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <button class="tablinks" onclick="openTab(event, 'tab3')">🎨 배우기</button>
+            </form>
+            <form action="/moim/getMoim/list" method="get">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <button class="tablinks" onclick="openTab(event, 'tab4')">🎈 힐링하기</button>
+            </form>
+            <form action="/moim/getMoim/list" method="get">
+                <input type="hidden" id="cat" name="moimCategoryNum" value=1>
+                <button class="tablinks" onclick="openTab(event, 'tab5')">🎠 체험하기</button>
+            </form>
         </div>
         <!--정렬 버튼-->
         <div class="dropdown">
@@ -102,11 +117,11 @@
                 <figure>
                     <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
                     <div class="info">
-                        <div class="moim_location">서울시 종로구 평창동 <!--${locList[status.index].locationName}장소--></div>
-                        <div class="title">페루 쉐프가 소개해주는 페루 음식 <!--${list.moimTitle}모임 제목--> </div>
+                        <div class="moim_location">${locList[status.index].locationName}</div>
+                        <div class="title">${list.moimTitle}</div>
                         <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
-                        <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> <!-- JSTL 수정 필요 --> </div>
-                        <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> <!-- JSTL 수정 필요 --> </div>
+                        <div class="moim_price">${list.moimPrice}원<!-- JSTL 수정 필요 --> </div>
+                        <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                     </div>
                 </figure></a>
             </li>
