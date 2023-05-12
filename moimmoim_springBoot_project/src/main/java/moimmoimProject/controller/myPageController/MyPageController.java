@@ -28,4 +28,5 @@ public class MyPageController {
 
         return "/myPageService/myPage";
     }
+
 }

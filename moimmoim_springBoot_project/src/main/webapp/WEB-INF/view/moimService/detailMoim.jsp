@@ -156,11 +156,6 @@
 </main>
 
 
-<!-- 구매 실패 메시지 -->
-<c:if test="${not empty errorMsg}">
-    <p style="color: red">${errorMsg}</p>
-</c:if>
-<!-- 구매 실패 메시지 끝 -->
 
 
     <footer>

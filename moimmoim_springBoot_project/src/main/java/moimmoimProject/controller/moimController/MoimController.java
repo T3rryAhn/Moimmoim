@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.*;
 
@@ -20,6 +21,7 @@ import java.util.*;
 @AllArgsConstructor
 @Log4j2
 public class MoimController {
+
 
     private final MoimService moimService;
 
@@ -56,14 +58,14 @@ public class MoimController {
     }
 
 
-    @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 모임 넘버로 모임을 찾음
+    @PostMapping("moim/getMoim/{moimHostUserIdNum}")    // 유저 넘버로 모임을 찾음
     public String findMoimByUserId(@PathVariable("moimHostUserIdNum") Long userNum, Model model){
         List<MoimDo> MoimList= moimService.getMoimByUserIdNum(userNum);
         model.addAttribute("moimList", MoimList);
         return "";  // 페이지 삽입해야함
     }
-    @GetMapping("moim/getMoim/getMoim")    // 유저 넘버로 모임 리스트를 찾음
-    public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model){
+    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 리스트를 찾음
+    public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model, HttpSession session){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
@@ -71,12 +73,16 @@ public class MoimController {
         List<ImageDTO> imageList = moimService.imageList(moimNum);
 
 
+        // 세션에서 사용자 ID를 검색합니다.
+//        Long userIdNum = (Long) session.getAttribute("userIdNum");
+//        model.addAttribute("userIdNum", userIdNum);
 
         model.addAttribute("imageList", imageList);
         model.addAttribute("category", category);
         model.addAttribute("locationDo", locationDo);
         model.addAttribute("moimDo", moimDo);
         model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
+
         return "moimService/detailMoim";  // 페이지 삽입해야함
     }
 
