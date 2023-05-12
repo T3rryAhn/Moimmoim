@@ -104,10 +104,7 @@
                     <div class="info">
                         <div class="moim_location">서울시 종로구 평창동 <!--${locList[status.index].locationName}장소--></div>
                         <div class="title">페루 쉐프가 소개해주는 페루 음식 <!--${list.moimTitle}모임 제목--> </div>
-                        <div class="moim_time">2023년 6월 18일 11시 <!--${list.moimCreateDate}모임 시작 시간--> </div>
-                        <span class="host_stars">
-                            <tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /> <!--모임 시작 시간-->
-                        </span>
+                        <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                         <div class="moim_price">30,000원 <!--${list.moimCreateDate}가격--> <!-- JSTL 수정 필요 --> </div>
                         <div class="num_of_people">3명 참여중 <!--${list.moimCreateDate}참여인원--> <!-- JSTL 수정 필요 --> </div>
                     </div>
