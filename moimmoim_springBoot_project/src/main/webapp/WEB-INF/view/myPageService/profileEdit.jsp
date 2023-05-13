@@ -119,16 +119,15 @@
          </main>
     <footer>
         <div id="footer_container">
-            <div id="logo" ><a href="/"><img src="img/logo_white.png" alt="logo" width="200px"></a></div>
+            <div id="logo" ><a href="/"><img src="/imgs/userService/whiteLogo.png" alt="logo" width="200px"></a></div>
             <a href="/" class="footer_font">개인정보 처리방침</a>
             <a href="/" class="footer_font">기타 필요메뉴</a>
             <a href="/" class="footer_font">메뉴구성</a>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
             <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+        </div>
     </footer>
 </body>
 </html>
