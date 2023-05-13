@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -121,6 +122,9 @@
             <a href="/" class="footer_font">개인정보 처리방침</a>
             <a href="/" class="footer_font">기타 필요메뉴</a>
             <a href="/" class="footer_font">메뉴구성</a>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
             <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
         </div>
             <!--푸터 메뉴 바 내용은 논의 필요
