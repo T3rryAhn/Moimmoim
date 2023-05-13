@@ -52,7 +52,6 @@
                         <button class="search_button">
                             <img src="\imgs\moimmoimUi\search2.png" class="search_icon"alt="search" width="30px" height="30px">
                         </button>
-                        <!-- <input type="submit"/>  이거.. 어떻게 적용시켜야 할지 모르겠어요ㅠ_ㅠ -->
                     </div>
                 </form>
             </div>

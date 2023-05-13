@@ -14,6 +14,7 @@
 
 /*카테고리 이동 버튼*/
 .tab {
+  width: 1060px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-evenly;
@@ -21,7 +22,7 @@
   align-content: center;
   }
 .tab button {
-  width: 300px;
+  width: 211px;
   height: 47px;
   background-color: white;
   color: black;
