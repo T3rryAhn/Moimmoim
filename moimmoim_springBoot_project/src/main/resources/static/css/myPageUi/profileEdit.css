@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
+*{
+    text-decoration-line: none;
+    color: black;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 60px auto 100px;
+    grid-template-areas: 'header' 'main' 'footer';
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+header {
+    grid-area: header;
+    padding: 0px;
+  background: rgb(24, 39, 19);
+  color: white;
+}
+#header_container{
+  width: 1060px;
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  margin-bottom: 16px;
+  text-align: right;
+  justify-content: space-between;
+}
+#logo{
+  width: 180px;
+  margin: 3px 0px;
+  align-items: center;
+  align-self: flex-start;
+}
+
+#login_icon{
+  width: 40px;
+  margin: 4px 0px 0px 30px;
+}
+
+.header_font{
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 23px;
+  width: 180px;
+  height: 20px;
+  text-align: center;
+  padding: 20px 0px;
+
+}
+
+footer {
+  grid-area: footer;
+  padding: 0px;
+background: rgb(24, 39, 19);
+color: white;
+
+}
+#footer_container{
+  width: 1060px;
+  margin: 10px auto;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  text-align: right;
+  justify-content: space-between;
+
+}
+.footer_font{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+.section_header {
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 20px;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.section_title {
+  display: flex;
+  height: 26px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  align-items: center;
+  align-content: center;
+  letter-spacing: -1px;
+}
+
+.green_bar {
+  height: 80%;
+  margin-right: 5px;
+}
+.allside{
+  grid-area: main;
+  width: 1060px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  grid-gap: 0px 40px;
+  justify-content: center;
+}
+.leftside {
+  /* background-color: aquamarine; */
+  width: 184.84px;
+  height: 900px;
+
+  position: relative;
+
+}
+.profile_list{
+  /* display: flex; */
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-content: center;
+  padding-top: 30px;
+}
+
+
+.one, .two{
+  border-bottom: 1px dashed gray;
+
+}
+
+.picture{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile_info{
+  height: 150px;
+  white-space: nowrap;
+  padding: 5px;
+  position: relative;
+}
+
+.moimcount::before{
+  content: "/";
+  margin: 0 0.5px;
+  padding-right: 2px;
+}
+
+.avgstar, .moimcount{
+  display: inline-block;
+
+}
+
+.profile_text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+  line-height: 2;
+
+}
+
+.level {
+  color: rgb(71, 190, 31);
+}
+
+.nick {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.interestedcat {
+  font-weight: bolder;
+}
+.section_introduce{
+  margin-bottom: 50px;
+}
+
+.rightside label{
+  font-size: large;
+}
+.introduce{
+  margin-top: 20px;
+}
+
+.profileedit{
+  list-style-type: none;
+  margin: 50px auto;
+}
+.profileedit li {
+  display: flex;
+  align-items: center;
+
+}
+
+.profileedit label {
+  width: 110px;
+  text-align: left;
+  margin-right: 10px;
+  font-size: large;
+}
+
+.profileedit input {
+  flex: 1;
+
+}
+
+.nicknameedit{
+  border: 1px solid black;
+  margin: 10px 100px 10px 10px;
+  border-radius: 5px;
+  height: 30px;
+
+}
+.phonenumberedit{
+  border: 1px solid black;
+  margin: 10px 100px 10px 10px;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.birthyearedit{
+  border: 1px solid black;
+  margin: 10px 100px 10px 10px;
+  border-radius: 5px;
+  flex: 1;
+  height: 30px;
+}
+.profile li:last-child {
+  margin-top: 10px;
+}
+#saveButton{
+  height: 40px;
+  width: 50px;
+  margin-top: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  border: 2px solid rgb(24, 39, 19);
+  background-color: rgb(24, 39, 19);
+  color: white;
+}
+
+
+
+

@@ -41,11 +41,10 @@
             </div>
             <div class="prolist two">
                 <div class="profile_info">
-                    <div class="profile_text birthyear">${profilePageDto.userProfileDto.userBirth}</div>
-                    <%--<div class="profile_text birthlocation">서울</div>--%>
-                    <div class="profile_text phonenumber">&#128241 ${profilePageDto.userProfileDto.phoneNum}</div>
-                    <div class="profile_text email">&#128231 ${profilePageDto.userProfileDto.userEmail}</div>
-                    <div class="profile_text createdate">${profilePageDto.userProfileDto.userCreateDate}</div>
+                    <div class="profile_text birthyear">출생: ${profilePageDto.userProfileDto.userBirth}</div>
+                    <div class="profile_text phonenumber">휴대폰: ${profilePageDto.userProfileDto.phoneNum}</div>
+                    <div class="profile_text email">이메일: ${profilePageDto.userProfileDto.userEmail}</div>
+                    <div class="profile_text createdate">가입일: ${profilePageDto.userProfileDto.userCreateDate}</div>
                 </div>
             </div>
             <div class="prolist three">
@@ -163,42 +162,7 @@
                 </c:choose>
             </div>
         </div>
-        <div class="section_reviews">
-            <div class="section_header">
-                <div class="section_title">
-                    <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> REVIEWS</div>
-            </div>
-            <div class="reviews_list">
-                <div class="reviews_content">
-                    <div class="reviews_nickname">DORIC</div>
-                    <div class="reviews_date">230101</div>
-                    <div class="reviews_text">재밌었어요</div>
-                    <img src="img/starpic.png" alt="평점"; class="reviews_starpoint">
-                </div>
 
-
-                <div class="reviews_content">
-                    <div class="reviews_nickname">DORIC</div>
-                    <div class="reviews_date">230101</div>
-                    <div class="reviews_text">재밌었어요</div>
-                    <img src="img/starpic.png" alt="평점"; class="reviews_starpoint">
-                </div>
-
-
-                <div class="reviews_content">
-                    <div class="reviews_nickname">DORIC</div>
-                    <div class="reviews_date">230101</div>
-                    <div class="reviews_text">재밌었어요</div>
-                    <img src="img/starpic.png" alt="평점"; class="reviews_starpoint">
-                </div>
-
-                <div class="reviews_content">
-                    <div class="reviews_nickname">DORIC</div>
-                    <div class="reviews_date">230101</div>
-                    <div class="reviews_text">재밌었어요</div>
-                    <img src="img/starpic.png" alt="평점"; class="reviews_starpoint">
-                </div>
-            </div>
         </div>
     </div>
 
@@ -214,11 +178,6 @@
         <c:if test="${sessionScope.userIdNum!=null}">
             <a href="/logout" class="footer_font">로그아웃</a>
         </c:if>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
         <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
     </div>
 </footer>
