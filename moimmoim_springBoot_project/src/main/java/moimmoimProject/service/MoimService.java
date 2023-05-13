@@ -30,8 +30,8 @@ public class MoimService {
         return moimMapper.findAllByMoimNum(moimNum);
     }
 
-    public List<MoimDo> getMoimByUserIdNum(Long userNum){
-        return moimMapper.findAllByUserIdNum(userNum);
+    public List<MoimDo> getMoimByUserIdNum(Long userIdNum){
+        return moimMapper.findAllByUserIdNum(userIdNum);
     }
 
     public void createMoim(MoimDo moimDo) {
@@ -50,8 +50,8 @@ public class MoimService {
         return moimMapper.moimListCnt(moimCategoryNum,keyword);
     }
 
-    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri){
-        return moimMapper.moimList(moimCategoryNum, keyword, cri);
+    public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri, Long sorting){
+        return moimMapper.moimList(moimCategoryNum, keyword, cri, sorting);
     }
 
     public List<Map<String, Object>> findJoinMoim(Long joinNum, String keyword, Criteria cri, Long moimCategoryNum){       // 내가 참가한 모임 구매 컨트롤러에 추가해야 함

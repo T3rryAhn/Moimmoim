@@ -43,7 +43,7 @@ public class MyPageController {
     @GetMapping("myPage/myJoinMoim")
     public String myJoinMoim(HttpSession session, String keyword, Criteria cri, Model model){
         //  Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
-        Long userIdNum = 1L;
+        Long userIdNum = 1L;    // 테스트 용
 
         List<Long> numList = moimService.findMoimed(userIdNum);     // 유저의 참가한 모임 넘 리스트를 얻음
         List<MoimDo> list = new ArrayList<>();
@@ -62,5 +62,14 @@ public class MyPageController {
         return "moimService/list";
     }
 
+    @GetMapping("myPage/myMadeMoim")
+    public String myMadeMoim(HttpSession session, String keyword, Criteria cri, Model model) {
+        //  Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
+        Long userIdNum = 1L;    // 테스트 용
+        List<MoimDo> list = moimService.getMoimByUserIdNum(userIdNum);
+
+        model.addAttribute("list", list);
+        return "moimService/list";
+    }
 
 }
