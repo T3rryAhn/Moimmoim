@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -35,14 +37,13 @@
     <header>
         <header>
         <div id="header_container">
-            <div id="main-logo" ><a href="/"><img src="img/logo.png" alt="logo" width="200px"></a></div>
-            <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="50px"></a></div>
-            <c:if test="${sessionScope.userIdNum==null}">
-                            <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
-                        </c:if>
-                        <c:if test="${sessionScope.userIdNum!=null}">
-                            <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
-                        </c:if>
+                    <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
+                        <c:if test="${sessionScope.userIdNum==null}">
+                        <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+                    </c:if>
+                    <c:if test="${sessionScope.userIdNum!=null}">
+                        <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                    </c:if>
         </div>
         </header>
     </header>
@@ -119,15 +120,15 @@
 <!--footer 시작-->
     <footer>
         <div id="footer_container">
-            <div id="whitelogo" ><a href="/"><img src="img/logo_white.png" alt="logo" width="200px"></a></div>
+            <div id="logo" ><a href="/"><img src="/imgs/userService/whiteLogo.png" alt="logo" width="200px"></a></div>
             <a href="/" class="footer_font">개인정보 처리방침</a>
             <a href="/" class="footer_font">기타 필요메뉴</a>
             <a href="/" class="footer_font">메뉴구성</a>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
             <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
         </div>
-            <!--푸터 메뉴 바 내용은 논의 필요
-                기존: 모임 목록, 모임 글 올리기, 호스트 목록, 마이페이지, 고객센터
-            -->
     </footer>
 <!--footer 끝-->
 
