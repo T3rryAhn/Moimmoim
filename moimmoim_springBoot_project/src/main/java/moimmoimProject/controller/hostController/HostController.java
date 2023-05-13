@@ -3,12 +3,16 @@ package moimmoimProject.controller.hostController;
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.Paging;
+import moimmoimProject.domain.userDomain.ProfileDo;
+import moimmoimProject.domain.userDomain.UserProfileDto;
 import moimmoimProject.service.ProfileService;
+import moimmoimProject.service.UserProfileAssembler;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +21,7 @@ import java.util.Map;
 public class HostController {
 
     private final ProfileService profileService;
+    private final UserProfileAssembler userProfileAssembler;
 
     /*@GetMapping("/hostList")
     public String hostList(@Param("keyword") String keyword, Model model, Criteria cri, Long sorting){
@@ -36,6 +41,9 @@ public class HostController {
         if(keyword==null) keyword = "";
         if(sorting==null) sorting = 0L;
 
+        List<String> nameList = profileService.getHostProfile();              // 레벨 값 리스트로 받아오기
+
+
         // 이게 int 이여야 함
         int profileListCnt = profileService.profileListCnt(moimCategoryNum, keyword);
         Paging paging = new Paging();
@@ -43,7 +51,11 @@ public class HostController {
         paging.setTotalCount(profileListCnt);
 
         List<Map<String, Object>> proList = profileService.findAllProfileDo(moimCategoryNum, keyword, cri, sorting);
+        List<String> list = profileService.getUser(proList);
+        List<String> levelList = new ArrayList<>();
 
+        model.addAttribute("list", list);
+        model.addAttribute("nameList", nameList);
         model.addAttribute("proList", proList);                           // 프로필 리스트
         model.addAttribute("paging", paging);                       // 페이징 정보
         return "profileService/hostlist";

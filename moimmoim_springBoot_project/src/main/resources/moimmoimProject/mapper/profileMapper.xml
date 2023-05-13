@@ -74,6 +74,18 @@
         </where>
     </select>
 
+    <select id="getName" resultType="String">
+        SELECT USER_NAME
+        FROM USERS
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+    <select id="getUserIdNum" resultType="Long">
+        SELECT HOST_LEVEL_NUM
+        FROM USERS
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
 
 
 </mapper>

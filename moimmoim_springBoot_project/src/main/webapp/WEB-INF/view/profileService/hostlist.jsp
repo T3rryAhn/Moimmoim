@@ -70,11 +70,11 @@
                 <figure>
                     <img src=/files/${proList.userProfileImage} alt="사진1"; class="photo">
                     <div class="host_info">
-                        <div class="host_level">슈퍼 호스트 따로 넣어라</div>
+                        <div class="host_level">${nameList[status.index]}</div>
                         <div class="host_reputation">
                             <span class="host_stars">${proList.userMoimReviewScoreAvg}</span>점 / <span class="number_of_times">${proList.userHostingCount}</span>회
                         </div>
-                        <div class="host_name">이것도 따로 넣어라</div>
+                        <div class="host_name">${list[status.index]}</div>
                         <div class="host_introduction">${proList.userIntroduction}</div>
                     </div>
                 </figure></a>
