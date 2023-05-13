@@ -32,37 +32,7 @@ public class ProfilePageController {
 
     @GetMapping("/{userIdNum}")
     public String getProfilePage(@PathVariable Long userIdNum, Model model) {
-        ProfileDo profileDo = profileMapper.findByUserIdNum(userIdNum);
-        if(profileDo == null) {
-            profileMapper.insertProfileDefault(userIdNum); // 회원가입 직후에 프로필 객체가 없을 경우, 설정한 임의의 디폴트 값 insert
-        }
-        ProfilePageDto profilePageDto = profilePageAssembler.getProfilePage(userIdNum);
-        List<MoimDo> moimDoList = profilePageDto.getUserMoimList();
-        List<MoimDo> openMoimDoList = new ArrayList<>();    // open에 표시할 모임 List
-        List<MoimDo> closedMoimDoList = new ArrayList<>();  // closed에 표시할 모임 List
-        List<String> locationList = new ArrayList<>();
-        List<String> categoryList = new ArrayList<>();
-        String categoryName = moimService.getCatName(profilePageDto.getUserProfileDto().getUserCategoryNum());
-        String hostLevelName = profileService.getHostLevelName(profilePageDto.getUserProfileDto().getUserHostLevelNum());
-        for (int i = 0; i < moimDoList.size(); i++) {
-            locationList.add(moimService.findLocName(moimDoList.get(i)).getLocationName());
-            categoryList.add(moimService.getCatName(moimDoList.get(i).getMoimCategoryNum()));
-            if(moimDoList.get(i).getMoimDeadCheck() == 0) {
-                openMoimDoList.add(moimDoList.get(i));
-            } else {
-                closedMoimDoList.add(moimDoList.get(i));
-            }
-        }
-
-
-        model.addAttribute("profilePageDto", profilePageDto);
-        model.addAttribute("moimDoList", moimDoList);
-        model.addAttribute("openMoimDoList", openMoimDoList);
-        model.addAttribute("closedMoimDoList", closedMoimDoList);
-        model.addAttribute("categoryList", categoryList);
-        model.addAttribute("locationList", locationList);
-        model.addAttribute("categoryName", categoryName);
-        model.addAttribute("hostLevelName", hostLevelName);
+        MyPageController.profileEditor(userIdNum, model, profileMapper, profilePageAssembler, moimService, profileService);
 
         /*return "/myPageService/profilePage";*/
         return "/myPageService/Profile_Detail";

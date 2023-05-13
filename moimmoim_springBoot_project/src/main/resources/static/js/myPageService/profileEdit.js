@@ -26,3 +26,7 @@ function previewImage(event) {
 
   reader.readAsDataURL(file);
 }
+
+function win_open(page, name) {
+  window.open('page', 'name', "width=150, height=150, left=0, top=0");
+}

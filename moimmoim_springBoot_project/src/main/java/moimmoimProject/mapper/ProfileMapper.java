@@ -22,4 +22,6 @@ public interface ProfileMapper {
     String getName(Long userIdNum);
 
     int getUserLevel(Long UserIdNum);
+
+    void updateIntroduce(String userIntroduction, String birth, Long userIdNum);
 }

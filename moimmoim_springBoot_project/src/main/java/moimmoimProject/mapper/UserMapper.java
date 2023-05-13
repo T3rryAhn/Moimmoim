@@ -25,4 +25,6 @@ public interface UserMapper {
 
 
     UserDo findByUserIdNum(@Param("userIdNum") Long userIdNum);
+
+    void userProfileEdit(String userNickname, String phoneNum, int categoryNum, Long userIdNum);
 }

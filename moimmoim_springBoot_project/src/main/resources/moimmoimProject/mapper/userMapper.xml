@@ -35,7 +35,14 @@
         where user_id = #{user.userId}
     </update>
 
-
+    <update id="userProfileEdit" parameterType="moimmoimProject.domain.userDomain.UserDo">
+        UPDATE USERS
+        SET
+            USER_NICKNAME = #{userNickname},
+            PHONE_NUM = #{phoneNum},
+            CATEGORY_NUM = #{categoryNum}
+        WHERE USERID_NUM = #{userIdNum}
+    </update>
 
     <resultMap id="userResultMap" type="moimmoimProject.domain.userDomain.UserDo">
         <id column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />

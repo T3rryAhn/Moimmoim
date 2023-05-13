@@ -35,7 +35,6 @@
                     <div class="profile_text level">${hostLevelName}</div>
                     <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>
                     <div class="profile_text name">${profilePageDto.userProfileDto.userName}</div>
-                    <div class="profile_text avgstar">${profilePageDto.userProfileDto.userMoimReviewScoreAvg}점</div>
                     <div class="profile_text moimcount">${profilePageDto.userProfileDto.userHostingCount}회</div>
                 </div>
             </div>
