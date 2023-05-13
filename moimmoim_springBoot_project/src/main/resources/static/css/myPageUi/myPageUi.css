@@ -115,7 +115,7 @@ main {
 }
 
 .profile_info{
-  height: 150px;
+  height: 130px;
   white-space: nowrap;
   padding: 5px;
   position: relative;
@@ -201,6 +201,6 @@ button {
 .profile_manager{
   margin-bottom: 50px;
 }
-.moim_n_reviews{
+.moim_manager{
   margin-bottom: 50px;
 }
