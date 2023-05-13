@@ -36,12 +36,14 @@
         SELECT *
         FROM MOIM_POST
         WHERE USERID_NUM = #{userIdNum}
+        ORDER BY MOIM_NUM DESC
     </select>
 
     <select id="findAllByMoimNum" parameterType="map" resultMap="moimResultMap">
         SELECT *
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
+        ORDER BY MOIM_NUM DESC
     </select>
 
     <select id="findAllbyPopular" parameterType="map" resultMap="moimResultMap">
@@ -100,8 +102,12 @@
                          <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
                          <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
                      </where>
+                    <trim prefix="ORDER BY">
+                        <if test="sorting == 0"> MOIM_NUM DESC </if>
+                        <if test="sorting == 1"> MOIM_VIEWS DESC </if>
+                    </trim>
         <![CDATA[
-                     ORDER BY MOIM_NUM DESC
+
                      ) MOIM_POST
                 WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
                 )

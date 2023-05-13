@@ -30,6 +30,8 @@ public class MoimController {
         return "moimService/index";
     }   // 테스트 용
 
+
+
     @GetMapping("/moim/new")
     public String moimForm(Model model) {
         List<LocationDo> locList1 = moimService.locList1();
@@ -38,19 +40,21 @@ public class MoimController {
     }   // 모임 생성 페이지로 이동
 
     @GetMapping("/moim/getMoim/list")    // 모임 리스트
-    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, @Param("keyword") String keyword, Model model, Criteria cri) {
+    public String moimList(@Param("moimCategoryNum") Long moimCategoryNum, @Param("keyword") String keyword, Model model, Criteria cri, Long sorting) {
         if(moimCategoryNum==null) moimCategoryNum = 6L;     // 카테고리 default 값
         if(keyword==null) keyword = "";
+        if(sorting==null) sorting = 0L;
         // 이게 int 이여야 함
         int moimListCnt = moimService.moimListCnt(moimCategoryNum, keyword);
         Paging paging = new Paging();
         paging.setCri(cri);
         paging.setTotalCount(moimListCnt);
 
-        List<Map<String, Object>> list = moimService.moimList(moimCategoryNum, keyword, cri);
+        List<Map<String, Object>> list = moimService.moimList(moimCategoryNum, keyword, cri, sorting);
         List<LocationDo> locList = moimService.getLocList(list);
 
         model.addAttribute("moimCategoryNum",moimCategoryNum);      // 페이징 용
+        moimCategoryNum = null;
         model.addAttribute("locList",locList);                      // 지역 리스트
         model.addAttribute("list", list);                           // 모임 리스트
         model.addAttribute("paging", paging);                       // 페이징 정보
@@ -64,7 +68,7 @@ public class MoimController {
         model.addAttribute("moimList", MoimList);
         return "";  // 페이지 삽입해야함
     }
-    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 리스트를 찾음
+    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 찾음
     public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model, HttpSession session){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
@@ -107,5 +111,6 @@ public class MoimController {
     public void countView(@PathVariable("moimNum") Long moimNum){
         moimService.CountView(moimNum);
     }
+
 
 }

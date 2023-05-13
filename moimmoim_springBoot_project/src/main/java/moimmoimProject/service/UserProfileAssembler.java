@@ -35,7 +35,9 @@ public class UserProfileAssembler {
                 profileDo.getUserBirth(),
                 userDo.getUserEmail(),
                 userDo.getCreateDate(),
-                userDo.getPhoneNum()
+                userDo.getPhoneNum(),
+                userDo.getCategoryNum(),
+                userDo.getHostLevelNum()
         );
 
         return userProfileDto;
