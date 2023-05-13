@@ -71,7 +71,11 @@
                 ${moimDo.moimTitle}</h1>
         </div>
         <div class="box box2">
-            <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
+            <ul class="slider-container simple-list" id="slider">
+                <li class="slide">
+                    <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
+                </li>
+            </ul>
         </div>
         <div class="box box3">
             <div >
@@ -178,5 +182,7 @@
             </div>
         </div>
     </footer>
+    <script src="\js.moimService\moim_detail.js"></script>
+
 </body>
 </html>

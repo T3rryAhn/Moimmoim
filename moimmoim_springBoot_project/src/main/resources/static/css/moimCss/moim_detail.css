@@ -172,3 +172,63 @@ p {
   padding: 0px 10px;
   white-space: pre-wrap;
 }
+
+/* 이미지 슬라이드 구현*/
+.box2{
+  position: relative;
+  overflow: hidden;
+}
+.slider-container{
+  position: absolute;
+  width: 100%;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+.slider-container.animated {
+	-webkit-transition: left .3s ease-in;
+	transition: left .3s ease-in;
+}
+.simple-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+#prev,
+#next {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
+#prev.disabled, #next.disabled {
+  display:none;
+}
+#prev {
+  background-image: url('res/img/arrow-left-out.png');
+  margin-left: -250px;
+}
+#prev:hover {
+  background-image: url('res/img/arrow-left-over.png');
+}
+#next{
+  margin-left: 200px;
+  background-image: url('res/img/arrow-right-out.png');
+}
+#next:hover{
+  background-image: url('res/img/arrow-right-over.png'); }
+
