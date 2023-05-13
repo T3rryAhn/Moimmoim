@@ -17,25 +17,20 @@
 <body>
 <!--헤더 시작-->
 <header>
-    <!--로그인 전 헤더-->
     <div id="header_container">
-        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
+        <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="#" class="header_menu">HOST LIST</a>
-            <a href="#" class="header_login login">LOG IN</a>
+            <a href="#" class="header_menu">고객센터</a>
+            <c:if test="${sessionScope.userIdNum==null}">
+                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
     </div>
-
-    <!--로그인 후 헤더-->
-    <!-- <div id="header_container">
-        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
-        <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
-            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
-        </div>
-    </div> -->
 </header>
 <!--헤더 끝-->
 
@@ -120,6 +115,9 @@
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
+                <c:if test="${sessionScope.userIdNum!=null}">
+                    <a href="/logout" class="footer_font">로그아웃</a>
+                </c:if>
             </div>
             <div>
                 <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>

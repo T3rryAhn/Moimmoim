@@ -13,7 +13,7 @@ body {
   height: 100vh;
   margin: 0;
   display: grid;
-  grid-template-rows: 61.45px auto 100px;
+  grid-template-rows: 60px auto 100px;
   grid-template-areas:
   'header'
   'main'
@@ -59,24 +59,19 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
-  border: 1px solid rgb(24, 39, 19);
 }
 .header_menu:hover{
   background-color: darkgreen;
-  border: 1px solid darkgreen;
 }
 .here{
   background-color: rgb(17, 151, 65);
-  border: 1px solid rgb(17, 151, 65);
 }
-
 .header_login {
   width: 85px;
   height: 18px;
   font-family: 'Montserrat', sans-serif;
   margin: 15px 10px;
   font-size: 14px;
-  /* padding: 5px 0px; */
   padding: 6px 0px;
   text-align: center;
   border-radius: 20px;
@@ -89,7 +84,6 @@ header, footer {
   background-color: rgb(17, 151, 65);
   color:white;
 }
-
 #mypage_icon {
   margin: 4px 0px 0px 30px;
 }

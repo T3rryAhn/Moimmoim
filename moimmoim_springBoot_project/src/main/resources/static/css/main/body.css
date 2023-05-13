@@ -27,7 +27,7 @@ main{
 
 /* header, footer 설정 */
 header, footer {
-  padding: 0px; 
+  padding: 0px;
   background: rgb(24, 39, 19);
   color: white;
 }
@@ -61,7 +61,9 @@ header, footer {
   padding: 20px 0px;
   letter-spacing: -0.5px;
 }
-/* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
+.header_menu:hover{
+  background-color: darkgreen;
+}
 .here{
   background-color: rgb(17, 151, 65);
 }
@@ -72,7 +74,7 @@ header, footer {
   font-family: 'Montserrat', sans-serif;
   margin: 15px 10px;
   font-size: 14px;
-  /* padding: 5px 0px; */
+
   padding: 6px 0px;
   text-align: center;
   border-radius: 20px;
@@ -86,7 +88,6 @@ header, footer {
   color:white;
 }
 
-
 #mypage_icon {
   margin: 4px 0px 0px 30px;
 }
@@ -99,7 +100,8 @@ header, footer {
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.fotter_logo_menu,
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;
