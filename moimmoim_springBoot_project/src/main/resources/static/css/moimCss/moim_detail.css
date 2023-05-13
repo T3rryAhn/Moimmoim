@@ -219,16 +219,16 @@ p {
   display:none;
 }
 #prev {
-  background-image: url('res/img/arrow-left-out.png');
+  background-image: url('..\imgs\moimmoimUi\arrow-left-out.png');
   margin-left: -250px;
 }
 #prev:hover {
-  background-image: url('res/img/arrow-left-over.png');
+  background-image: url('..\imgs\moimmoimUi\arrow-left-over.png');
 }
 #next{
   margin-left: 200px;
-  background-image: url('res/img/arrow-right-out.png');
+  background-image: url('..\imgs\moimmoimUi\arrow-right-out.png');
 }
 #next:hover{
-  background-image: url('res/img/arrow-right-over.png'); }
+  background-image: url('..\imgs\moimmoimUi\arrow-right-over.png'); }
 

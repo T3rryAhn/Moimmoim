@@ -73,24 +73,12 @@
         <div class="box box2">
             <ul class="slider-container simple-list" id="slider">
                 <li class="slide">
-                    <img src="res/img/image1.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="res/img/image2.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="res/img/image3.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="res/img/image4.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-            </ul>
-<!--            <ul class="slider-container simple-list" id="slider">
-                <li class="slide">
                     <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
                 </li>
             </ul>
--->
+            <a href="#" id="prev"></a>
+            <a href="#" id="next"></a>
+
         </div>
         <div class="box box3">
             <div >
