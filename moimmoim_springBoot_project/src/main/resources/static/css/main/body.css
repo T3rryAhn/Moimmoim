@@ -1,5 +1,5 @@
 /* Web Font Load*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 /* 전체 공통 설정 (링크 연결된 텍스트 밑줄 X, 텍스트 디폴트 색상 검정)*/
 *{
@@ -26,7 +26,7 @@ main{
 
 /* header, footer 설정 */
 header, footer {
-  padding: 0px; 
+  padding: 0px;
   background: rgb(24, 39, 19);
   color: white;
 }
@@ -60,11 +60,31 @@ header, footer {
   padding: 20px 0px;
   letter-spacing: -0.5px;
 }
-/* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
+.header_menu:hover{
+  background-color: darkgreen;
+}
 .here{
   background-color: rgb(17, 151, 65);
 }
-#login_icon {
+.header_login {
+  width: 85px;
+  height: 18px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 15px 10px;
+  font-size: 14px;
+  padding: 6px 0px;
+  text-align: center;
+  border-radius: 20px;
+}
+.sign_in{
+  background-color: rgb(249, 255, 246);
+  color:rgb(24, 39, 19);
+}
+.login{
+  background-color: rgb(17, 151, 65);
+  color:white;
+}
+#mypage_icon {
   margin: 4px 0px 0px 30px;
 }
 
@@ -76,7 +96,8 @@ header, footer {
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.fotter_logo_menu,
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;

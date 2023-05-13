@@ -58,17 +58,13 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
-  border: 1px solid rgb(24, 39, 19);
 }
 .header_menu:hover{
   background-color: darkgreen;
-  border: 1px solid darkgreen;
 }
 .here{
   background-color: rgb(17, 151, 65);
-  border: 1px solid rgb(17, 151, 65);
 }
-
 .header_login {
   width: 85px;
   height: 18px;
@@ -87,12 +83,9 @@ header, footer {
   background-color: rgb(17, 151, 65);
   color: white;
 }
-
 #mypage_icon {
   margin: 4px 0px 0px 30px;
 }
-
-
 
 /*search 부분*/
 #search{
@@ -102,7 +95,6 @@ header, footer {
   align-content: stretch;
   margin-bottom: 16px; 
 }
-
 .search_bar{
   width: 1060px;
   height: 38px;
@@ -139,12 +131,9 @@ input {
   padding: 9px 12px 9px 12px;
   font-size: 16px;
 }
-
 .search_icon{
   margin: auto;
 }
-
-
 input.img-button {
   background: url("res/img/image.png") no-repeat;
   border: none;
@@ -152,7 +141,6 @@ input.img-button {
   width: 37.33px;
   height: 37.33px;
 }
-
 button{
   width:38.76px;
   height:38.76px;
