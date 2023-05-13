@@ -38,6 +38,8 @@ public class ProfilePageController {
         }
         ProfilePageDto profilePageDto = profilePageAssembler.getProfilePage(userIdNum);
         List<MoimDo> moimDoList = profilePageDto.getUserMoimList();
+        List<MoimDo> openMoimDoList = new ArrayList<>();    // open에 표시할 모임 List
+        List<MoimDo> closedMoimDoList = new ArrayList<>();  // closed에 표시할 모임 List
         List<String> locationList = new ArrayList<>();
         List<String> categoryList = new ArrayList<>();
         String categoryName = moimService.getCatName(profilePageDto.getUserProfileDto().getUserCategoryNum());
@@ -45,12 +47,18 @@ public class ProfilePageController {
         for (int i = 0; i < moimDoList.size(); i++) {
             locationList.add(moimService.findLocName(moimDoList.get(i)).getLocationName());
             categoryList.add(moimService.getCatName(moimDoList.get(i).getMoimCategoryNum()));
-            System.out.println(moimDoList.get(i));
+            if(moimDoList.get(i).getMoimDeadCheck() == 0) {
+                openMoimDoList.add(moimDoList.get(i));
+            } else {
+                closedMoimDoList.add(moimDoList.get(i));
+            }
         }
 
 
         model.addAttribute("profilePageDto", profilePageDto);
         model.addAttribute("moimDoList", moimDoList);
+        model.addAttribute("openMoimDoList", openMoimDoList);
+        model.addAttribute("closedMoimDoList", closedMoimDoList);
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("locationList", locationList);
         model.addAttribute("categoryName", categoryName);
