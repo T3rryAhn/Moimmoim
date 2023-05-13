@@ -25,8 +25,8 @@
 </head>
 
 <body>
+<!-- 헤더 시작 -->
 <header>
-    <!--로그인 전 헤더-->
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
@@ -41,16 +41,6 @@
             </c:if>
         </div>
     </div>
-
-    <!--로그인 후 헤더-->
-    <!-- <div id="header_container">
-        <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
-        <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
-            <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
-        </div>
-    </div> -->
 </header>
 <main>
 
@@ -71,7 +61,14 @@
                 ${moimDo.moimTitle}</h1>
         </div>
         <div class="box box2">
-            <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
+            <ul class="slider-container simple-list" id="slider">
+                <li class="slide">
+                    <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
+                </li>
+            </ul>
+            <a href="#" id="prev"></a>
+            <a href="#" id="next"></a>
+
         </div>
         <div class="box box3">
             <div >
@@ -161,10 +158,6 @@
     </div>
 </div>
 </main>
-
-
-
-
     <footer>
         <div id="footer_container">
             <div class="footer_logo_menu">
@@ -172,11 +165,16 @@
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
+                <c:if test="${sessionScope.userIdNum!=null}">
+                    <a href="/logout" class="footer_font">로그아웃</a>
+                </c:if>
             </div>
             <div>
                 <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
             </div>
         </div>
     </footer>
+    <script src="\js.moimService\moim_detail.js"></script>
+
 </body>
 </html>
