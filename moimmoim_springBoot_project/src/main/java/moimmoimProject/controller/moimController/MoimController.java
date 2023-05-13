@@ -95,6 +95,8 @@ public class MoimController {
         File uploadPath =  moimService.makeFolder();    // 폴더 생성
         List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
 
+        moimService.plusCountHosting(moimDo.getMoimHostUserIdNum());
+
         String path = moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
         moimDo.setMoimImage(path);
         moimService.createMoim(moimDo);

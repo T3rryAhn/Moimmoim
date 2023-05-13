@@ -41,11 +41,10 @@
             </div>
             <div class="prolist two">
                 <div class="profile_info">
-                    <div class="profile_text birthyear">${profilePageDto.userProfileDto.userBirth}</div>
-                    <%--<div class="profile_text birthlocation">서울</div>--%>
-                    <div class="profile_text phonenumber">&#128241 ${profilePageDto.userProfileDto.phoneNum}</div>
-                    <div class="profile_text email">&#128231 ${profilePageDto.userProfileDto.userEmail}</div>
-                    <div class="profile_text createdate">${profilePageDto.userProfileDto.userCreateDate}</div>
+                    <div class="profile_text birthyear">출생: ${profilePageDto.userProfileDto.userBirth}</div>
+                    <div class="profile_text phonenumber">휴대폰: ${profilePageDto.userProfileDto.phoneNum}</div>
+                    <div class="profile_text email">이메일: ${profilePageDto.userProfileDto.userEmail}</div>
+                    <div class="profile_text createdate">가입일: ${profilePageDto.userProfileDto.userCreateDate}</div>
                 </div>
             </div>
             <div class="prolist three">
@@ -101,6 +100,31 @@
                     </c:forEach>
                 </c:otherwise>
                 </c:choose>
+
+                <%--<div class="open_moim"><a href="/">
+                    <img src="/files/${moimDoList[0].moimImage}" alt="사진1"; class="photo">
+                    <div class="moim_info">
+                        <div class="moim_location_price">${locationList[0]}</div>
+                        <div class="moim_title">${moimDoList[0].moimTitle}</div>
+                        <div class="moim_location_price">${moimDoList[0].moimPrice}원/1인</div>
+                    </div>
+                </a></div>
+                <div class="open_moim"><a href="/">
+                    <img src="img/image2.jpg" alt="사진1"; class="photo">
+                    <div class="moim_info">
+                        <div class="moim_location_price">${locationList[0]}</div>
+                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
+                        <div class="moim_location_price">20,000원/1인</div>
+                    </div>
+                </a></div>
+                <div class="open_moim"><a href="/">
+                    <img src="img/image3.jpg" alt="사진1"; class="photo">
+                    <div class="moim_info">
+                        <div class="moim_location_price">서울시 관악구</div>
+                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
+                        <div class="moim_location_price">20,000원/1인</div>
+                    </div>
+                </a></div>--%>
             </div>
         </div>
         <div class="section_closed">
@@ -138,8 +162,12 @@
                 </c:choose>
             </div>
         </div>
+
+        </div>
     </div>
 
+    </div>
+    </div>
 </main>
 <footer>
     <div id="footer_container">
@@ -150,11 +178,6 @@
         <c:if test="${sessionScope.userIdNum!=null}">
             <a href="/logout" class="footer_font">로그아웃</a>
         </c:if>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
         <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
     </div>
 </footer>

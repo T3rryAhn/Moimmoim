@@ -22,6 +22,7 @@
         });
       });
     </script>
+
 </head>
 
 <body>
@@ -146,6 +147,7 @@
         <div class="box box5">
           <div id="insertContent"></div>
         </div>
+
 
         <div class="box box6">
             <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>

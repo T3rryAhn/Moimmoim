@@ -54,4 +54,10 @@ public interface MoimMapper {
     List<Long> findByHost(Long userIdNum);
 
     List<Map<String, Object>> joinMoimList(Long moimCategoryNum, String keyword, Criteria cri, Long sorting);
+
+    List<Long>findHost();   // 개최한 사람 리스트 (중복 제거)
+
+    int countMoim(Long userIdNum);
+
+    void plusCountHosting(Long userIdNum);
 }

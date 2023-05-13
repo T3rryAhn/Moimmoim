@@ -13,8 +13,13 @@
         <header>
             <div id="header_container">
                 <div id="header_logo"><a href="/"><img src="img/logo.png" alt="logo" width="180px"></a></div>
-
-                    <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="40px"></a></div>
+                <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="40px"></a></div>
+                <c:if test="${sessionScope.userIdNum==null}">
+                                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+                            </c:if>
+                            <c:if test="${sessionScope.userIdNum!=null}">
+                                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                            </c:if>
 
             </div>
         </header>
@@ -23,11 +28,13 @@
         <form method="POST" action="/">
         <div class="allside">
             <div class="leftside">
-                <div class="profile_list">
-                <div id="previewContainer"></div>
-                <input type="file" id="profileImageInput" onchange="previewImage(event)">
+               <div class="profile_list">
+                               <div id="previewContainer">
+                                   <img src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사" class="picture">
+                                 </div>
+                                 <input type="file" id="profileImageInput" onchange="previewImage(event)">
 
-                <script src="profile_edit.js"></script>
+                               <script src="profile_edit.js"></script>
 
                     <div class="prolist one">
                             <div class="profile_info">

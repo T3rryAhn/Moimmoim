@@ -25,8 +25,10 @@
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
+
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
+            <a href="/hostList" class="header_menu">HOST LIST</a>
+
             <a href="#" class="header_menu">고객센터</a>
             <c:if test="${sessionScope.userIdNum==null}">
                 <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>

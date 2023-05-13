@@ -9,20 +9,20 @@ for (var year = 1900; year <= 2099; year++) {
 }
 
 function previewImage(event) {
-    var file = event.target.files[0];
-    var reader = new FileReader();
+  var file = event.target.files[0];
+  var reader = new FileReader();
 
-    reader.onload = function(e) {
-      var img = document.createElement('img');
-      img.src = e.target.result;
-      img.style.width = '150px';
-      img.style.height = '150px';
-      img.style.borderRadius = '50%';
+  reader.onload = function(e) {
+    var img = document.createElement('img');
+    img.src = e.target.result;
+    img.style.width = '150px';
+    img.style.height = '150px';
+    img.style.borderRadius = '50%';
 
-      var previewContainer = document.getElementById('previewContainer');
-      previewContainer.innerHTML = '';
-      previewContainer.appendChild(img);
-    };
+    var previewContainer = document.getElementById('previewContainer');
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(img);
+  };
 
-    reader.readAsDataURL(file);
-  }
+  reader.readAsDataURL(file);
+}
