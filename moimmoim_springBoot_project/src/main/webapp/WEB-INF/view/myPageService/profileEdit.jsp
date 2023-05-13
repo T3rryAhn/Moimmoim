@@ -20,7 +20,7 @@
         </header>
     </header>
     <main>
-        <form>
+        <form method="POST" action="/">
         <div class="allside">
             <div class="leftside">
                 <div class="profile_list">
@@ -61,7 +61,7 @@
                         <img src="img/bar.png"; class="green_bar"> INTRODUCE EDIT</div>
                 </div>
                 <label for="introduceedit">자기소개</label>
-                <textarea class="introduceedit" cols="130" rows="10"></textarea>
+                <textarea id="introduceedit" class="introduceedit" cols="130" rows="10"></textarea>
 
             </div>
             <div class="section_profileedit">
@@ -76,11 +76,11 @@
 
                             <li>
                                 <label for="nickname">닉네임</label>
-                                <input type="text" name="nickname" class="nicknameedit" required>
+                                <input type="text" id="nickname" name="nickname" class="nicknameedit" required>
                             </li>
                             <li>
                                 <label for="phonenumber">전화번호</label>
-                                <input type="tel" name="phonenumber" class="phonenumberedit" placeholder="하이픈 빼고 입력해주세요. (01012345678)" required>
+                                <input type="tel" id="phonenumber" name="phonenumber" class="phonenumberedit" placeholder="하이픈 빼고 입력해주세요. (01012345678)" required>
                             </li>
                             <!-- <li>
                                 <label for="location">지역</label>
@@ -103,11 +103,12 @@
                             </li>
                         </ul>
                     </fieldset>
-                                <button type="submit" id="saveButton">저장</button>
-                                </form>
+                <button type="submit" id="saveButton">저장</button>
 
+                </div>
             </div>
         </div>
+        </form>
 
          </main>
     <footer>
@@ -122,6 +123,7 @@
             <div></div>
             <div></div>
             <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+        </div>
     </footer>
 </body>
 </html>

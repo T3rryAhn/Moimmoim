@@ -1,12 +1,18 @@
 package moimmoimProject.controller.myPageController;
 
 
+import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.pageDomain.ProfilePageDto;
+import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
+import moimmoimProject.mapper.ProfileMapper;
 import moimmoimProject.mapper.UserMapper;
 import moimmoimProject.service.MoimService;
+import moimmoimProject.service.ProfilePageAssembler;
+import moimmoimProject.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,17 +25,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/myPage")
 public class MyPageController {
 
     private final UserMapper userMapper;
     private final MoimService moimService;
-
-    @Autowired
-    public MyPageController(UserMapper userMapper, MoimService moimService) {
-        this.moimService=moimService;
-        this.userMapper=userMapper;
-    }
+    private final ProfileMapper profileMapper;
+    private final ProfilePageAssembler profilePageAssembler;
+    private final ProfileService profileService;
 
     @GetMapping("{userIdNum}")
     public String findByUserIdNum(HttpSession session, Model model){
@@ -71,6 +75,46 @@ public class MyPageController {
 
         model.addAttribute("list", list);
         return "moimService/list";
+    }
+
+    @GetMapping("/profileEdit/{userIdNum}")
+    public String profileEdit(@PathVariable Long userIdNum, Model model) {
+        profileEditor(userIdNum, model, profileMapper, profilePageAssembler, moimService, profileService);
+        return "/myPageService/profileEdit";
+    }
+
+    static void profileEditor(@PathVariable Long userIdNum, Model model, ProfileMapper profileMapper, ProfilePageAssembler profilePageAssembler, MoimService moimService, ProfileService profileService) {
+        ProfileDo profileDo = profileMapper.findByUserIdNum(userIdNum);
+        if(profileDo == null) {
+            profileMapper.insertProfileDefault(userIdNum); // 회원가입 직후에 프로필 객체가 없을 경우, 설정한 임의의 디폴트 값 insert
+        }
+        ProfilePageDto profilePageDto = profilePageAssembler.getProfilePage(userIdNum);
+        List<MoimDo> moimDoList = profilePageDto.getUserMoimList();
+        List<MoimDo> openMoimDoList = new ArrayList<>();    // open에 표시할 모임 List
+        List<MoimDo> closedMoimDoList = new ArrayList<>();  // closed에 표시할 모임 List
+        List<String> locationList = new ArrayList<>();
+        List<String> categoryList = new ArrayList<>();
+        String categoryName = moimService.getCatName(profilePageDto.getUserProfileDto().getUserCategoryNum());
+        String hostLevelName = profileService.getHostLevelName(profilePageDto.getUserProfileDto().getUserHostLevelNum());
+        for (int i = 0; i < moimDoList.size(); i++) {
+            locationList.add(moimService.findLocName(moimDoList.get(i)).getLocationName());
+            categoryList.add(moimService.getCatName(moimDoList.get(i).getMoimCategoryNum()));
+            if(moimDoList.get(i).getMoimDeadCheck() == 0) {
+                openMoimDoList.add(moimDoList.get(i));
+            } else {
+                closedMoimDoList.add(moimDoList.get(i));
+            }
+        }
+
+
+        model.addAttribute("profilePageDto", profilePageDto);
+        model.addAttribute("moimDoList", moimDoList);
+        model.addAttribute("openMoimDoList", openMoimDoList);
+        model.addAttribute("closedMoimDoList", closedMoimDoList);
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("locationList", locationList);
+        model.addAttribute("categoryName", categoryName);
+        model.addAttribute("hostLevelName", hostLevelName);
     }
 
 }

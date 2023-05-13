@@ -59,7 +59,7 @@
     <hr>
     
     <a href="/profilePage/${userIdNum}"><button>프로필로 이동</button></a>
-    <a href="프로필 수정 페이지 링크"><button>프로필 수정하기</button></a>
+    <a href="/myPage/profileEdit/${userIdNum}"><button>프로필 수정하기</button></a>
     <br>
     <a href="결제 및 대금 수령 페이지 링크"><button>결제 및 대금 수령</button></a>
     <a href="/myPage/myMadeMoim"><button>내가 만든 모임</button></a>
