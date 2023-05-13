@@ -43,7 +43,7 @@
             <div></div>
             <a href="/" class="header_font">MOIM LIST</a>
             <a href="/" class="header_font">HOST LIST</a>
-            <div id="login_icon"><a href="/"><img src="/imgs/moimmoimUi/login.png" alt="login" width="50px"></a></div>
+            <div id="login_icon"><a href=/myPage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
         </div>
     </header>
 <!--header 끝-->
@@ -62,10 +62,10 @@
     <a href="프로필 수정 페이지 링크"><button>프로필 수정하기</button></a>
     <br>
     <a href="결제 및 대금 수령 페이지 링크"><button>결제 및 대금 수령</button></a>
-    <a href="myPage/myMadeMoim"><button>내가 만든 모임</button></a>
+    <a href="/myPage/myMadeMoim"><button>내가 만든 모임</button></a>
     <br>
     <a href="리뷰 페이지 링크"><button>리뷰 모아보기</button></a>
-    <a href="myPage/myJoinMoim"><button>내가 참가한 모임</button></a>
+    <a href="/myPage/myJoinMoim"><button>내가 참가한 모임</button></a>
     <br>
     </main>
 <!--main 끝 -->

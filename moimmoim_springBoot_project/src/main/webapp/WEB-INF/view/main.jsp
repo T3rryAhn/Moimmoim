@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,14 +25,14 @@
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
-            <a href="#" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu here">HOST LIST</a>
+            <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
+            <a href="#" class="header_menu">HOST LIST</a>
             <a href="#" class="header_menu">고객센터</a>
             <c:if test="${sessionScope.userIdNum==null}">
             <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
             </c:if>
             <c:if test="${sessionScope.userIdNum!=null}">
-                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                <div id="login_icon"><a href=/myPage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
             </c:if>
         </div>
     </div>
@@ -115,7 +116,9 @@
                             <div class="moim_info">
                                 <div class="moim_location">${locList[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>
