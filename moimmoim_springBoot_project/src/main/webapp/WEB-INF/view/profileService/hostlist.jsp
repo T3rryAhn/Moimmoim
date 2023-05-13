@@ -22,12 +22,12 @@
 <!--헤더 시작-->
 <header>
     <div id="header_container">
-        <div id="header_logo"><a href="#"><img src="res/img/logo.png" alt="logo" width="180px"></a></div>
+        <div id="header_logo"><a href="#"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="/hostList" class="header_menu here">HOST LIST</a>
             <a href="#" class="header_menu krfont">고객센터</a>
-            <div id="login_icon"><a href="#"><img src="res/img/mypage.png" alt="login" width="50px"></a></div>
+            <div id="login_icon"><a href="#"><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="50px"></a></div>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
                     <input type="search" placeholder="프로필을 검색해 보세요" id= "keyword" name="keyword">
                     <input type="hidden" id="cat" name="moimCategoryNum" value=7>
                     <button class="search_button">
-                        <img src="res/img/search2.png" class="search_icon"alt="search" width="30px" height="30px">
+                        <img src="/imgs/moimmoimUi/search2.png" class="search_icon"alt="search" width="30px" height="30px">
                     </button>
                 </div>
             </form>
@@ -55,7 +55,7 @@
         <!--정렬 버튼-->
         <div class="dropdown">
             <button class="dropbtn"> 
-                <img src="res/img/sort.png" alt="사진1"; class="sort_image" width="30px" height="25px;">
+                <img src="/imgs/moimmoimUi/sort.png" alt="사진1"; class="sort_image" width="30px" height="25px;">
             </button>
             <form action="/hostList" method="get">
             <div class="dropdown-sort">
@@ -93,13 +93,13 @@
         <div>
             <ul class="paging">
                 <c:if test="${paging.prev}">
-                    <button><a href='<c:url value="/hostList?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'><img src="res/img/prevPage.png" class="paging_icon" alt="prev"></a></button>
+                    <button><a href='<c:url value="/hostList?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'><img src="/imgs/moimmoimUi/prevPage.png" class="paging_icon" alt="prev"></a></button>
                 </c:if>
                 <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
                     <button class="paging_num"><a href='<c:url value="/hostList?moimCategoryNum=${moimCategoryNum}&page=${num}"/>'>${num}</a></button>
                 </c:forEach>
                 <c:if test="${paging.next && paging.endPage>0}">
-                    <button><a href='<c:url value="/hostList?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'><img src="res/img/nextPage.png" class="paging_icon" alt="next"></a></button>
+                    <button><a href='<c:url value="/hostList?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'><img src="/imgs/moimmoimUi/nextPage.png" class="paging_icon" alt="next"></a></button>
                 </c:if>
             </ul>
         </div>
@@ -113,7 +113,7 @@
     <footer>
         <div id="footer_container">
             <div class="fotter_logo_menu">
-                <a href="#"><img src="res/img/logo_white.png" alt="logo" width="200px"></a>
+                <a href="#"><img src="/imgs/moimmoimUi/whiteLogo.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
