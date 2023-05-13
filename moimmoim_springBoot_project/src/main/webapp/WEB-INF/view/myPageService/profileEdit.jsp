@@ -23,11 +23,13 @@
         <form>
         <div class="allside">
             <div class="leftside">
-                <div class="profile_list">
-                <div id="previewContainer"></div>
-                <input type="file" id="profileImageInput" onchange="previewImage(event)">
+               <div class="profile_list">
+                               <div id="previewContainer">
+                                   <img src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사" class="picture">
+                                 </div>
+                                 <input type="file" id="profileImageInput" onchange="previewImage(event)">
 
-                <script src="profile_edit.js"></script>
+                               <script src="profile_edit.js"></script>
 
                     <div class="prolist one">
                             <div class="profile_info">
