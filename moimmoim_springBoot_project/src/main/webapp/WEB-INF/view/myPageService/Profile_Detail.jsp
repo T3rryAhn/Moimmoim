@@ -178,11 +178,6 @@
         <c:if test="${sessionScope.userIdNum!=null}">
             <a href="/logout" class="footer_font">로그아웃</a>
         </c:if>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
         <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
     </div>
 </footer>
