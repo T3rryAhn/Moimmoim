@@ -9,21 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <header>
-            <div id="header_container">
-                <div id="header_logo"><a href="/"><img src="img/logo.png" alt="logo" width="180px"></a></div>
-                <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="40px"></a></div>
-                <c:if test="${sessionScope.userIdNum==null}">
-                                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
-                            </c:if>
-                            <c:if test="${sessionScope.userIdNum!=null}">
-                                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
-                            </c:if>
-
-            </div>
-        </header>
-    </header>
+   <header>
+           <header>
+           <div id="header_container">
+                       <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
+                           <c:if test="${sessionScope.userIdNum==null}">
+                           <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+                       </c:if>
+                       <c:if test="${sessionScope.userIdNum!=null}">
+                           <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                       </c:if>
+           </div>
+           </header>
+       </header>
     <main>
         <form>
         <div class="allside">
