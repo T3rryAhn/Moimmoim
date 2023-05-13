@@ -13,11 +13,14 @@ import moimmoimProject.mapper.UserMapper;
 import moimmoimProject.service.MoimService;
 import moimmoimProject.service.ProfilePageAssembler;
 import moimmoimProject.service.ProfileService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -36,10 +39,8 @@ public class MyPageController {
     private final ProfileService profileService;
 
     @GetMapping("{userIdNum}")
-    public String findByUserIdNum(HttpSession session, Model model){
-        Long userIdNum = (Long)session.getAttribute("userIdNum");
-        UserDo userDo = userMapper.findByUserIdNum(userIdNum);
-        model.addAttribute("userDo", userDo);
+    public String findByUserIdNum(@PathVariable Long userIdNum, Model model){
+        profileEditor(userIdNum, model, profileMapper, profilePageAssembler, moimService, profileService);
 
         return "/myPageService/myPage";
     }
@@ -83,7 +84,18 @@ public class MyPageController {
         return "/myPageService/profileEdit";
     }
 
-    static void profileEditor(@PathVariable Long userIdNum, Model model, ProfileMapper profileMapper, ProfilePageAssembler profilePageAssembler, MoimService moimService, ProfileService profileService) {
+    @PostMapping("/profileEdit/{userIdNum}")
+    public String updateProfile(@Param("UserDO") UserDo userDo, @Param("ProfileDo") ProfileDo profileDo,
+                                HttpSession session) {
+        Long userIdNum = (Long)session.getAttribute("userIdNum");
+        profileMapper.updateIntroduce(profileDo.getUserIntroduction(), profileDo.getUserBirth(), userIdNum);
+        userMapper.userProfileEdit(userDo.getUserNickname(), userDo.getPhoneNum(), userDo.getCategoryNum(), userIdNum);
+        return "redirect:/myPage/profileEdit/{userIdNum}";
+    }
+
+    static void profileEditor(@PathVariable Long userIdNum, Model model, ProfileMapper profileMapper,
+                              ProfilePageAssembler profilePageAssembler, MoimService moimService,
+                              ProfileService profileService) {
         ProfileDo profileDo = profileMapper.findByUserIdNum(userIdNum);
         if(profileDo == null) {
             profileMapper.insertProfileDefault(userIdNum); // 회원가입 직후에 프로필 객체가 없을 경우, 설정한 임의의 디폴트 값 insert

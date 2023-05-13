@@ -6,8 +6,8 @@
 </head>
 <body>
 <div class="uploadDiv">
-    file : <input type="file" name="uploadFile" /><br />
-    userid_num : <input type="text" name="userid_num" id="userid_num" />
+    이미지 파일을 등록해주세요 : <br />
+    <input type="file" name="uploadFile" /><br />
 </div>
 
 <button id="uploadBtn">Upload</button>
@@ -19,7 +19,7 @@
 <script>
     $(document).ready(function() {
 
-        var regex = new RegExp("(.*?)\.(jpg|png)$");
+        var regex = new RegExp("(.*?)\.(jpg|png|jpeg)$");
         var maxSize = 5242880;
 
         function checkExtension(fileName, fileSize) {
@@ -37,7 +37,7 @@
         $("#uploadBtn").on("click", function(e) {
             var formData = new FormData();
             var inputFile = $("input[name='uploadFile']");
-            var userIdNum = $("input[name='userid_num']").val();
+            var userIdNum = '<%=session.getAttribute("userIdNum")%>';
             var files = inputFile[0].files;
             console.log(files);
             console.log(userIdNum.value);
@@ -56,9 +56,13 @@
                 processData: false,
                 contentType: false,
                 data: formData,
-                      type: 'POST',
-                      success: function(result) {
+                type: 'POST',
+                dataType: 'json',
+                      success: function(response) {
                           alert("Uploaded");
+                          var imagePath = response.imagePath;
+                          window.opener.document.getElementById('profileImg').src = "/files/" + imagePath;
+                          window.close();
                       }
             });
         });

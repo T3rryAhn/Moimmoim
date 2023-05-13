@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html lang="ko">
@@ -5,40 +6,39 @@
     <meta chatset="UTF-8">
     <title>프로필 등록 페이지</title>
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
-    <link rel="stylesheet" href="css/myPageUi/profileEdit.css">
+    <link rel="stylesheet" href="/css/myPageUi/profileEdit.css">
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <header>
             <div id="header_container">
-                <div id="header_logo"><a href="/"><img src="img/logo.png" alt="logo" width="180px"></a></div>
-                <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="40px"></a></div>
+                <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
                 <c:if test="${sessionScope.userIdNum==null}">
-                                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
-                            </c:if>
-                            <c:if test="${sessionScope.userIdNum!=null}">
-                                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
-                            </c:if>
-
+                    <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+                </c:if>
+                <c:if test="${sessionScope.userIdNum!=null}">
+                    <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                </c:if>
             </div>
         </header>
     </header>
     <main>
-        <form method="POST" action="/">
+        <form method="POST" action="/myPage/profileEdit/${sessionScope.userIdNum}">
         <div class="allside">
             <div class="leftside">
                <div class="profile_list">
-                               <div id="previewContainer">
-                                   <img src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사" class="picture">
-                                 </div>
-                                 <input type="file" id="profileImageInput" onchange="previewImage(event)">
+                   <div id="previewContainer">
+                       <img id="profileImg" src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사" class="picture">
+                   </div>
+                   <a onclick="window.open('/profileImg', '이미지 등록')"><%--<label for="profileImageInput">--%>업로드</label></a>
+                   <%--<input type="file" id="profileImageInput" onchange="previewImage(event)" style="display: none">--%>
 
-                               <script src="profile_edit.js"></script>
+                   <script src="profile_edit.js"></script>
 
                     <div class="prolist one">
                             <div class="profile_info">
-                            <div class="profile_text level">주니어 호스트</div>
+                            <div class="profile_text level">${hostLevelName}</div>
                             <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>
                             <div class="profile_text name">${profilePageDto.userProfileDto.userName}</div>
                             <div class="profile_text avgstar">${profilePageDto.userProfileDto.userMoimReviewScoreAvg}</div>
@@ -56,7 +56,7 @@
                     <div class="prolist three">
                         <div class="profile_info">
                             <div class="profile_text interestedcat">관심있는 카테고리</div>
-                            <div class="profile_text category">먹기</div>
+                            <div class="profile_text category">${categoryName}</div>
                         </div>
                     </div>
                 </div>
@@ -65,16 +65,17 @@
                 <div class="section_introduceedit">
                 <div class="section_header">
                     <div class="section_title">
-                        <img src="img/bar.png"; class="green_bar"> INTRODUCE EDIT</div>
+                        <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> INTRODUCE EDIT</div>
                 </div>
-                <label for="introduceedit">자기소개</label>
-                <textarea id="introduceedit" class="introduceedit" cols="130" rows="10"></textarea>
+                <label for="userIntroduction">자기소개</label>
+                <textarea id="userIntroduction" name="userIntroduction" class="introduceedit"
+                          placeholder="${profilePageDto.userIntroduction}" cols="130" rows="10"></textarea>
 
             </div>
             <div class="section_profileedit">
                 <div class="section_header">
                     <div class="section_title">
-                        <img src="img/bar.png"; class="green_bar"> PROFILE EDIT</div>
+                        <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> PROFILE EDIT</div>
                 </div>
 
                     <fieldset>
@@ -82,12 +83,13 @@
                         <ul class="profileedit">
 
                             <li>
-                                <label for="nickname">닉네임</label>
-                                <input type="text" id="nickname" name="nickname" class="nicknameedit" required>
+                                <label for="userNickname">닉네임</label>
+                                <input type="text" id="userNickname" name="userNickname" class="nicknameedit"
+                                       placeholder="${profilePageDto.userProfileDto.userNickName}" required>
                             </li>
                             <li>
-                                <label for="phonenumber">전화번호</label>
-                                <input type="tel" id="phonenumber" name="phonenumber" class="phonenumberedit" placeholder="하이픈 빼고 입력해주세요. (01012345678)" required>
+                                <label for="phoneNum">전화번호</label>
+                                <input type="tel" id="phoneNum" name="phoneNum" class="phonenumberedit" placeholder="하이픈 빼고 입력해주세요. (01012345678)" required>
                             </li>
                             <!-- <li>
                                 <label for="location">지역</label>
@@ -95,17 +97,17 @@
                             </li> -->
                             <li>
                                 <label for="birth">출생연도</label>
-                                <select id="birth" name="birthyear" class="birthyearedit"></select>
-                                <script src="profileEdit.js"></script>
+                                <select id="birth" name="userBirth" class="birthyearedit"></select>
+                                <script src="/js/myPageService/profileEdit.js"></script>
                             </li>
                             <li>
-                                <label for="interested_category">관심 카테고리</label>
+                                관심 카테고리
 
-                                <label><input type="radio" name="interested_category" value="eat">먹기</label>
-                                <label><input type="radio" name="interested_category" value="see">보기</label>
-                                <label><input type="radio" name="interested_category" value="learn">배우기</label>
-                                <label><input type="radio" name="interested_category" value="healing">힐링하기</label>
-                                <label><input type="radio" name="interested_category" value="adventure">체험하기</label>
+                                <label><input type="radio" name="categoryNum" value="1">먹기</label>
+                                <label><input type="radio" name="categoryNum" value="2">보기</label>
+                                <label><input type="radio" name="categoryNum" value="3">배우기</label>
+                                <label><input type="radio" name="categoryNum" value="4">힐링하기</label>
+                                <label><input type="radio" name="categoryNum" value="5">체험하기</label>
 
                             </li>
                         </ul>

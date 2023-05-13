@@ -8,38 +8,26 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
 public class ImageUploadController {
-    private final String UPLOAD_DIR = "/imgs/profile_img";
+
     @Autowired
     private ProfileMapper profileMapper;
+
     @GetMapping("/profileImg")
     public String index() {
         return "/myPageService/imageUpload";
     }
-    /*@PostMapping("/profileImg/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file,
-                             @RequestParam("userid_num") Long userIdNum) throws IOException {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Path uploadPath = Paths.get(UPLOAD_DIR);
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-        Path filePath = uploadPath.resolve(fileName);
-        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-        ProfileDo profileDo = new ProfileDo();
-        profileDo.setUserProfileImage(filePath.toString().replace('\\', '/').substring(UPLOAD_DIR.indexOf("imgs")));
-        profileDo.setUserIdNum(userIdNum);
-        profileMapper.updateProfileImage(profileDo);
-        return "redirect:/";
-    }*/
 
     private boolean checkImageType(File file) {
         try {
@@ -52,8 +40,9 @@ public class ImageUploadController {
     }
 
     @PostMapping("/uploadAction")
-    public String uploadPost(MultipartFile[] uploadFile,
-                             @RequestParam("userid_num") String userId) {
+    @ResponseBody
+    public Map<String, Object> uploadPost(MultipartFile[] uploadFile,
+                                                        @RequestParam("userid_num") String userId) {
         Long userIdNum;
         if(userId == null || userId.equals("undefined")) {
             userIdNum = null;
@@ -65,6 +54,7 @@ public class ImageUploadController {
         if(uploadPath.exists() == false) {
             uploadPath.mkdirs();
         }
+        Map<String, Object> response = new HashMap<>();
         for(MultipartFile multipartFile : uploadFile) {
             String uploadFileName = multipartFile.getOriginalFilename();
 
@@ -80,12 +70,14 @@ public class ImageUploadController {
                     profileDo.setUserProfileImage(uploadFolder.substring(10)+"\\"+uploadFileName);
                     profileDo.setUserIdNum(userIdNum);
                     profileMapper.updateProfileImage(profileDo);
+                    response.put("imagePath", uploadFolder.substring(10)+"\\"+uploadFileName);
                     System.out.println(uploadFolder.substring(10)+"\\"+uploadFileName);
+
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
         }
-        return "redirect:/";
+        return response;
     }
 }

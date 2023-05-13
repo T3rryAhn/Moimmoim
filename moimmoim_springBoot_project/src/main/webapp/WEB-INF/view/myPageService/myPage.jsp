@@ -35,14 +35,13 @@
     <header>
         <header>
         <div id="header_container">
-            <div id="main-logo" ><a href="/"><img src="img/logo.png" alt="logo" width="200px"></a></div>
-            <div id="login_icon"><a href="/"><img src="img/login.png" alt="login" width="50px"></a></div>
+            <div id="main-logo" ><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="200px"></a></div>
             <c:if test="${sessionScope.userIdNum==null}">
-                            <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
-                        </c:if>
-                        <c:if test="${sessionScope.userIdNum!=null}">
-                            <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
-                        </c:if>
+                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
         </header>
     </header>
@@ -54,17 +53,16 @@
         <h1>마이페이지</h1>
       <p>
       안녕하세요<br>
-      ${userDo.userName}, ${userDo.userEmail} 님.
+          ${profilePageDto.userProfileDto.userName}, ${profilePageDto.userProfileDto.userEmail} 님.
       </p>
     <hr>
         <div class="profile_list">
                     <div class="prolist one">
                         <img src="img/profilepic.jpg" alt="프사"; class="picture">
                         <div class="profile_info">
-                            <div class="profile_text level">주니어 호스트</div>
+                            <div class="profile_text level">${hostLevelName}</div>
                             <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>
                             <div class="profile_text name">${profilePageDto.userProfileDto.userName}</div>
-                            <div class="profile_text avgstar">${profilePageDto.userProfileDto.userMoimReviewScoreAvg}</div>
                             <div class="profile_text moimcount">${profilePageDto.userProfileDto.userHostingCount}</div>
                         </div>
                     </div>
@@ -79,7 +77,7 @@
                     <div class="prolist three">
                         <div class="profile_info">
                             <div class="profile_text interestedcat">관심있는 카테고리</div>
-                            <div class="profile_text category">먹기</div>
+                            <div class="profile_text category">${categoryName}</div>
                         </div>
                     </div>
                 </div>
@@ -89,24 +87,24 @@
                 <div class="profile_manager">
                 <div class="section_header">
                     <div class="section_title">
-                        <img src="img/bar.png"; class="green_bar"> 프로필 관리</div>
+                        <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> 프로필 관리</div>
                 </div>
             <a href="/profilePage/${userIdNum}"><button>프로필로 이동</button></a>
-            <a href="프로필 수정 페이지 링크"><button>프로필 수정하기</button></a>
+            <a href="/myPage/profileEdit/${userIdNum}"><button>프로필 수정하기</button></a>
             </div>
             <div class="moim_manager">
                 <div class="section_header">
                     <div class="section_title">
-                        <img src="img/bar.png"; class="green_bar"> 모임 관리</div>
+                        <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> 모임 관리</div>
                 </div>
-                <a href="내가 참가한 모임 페이지 링크"><button>내가 참가한 모임</button></a>
-            <a href="내가 만든 모임 페이지 링크"><button>내가 만든 모임</button></a>
+                <a href="/myPage/myJoinMoim"><button>내가 참가한 모임</button></a>
+            <a href="/myPage/myMadeMoim"><button>내가 만든 모임</button></a>
 
             </div>
             <div class="pay_get">
                 <div class="section_header">
                     <div class="section_title">
-                        <img src="img/bar.png"; class="green_bar"> 결제 관리</div>
+                        <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> 결제 관리</div>
                 </div>
             <a href="결제 및 대금 수령 페이지 링크"><button>결제 및 대금 수령</button></a>
             </div>
