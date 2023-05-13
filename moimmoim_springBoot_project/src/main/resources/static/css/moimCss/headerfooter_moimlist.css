@@ -60,12 +60,16 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
+
+}
+.header_menu:hover{
+  background-color: darkgreen;
+
 }
 /* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
 .here{
   background-color: rgb(17, 151, 65);
 }
-
 .header_login {
   width: 85px;
   height: 18px;
@@ -86,10 +90,76 @@ header, footer {
   color:white;
 }
 
-
 #mypage_icon {
   margin: 4px 0px 0px 30px;
 }
+
+
+/*search 부분*/
+#search{
+  width: 100%;
+  height: 94px;
+  background-color: rgb(17, 151, 65);
+  align-content: stretch;
+  margin-bottom: 16px; 
+}
+.search_bar{
+  width: 1060px;
+  height: 38px;
+  margin: auto;
+  padding: 28px 0px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+.search_box{
+  width: 1060px;
+  height: 38px;
+  /* border: 1px solid #bbb; */
+  border: 1px solid rgb(24, 39, 19);
+  background-color: white;
+}
+.search_form{
+  padding: 0px;
+  width: 1060px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.search_button{
+  background-color: rgb(24, 39, 19);
+}
+button{
+  background-color: transparent;
+}
+input {
+  width: 1000px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  padding: 9px 12px 9px 12px;
+  font-size: 16px;
+}
+.search_icon{
+  margin: auto;
+}
+input.img-button {
+  background: url("res/img/image.png") no-repeat;
+  border: none;
+  cursor: pointer;
+  width: 37.33px;
+  height: 37.33px;
+}
+button{
+  width:38.76px;
+  height:38.76px;
+  border: 0px;
+  background-color: none;
+  cursor: pointer;
+}
+
+
+
+
 
 #footer_container{
   width: 1060px;
