@@ -10,7 +10,7 @@
         <result column="HOST_MOIM_REVIEW_SCORE_AVG" property="userMoimReviewScoreAvg" jdbcType="DOUBLE" />
         <result column="YEAR_OF_BIRTH" property="userBirth" jdbcType="DATE" />
         <result column="USER_INTRODUCE" property="userIntroduction" jdbcType="VARCHAR" />
-        <result column="HOST_MOIM_COUNT" property="userHostingCount" jdbcType="BIGINT" />
+        <result column="HOSTING_COUNT" property="userHostingCount" jdbcType="INTEGER" />
 
     </resultMap>
 
@@ -47,14 +47,21 @@
                 SELECT PROFILE.*, ROWNUM rnum
                 FROM (
                      SELECT *
-                     FROM PROFILE
         ]]>
-        <where>
-            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
-        </where>
+        <choose>
+            <when test="keyword != '' and keyword != null">
+                FROM PROFILE
+                WHERE USERID_NUM = (SELECT USERID_NUM
+                                    FROM USERS
+                                    WHERE USER_NAME LIKE '%'||#{keyword}||'%')
+            </when>
+            <otherwise>
+                FROM PROFILE
+            </otherwise>
+        </choose>
         <trim prefix="ORDER BY">
             <if test="sorting == 0"> HOSTING_COUNT DESC </if>
-            <if test="sorting == 1"> MOIM_VIEWS DESC </if>
+            <if test="sorting == 1"> YEAR_OF_BIRTH DESC </if>
         </trim>
         <![CDATA[
 
@@ -70,7 +77,10 @@
         FROM PROFILE
         <where>
             <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
-            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+            <if test="moimCategoryNum == 7">
+                AND USERID_NUM = (SELECT USERID_NUM
+                FROM USERS
+                WHERE USER_NAME LIKE '%'||#{keyword}||'%')</if>
         </where>
     </select>
 
@@ -80,12 +90,11 @@
         WHERE USERID_NUM = #{userIdNum}
     </select>
 
-    <select id="getUserIdNum" resultType="Long">
+    <select id="getUserLevel" resultType="int">
         SELECT HOST_LEVEL_NUM
         FROM USERS
         WHERE USERID_NUM = #{userIdNum}
     </select>
-
 
 
 </mapper>

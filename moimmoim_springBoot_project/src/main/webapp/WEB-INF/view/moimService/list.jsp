@@ -44,8 +44,8 @@
     <!-- <div id="header_container">
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
-            <a href="#" class="header_menu here">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
+            <a href="/moim/getMoim/list" class="header_menu here">MOIM LIST</a>
+            <a href="/hostList" class="header_menu">HOST LIST</a>
             <div id="mypage_icon"><a href="/"><img src="\imgs\moimmoimUi\mypage.png" alt="mypage" width="40px"></a></div>
         </div>
     </div> -->
@@ -61,7 +61,6 @@
                         <button class="search_button">
                             <img src="\imgs\moimmoimUi\search2.png" class="search_icon"alt="search" width="30px" height="30px">
                         </button>
-                        <!-- <input type="submit"/>  이거.. 어떻게 적용시켜야 할지 모르겠어요ㅠ_ㅠ -->
                     </div>
                 </form>
             </div>
@@ -103,21 +102,11 @@
             </button>
             <form action="/moim/getMoim/list" method="get">
             <div class="dropdown-sort">
-            <!--
-                <form action="/moim/getMoim/list" method="get">
-                    <input type="hidden" id="cat" name="sorting" value=1>
-                    <button class="tablinks" onclick="openTab(event, 'tab2')">최신순</button>
-                </form>
-                <a href="/moim/getMoim/list" name="sorting" value=0>
-                   <input type="hidden" id="sor" name="sorting" value=0>최신순</a>
-                <a href="/moim/getMoim/list">
-                   <input type="hidden" id="sort" name="sorting" value=1>조회순</a>
-            -->
                 <select id="sort" name="sorting">
                     <option value=1>조회순</option>
                     <option value=0>최신순</option>
                 </select>
-                </div>
+            </div>
                 <input type="hidden" id="cat" name="moimCategoryNum" value=${moimCategoryNum}>
                 <button class="tablinks" onclick="openTab(event, 'tab2')">정렬 적용</button>
             </form>

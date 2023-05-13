@@ -52,8 +52,9 @@ public class HostController {
 
         List<Map<String, Object>> proList = profileService.findAllProfileDo(moimCategoryNum, keyword, cri, sorting);
         List<String> list = profileService.getUser(proList);
-        List<String> levelList = new ArrayList<>();
+        List<String> levelList = profileService.getHostLevelList(proList);
 
+        model.addAttribute("levelList", levelList);
         model.addAttribute("list", list);
         model.addAttribute("nameList", nameList);
         model.addAttribute("proList", proList);                           // 프로필 리스트

@@ -28,16 +28,15 @@ public class ProfileService {
     private final ProfileMapper profileMapper;
     private final UserProfileAssembler userProfileAssembler;
 
-    List<String> getHostLevelList(List<Map<String, Object>> proList){
+    public List<String> getHostLevelList(List<Map<String, Object>> proList){
         List<String> list = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         int i = 0;
         while (true) {
             ProfileDo convertedProfileDo = objectMapper.convertValue(proList.get(i), ProfileDo.class);
-
-            getHostLevelName(Math.toIntExact(convertedProfileDo.getUserIdNum()));
-            list.add(profileMapper.getName(convertedProfileDo.getUserIdNum()));
+            String level = getHostLevelName(Math.toIntExact(convertedProfileDo.getUserIdNum()));
+            list.add(level);
             if(proList.size()-1 > i){
                 i++;
             }else{
