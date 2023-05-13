@@ -21,13 +21,14 @@
     </select>
 
     <insert id ="addUserStep1"  >
-        insert into users(user_id,user_email,password)
-        values(#{user.userId},#{user.userEmail},#{user.userPassword})
+        insert into users(userid_num,user_id,user_email,password)
+        values(userid_num_seq.nextval,#{user.userId},#{user.userEmail},#{user.userPassword})
     </insert>
 
     <update id="addUserStep2" >
         update users
         set user_name = #{user.userName},
+        user_nickname = #{user.userName},
         phone_num = #{user.phoneNum},
         category_num =#{user.categoryNum},
         birth = #{user.birth}

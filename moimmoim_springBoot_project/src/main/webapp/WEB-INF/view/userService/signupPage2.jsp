@@ -28,7 +28,7 @@
             <input type="date" id="birth" value="yyyy-mm-dd" />
             <fieldset id = "categorySet">
                 <legend id="category-radio-legend">choose your favorite catetgory</legend>
-                <label for=" eating">먹기</label>
+                <label for="eating">먹기</label>
                 <input type="radio" id="eating" name="category-radio" value="eating"/>
                 <label for="watching">보기</label>
                 <input type="radio" id="watching" name="category-radio" value="watching" />

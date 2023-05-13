@@ -18,6 +18,7 @@ public class UserProfileDto {
     private final String userEmail;
     private final Date userCreateDate;
     private final String phoneNum;
-//    private final int userFavoriteCategoryNum;
+    private final int userCategoryNum;
+    private final int userHostLevelNum;
 
 }
