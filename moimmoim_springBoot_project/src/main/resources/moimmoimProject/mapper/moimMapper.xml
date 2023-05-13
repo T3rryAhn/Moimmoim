@@ -114,6 +114,7 @@
             WHERE rnum > #{cri.pageStart}
         ]]>
     </select>
+
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
@@ -204,5 +205,24 @@
         FROM MOIM_MEM
         WHERE JOIN_NUM = #{joinNum}
     </select>
+
+    <select id="findHost" resultType="Long">
+        SELECT DISTINCT USERID_NUM
+        FROM MOIM_POST
+    </select>
+
+    <select id="countMoim">
+        SELECT count(*)
+        FROM MOIM_POST
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+    <update id="plusCountHosting">
+        UPDATE PROFILE p
+        set p.HOSTING_COUNT = P.HOSTING_COUNT + 1
+        where p.USERID_NUM = #{userIdNum}
+    </update>
+
+
 
 </mapper>

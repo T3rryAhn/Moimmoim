@@ -33,7 +33,7 @@
         <div id="header_logo"><a href="/"><img src="\imgs\moimmoimUi\logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
             <a href="/moim/getMoim/list" class="header_menu here">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
+            <a href="/hostList" class="header_menu">HOST LIST</a>
             <a href="#" class="header_login login">LOG IN</a>
         </div>
     </div>
@@ -129,7 +129,7 @@
             <li>
                 <a href="getMoim?moimNum=${list.moimNum}">
                 <figure>
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="photo">
+                    <img src=/files/${list.moimImage} alt="사진1"; class="photo">
                     <div class="info">
                         <div class="moim_location">${locList[status.index].locationName}</div>
                         <div class="title">${list.moimTitle}</div>
@@ -149,6 +149,19 @@
         </div>
 
         <!--페이징 -->
+        <div>
+            <ul class="paging">
+                <c:if test="${paging.prev}">
+                    <button><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.startPage-1}"/>'><img src="res/img/prevPage.png" class="paging_icon" alt="prev"></a></button>
+                </c:if>
+                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                    <button class="paging_num"><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${num}"/>'>${num}</a></button>
+                </c:forEach>
+                <c:if test="${paging.next && paging.endPage>0}">
+                    <button><a href='<c:url value="/moim/getMoim/list?moimCategoryNum=${moimCategoryNum}&page=${paging.endPage+1}"/>'><img src="res/img/nextPage.png" class="paging_icon" alt="next"></a></button>
+                </c:if>
+            </ul>
+        </div>
 
     </main>
 

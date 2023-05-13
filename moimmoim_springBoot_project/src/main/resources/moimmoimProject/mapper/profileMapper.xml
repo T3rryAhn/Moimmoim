@@ -40,4 +40,40 @@
         )
     </insert>
 
+    <select id="findAllProfileDo" parameterType="map" resultMap="profileResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT PROFILE.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+                     FROM PROFILE
+        ]]>
+        <where>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%' OR MOIM_MAIN LIKE '%'||#{keyword}||'%'</if>
+        </where>
+        <trim prefix="ORDER BY">
+            <if test="sorting == 0"> HOSTING_COUNT DESC </if>
+            <if test="sorting == 1"> MOIM_VIEWS DESC </if>
+        </trim>
+        <![CDATA[
+
+                     ) PROFILE
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+
+    <select id="profileListCnt" resultType="int">
+        SELECT count(*)
+        FROM PROFILE
+        <where>
+            <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">AND MOIM_TITLE LIKE '%'||#{keyword}||'%'</if>
+        </where>
+    </select>
+
+
+
 </mapper>

@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
+import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import org.springframework.stereotype.Service;
@@ -203,4 +204,10 @@ public class MoimService {
     public List<Long> findMoimed(Long joinNum){
         return moimMapper.findMoimed(joinNum);
     }
+
+    public void plusCountHosting(Long userIdNum) {
+        moimMapper.plusCountHosting(userIdNum);
+    }
+
+
 }
