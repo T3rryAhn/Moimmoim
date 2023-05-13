@@ -68,7 +68,7 @@ public class MoimController {
         model.addAttribute("moimList", MoimList);
         return "";  // 페이지 삽입해야함
     }
-    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 찾음
+    @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 찾음 ( 모임 상세 )
     public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model, HttpSession session){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
@@ -87,7 +87,7 @@ public class MoimController {
         model.addAttribute("moimDo", moimDo);
 //        model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
 
-        return "moimService/detailMoim";  // 페이지 삽입해야함
+        return "moimService/detailMoim";
     }
 
     @PostMapping("/moim/new")               // 새로운 모임 생성
@@ -114,5 +114,41 @@ public class MoimController {
         moimService.CountView(moimNum);
     }
 
+    @GetMapping("/moim/getMoim/delete")          // 모임 삭제
+    public String deleteMoim(MoimDo moimDo){
+        moimService.lmageDelete(moimDo.getMoimNum());
+        moimService.deleteMoim(moimDo.getMoimNum());
+        return "moimService/delete";
+    }
 
+    @GetMapping("/moim/getMoim/update")          // 모임 수정
+    public String updateMoim(@Param("moimNum") Long moimNum, Model model){
+        MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);
+        List<LocationDo> locList1 = moimService.locList1();
+
+        model.addAttribute("locList1",locList1);
+        model.addAttribute("moimDo",moimDo);
+        return"moimService/moimWrite";
+    }
+
+    @PostMapping("/moim/getMoim/update/run")          // 모임 수정
+    public String updateMoimRun(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile){
+        moimService.lmageDelete(moimDo.getMoimNum());   // 기존 사진들 삭제
+
+        File uploadPath =  moimService.makeFolder();    // 폴더 생성
+        List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
+
+        String path = moimService.makePathSig(sigFile,uploadPath);    // 대표 사진 파일 업로드
+        moimDo.setMoimImage(path);
+
+        for (MultipartFile multipartFile : uploadFile) {    // 사진들 파일 업로드
+            ImageDTO imageDTO = moimService.makePath(multipartFile,uploadPath,moimDo.getMoimNum());
+            list.add(imageDTO);
+        }   // end for
+
+        moimService.imageEnroll(list);
+
+        moimService.updateMoim(moimDo, moimDo.getMoimNum());
+        return"moimService/update";
+    }
 }

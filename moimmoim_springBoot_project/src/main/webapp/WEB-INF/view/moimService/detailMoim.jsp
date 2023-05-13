@@ -23,8 +23,14 @@
       });
     </script>
 
+    <script>
+    function delOk(){
+        if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){
+            return false;
+        }
+    }
+    </script>
 </head>
-
 <body>
 <!-- 헤더 시작 -->
 <header>
@@ -156,6 +162,15 @@
             <p class="moim_nums"> 모임 조회수: ${moimDo.moimViewCount}</p>
         </div>
 
+        <form action="/moim/getMoim/delete" method="get">
+            <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
+            <button onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){return false;}"${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'}>삭제하기</button>
+        </form>
+
+        <form action="/moim/getMoim/update" method="get">
+            <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
+            <button ${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'}>수정하기</button>
+        </form>
 
     </div>
 </div>

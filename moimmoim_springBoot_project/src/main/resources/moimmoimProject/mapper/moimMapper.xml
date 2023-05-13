@@ -83,11 +83,11 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
-    <update id="deleteMoim" parameterType="map">
+    <delete id="deleteMoim">
         DELETE
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
-    </update>
+    </delete>
 
     <select id="moimList" parameterType="map" resultMap="moimResultMap">
         <![CDATA[
@@ -222,6 +222,27 @@
         set p.HOSTING_COUNT = P.HOSTING_COUNT + 1
         where p.USERID_NUM = #{userIdNum}
     </update>
+
+    <update id="updateMoim">
+        UPDATE MOIM_POST M
+        set (MOIM_TITLE, MOIM_MAIN, MOIM_PICTURES,
+        CATEGORY_NUM, MOIM_START_TIME, MOIM_END_TIME,
+        MOIM_MEMBER_MAX, MOIM_PRICE, MOIM_DEADLINE, LOCATION_NUM
+        )
+        =
+        (
+        #{moimTitle},#{moimMainContent},#{moimImage},
+        #{moimCategoryNum},#{moimStartDate},#{moimEndDate},
+        #{moimMemberMax},#{moimPrice},#{moimDeadLine},#{moimLocationNum}
+        )
+        WHERE M.MOIM_NUM = #{MoimNum}
+    </update>
+
+    <delete id="lmageDelete">
+        DELETE
+        FROM IMAGE
+        WHERE MOIM_NUM = #{moimNum}
+    </delete>
 
 
 

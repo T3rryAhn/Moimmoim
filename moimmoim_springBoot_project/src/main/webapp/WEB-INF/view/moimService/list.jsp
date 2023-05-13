@@ -87,6 +87,7 @@
                 <button class="tablinks" onclick="openTab(event, 'tab5')">🎠 체험하기</button>
             </form>
         </div>
+    </div>
         <!--정렬 버튼-->
         <div class="dropdown">
             <button class="dropbtn">
