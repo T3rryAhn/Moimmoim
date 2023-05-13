@@ -123,8 +123,8 @@ main {
 }
 
 .profile_info{
-    height: 150px;
-    
+    height: 130px;
+    white-space: nowrap;
     padding: 5px;
     position: relative;
   }
@@ -137,16 +137,16 @@ main {
 
   .avgstar, .moimcount{
     display: inline-block;
-    
+
   }
-  
+
   .profile_text {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;
     font-weight: 400;
     color: black;
     line-height: 2;
-    
+
   }
 
   .level {
@@ -198,40 +198,40 @@ main {
 
   .section_introduce {
     /* background-color: aquamarine; */
-    width: 100%;                         
+    width: 100%;
     height: 150px;
     margin: 50px auto;
     position: relative;
     font-family: 'Noto Sans KR', sans-serif;
   }
-  
 
- 
+
+
   .section_open {
     /* background-color: aquamarine; */
-    width: 100%;                         
+    width: 100%;
     height: 350px;
     margin: 50px auto;
     position: relative;
-    
+
   }
   .section_closed{
     /* background-color: aquamarine; */
-    width: 100%;                         
+    width: 100%;
     height: 300px;
     margin: 50px auto;
     position: relative;
-    
+
   }
   .section_reviews {
     /* background-color: aquamarine; */
-    width: 100%;                         
+    width: 100%;
     height: 250px;
     margin: 50px auto;
     position: relative;
-    
+
   }
-  
+
 .open_moim_list{
     display: flex;
     flex-wrap: nowrap;
@@ -239,7 +239,7 @@ main {
     align-items: baseline;
     align-content: center;
     margin: 10px 0px;
-    
+
 }
 .oc_state {
   margin: 0px 10px;
@@ -248,7 +248,7 @@ main {
 .open_moim{
     width: 260.5px;
     height: 300px;
-    margin: 5px 10px;
+    margin: 5px 3px;
 }
 
 .closed_moim_list{
@@ -263,22 +263,22 @@ main {
 .closed_moim{
     width: 260.5px;
     height: 300px;
-    margin: 5px 10px;
-        
+    margin: 5px 3px;
+
 }
 
 
 .photo{
     width: 100%;
     height: 150px;
-    
+
 }
 
 .moim_info{
     height: 110px;
     padding: 10px 0px;
     position: relative;
-    
+
   }
   .moim_location_price{
     font-family: 'Noto Sans KR', sans-serif;
@@ -297,10 +297,10 @@ main {
 .moim_starpoint{
     width: 30%;
     padding-top: 10px;
-    
+
 }
 
-.reviews_list{
+/* .reviews_list{
   display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
@@ -312,7 +312,7 @@ main {
 
 .reviews_content{
     width: 100%;
-    
+
     padding: 10px 5px;
     margin: 50px 5px;
     border: 1px solid black;
@@ -323,7 +323,7 @@ main {
     font-size: 12px;
     font-weight: 400;
     color: rgb(85, 85, 85);
-    
+
   }
   .reviews_text{
     font-family: 'Noto Sans KR', sans-serif;
@@ -335,5 +335,5 @@ main {
 .reviews_starpoint{
     width: 30%;
     padding-top: 10px;
-    
-}
+
+} */
