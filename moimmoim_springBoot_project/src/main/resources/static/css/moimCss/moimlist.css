@@ -1,15 +1,15 @@
 /* Web Font Load*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
-/* 
-*{
+
+{
   font-family: 'Noto Sans KR', sans-serif;
-}   */
+}
 
 /* main 설정 */
 .main_container {
   width: 1060px;                         
   height: 420x;
-  margin: 20px auto 40px auto;
+  margin-top: 20px;
 }
 
 /*카테고리 이동 버튼*/
@@ -21,7 +21,7 @@
   align-content: center;
   }
 .tab button {
-  width: 300px;
+  width: 212px;
   height: 47px;
   background-color: white;
   color: black;
@@ -41,22 +41,43 @@
 }
 
 
-/* 호스트 레벨 필터 */
+/* 정렬 */
 .dropdown{
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
 }
 .dropbtn{
   width : 30px;
   background-color: transparent;
+  margin-right: 10px;
 }
 .dropdown-sort{
-  display: none; /*마우스 올리기 전에는 보이지 않음*/
-  position: absolute; /*마우스 올렸을 때 다른 요소의 위치 이동 없음*/
+  position: relative;
   z-index: 1; /*다른 요소들보다 앞에 배치*/
   font-weight: 500;
-  width: 130px;
+  width: 100px;
+  height: 30px;
   border: 1px solid lightgray;
+  display: inline-block;
+  margin: auto 5px;
+  border-radius: 5px;
+}
+.sort_box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sort_button{
+  display: inline-block;
+  width: 85px;
+  height: 30px;
+  background-color: rgb(91, 201, 131);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+  margin: auto 5px;
 }
 .dropdown-sort a{
   display: block;

@@ -1,6 +1,7 @@
 /* Web Font Load*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
+
 /* 전체 공통 설정 (링크 연결된 텍스트 밑줄 X, 텍스트 디폴트 색상 검정)*/
 *{
   text-decoration-line: none;
@@ -26,7 +27,7 @@ main{
 
 /* header, footer 설정 */
 header, footer {
-  padding: 0px; 
+  padding: 0px;
   background: rgb(24, 39, 19);
   color: white;
 }
@@ -37,6 +38,7 @@ header, footer {
   display: flex;
   text-align: right;
   justify-content: space-between;
+  height: 60px;
 }
 #header_logo {
   margin: 3px 0px;
@@ -58,18 +60,38 @@ header, footer {
   text-align: center;
   padding: 20px 0px;
   letter-spacing: -0.5px;
-  border: 1px solid rgb(24, 39, 19);
+
 }
 .header_menu:hover{
   background-color: darkgreen;
-  border: 1px solid darkgreen;
+
 }
+/* class="header_menu here"에 해당하는 부분. 선택된 헤더 메뉴를 가리킬 때 */
 .here{
   background-color: rgb(17, 151, 65);
-  border: 1px solid rgb(17, 151, 65);
 }
-#login_icon {
-  margin-left: 30px;
+.header_login {
+  width: 85px;
+  height: 18px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 15px 10px;
+  font-size: 14px;
+  /* padding: 5px 0px; */
+  padding: 6px 0px;
+  text-align: center;
+  border-radius: 20px;
+}
+.sign_in{
+  background-color: rgb(249, 255, 246);
+  color:rgb(24, 39, 19);
+}
+.login{
+  background-color: rgb(17, 151, 65);
+  color:white;
+}
+
+#mypage_icon {
+  margin: 4px 0px 0px 30px;
 }
 
 
@@ -79,9 +101,8 @@ header, footer {
   height: 94px;
   background-color: rgb(17, 151, 65);
   align-content: stretch;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
-
 .search_bar{
   width: 1060px;
   height: 38px;
@@ -118,17 +139,9 @@ input {
   padding: 9px 12px 9px 12px;
   font-size: 16px;
 }
-/* img {
-  position : absolute;
-  width: 17px;
-  top: 10px;
-  right: 12px;
-  margin: 0;
-} */
 .search_icon{
   margin: auto;
 }
-
 input.img-button {
   background: url("res/img/image.png") no-repeat;
   border: none;
@@ -136,7 +149,6 @@ input.img-button {
   width: 37.33px;
   height: 37.33px;
 }
-
 button{
   width:38.76px;
   height:38.76px;
@@ -145,7 +157,10 @@ button{
   cursor: pointer;
 }
 
-/* footer*/
+
+
+
+
 #footer_container{
   width: 1060px;
   margin: 10px auto;
@@ -154,7 +169,8 @@ button{
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.fotter_logo_menu,
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;

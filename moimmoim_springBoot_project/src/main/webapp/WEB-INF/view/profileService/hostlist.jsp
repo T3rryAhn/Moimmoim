@@ -22,12 +22,18 @@
 <!--헤더 시작-->
 <header>
     <div id="header_container">
-        <div id="header_logo"><a href="#"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
+        <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
+
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
             <a href="/hostList" class="header_menu here">HOST LIST</a>
-            <a href="#" class="header_menu krfont">고객센터</a>
-            <div id="login_icon"><a href="#"><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="50px"></a></div>
+            <a href="#" class="header_menu">고객센터</a>
+            <c:if test="${sessionScope.userIdNum==null}">
+                <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
+            </c:if>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+            </c:if>
         </div>
     </div>
 
@@ -57,6 +63,17 @@
             <button class="dropbtn"> 
                 <img src="/imgs/moimmoimUi/sort.png" alt="사진1"; class="sort_image" width="30px" height="25px;">
             </button>
+            <form action="/hostList" method="get" class="sort_box">
+                <div>
+                    <select id="sort" name="sorting" class="dropdown-sort">
+                        <option value=0>모임 주최 순</option>
+                        <option value=1>나이순</option>
+                    </select>
+                </div>
+                <input type="hidden" id="cat" name="moimCategoryNum" value=${moimCategoryNum}>
+                <button class="tablinks sort_button" onclick="openTab(event, 'tab2')">정렬 적용</button>
+            </form>
+<!-- 원본
             <form action="/hostList" method="get">
             <div class="dropdown-sort">
                 <select id="sort" name="sorting">
@@ -67,6 +84,7 @@
                 <input type="hidden" id="cat" name="moimCategoryNum" value=${moimCategoryNum}>
                 <button class="tablinks" onclick="openTab(event, 'tab2')">정렬 적용</button>
             </form>
+-->
         </div>
 
 
@@ -80,7 +98,7 @@
                     <div class="host_info">
                         <div class="host_level">${levelList[status.index]}</div>
                         <div class="host_reputation">
-                            <span class="host_stars">${proList.userMoimReviewScoreAvg}</span>점 / <span class="number_of_times">${proList.userHostingCount}</span>회
+                            <span class="host_stars"> <!--${proList.userMoimReviewScoreAvg}</span>점 / --><span class="number_of_times">${proList.userHostingCount}</span>회
                         </div>
                         <div class="host_name">${list[status.index]}</div>
                         <div class="host_introduction">${proList.userIntroduction}</div>
@@ -112,11 +130,14 @@
 <!-- 푸터 시작-->
     <footer>
         <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="/imgs/moimmoimUi/whiteLogo.png" alt="logo" width="200px"></a>
+            <div class="footer_logo_menu">
+                <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
                 <a href="#" class="footer_font">개인정보 처리방침</a>
                 <a href="#" class="footer_font">기타 필요메뉴</a>
                 <a href="#" class="footer_font">메뉴구성</a>
+                <c:if test="${sessionScope.userIdNum!=null}">
+                    <a href="/logout" class="footer_font">로그아웃</a>
+                </c:if>
             </div>
             <div>
                 <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
