@@ -47,7 +47,7 @@
         <div class="section_header">
             <div class="section_title">
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> POPULAR MOIM</div>
-            <a href="/" class="more_button">MORE ></a>
+            <a href="/moim/getMoim/list?sorting=1&moimCategoryNum=6" class="more_button">MORE ></a>
         </div>
         <ol class="list">
             <c:forEach items="${moimListPopular}" var="list" varStatus="status">

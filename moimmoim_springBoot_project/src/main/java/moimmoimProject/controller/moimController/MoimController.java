@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import moimmoimProject.domain.moimDomain.*;
 import moimmoimProject.service.MoimService;
+import moimmoimProject.service.ProfileService;
 import org.apache.ibatis.annotations.Param;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class MoimController {
 
 
     private final MoimService moimService;
+    private final ProfileService profileService;
 
     @GetMapping("/moim")
     public String hello() {
@@ -71,6 +73,7 @@ public class MoimController {
     @GetMapping("moim/getMoim/getMoim")    // 모임 넘버로 모임 찾음 ( 모임 상세 )
     public String findMoimByMoimNum(@Param("moimNum") Long moimNum, Model model, HttpSession session){
         MoimDo moimDo = moimService.getMoimByMoimNum(moimNum);                          // 해당 모임 반환
+        String name = moimService.findName(moimDo);
         LocationDo locationDo = moimService.findLocName(moimDo);                        // 해당 모임 location 반환
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
         moimService.CountView(moimNum);// 조회수 증가
@@ -80,11 +83,11 @@ public class MoimController {
         // 세션에서 사용자 ID를 검색합니다.
         Long userIdNum = (Long) session.getAttribute("userIdNum");
         model.addAttribute("userIdNum", userIdNum);
-
-        model.addAttribute("imageList", imageList);
-        model.addAttribute("category", category);
-        model.addAttribute("locationDo", locationDo);
-        model.addAttribute("moimDo", moimDo);
+        model.addAttribute("name", name);               // 주최자 이름
+        model.addAttribute("imageList", imageList);     // 모임 이미지 리스트
+        model.addAttribute("category", category);       // 모임 카테고리
+        model.addAttribute("locationDo", locationDo);   // 모임 지역
+        model.addAttribute("moimDo", moimDo);           // 모임 정보
 //        model.addAttribute("userIdNum", 1);                     // 임시 유저 아이디 넘 1
 
         return "moimService/detailMoim";

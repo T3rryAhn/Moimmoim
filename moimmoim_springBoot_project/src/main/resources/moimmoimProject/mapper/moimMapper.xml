@@ -239,6 +239,12 @@
         WHERE MOIM_NUM = #{moimNum}
     </delete>
 
+    <select id="findName" resultType="String">
+        SELECT USER_NAME
+        FROM USERS
+        WHERE USERID_NUM = #{moimHostUserIdNum}
+    </select>
+
 
 
 </mapper>

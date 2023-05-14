@@ -217,5 +217,9 @@ public class MoimService {
         moimMapper.lmageDelete(userNum);
     }
 
+    public String findName(MoimDo moimDo) {
+        return moimMapper.findName(moimDo);
+    }
+
 
 }

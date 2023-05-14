@@ -10,6 +10,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <title>MOIMMOIM :: 모임글 보기</title>
     <link rel="stylesheet" href="/css/moimCss/moim_detail.css">
     <link rel="stylesheet" href="/css/moimCss/headerfooter_basic.css">
@@ -83,7 +85,7 @@
                     <dl class="moim_creator">
                         <dt class="moim_creator_title">모임 만든이</dt>
                         <dd class="moim_creator_content">
-                            <a href="#"> ${moimDo.moimHostUserIdNum}</a></dd>   <!-- 이름, 닉네임으로 표시해야함  -->
+                            <a href="/profilePage/${moimDo.moimHostUserIdNum}"> ${name}</a></dd>
                     </dl>
                 </div>
                 <div class="detail_box middle">
@@ -129,13 +131,27 @@
 
                     <dl class="moim_info">
                         <dt class="moim_info_title">모집 마감 여부</dt>
-                        <dd class="moim_info_content">모집중 ${moimDo.moimDeadCheck}</dd>
+                        <dd class="moim_info_content">${moimDo.moimDeadCheck==0 ? '모집중' : '모집 마감'}</dd>
                     </dl>
                 </div>
                 <div class="detail_box bottom">
                     <dl class="moim_info">
                         <dt class="moim_info_title"> 모임 위치</dt>
                         <dd class="moim_info_content">${locationDo.locationName}</dd>
+                        &nbsp;
+                        <div id="map" style="width: 500px; height: 500px; left: 0px; top: 0px"></div>
+                        <div>
+                            <input id="vworld" type="hidden" min="0" max="1" step="0.1" value="1">
+                        </div>
+                        <div>
+                        <hr/>
+                            <input id="nsdi" type="hidden" min="0" max="1" step="0.1" value="0">
+                        </div>
+                        &nbsp;
+                        <div>
+                            <input type="text" name="sig_kor_nm" value="${locationDo.destination}" disabled>
+                            <input type="button" name="search" value="모임 시작 지역 확인" onclick="callAjax()">
+                        </div>
                     </dl>
                     <p class="created_date"><tf:formatDateTime value="${moimDo.moimCreateDate}" pattern="yyyy-MM-dd" /></p>
                 </div>
@@ -195,5 +211,173 @@
     </footer>
     <script src="\js.moimService\moim_detail.js"></script>
 
+    <script type="text/javascript">
+
+
+        let  Base = new ol.layer.Tile({
+    		name : "Base",
+    		source: new ol.source.XYZ({
+    			url: 'http://api.vworld.kr/req/wmts/1.0.0/CEB52025-E065-364C-9DBA-44880E3B02B8/Base/{z}/{y}/{x}.png'
+    		})
+    	}); // WMTS API 사용
+
+        let  olView = new ol.View({
+            center:[14135182, 4515000],//좌표계 변환
+            zoom: 10
+        })// 뷰 설정
+        let  map = new ol.Map({
+            layers: [Base],
+            target: 'map',
+            view: olView
+        });
+
+        let  wms_title = '시군구';
+        let  wms_val = 'LT_C_ADSIGG_INFO';
+        wms_val = wms_val.toLowerCase();
+        let  wms_tile = new ol.layer.Tile({
+            name : "WMS_LAYER",
+            source : new ol.source.TileWMS({
+                url : "http://api.vworld.kr/req/wms?",
+                params : {
+                    LAYERS : wms_val,
+                    STYLES : wms_val,
+                    CRS : "EPSG:3857",
+                    apikey : "CEB52025-E065-364C-9DBA-44880E3B02B8",
+                    DOMAIN : "http://loacalhost:8080",
+                    title : wms_title,
+                    FORMAT : "image/png",
+                    domain : "http://localhost"
+                }
+            })
+        });
+
+
+        /* 폴리곤의 스타일 설정 */
+    function styleFunction(feature) {
+
+        return [
+            new ol.style.Style({
+                fill: new ol.style.Fill({
+                color: 'rgba(255,0,255,0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                color: '#3399CC',
+                width: 1.25
+                }),
+                text: new ol.style.Text({
+                    offsetX:0.5, //위치설정
+                    offsetY:20,   //위치설정
+                    font: '20px Calibri,sans-serif',
+                    fill: new ol.style.Fill({ color: '#000' }),
+                    stroke: new ol.style.Stroke({
+                        color: '#fff', width: 3
+                    }),
+                    text: feature.get('addr') == null ? feature.get('sig_kor_nm') : feature.get('addr')
+                }),
+                image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                    anchor: [0.5, 10],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'http://map.vworld.kr/images/ol3/marker_blue.png'
+                }))
+            })
+        ];
+    }
+
+        map.getView().getProjection().code_="EPSG:3857" //브이월드의 EPSG:900913 사용시 편집지적도가 작동되지 않음
+
+        map.addLayer(wms_tile);  // 브이월드 지적도 등록 (openlayers 3.0 버전의 WMS tile layer 등록)
+
+        //  http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapUTMKService - 항공영상 -
+
+        //  http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapITRF2000Service? 지도조회(ITRF2000)
+
+        //  http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapBesselService 지도조회(Bessel)
+
+        //  http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapUTMKBlueService 지도조회(UTM-K)
+
+        //  http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapITRF2000BlueService - 지도조회(ITRF2000)
+
+        let  nsdi_tile = new ol.layer.Tile({
+            name : "NSDI_LAYER",
+            source : new ol.source.TileWMS({
+                url : "http://openapi.nsdi.go.kr/nsdi/map/LandInfoBaseMapUTMKBlueService?",
+                params : {
+                    authkey :   "aed1f1084e775267d81d20",
+                    SERVICE : "WMS",
+                    VERSION : "1.3.0",
+                    REQUEST : "GetMap",
+                    FORMAT  : "image/png",
+                    LAYERS : "0",
+                    CRS : "EPSG:3857",
+                    STYLES : ""
+                }
+            })
+        });
+        nsdi_tile.setOpacity(0);
+        map.addLayer(nsdi_tile);  // 편집 지적도 등록 (openlayers 3.0 버전의 WMS tile layer 등록)
+
+        let  kop = document.getElementById('vworld');
+        let  mop = document.getElementById('nsdi');
+
+        kop.addEventListener('input', function() {
+            map.getLayers().forEach(function(layer){ //openlayers 에서의 name 속성값을 이용한 Layer 접근
+                if(layer.get("name")=="WMS_LAYER"){
+                    layer.setOpacity(kop.value) //투명도 설정
+                }
+            });
+        });
+
+        mop.addEventListener('input', function() {
+            map.getLayers().forEach(function(layer){ //openlayers 에서의 name 속성값을 이용한 Layer 접근
+                if(layer.get("name")=="NSDI_LAYER"){
+                    layer.setOpacity(mop.value) //투명도 설정
+                }
+            });
+        });
+
+        $("[name=sig_kor_nm]").on('input', function() {
+            callAjax();
+        })
+
+        let  callAjax = function(){
+            value = $("[name=sig_kor_nm]").val();
+            let  data = "key=CEB52025-E065-364C-9DBA-44880E3B02B8&domain=http://localhost:8080&service=data&version=2.0&request=getfeature&format=json&size=100&page=1&data=LT_C_ADSIGG_INFO&geometry=true&attribute=true&crs=EPSG:3857"
+            data += "&attrfilter=sig_kor_nm:like:"+value
+
+            $.ajax({
+    		    	type: "get",
+    		    	url: "http://api.vworld.kr/req/data",
+    		    	data : data,
+    		    	dataType: 'jsonp',
+    		    	async: false,
+    		    	success: function(data) {
+
+    		    	    let  vectorSource = new ol.source.Vector({features: (new ol.format.GeoJSON()).readFeatures(data.response.result.featureCollection)})
+
+
+    		    		map.getLayers().forEach(function(layer){
+    		    			if(layer.get("name")=="search_result"){
+    		    				map.removeLayer(layer);//기존결과 삭제
+    		    			}
+    		    		})
+    		    	    let  vector_layer = new ol.layer.Vector({
+    		    	  	  source: vectorSource,
+    		    	  	  style: styleFunction
+    		    	  	})
+
+    		    	    vector_layer.set("name","search_result");
+    		    	 	map.addLayer(vector_layer);
+    		       	},
+
+    		    	error: function(xhr, stat, err) {}
+            });
+        }
+
+        // $("[name=sig_kor_nm]").on('input', function() {
+        //     callAjax();
+        // })
+
+    </script>
 </body>
 </html>
