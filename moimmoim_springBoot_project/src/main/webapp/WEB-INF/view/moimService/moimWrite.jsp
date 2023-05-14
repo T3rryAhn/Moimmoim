@@ -95,7 +95,7 @@
             <div class="box box10">
                 <label for="moimMainContent" class="form_name form_main">모임 소개</label>
                 <!-- <input class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="이름을입력하세요"> -->
-                <textarea class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="모임 소개글을 작성해 주세요." value=${moimDo.moimMainContent}></textarea>
+                <textarea class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="모임 소개글을 작성해 주세요.">${moimDo.moimMainContent}</textarea>
             </div>
         </div>
 

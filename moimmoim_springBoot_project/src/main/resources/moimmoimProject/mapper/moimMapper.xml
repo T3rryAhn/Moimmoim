@@ -225,16 +225,11 @@
 
     <update id="updateMoim">
         UPDATE MOIM_POST M
-        set (MOIM_TITLE, MOIM_MAIN, MOIM_PICTURES,
-        CATEGORY_NUM, MOIM_START_TIME, MOIM_END_TIME,
-        MOIM_MEMBER_MAX, MOIM_PRICE, MOIM_DEADLINE, LOCATION_NUM
-        )
-        =
-        (
-        #{moimTitle},#{moimMainContent},#{moimImage},
-        #{moimCategoryNum},#{moimStartDate},#{moimEndDate},
-        #{moimMemberMax},#{moimPrice},#{moimDeadLine},#{moimLocationNum}
-        )
+        set M.MOIM_TITLE=#{moimDo.moimTitle}, M.MOIM_MAIN=#{moimDo.moimMainContent},
+        M.MOIM_PICTURES=#{moimDo.moimImage}, M.CATEGORY_NUM=#{moimDo.moimCategoryNum},
+        M.MOIM_START_TIME=#{moimDo.moimStartDate}, M.MOIM_END_TIME=#{moimDo.moimEndDate},
+        M.MOIM_MEMBER_MAX=#{moimDo.moimMemberMax}, M.MOIM_PRICE=#{moimDo.moimPrice},
+        M.MOIM_DEADLINE=#{moimDo.moimDeadLine}, M.LOCATION_NUM=#{moimDo.moimLocationNum}
         WHERE M.MOIM_NUM = #{MoimNum}
     </update>
 
