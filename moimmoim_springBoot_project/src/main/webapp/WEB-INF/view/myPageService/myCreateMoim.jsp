@@ -57,7 +57,7 @@
                 <ol class="slider-container list">
                 <c:forEach items="${openList}" var="openList" varStatus="status">
                     <li class="slide">
-                        <a href=getMoim?moimNum=${openList.moimNum}><figure>
+                        <a href=/moim/getMoim/getMoim?moimNum=${openList.moimNum}><figure>
                             <img src="/files/${openList.moimImage}" alt="사진1"; class="photo">
                             <div class="info">
                                 <div class="moim_location">${locList[status.index].locationName}</div>
@@ -84,7 +84,7 @@
                 <ol class="slider-container2 list">
                 <c:forEach items="${closeList}" var="closeList" varStatus="status">
                     <li class="slide">
-                    <a href=getMoim?moimNum=${closeList.moimNum}><figure>
+                    <a href=/moim/getMoim/getMoim?moimNum=${closeList.moimNum}><figure>
                         <img src="/files/${closeList.moimImage}" alt="사진1"; class="photo">
                         <div class="info">
                             <div class="moim_location">${locList[status.index].locationName}</div>
