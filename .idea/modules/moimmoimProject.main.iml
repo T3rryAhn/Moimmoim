@@ -2,9 +2,9 @@
 <module external.linked.project.id="moimmoimProject:main" external.linked.project.path="$MODULE_DIR$/../../moimmoim_springBoot_project" external.root.project.path="$MODULE_DIR$/../../moimmoim_springBoot_project" external.system.id="GRADLE" external.system.module.group="moimmoimProject" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/generated" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../moimmoim_springBoot_project/src/main/generated" isTestSource="false" generated="true" />
     </content>
   </component>
 </module>
