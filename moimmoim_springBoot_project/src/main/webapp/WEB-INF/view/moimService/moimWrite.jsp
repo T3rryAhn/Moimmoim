@@ -33,7 +33,6 @@
     </div>
 </header>
 <!--헤더 끝-->
-
 <main>
     <div class="container">
     <div class="section_title">
@@ -82,9 +81,11 @@
                 <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요." value=${moimDo.moimDeadLine}>
             </div>
             <div class="box box8">
-               <label for="sigFile" class="form_name">대표사진</label>
+               <div class="form_name">사진 업로드</div>
+               <label for="sigFile" class="main_photo">대표사진</label>
                <input type="file" name="sigFile" id="sigFile" style="display:none"/>
-               <label for="uploadFile">소개 사진</label>
+
+               <label for="uploadFile" class="moim_photos">소개사진</label>
                <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
             </div>
 
@@ -108,22 +109,22 @@
 </main>
 
 <!-- 푸터 시작-->
-    <footer>
-        <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="\imgs\moimmoimUi\logo_white.png" alt="logo" width="200px"></a>
-                <a href="#" class="footer_font">개인정보 처리방침</a>
-                <a href="#" class="footer_font">기타 필요메뉴</a>
-                <a href="#" class="footer_font">메뉴구성</a>
-                <c:if test="${sessionScope.userIdNum!=null}">
-                    <a href="/logout" class="footer_font">로그아웃</a>
-                </c:if>
-            </div>
-            <div>
-                <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
-            </div>
+<footer>
+    <div id="footer_container">
+        <div class="footer_logo_menu">
+            <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
+            <a href="#" class="footer_font">개인정보 처리방침</a>
+            <a href="#" class="footer_font">기타 필요메뉴</a>
+            <a href="#" class="footer_font">메뉴구성</a>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
         </div>
-    </footer>
+        <div>
+            <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+        </div>
+    </div>
+</footer>
 <!-- 푸터 끝-->
 
 </body>

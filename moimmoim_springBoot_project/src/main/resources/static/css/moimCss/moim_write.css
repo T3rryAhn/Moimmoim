@@ -271,3 +271,22 @@ input[type="date"]{
   width: 100%;
   height: 150px;
 }
+
+/*  사진 업로드 버튼 */
+.main_photo, .moim_photos{
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 0px 5px;
+  text-align: center;
+  line-height: 27px;
+}
+.main_photo{
+  color: white;
+  background-color: rgb(17, 151, 65);
+}
+.moim_photos{
+  color: rgb(17, 151, 65);
+  background-color: white;
+  border: 1px lightgray solid;
+}
