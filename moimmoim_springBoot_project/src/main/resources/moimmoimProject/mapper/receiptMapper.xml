@@ -19,7 +19,7 @@
     <!-- 행 편집 -->
     <update id="updateReceipt" parameterType="map">
         UPDATE RECEIPT
-        SET RECEIPT_MONEY = #{receiptMoney}
+        SET RECEIPT_MONEY = RECEIPT_MONEY + #{receiptMoney}
         WHERE USERID_NUM = #{userIdNum}
     </update>
 
