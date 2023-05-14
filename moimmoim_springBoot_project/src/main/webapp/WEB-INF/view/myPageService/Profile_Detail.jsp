@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
     <meta chatset="UTF-8">
     <title>사용자 상세 페이지</title>
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
-    <link rel="stylesheet" href="Profile_Detail.css">
+    <link rel="stylesheet" href="/css/Profile_Detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -130,7 +132,7 @@
             <a href="/" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
         </div>
     </footer>
-    <script src="Profile_Detail.js"></script>
+    <script src="/js/Profile_Detail.js"></script>
 
 </body>
 </html>
