@@ -181,7 +181,7 @@ background-image: url('/imgs/moimmoimUi/arrow-right-over.png');
 }
 .slide, .slide2 {
   position: absolute;
-  width: 100%;
+  width: 25%;
   padding: 0px;
   box-sizing: border-box;
   text-align: center;
