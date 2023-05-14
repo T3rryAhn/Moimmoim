@@ -74,22 +74,11 @@
                 <li class="slide">
                     <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
                 </li>
-
-<!-- 이미지 슬라이드 잘 작동하는지 확인용. JSTL로 이미지 삽입 후에 잘 작동한다면 지우셔도 됩니다.
-                <li class="slide">
-                    <img src="/imgs/moim_img/image1.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="/imgs/moim_img/image2.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="/imgs/moim_img/image3.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
-                <li class="slide">
-                    <img src="/imgs/moim_img/image4.jpg" alt="moim_photo" class="moim_photo" >
-                </li>
--->
-
+                <c:forEach items="${imageList}" var="imageList" varStatus="status">
+                     <li class="slide">
+                         <img src="/files/${imageList.uploadPath}${imageList.uuid}-${imageList.fileName}" alt="moim_photo" class="moim_photo" >
+                     </li>
+                 </c:forEach>
             </ul>
             <a href="#" id="prev"></a>
             <a href="#" id="next"></a>
@@ -231,7 +220,7 @@
             </div>
         </div>
     </footer>
-    <script src="\js.moimService\moim_detail.js"></script>
+    <script src="/js.moimService/moim_detail.js"></script>
 
     <script type="text/javascript">
 
