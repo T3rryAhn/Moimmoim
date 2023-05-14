@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+                <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        <mapper namespace="moimmoimProject.mapper.ReceiptMapper">
+    <resultMap id="receiptResultMap" type="moimmoimProject.domain.userDomain.ReceiptDo">
+        <id column="USERID_NUM" property="userIdNum" jdbcType="BIGINT" />
+        <result column="RECEIPT_MONEY" property="receiptMoney" jdbcType="BIGINT" />
+
+
+    </resultMap>
+
+    <!--신규 행 삽입 -->
+    <insert id="createReceipt" parameterType="moimmoimProject.domain.userDomain.ReceiptDo">
+        INSERT INTO RECEIPT(USERID_NUM, RECEIPT_MONEY)
+        VALUES(#{userIdNum}, 0)
+    </insert>
+    <!-- 행 편집 -->
+    <update id="updateReceipt" parameterType="map">
+        UPDATE RECEIPT
+        SET RECEIPT_MONEY = RECEIPT_MONEY + #{receiptMoney}
+        WHERE USERID_NUM = #{userIdNum}
+    </update>
+
+    <select id="getReceipt" parameterType="map" resultMap="receiptResultMap">
+        SELECT *
+        FROM RECEIPT
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+
+    <select id="checkReceipt" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM RECEIPT
+        WHERE USERiD_NUM = #{userIdNum}
+    </select>
+
+</mapper>

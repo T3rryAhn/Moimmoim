@@ -83,11 +83,11 @@
         where m.MOIM_NUM = #{moimNum}
     </update>
 
-    <update id="deleteMoim" parameterType="map">
+    <delete id="deleteMoim">
         DELETE
         FROM MOIM_POST
         WHERE MOIM_NUM = #{moimNum}
-    </update>
+    </delete>
 
     <select id="moimList" parameterType="map" resultMap="moimResultMap">
         <![CDATA[
@@ -114,6 +114,7 @@
             WHERE rnum > #{cri.pageStart}
         ]]>
     </select>
+
     <select id="moimListCnt" resultType="int">
         SELECT count(*)
         FROM MOIM_POST
@@ -192,10 +193,10 @@
 
     <insert id="joinMoim">
         <selectKey resultType="Long" keyProperty="no" order="BEFORE">
-            SELECT MOIM_MEM_NO_SEQ.NEXTVAL FROM DUAL
+            SELECT MEM_NO_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-        insert into MOIM_MEM(MOIMHOSTUSERIDNUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
-        values (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
+        INSERT INTO MOIM_MEM(USERID_NUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
+        VALUES (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
     </insert>
 
 
@@ -204,5 +205,46 @@
         FROM MOIM_MEM
         WHERE JOIN_NUM = #{joinNum}
     </select>
+
+    <select id="findHost" resultType="Long">
+        SELECT DISTINCT USERID_NUM
+        FROM MOIM_POST
+    </select>
+
+    <select id="countMoim">
+        SELECT count(*)
+        FROM MOIM_POST
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+    <update id="plusCountHosting">
+        UPDATE PROFILE p
+        set p.HOSTING_COUNT = P.HOSTING_COUNT + 1
+        where p.USERID_NUM = #{userIdNum}
+    </update>
+
+    <update id="updateMoim">
+        UPDATE MOIM_POST M
+        set M.MOIM_TITLE=#{moimDo.moimTitle}, M.MOIM_MAIN=#{moimDo.moimMainContent},
+        M.MOIM_PICTURES=#{moimDo.moimImage}, M.CATEGORY_NUM=#{moimDo.moimCategoryNum},
+        M.MOIM_START_TIME=#{moimDo.moimStartDate}, M.MOIM_END_TIME=#{moimDo.moimEndDate},
+        M.MOIM_MEMBER_MAX=#{moimDo.moimMemberMax}, M.MOIM_PRICE=#{moimDo.moimPrice},
+        M.MOIM_DEADLINE=#{moimDo.moimDeadLine}, M.LOCATION_NUM=#{moimDo.moimLocationNum}
+        WHERE M.MOIM_NUM = #{MoimNum}
+    </update>
+
+    <delete id="lmageDelete">
+        DELETE
+        FROM IMAGE
+        WHERE MOIM_NUM = #{moimNum}
+    </delete>
+
+    <select id="findName" resultType="String">
+        SELECT USER_NAME
+        FROM USERS
+        WHERE USERID_NUM = #{moimHostUserIdNum}
+    </select>
+
+
 
 </mapper>

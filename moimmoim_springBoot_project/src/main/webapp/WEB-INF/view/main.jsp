@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,14 +25,16 @@
     <div id="header_container">
         <div id="header_logo"><a href="/"><img src="/imgs/moimmoimUi/logo.png" alt="logo" width="180px"></a></div>
         <div class="header_bar">
+
             <a href="/moim/getMoim/list" class="header_menu">MOIM LIST</a>
-            <a href="#" class="header_menu">HOST LIST</a>
+            <a href="/hostList" class="header_menu">HOST LIST</a>
+
             <a href="#" class="header_menu">고객센터</a>
             <c:if test="${sessionScope.userIdNum==null}">
                 <div id="login_icon"><a href="/login"><img src="/imgs/moimmoimUi/login.png" alt="login" width="40px"></a></div>
             </c:if>
             <c:if test="${sessionScope.userIdNum!=null}">
-                <div id="login_icon"><a href=/profilePage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
+                <div id="login_icon"><a href=/myPage/${sessionScope.userIdNum}><img src="/imgs/moimmoimUi/mypage.png" alt="login" width="40px"></a></div>
             </c:if>
         </div>
     </div>
@@ -44,7 +47,7 @@
         <div class="section_header">
             <div class="section_title">
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> POPULAR MOIM</div>
-            <a href="/" class="more_button">MORE ></a>
+            <a href="/moim/getMoim/list?sorting=1&moimCategoryNum=6" class="more_button">MORE ></a>
         </div>
         <ol class="list">
             <c:forEach items="${moimListPopular}" var="list" varStatus="status">
@@ -95,7 +98,7 @@
         <div class="section_header">
             <div class="section_title"> <!-- 연두색 바와 POPULAR MOIM 수평이 안 맞아서 매우 보기 불편. 개선 예정-->
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> MOIM LIST</div>
-            <a href="/" class="more_button">MORE ></a>
+            <a href="/moim/getMoim/list" class="more_button">MORE ></a>
         </div>
         <!--카테고리 바 (탭)-->
         <div class="tab">
@@ -115,7 +118,9 @@
                             <div class="moim_info">
                                 <div class="moim_location">${locList[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>

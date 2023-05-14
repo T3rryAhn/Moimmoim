@@ -23,4 +23,8 @@
         FROM TICKET
         WHERE MOIM_NUM = #{moimNum}
     </select>
+    <insert id="insertTicket" parameterType="moimmoimProject.domain.ticketDomain.TicketDo">
+        INSERT INTO TICKET(ORDER_NUM, TICKET_NUM, IMP_UID, MOIM_NUM, USERID_NUM)
+        VALUES(#{orderNum}, #{ticketNum}, #{imp_uid}, #{moimNum}, #{userIdNum})
+    </insert>
 </mapper>

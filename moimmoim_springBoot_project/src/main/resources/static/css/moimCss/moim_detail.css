@@ -19,7 +19,7 @@ form{
   grid-template-areas:
   'box1 box1'
   'box2 box3'
-  'box4 box4'
+  'box4 box3'
   'box5 box5' 
   'box6 box7'; 
   grid-gap: 20px 25px;
@@ -70,7 +70,7 @@ p {
 .moim_creator_content{
   margin: 0px;
   font-size: 20px;
-
+  line-height: 35px;
 }
 .moim_info{
   display: flex;
@@ -94,6 +94,7 @@ p {
 .moim_nums{
   color: gray;
   font-size: 12px;
+  margin: 10px;
 }
 .textbox{
   width: 350px;
@@ -139,6 +140,8 @@ p {
 .box2{
   /* background-color:rgb(224, 51, 163); */
   grid-area: box2;
+  width: 550px;
+  height: 400px;
 }
 .box3{
   /* background-color:rgb(235, 255, 243); */
@@ -219,16 +222,66 @@ p {
   display:none;
 }
 #prev {
-  background-image: url('..\imgs\moimmoimUi\arrow-left-out.png');
-  margin-left: -250px;
+  background-image: url('/imgs/moimmoimUi/arrow-left-out.png');
+  margin-left: -270px;
 }
 #prev:hover {
-  background-image: url('..\imgs\moimmoimUi\arrow-left-over.png');
+  background-image: url('/imgs/moimmoimUi/arrow-left-over.png');
 }
 #next{
-  margin-left: 200px;
-  background-image: url('..\imgs\moimmoimUi\arrow-right-out.png');
+  margin-left: 220px;
+  background-image: url('/imgs/moimmoimUi/arrow-right-out.png');
 }
 #next:hover{
-  background-image: url('..\imgs\moimmoimUi\arrow-right-over.png'); }
+  background-image: url('/imgs/moimmoimUi/arrow-right-over.png');
+}
+
+
+/* 지도 추가 */
+.d-none{
+  display:none;
+}
+#map{
+    margin: 15px auto;
+}
+.location_check{
+  width: 200px;
+  height: 30px;
+  background-color: rgb(17, 151, 65);
+  color: white;
+  border: 0px transparent solid;
+  border-radius: 5px;
+  margin: 0px auto;
+}
+
+
+.post_info{
+  display: flex;
+  justify-content: flex-start;
+  margin: 15px auto 40px 40px;
+  align-items: flex-end;
+}
+
+/* 삭제하기 및 수정하기 버튼 */
+.post_man{
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 40px 40px auto;
+}
+.post_delete, .post_edit{
+  width: 80px;
+  height: 35px;
+  color: white;
+  border: 0px transparent solid;
+  border-radius: 5px;
+  margin: 5px;
+}
+.post_delete{
+  background-color: rgb(24, 39, 19);
+}
+.post_edit{
+  background-color: rgb(17, 151, 65);
+}
+
+
 

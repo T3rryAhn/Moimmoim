@@ -1,7 +1,7 @@
 package moimmoimProject.controller.userController;
 
 import moimmoimProject.domain.userDomain.UserProfileDto;
-import moimmoimProject.service.UserProfileAssembler;
+import moimmoimProject.service.Assembler.UserProfileAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

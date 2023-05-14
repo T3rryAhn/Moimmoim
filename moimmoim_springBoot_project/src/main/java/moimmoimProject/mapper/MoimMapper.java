@@ -4,7 +4,9 @@ import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -49,9 +51,21 @@ public interface MoimMapper {
 
     List<MoimDo> findAllex(String keyword, Long moimCategoryNum);
 
-    List<Long> findMoimed(Long joinNum);
+    List<Long> findMoimed(@Param("joinNum") Long joinNum);
 
     List<Long> findByHost(Long userIdNum);
 
     List<Map<String, Object>> joinMoimList(Long moimCategoryNum, String keyword, Criteria cri, Long sorting);
+
+    List<Long>findHost();   // 개최한 사람 리스트 (중복 제거)
+
+    int countMoim(Long userIdNum);
+
+    void plusCountHosting(Long userIdNum);
+
+    void updateMoim(MoimDo moimDo, Long MoimNum);
+
+    void lmageDelete(Long moimNum);
+
+    String findName(MoimDo moimDo);
 }

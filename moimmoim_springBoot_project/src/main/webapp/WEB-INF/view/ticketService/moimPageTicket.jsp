@@ -18,7 +18,7 @@
           if (event.data === 'closeModal') {
             const moimNum = '<%= request.getAttribute("moimNum") %>';
                     const userIdNum = '<%= request.getAttribute("userIdNum") %>';
-                    location.href = '/test/ticket/' + moimNum + '/' + userIdNum;
+                    location.href = 'moim/getMoim/getMoim';
 
           }
         }, false);
@@ -67,8 +67,7 @@
             iframe.src = "";
             modal.style.display = "none";
 
-            // 추가한 URL 삭제
-            window.history.back();
+            window.location.href = '/moim/getMoim/getMoim?moimNum=${moimNum}';
         }
 
     //간단 프로필 로드
@@ -90,7 +89,7 @@
     <div class="ticket">
         <!-- 티켓 왼쪽 -->
         <div class="ticket-left">
-            <img src="/imgs/moimmoimUi/whitelogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;">
+            <img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;">
             <b style="display: inline-block;">Ticket</b>
             <br><br><br>
             <p>date: ${moimDo.moimStartDate}<br>

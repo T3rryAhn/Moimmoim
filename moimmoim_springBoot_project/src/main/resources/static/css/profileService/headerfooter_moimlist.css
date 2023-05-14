@@ -27,7 +27,7 @@ main{
 
 /* header, footer 설정 */
 header, footer {
-  padding: 0px; 
+  padding: 0px;
   background: rgb(24, 39, 19);
   color: white;
 }
@@ -101,7 +101,7 @@ header, footer {
   height: 94px;
   background-color: rgb(17, 151, 65);
   align-content: stretch;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
 .search_bar{
   width: 1060px;

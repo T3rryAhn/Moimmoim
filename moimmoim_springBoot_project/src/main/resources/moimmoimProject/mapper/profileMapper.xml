@@ -10,7 +10,7 @@
         <result column="HOST_MOIM_REVIEW_SCORE_AVG" property="userMoimReviewScoreAvg" jdbcType="DOUBLE" />
         <result column="YEAR_OF_BIRTH" property="userBirth" jdbcType="DATE" />
         <result column="USER_INTRODUCE" property="userIntroduction" jdbcType="VARCHAR" />
-        <result column="HOST_MOIM_COUNT" property="userHostingCount" jdbcType="BIGINT" />
+        <result column="HOSTING_COUNT" property="userHostingCount" jdbcType="INTEGER" />
 
     </resultMap>
 
@@ -22,6 +22,14 @@
 
     <update id="updateProfileImage" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
         UPDATE PROFILE SET USER_PROFILE_IMAGE = #{userProfileImage} WHERE USERID_NUM = #{userIdNum}
+    </update>
+
+    <update id="updateIntroduce" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
+        UPDATE PROFILE
+        SET
+            USER_INTRODUCE = #{userIntroduction},
+            YEAR_OF_BIRTH = ${birth}
+        WHERE USERID_NUM = #{userIdNum}
     </update>
 
     <insert id="insertProfileDefault" parameterType="moimmoimProject.domain.userDomain.ProfileDo">
@@ -39,5 +47,62 @@
             where u.userid_num = m.userid_num and u.userid_num = ${userIdNum})
         )
     </insert>
+
+    <select id="findAllProfileDo" parameterType="map" resultMap="profileResultMap">
+        <![CDATA[
+            SELECT *
+            FROM (
+                SELECT PROFILE.*, ROWNUM rnum
+                FROM (
+                     SELECT *
+        ]]>
+        <choose>
+            <when test="keyword != '' and keyword != null">
+                FROM PROFILE
+                WHERE USERID_NUM = (SELECT USERID_NUM
+                                    FROM USERS
+                                    WHERE USER_NAME LIKE '%'||#{keyword}||'%')
+            </when>
+            <otherwise>
+                FROM PROFILE
+            </otherwise>
+        </choose>
+        <trim prefix="ORDER BY">
+            <if test="sorting == 0"> HOSTING_COUNT DESC </if>
+            <if test="sorting == 1"> YEAR_OF_BIRTH DESC </if>
+        </trim>
+        <![CDATA[
+
+                     ) PROFILE
+                WHERE ROWNUM <= #{cri.pageStart} + #{cri.perPageNum}
+                )
+            WHERE rnum > #{cri.pageStart}
+        ]]>
+    </select>
+
+    <select id="profileListCnt" resultType="int">
+        SELECT count(*)
+        FROM PROFILE
+        <where>
+            <if test="moimCategoryNum lt 6">AND CATEGORY_NUM = #{moimCategoryNum} </if>
+            <if test="moimCategoryNum == 7">
+                AND USERID_NUM = (SELECT USERID_NUM
+                FROM USERS
+                WHERE USER_NAME LIKE '%'||#{keyword}||'%')</if>
+        </where>
+    </select>
+
+    <select id="getName" resultType="String">
+        SELECT USER_NAME
+        FROM USERS
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+    <select id="getUserLevel" resultType="int">
+        SELECT HOST_LEVEL_NUM
+        FROM USERS
+        WHERE USERID_NUM = #{userIdNum}
+    </select>
+
 
 </mapper>

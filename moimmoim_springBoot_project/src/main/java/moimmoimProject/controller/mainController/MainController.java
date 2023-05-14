@@ -39,7 +39,7 @@ public class MainController {
         return "/main";
     }
 
-    @GetMapping("/moimService/getMoimByCategory")
+/*    @GetMapping("/moimService/getMoimByCategory")
     public List<MoimDo> getMoimByCategory(@RequestParam("categoryNum") Long categoryNum) {
         List<MoimDo> moimList = new ArrayList<>();
         try {
@@ -49,6 +49,6 @@ public class MainController {
             e.printStackTrace();
         }
         return moimList;
-    }
+    }*/
 
 }

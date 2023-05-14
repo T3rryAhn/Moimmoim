@@ -25,6 +25,7 @@
             </div>
         </header>
     </header>
+
     <main>
         <div class="section_profile">
             <div class="profile_list">
@@ -36,6 +37,19 @@
                         <div class="profile_text name">김도균</div>
                         <div class="profile_text moimcount">모임 개최: 17회</div>
                     </div>
+
+</header>
+<main>
+    <div class="section_profile">
+        <div class="profile_list">
+            <div class="prolist one">
+                <img src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사"; class="picture">
+                <div class="profile_info">
+                    <div class="profile_text level">${hostLevelName}</div>
+                    <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>
+                    <div class="profile_text name">${profilePageDto.userProfileDto.userName}</div>
+                    <div class="profile_text moimcount">${profilePageDto.userProfileDto.userHostingCount}회</div>
+
                 </div>
                 <div class="prolist two">
                     <div class="profile_info">
