@@ -7,15 +7,13 @@ import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.pageDomain.ProfilePageDto;
 import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.domain.userDomain.UserDo;
-import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.mapper.ProfileMapper;
+import moimmoimProject.mapper.ReceiptMapper;
 import moimmoimProject.mapper.UserMapper;
+import moimmoimProject.service.Assembler.ProfilePageAssembler;
 import moimmoimProject.service.MoimService;
-import moimmoimProject.service.ProfilePageAssembler;
 import moimmoimProject.service.ProfileService;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +35,7 @@ public class MyPageController {
     private final ProfileMapper profileMapper;
     private final ProfilePageAssembler profilePageAssembler;
     private final ProfileService profileService;
+    private final ReceiptMapper receiptMapper;
 
     @GetMapping("{userIdNum}")
     public String findByUserIdNum(@PathVariable Long userIdNum, Model model){
@@ -154,6 +153,15 @@ public class MyPageController {
         model.addAttribute("locationList", locationList);
         model.addAttribute("categoryName", categoryName);
         model.addAttribute("hostLevelName", hostLevelName);
+    }
+
+    //대금수령
+    @GetMapping("/receiptPage")
+    public String receiptPage(HttpSession session, Model model) {
+        Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
+
+        model.addAttribute(receiptMapper.getReceipt(userIdNum));
+        return "myPageService/myPageReceipt";
     }
 
 }

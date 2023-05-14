@@ -5,16 +5,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.Paging;
-import moimmoimProject.domain.userDomain.ProfileDo;
-import moimmoimProject.domain.userDomain.UserProfileDto;
+import moimmoimProject.service.Assembler.UserProfileAssembler;
 import moimmoimProject.service.ProfileService;
-import moimmoimProject.service.UserProfileAssembler;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

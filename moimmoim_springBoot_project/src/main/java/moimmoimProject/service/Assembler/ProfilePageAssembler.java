@@ -1,4 +1,4 @@
-package moimmoimProject.service;
+package moimmoimProject.service.Assembler;
 
 
 import moimmoimProject.domain.moimDomain.MoimDo;

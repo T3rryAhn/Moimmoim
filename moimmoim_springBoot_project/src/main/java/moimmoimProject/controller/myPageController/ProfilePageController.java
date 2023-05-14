@@ -2,23 +2,15 @@ package moimmoimProject.controller.myPageController;
 
 
 import lombok.RequiredArgsConstructor;
-import moimmoimProject.domain.moimDomain.LocationDo;
-import moimmoimProject.domain.moimDomain.MoimDo;
-import moimmoimProject.domain.pageDomain.ProfilePageDto;
-import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.mapper.ProfileMapper;
+import moimmoimProject.service.Assembler.ProfilePageAssembler;
 import moimmoimProject.service.MoimService;
-import moimmoimProject.service.ProfilePageAssembler;
 import moimmoimProject.service.ProfileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/profilePage")
