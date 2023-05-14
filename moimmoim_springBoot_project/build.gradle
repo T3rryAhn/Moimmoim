@@ -5,6 +5,19 @@ plugins {
 	id 'war'
 }
 
+
+bootWar {
+	archiveBaseName = 'ROOT'
+	archiveFileName = 'ROOT.war'
+	archiveVersion = "0.0.0"
+}
+
+war {
+	archiveBaseName = 'ROOT'
+	archiveFileName = 'ROOT.war'
+	archiveVersion = "0.0.0"
+}
+
 group = 'moimmoimProject'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -51,7 +64,13 @@ dependencies {
 
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
+
+
+bootWar.enabled = false
+war.enabled = true
 
 tasks.named('test') {
 	useJUnitPlatform()

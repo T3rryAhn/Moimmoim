@@ -105,7 +105,7 @@ color: white;
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-template-rows: auto;
-  grid-gap: 0px 40px;
+  grid-gap: 0px 80px;
   justify-content: center;
 }
 .leftside {
@@ -115,6 +115,21 @@ color: white;
 
   position: relative;
 
+}
+.leftside a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.leftside a:hover {
+  background-color: #45a049;
 }
 .profile_list{
   /* display: flex; */
@@ -143,16 +158,6 @@ color: white;
   position: relative;
 }
 
-.moimcount::before{
-  content: "/";
-  margin: 0 0.5px;
-  padding-right: 2px;
-}
-
-.avgstar, .moimcount{
-  display: inline-block;
-
-}
 
 .profile_text {
   font-family: 'Noto Sans KR', sans-serif;

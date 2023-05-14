@@ -16,7 +16,7 @@ public class MoimDo {   // DB순서에 맞춘거
     private String moimTitle;
     private String moimMainContent;
     private String moimImage;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime moimCreateDate;
     private int moimViewCount;
     private int moimCategoryNum;

@@ -68,4 +68,8 @@ public interface MoimMapper {
     void lmageDelete(Long moimNum);
 
     String findName(MoimDo moimDo);
+
+    void updateDeadCheckUsingPage();
+
+    void updateDeadCheckJoinMoim();
 }
