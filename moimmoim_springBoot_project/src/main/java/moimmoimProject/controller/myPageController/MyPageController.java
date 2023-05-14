@@ -52,30 +52,57 @@ public class MyPageController {
         // Long userIdNum = 1L;    // 테스트 용
 
         List<Long> numList = moimService.findMoimed(userIdNum);     // 유저의 참가한 모임 넘 리스트를 얻음
-        List<MoimDo> list = new ArrayList<>();
+        List<MoimDo> openList = new ArrayList<>();
+        List<MoimDo> closeList = new ArrayList<>();
         int i=0;
         while(true){
             MoimDo moimDo = moimService.getMoimByMoimNum(numList.get(i));
-            list.add(moimDo);
+            if(moimDo.getMoimDeadCheck()==0){
+                openList.add(moimDo);
+            }else{
+                closeList.add(moimDo);
+            }
+
             if(numList.size()-1 > i){
                 i++;
             }else{
                 break;
             }
         }
-        model.addAttribute("list", list);
 
-        return "moimService/list";
+        model.addAttribute("make","2");
+        model.addAttribute("openList", openList);
+        model.addAttribute("closeList", closeList);
+
+        return "myPageService/myCreateMoim";
     }
 
     @GetMapping("/myMadeMoim")
     public String myMadeMoim(HttpSession session, String keyword, Criteria cri, Model model) {
-        Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
+        Long userIdNum = (Long) session.getAttribute("userIdNum");   //세션에서 넘버 받기
         //Long userIdNum = 1L;    // 테스트 용
         List<MoimDo> list = moimService.getMoimByUserIdNum(userIdNum);
+        List<MoimDo> openList = new ArrayList<>();
+        List<MoimDo> closeList = new ArrayList<>();
 
-        model.addAttribute("list", list);
-        return "moimService/list";
+        int i = 0;
+        while (true) {
+            MoimDo moimDo = list.get(i);
+            if (moimDo.getMoimDeadCheck() == 0) {
+                openList.add(moimDo);
+            } else {
+                closeList.add(moimDo);
+            }
+            if (list.size() - 1 > i) {
+                i++;
+            } else {
+                break;
+            }
+            model.addAttribute("make","1");
+            model.addAttribute("openList", openList);
+            model.addAttribute("closeList", closeList);
+        }
+        return "myPageService/myCreateMoim";
     }
 
     @GetMapping("/profileEdit/{userIdNum}")
