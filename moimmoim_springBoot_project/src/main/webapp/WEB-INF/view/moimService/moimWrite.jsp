@@ -39,7 +39,7 @@
     <div class="section_title">
         <img src="\imgs\moimmoimUi\bar.png"; class="green_bar"> 모임글 작성하기
     </div>
-    <form action="/moim/new" method="post" enctype="multipart/form-data">
+    <form action=${moimDo.moimNum!=null ? '/moim/getMoim/update/run' : '/moim/new'} method="post" enctype="multipart/form-data">
         <div class="form-group">
             <div class="box box1">
                 <label for="moimCategoryNum" class="form_name">카테고리 구분</label>
@@ -63,23 +63,23 @@
             </div>
             <div class="box box3">
                 <label for="moimStartDate" class="form_name">모임 시작일</label>
-                <input class="textbox" type="datetime-local" id="moimStartDate" name="moimStartDate" placeholder="모임 시작일을 선택해 주세요">
+                <input class="textbox" type="datetime-local" id="moimStartDate" name="moimStartDate" placeholder="모임 시작일을 선택해 주세요" value=${moimDo.moimStartDate}>
             </div>
             <div class="box box4">
                 <label for="moimEndDate" class="form_name">모임 종료일</label>
-                <input class="textbox" type="datetime-local" id="moimEndDate" name="moimEndDate" placeholder="모임 종료일을 선택해 주세요">
+                <input class="textbox" type="datetime-local" id="moimEndDate" name="moimEndDate" placeholder="모임 종료일을 선택해 주세요" value=${moimDo.moimEndDate}>
             </div>
             <div class="box box5">
                 <label for="moimPrice" class="form_name">참가 비용</label>
-                <input class="textbox" type="text" id="moimPrice" name="moimPrice" placeholder="1인당 모임 참가 비용을 작성해 주세요.">
+                <input class="textbox" type="text" id="moimPrice" name="moimPrice" placeholder="1인당 모임 참가 비용을 작성해 주세요." value=${moimDo.moimPrice}>
             </div>
             <div class="box box6">
                 <label for="moimMemberMax" class="form_name">모임 최대 인원</label>
-                <input class="textbox" type="text" id="moimMemberMax" name="moimMemberMax" placeholder="모임 최대 인원을 작성해 주세요(또는 선택해 주세요? 형식 어떻게 하실건가요?)">
+                <input class="textbox" type="text" id="moimMemberMax" name="moimMemberMax" placeholder="모임 최대 인원을 작성해 주세요(또는 선택해 주세요? 형식 어떻게 하실건가요?)" value=${moimDo.moimMemberMax}>
             </div>
             <div class="box box7">
                 <label for="moimDeadLine" class="form_name">모집 마감일</label>
-                <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요.">
+                <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요." value=${moimDo.moimDeadLine}>
             </div>
             <div class="box box8">
                <label for="sigFile" class="form_name">대표사진</label>
@@ -90,18 +90,18 @@
 
             <div class="box box9">
                 <label for="moimTitle" class="form_name">모임 제목</label>
-                <input class="textbox title" type="text" id="moimTitle" name="moimTitle" placeholder="모임 제목을 작성해 주세요.">
+                <input class="textbox title" type="text" id="moimTitle" name="moimTitle" placeholder="모임 제목을 작성해 주세요." value=${moimDo.moimTitle}>
             </div>
             <div class="box box10">
                 <label for="moimMainContent" class="form_name form_main">모임 소개</label>
                 <!-- <input class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="이름을입력하세요"> -->
-                <textarea class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="모임 소개글을 작성해 주세요."></textarea>
+                <textarea class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="모임 소개글을 작성해 주세요.">${moimDo.moimMainContent}</textarea>
             </div>
         </div>
 
         <label for="moimHostUserIdNum">모임 유저 넘버</label>
         <input type="Long" id="moimHostUserIdNum" name="moimHostUserIdNum" placeholder="테스트를 위한 유저넘버 입력">
-
+        <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
         <button type="submit" class="submit">등록하기</button>
     </form>
     </div>

@@ -32,7 +32,7 @@
     </div>
     <div id="moimPage" style="display: inline-block;">
         <h3>moimPage</h3>
-        <a href="/moim"><button>모임 페이지로 이동</button></a>
+        <a href="/moim/getMoim/list"><button>모임 페이지로 이동</button></a>
     </div>
     <div id="login" style="display: inline-block;">
        <h3>login</h3>

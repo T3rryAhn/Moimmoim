@@ -40,6 +40,10 @@ public class MoimService {
         moimMapper.createMoim(moimDo);
     }
 
+    public void updateMoim(MoimDo moimDo, Long MoimNum) {
+        moimMapper.updateMoim(moimDo,MoimNum);
+    }
+
     public void CountView(Long moimNum){
         moimMapper.countView(moimNum);
     }
@@ -207,6 +211,10 @@ public class MoimService {
 
     public void plusCountHosting(Long userIdNum) {
         moimMapper.plusCountHosting(userIdNum);
+    }
+
+    public void lmageDelete(Long userNum) {
+        moimMapper.lmageDelete(userNum);
     }
 
 

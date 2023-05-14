@@ -74,7 +74,7 @@
         <ol class="list">
             <c:forEach items="${proList}" var="proList" varStatus="status">
             <li>
-                <a href="">
+                <a href="/profilePage/${proList.userIdNum}">
                 <figure>
                     <img src=/files/${proList.userProfileImage} alt="사진1"; class="photo">
                     <div class="host_info">

@@ -4,6 +4,7 @@ import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.ImageDTO;
 import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -60,4 +61,8 @@ public interface MoimMapper {
     int countMoim(Long userIdNum);
 
     void plusCountHosting(Long userIdNum);
+
+    void updateMoim(MoimDo moimDo, Long MoimNum);
+
+    void lmageDelete(Long moimNum);
 }
