@@ -65,4 +65,6 @@ public interface MoimMapper {
     void updateMoim(MoimDo moimDo, Long MoimNum);
 
     void lmageDelete(Long moimNum);
+
+    String findName(MoimDo moimDo);
 }

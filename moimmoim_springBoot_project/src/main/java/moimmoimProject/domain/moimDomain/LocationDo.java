@@ -10,7 +10,7 @@ public class LocationDo {
     private int locationNum;
     private String locationName;
     private int frontCode;
-    private String Destination;
+    private String destination;
 
     public LocationDo(){
 
