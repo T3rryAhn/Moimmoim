@@ -109,6 +109,9 @@ public class BuyPageController {
         //orderDo 호출
         OrderDo orderDo = orderMapper.findByOrderNum(orderNum);
 
+        //moimDo 호출
+        MoimDo moimDo = moimMapper.findAllByMoimNum(orderDo.getMoimNum());
+
         //주문 상태 변경
         updateOrder(orderNum, "결제 완료");
 
@@ -118,14 +121,14 @@ public class BuyPageController {
 
         //대금 테이블 등록
         ReceiptService receiptService = new ReceiptService(receiptMapper);
-        receiptService.updateReceipt(orderDo.getUserIdNum(), orderDo.getOrderPrice());
+        receiptService.updateReceipt(moimDo.getMoimHostUserIdNum(), orderDo.getOrderPrice());
 
         Long userIdNum = (Long) session.getAttribute("userIdNum");      // 세션에서 받음
         String[] parts = orderNum.split("/");
         Long moimNum = Long.parseLong((parts[1]));
         moimMapper.plusMemberCount(moimNum);
 
-        MoimDo moimDo = moimMapper.findAllByMoimNum(moimNum);
+        // moimDo = moimMapper.findAllByMoimNum(moimNum);
         moimMapper.joinMoim(userIdNum, moimDo);
 
 
