@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketDo {
-    private Long orderNum;
-    private Long ticketNum;
+    private String orderNum;
+    private String ticketNum;
     private String imp_uid;
     private Long moimNum;
     private Long userIdNum;
