@@ -26,7 +26,7 @@
         <h1><a href="/">마이페이지</a> > 결제 및 대금수령</h1>
         <div class="receipt_body">
         <p>수령받으실 금액</p>
-        <p>XXXXXX 원</p>
+        <p>${receiptDo.receiptMoney} 원</p>
         <label for="accountnumber">입금 받으실 계좌</label>
         <input type="text" name="accountnumber" class="acnumber_box" pattern="[0-9]*" required>
         <button id="registerButton">등록</button>

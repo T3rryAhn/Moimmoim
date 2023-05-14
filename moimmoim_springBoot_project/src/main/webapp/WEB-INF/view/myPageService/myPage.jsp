@@ -107,7 +107,7 @@
                     <div class="section_title">
                         <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> 결제 관리</div>
                 </div>
-            <a href="결제 및 대금 수령 페이지 링크"><button>결제 및 대금 수령</button></a>
+            <a href="/myPage/receiptPage"><button>결제 및 대금 수령</button></a>
             </div>
             </div>
                 </div>
