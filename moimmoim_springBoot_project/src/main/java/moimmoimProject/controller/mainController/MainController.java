@@ -28,6 +28,7 @@ public class MainController {
         List<MoimDo> moimListHeal = moimMapper.findByCategory(4L);
         List<MoimDo> moimListActive = moimMapper.findByCategory(5L);
         List<MoimDo> moimListPopular = moimMapper.findAllbyPopular();
+        moimService.checkDeadLine();
 
         model.addAttribute("moimListPopular", moimListPopular);
         model.addAttribute("moimListEat", moimListEat); // 4개 먹기 리스트

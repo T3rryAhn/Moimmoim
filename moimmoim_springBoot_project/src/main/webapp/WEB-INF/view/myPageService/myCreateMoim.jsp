@@ -83,7 +83,7 @@
             <div>
                 <ol class="slider-container2 list">
                 <c:forEach items="${closeList}" var="closeList" varStatus="status">
-                    <li class="slide">
+                    <li class="slide2">
                     <a href=getMoim?moimNum=${closeList.moimNum}><figure>
                         <img src="/files/${closeList.moimImage}" alt="사진1"; class="photo">
                         <div class="info">
@@ -100,7 +100,9 @@
             </div>
             <a href="#" id="prev2"></a>
             <a href="#" id="next2"></a>
-</div>
+        </div>
+    </div>
+    </div>
 </main>
 
 <!-- 푸터 시작-->

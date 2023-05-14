@@ -1,6 +1,8 @@
 package moimmoimProject.controller.userController;
 
+import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.userDomain.UserProfileDto;
+import moimmoimProject.service.MoimService;
 import moimmoimProject.service.UserProfileAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,19 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserProfileController {
 
         private final UserProfileAssembler userProfileAssembler;
-
-        @Autowired
-        public UserProfileController(UserProfileAssembler userProfileAssembler) {
-            this.userProfileAssembler = userProfileAssembler;
-        }
+        private final MoimService moimService;
 
         @GetMapping("/userProfile/{userIdNum}")
         public String getUserProfile(@PathVariable Long userIdNum, Model model) {
             UserProfileDto userProfileDto = userProfileAssembler.getUserProfile(userIdNum);
             model.addAttribute("userProfileDto", userProfileDto);
+            moimService.checkDeadLine();
 
             return "/userService/userProfile";
         }

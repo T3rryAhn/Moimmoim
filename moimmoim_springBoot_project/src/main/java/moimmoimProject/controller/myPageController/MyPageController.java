@@ -49,7 +49,7 @@ public class MyPageController {
     @GetMapping("/myJoinMoim")
     public String myJoinMoim(HttpSession session, String keyword, Criteria cri, Model model){
         Long userIdNum = (Long)session.getAttribute("userIdNum");   //세션에서 넘버 받기
-        // Long userIdNum = 1L;    // 테스트 용
+        moimService.checkDeadLine();
 
         List<Long> numList = moimService.findMoimed(userIdNum);     // 유저의 참가한 모임 넘 리스트를 얻음
         List<MoimDo> openList = new ArrayList<>();
@@ -80,10 +80,10 @@ public class MyPageController {
     @GetMapping("/myMadeMoim")
     public String myMadeMoim(HttpSession session, String keyword, Criteria cri, Model model) {
         Long userIdNum = (Long) session.getAttribute("userIdNum");   //세션에서 넘버 받기
-        //Long userIdNum = 1L;    // 테스트 용
         List<MoimDo> list = moimService.getMoimByUserIdNum(userIdNum);
         List<MoimDo> openList = new ArrayList<>();
         List<MoimDo> closeList = new ArrayList<>();
+        moimService.checkDeadLine();
 
         int i = 0;
         while (true) {
@@ -98,10 +98,13 @@ public class MyPageController {
             } else {
                 break;
             }
+        }
             model.addAttribute("make","1");
             model.addAttribute("openList", openList);
             model.addAttribute("closeList", closeList);
-        }
+            System.out.println("closeList : " + closeList);
+            System.out.println("openList : " + openList);
+
         return "myPageService/myCreateMoim";
     }
 
