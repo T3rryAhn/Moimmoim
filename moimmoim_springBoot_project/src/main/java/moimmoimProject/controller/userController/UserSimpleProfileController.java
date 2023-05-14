@@ -2,7 +2,7 @@ package moimmoimProject.controller.userController;
 
 
 import moimmoimProject.domain.userDomain.UserSimpleProfileDto;
-import moimmoimProject.service.UserSimpleProfileAssembler;
+import moimmoimProject.service.Assembler.UserSimpleProfileAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -11,6 +11,7 @@ import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.domain.userDomain.UserProfileDto;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.mapper.ProfileMapper;
+import moimmoimProject.service.Assembler.UserProfileAssembler;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 

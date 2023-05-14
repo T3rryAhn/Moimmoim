@@ -12,22 +12,28 @@
     </resultMap>
 
     <!--신규 행 삽입 -->
-    <insert id="insertReceipt" parameterType="moimmoimProject.domain.userDomain.ReceiptDo">
+    <insert id="createReceipt" parameterType="moimmoimProject.domain.userDomain.ReceiptDo">
         INSERT INTO RECEIPT(USERID_NUM, RECEIPT_MONEY)
-        VALUES(#{userIdNum}, #{receiptMoney})
+        VALUES(#{userIdNum}, 0)
     </insert>
     <!-- 행 편집 -->
     <update id="updateReceipt" parameterType="map">
-        UPDATE MOIM_ORDER
+        UPDATE RECEIPT
         SET RECEIPT_MONEY = #{receiptMoney}
         WHERE USERID_NUM = #{userIdNum}
     </update>
 
-    <!-- 행 찾기-->
-    <select id="checkReceipt" parameterType="map" resultMap="receiptResultMap">
+    <select id="getReceipt" parameterType="map" resultMap="receiptResultMap">
         SELECT *
         FROM RECEIPT
         WHERE USERID_NUM = #{userIdNum}
+    </select>
+
+
+    <select id="checkReceipt" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM RECEIPT
+        WHERE USERiD_NUM = #{userIdNum}
     </select>
 
 </mapper>

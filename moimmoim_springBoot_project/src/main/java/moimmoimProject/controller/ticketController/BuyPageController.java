@@ -4,10 +4,10 @@ import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.moimDomain.MoimMemDo;
 import moimmoimProject.domain.ticketDomain.OrderDo;
 import moimmoimProject.domain.userDomain.UserDo;
-import moimmoimProject.mapper.MoimMapper;
-import moimmoimProject.mapper.OrderMapper;
-import moimmoimProject.mapper.UserMapper;
+import moimmoimProject.mapper.*;
+import moimmoimProject.service.receiptService.ReceiptService;
 import moimmoimProject.service.ticketService.OrderService;
+import moimmoimProject.service.ticketService.TicketService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +24,17 @@ public class BuyPageController {
     private final MoimMapper moimMapper;
     private final UserMapper userMapper;
     private final OrderMapper orderMapper;
+    private final TicketMapper ticketMapper;
+    private final ReceiptMapper receiptMapper;
 
 
-    public BuyPageController(OrderService orderService, MoimMapper moimMapper, UserMapper userMapper, OrderMapper orderMapper) {
+    public BuyPageController(OrderService orderService, MoimMapper moimMapper, UserMapper userMapper, OrderMapper orderMapper, TicketMapper ticketMapper, ReceiptMapper receiptMapper) {
         this.orderService = orderService;
         this.moimMapper = moimMapper;
         this.userMapper = userMapper;
         this.orderMapper = orderMapper;
+        this.ticketMapper = ticketMapper;
+        this.receiptMapper = receiptMapper;
 
     }
     @GetMapping("/buyPage/{moimNum}")
@@ -95,15 +99,28 @@ public class BuyPageController {
 
     @PostMapping("/updateOrderStatus")
     public void updateOrder(@RequestParam String orderNum, String orderStatus) {
-        orderStatus = "결제 완료";
         orderMapper.updateOrderStatus(orderNum, orderStatus);
 
     }
 
+    //결제 성공 로직
     @PostMapping("/buySuccess")
     public String showBuySuccessPage(@RequestParam String orderNum, HttpSession session) {
-        //  Long userIdNum = (Long) session.getAttribute("userIdNum");      // 세션에서 받음
-        Long userIdNum = 1L;    // 테스트 용
+        //orderDo 호출
+        OrderDo orderDo = orderMapper.findByOrderNum(orderNum);
+
+        //주문 상태 변경
+        updateOrder(orderNum, "결제 완료");
+
+        //티켓 생성
+        TicketService ticketService = new TicketService(ticketMapper, orderMapper);
+        ticketService.createTicket(orderNum);
+
+        //대금 테이블 등록
+        ReceiptService receiptService = new ReceiptService(receiptMapper);
+        receiptService.updateReceipt(orderDo.getUserIdNum(), orderDo.getOrderPrice());
+
+        Long userIdNum = (Long) session.getAttribute("userIdNum");      // 세션에서 받음
         String[] parts = orderNum.split("/");
         Long moimNum = Long.parseLong((parts[1]));
         moimMapper.plusMemberCount(moimNum);
