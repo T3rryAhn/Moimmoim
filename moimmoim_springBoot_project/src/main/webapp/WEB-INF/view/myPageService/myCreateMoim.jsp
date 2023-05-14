@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page  language ="java" contentType="text/html; charset=utf-8" pageEncoding ="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,9 +9,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>마이페이지 > 내가 만든 모임</title>
-    <link rel="stylesheet" href="mycreate_moim.css">
-    <link rel="stylesheet" href="headerfooter_basic.css">
+    <title>${make == 1 ? '마이페이지 > 내가 만든 모임' : '마이페이지 > 내가 참가한 모임'}</title>
+    <link rel="stylesheet" href="/css/myPageUi/mycreate_moim.css">
+    <link rel="stylesheet" href="/css/myPageUi/headerfooter_basic.css">
 </head>
 
 
@@ -37,8 +40,12 @@
     <div class="form-group">
 <!--페이지 제목-->
         <div class="box box1">
-            <h1 class="moim_title">마이페이지 > 내가 만든 모임</h1>
+            <h1 class="moim_title">마이페이지 > ${make == 1 ? '내가 만든 모임' : '내가 참가한 모임'}</h1>
         </div>
+
+
+
+
 
 
 <!--opened moims-->
@@ -48,18 +55,20 @@
                 OPEN </h1>
             <div>
                 <ol class="slider-container list">
+                <c:forEach items="${openList}" var="openList" varStatus="status">
                     <li class="slide">
-                        <a href="#"><figure>
-                            <img src="res/img/image1.jpg" alt="사진1"; class="photo">
+                        <a href=getMoim?moimNum=${openList.moimNum}><figure>
+                            <img src="/files/${openList.moimImage}" alt="사진1"; class="photo">
                             <div class="info">
-                                <div class="moim_location">서울시 종로구 평창동</div>
-                                <div class="title">1</div>
-                                <div class="moim_time">2023년 6월 18일 11시</div>
-                                <div class="moim_price">30,000원</div>
-                                <div class="num_of_people">3명 참여중</div>
+                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="title">${openList.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${openList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_price">${openList.moimPrice}원</div>
+                                <div class="num_of_people">${openList.moimMemberCount}명 참여중</div>
                             </div>
                         </figure></a>
                     </li>
+                    </c:forEach>
                 </ol>
             </div>
             <a href="#" id="prev"></a>
@@ -73,18 +82,20 @@
                 CLOSE </h1>
             <div>
                 <ol class="slider-container2 list">
-                    <li class="slide2">
-                        <a href="#"><figure>
-                            <img src="res/img/image1.jpg" alt="사진1"; class="photo">
-                            <div class="info">
-                                <div class="moim_location">서울시 종로구 평창동</div>
-                                <div class="title">1</div>
-                                <div class="moim_time">2023년 6월 18일 11시</div>
-                                <div class="moim_price">30,000원</div>
-                                <div class="num_of_people">3명 참여중</div>
-                            </div>
+                <c:forEach items="${closeList}" var="closeList" varStatus="status">
+                    <li class="slide">
+                    <a href=getMoim?moimNum=${closeList.moimNum}><figure>
+                        <img src="/files/${closeList.moimImage}" alt="사진1"; class="photo">
+                        <div class="info">
+                            <div class="moim_location">${locList[status.index].locationName}</div>
+                            <div class="title">${closeList.moimTitle}</div>
+                            <div class="moim_time"><tf:formatDateTime value="${closeList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                            <div class="moim_price">${closeList.moimPrice}원</div>
+                            <div class="num_of_people">${closeList.moimMemberCount}명 참여</div>
+                        </div>
                         </figure></a>
                     </li>
+                </c:forEach>
                 </ol>
             </div>
             <a href="#" id="prev2"></a>
@@ -110,7 +121,7 @@
         </div>
     </footer>
 <!-- 푸터 끝-->
-    <script src="/js/myPage/Service/mycreate_moim.js"></script>
+    <script src="/js/myPageService/mycreate_moim.js"></script>
 
 </body>
 </html>

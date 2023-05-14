@@ -11,6 +11,7 @@ import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.domain.moimDomain.MoimDo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

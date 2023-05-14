@@ -1,5 +1,7 @@
 package moimmoimProject.controller.hostController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
 import moimmoimProject.domain.moimDomain.Paging;
@@ -53,6 +55,7 @@ public class HostController {
         List<Map<String, Object>> proList = profileService.findAllProfileDo(moimCategoryNum, keyword, cri, sorting);
         List<String> list = profileService.getUser(proList);
         List<String> levelList = profileService.getHostLevelList(proList);
+        
 
         model.addAttribute("levelList", levelList);
         model.addAttribute("list", list);
