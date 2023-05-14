@@ -71,9 +71,20 @@
         </div>
         <div class="box box2">
             <ul class="slider-container simple-list" id="slider">
-                <li class="slide">
+<!--                <li class="slide">
                     <img src="/files/${moimDo.moimImage}" alt="moim_photo" class="moim_photo" >
+                </li>-->
+                <li class="slide">
+                    <img src="/imgs/moim_img/image1.jpg" alt="moim_photo" class="moim_photo" >
                 </li>
+                <li class="slide">
+                    <img src="/imgs/moim_img/image1.jpg" alt="moim_photo" class="moim_photo" >
+                </li>
+                <li class="slide">
+                    <img src="/imgs/moim_img/image1.jpg" alt="moim_photo" class="moim_photo" >
+                </li>
+
+
             </ul>
             <a href="#" id="prev"></a>
             <a href="#" id="next"></a>
@@ -138,21 +149,19 @@
                     <dl class="moim_info">
                         <dt class="moim_info_title"> 모임 위치</dt>
                         <dd class="moim_info_content">${locationDo.locationName}</dd>
-                        &nbsp;
-                        <div id="map" style="width: 500px; height: 500px; left: 0px; top: 0px"></div>
+                    </dl>
+                        <div id="map" style="width: 300px; height: 200px; left: 0px; top: 0px"></div>
                         <div>
                             <input id="vworld" type="hidden" min="0" max="1" step="0.1" value="1">
                         </div>
                         <div>
-                        <hr/>
                             <input id="nsdi" type="hidden" min="0" max="1" step="0.1" value="0">
                         </div>
-                        &nbsp;
-                        <div>
-                            <input type="text" name="sig_kor_nm" value="${locationDo.destination}" disabled>
-                            <input type="button" name="search" value="모임 시작 지역 확인" onclick="callAjax()">
+                        <div class="location_check">
+                            <input type="text" name="sig_kor_nm" value="${locationDo.destination}" disabled class="d-none">
+                            <input type="button" name="search" value="모임 시작 지역 확인" onclick="callAjax()" class="location_check">
                         </div>
-                    </dl>
+
                     <p class="created_date"><tf:formatDateTime value="${moimDo.moimCreateDate}" pattern="yyyy-MM-dd" /></p>
                 </div>
 
@@ -170,27 +179,35 @@
           <div id="insertContent"></div>
         </div>
 
-
-
-
         <div class="box box6">
-            <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>
+            <div class="post_info">
+                <div>
+                    <p class="moim_nums"> 모임 넘버: ${moimDo.moimNum}</p>
+                </div>
+                <div>
+                    <p class="moim_nums"> 모임 조회수: ${moimDo.moimViewCount}</p>
+                </div>
+            </div>
         </div>
+
         <div class="box box7">
-            <p class="moim_nums"> 모임 조회수: ${moimDo.moimViewCount}</p>
+            <div class="post_man">
+                <form action="/moim/getMoim/delete" method="get">
+                    <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum} >
+                    <button onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까?')){return false;}"${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'} class="post_delete">
+                    삭제하기</button>
+                </form>
+
+                <form action="/moim/getMoim/update" method="get">
+                    <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
+                    <button ${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'} class="post_edit">수정하기</button>
+                </form>
+            </div>
+
         </div>
-
-        <form action="/moim/getMoim/delete" method="get">
-            <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
-            <button onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){return false;}"${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'}>삭제하기</button>
-        </form>
-
-        <form action="/moim/getMoim/update" method="get">
-            <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
-            <button ${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'}>수정하기</button>
-        </form>
 
     </div>
+
 </div>
 </main>
     <footer>
