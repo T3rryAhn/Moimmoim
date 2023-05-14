@@ -34,8 +34,7 @@
                         <div class="profile_text level">주니어 호스트</div>
                         <div class="profile_text nick">DORICK</div>
                         <div class="profile_text name">김도균</div>
-                        <div class="profile_text avgstar">4.2점</div>
-                        <div class="profile_text moimcount">17회</div>
+                        <div class="profile_text moimcount">모임 개최: 17회</div>
                     </div>
                 </div>
                 <div class="prolist two">

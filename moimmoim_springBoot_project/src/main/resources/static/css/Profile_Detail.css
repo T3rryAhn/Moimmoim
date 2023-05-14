@@ -127,18 +127,6 @@ main {
     padding: 5px;
     position: relative;
   }
-
-  .moimcount::before{
-    content: "/";
-    margin: 0 0.5px;
-    padding-right: 2px;
-  }
-
-  .avgstar, .moimcount{
-    display: inline-block;
-
-  }
-
   .profile_text {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;
@@ -343,18 +331,18 @@ ol{
 display:none;
 }
 #prev, #prev2 {
-background-image: url('img/arrow-left-out.png');
+background-image: url('/imgs/moimmoimUi/arrow-left-out.png');
 margin-left: -370px;
 }
 #prev:hover, #prev2:hover {
-background-image: url('img/arrow-left-over.png');
+background-image: url('/imgs/moimmoimUi/arrow-left-over.png');
 }
 #next, #next2{
 margin-left: 350px;
-background-image: url('img/arrow-right-out.png');
+background-image: url('/imgs/moimmoimUi/arrow-right-out.png');
 }
 #next:hover, #next2:hover{
-background-image: url('img/arrow-right-over.png');
+background-image: url('/imgs/moimmoimUi/arrow-right-over.png');
 }
 .moim_title{
   font-size: 25px;
