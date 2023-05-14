@@ -54,7 +54,7 @@
 
     <!--db 주입 -->
     <insert id="insertOrder" parameterType="moimmoimProject.domain.ticketDomain.OrderDo">
-        INSERT INTO MOIM_ORDER(ORDER_NUM, MOIM_NUM, USER_ID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
+        INSERT INTO MOIM_ORDER(ORDER_NUM, MOIM_NUM, USERID_NUM, ORDER_DATE, ORDER_STATUS, ORDER_PRICE, ORDER_RECEIPT_CHECK)
         VALUES(#{orderNum}, #{moimNum}, #{userIdNum}, #{orderDate}, #{orderStatus}, #{orderPrice}, #{orderReceiptCheck})
     </insert>
 

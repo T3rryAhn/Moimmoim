@@ -41,6 +41,7 @@
           };
 
         function goBack() {
+            window.location.href = '/moim/getMoim/getMoim?moimNum=${moimNum}';
             closeBuyPageModal();
         }
 
@@ -48,6 +49,7 @@
             if (!isCanceled) {
                 isCanceled = true;
                 alert("주문이 취소됩니다.");
+
 
                 $.ajax({
                     type: "POST",
@@ -145,7 +147,8 @@
                           //alert("결제 정보 업데이트 중 오류가 발생했습니다.");
                             window.parent.postMessage('buySuccess', '*');
                                                     alert("결제 성공");
-                            window.parent.location.href = "redirect:moim/getMoim/getMoim";
+                            window.parent.location.href = '/moim/getMoim/getMoim?moimNum=${moimNum}';
+
 
                       }
                   });
@@ -153,6 +156,14 @@
 
             });
           }
+
+    //간단 프로필 로드
+        $(document).ready(function() {
+
+            $.get(`/users/userSimpleProfile/${moimDo.moimHostUserIdNum}`, function(data) {
+                $('#user-profile').html(data);
+            });
+        });
     </script>
 
 
@@ -177,7 +188,7 @@
      <div class="ticket-right">
        <p>${moimDo.moimTitle}</p>
        <p>호스트</p>
-       <p><a href="/users/userSimpleProfile/${moimDo.moimHostUserIdNum}">${moimDo.moimHostUserIdNum}의 userSimpleProfile</a></p>
+       <div id="user-profile"style="width: 50%; height: 50%;"></div>
      </div>
 </div>
 <hr/>
@@ -192,7 +203,9 @@
      <button onclick="requestPay()">결제하기</button> <!-- 결제하기 버튼 생성 -->
 
     <!-- 취소 버튼 -->
+    <!--
     <button type="button" onclick="goBack()">취소하기</button>
+    -->
 </div>
 
 
