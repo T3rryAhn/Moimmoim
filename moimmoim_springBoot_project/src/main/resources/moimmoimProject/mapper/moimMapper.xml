@@ -193,10 +193,10 @@
 
     <insert id="joinMoim">
         <selectKey resultType="Long" keyProperty="no" order="BEFORE">
-            SELECT MOIM_MEM_NO_SEQ.NEXTVAL FROM DUAL
+            SELECT MEM_NO_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-        insert into MOIM_MEM(MOIMHOSTUSERIDNUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
-        values (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
+        INSERT INTO MOIM_MEM(USERID_NUM, MOIM_NUM, REVIEW_CHECK, JOIN_NUM, NO)
+        VALUES (#{moimDo.moimHostUserIdNum}, #{moimDo.moimNum}, 0, #{joinNum}, #{no})
     </insert>
 
 

@@ -98,7 +98,7 @@
         <div class="section_header">
             <div class="section_title"> <!-- 연두색 바와 POPULAR MOIM 수평이 안 맞아서 매우 보기 불편. 개선 예정-->
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar"> MOIM LIST</div>
-            <a href="/" class="more_button">MORE ></a>
+            <a href="/moim/getMoim/list" class="more_button">MORE ></a>
         </div>
         <!--카테고리 바 (탭)-->
         <div class="tab">
