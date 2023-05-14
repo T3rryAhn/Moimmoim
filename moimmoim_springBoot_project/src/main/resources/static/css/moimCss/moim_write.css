@@ -272,14 +272,14 @@ input[type="date"]{
   height: 150px;
 }
 
-
+/*  사진 업로드 버튼 */
 .main_photo, .moim_photos{
   width: 100px;
   height: 30px;
   border-radius: 5px;
   margin: 0px 5px;
-  padding: 4px auto;
   text-align: center;
+  line-height: 27px;
 }
 .main_photo{
   color: white;

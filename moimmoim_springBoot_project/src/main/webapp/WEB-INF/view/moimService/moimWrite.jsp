@@ -33,7 +33,6 @@
     </div>
 </header>
 <!--헤더 끝-->
-
 <main>
     <div class="container">
     <div class="section_title">
@@ -110,22 +109,22 @@
 </main>
 
 <!-- 푸터 시작-->
-    <footer>
-        <div id="footer_container">
-            <div class="fotter_logo_menu">
-                <a href="#"><img src="\imgs\moimmoimUi\logo_white.png" alt="logo" width="200px"></a>
-                <a href="#" class="footer_font">개인정보 처리방침</a>
-                <a href="#" class="footer_font">기타 필요메뉴</a>
-                <a href="#" class="footer_font">메뉴구성</a>
-                <c:if test="${sessionScope.userIdNum!=null}">
-                    <a href="/logout" class="footer_font">로그아웃</a>
-                </c:if>
-            </div>
-            <div>
-                <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
-            </div>
+<footer>
+    <div id="footer_container">
+        <div class="footer_logo_menu">
+            <a href="#"><img src="\imgs\moimmoimUi\whiteLogo.png" alt="logo" width="200px"></a>
+            <a href="#" class="footer_font">개인정보 처리방침</a>
+            <a href="#" class="footer_font">기타 필요메뉴</a>
+            <a href="#" class="footer_font">메뉴구성</a>
+            <c:if test="${sessionScope.userIdNum!=null}">
+                <a href="/logout" class="footer_font">로그아웃</a>
+            </c:if>
         </div>
-    </footer>
+        <div>
+            <a href="#" class="footer_font">Copyright © MOIM MOIM. All Rights Reserved.</a>
+        </div>
+    </div>
+</footer>
 <!-- 푸터 끝-->
 
 </body>
