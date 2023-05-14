@@ -197,16 +197,16 @@
 
         <div class="box box7">
             <div class="post_man">
+                <form action="/moim/getMoim/update" method="get">
+                    <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
+                    <button ${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'} class="post_edit">수정하기</button>
+                </form>
                 <form action="/moim/getMoim/delete" method="get">
                     <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum} >
                     <button onclick="if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까?')){return false;}"${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'} class="post_delete">
                     삭제하기</button>
                 </form>
 
-                <form action="/moim/getMoim/update" method="get">
-                    <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
-                    <button ${moimDo.moimHostUserIdNum == userIdNum ? '':'disabled'} class="post_edit">수정하기</button>
-                </form>
             </div>
 
         </div>

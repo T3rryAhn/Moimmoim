@@ -14,7 +14,7 @@ body {
   height: 100vh;
   margin: 0;
   display: grid;
-  grid-template-rows: 60px auto 100px;
+  grid-template-rows: 154px auto 100px;
   grid-template-areas:
   'header'
   'main'
@@ -36,9 +36,9 @@ header, footer {
   margin: 0 auto;
   align-items: center;
   display: flex;
-  margin-bottom: 16px;
   text-align: right;
   justify-content: space-between;
+  height: 60px;
 }
 #header_logo {
   margin: 3px 0px;
@@ -169,7 +169,8 @@ button{
   text-align: right;
   justify-content: space-between;
 }
-.fotter_logo_menu{
+.fotter_logo_menu,
+.footer_logo_menu{
   display: flex;
   align-items: flex-start;
   width: 500px;
