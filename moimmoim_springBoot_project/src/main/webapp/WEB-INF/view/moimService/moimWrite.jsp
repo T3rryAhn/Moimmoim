@@ -82,9 +82,11 @@
                 <input class="textbox" type="datetime-local" id="moimDeadLine" name="moimDeadLine" placeholder="모임 모집 마감일을 선택해 주세요." value=${moimDo.moimDeadLine}>
             </div>
             <div class="box box8">
-               <label for="sigFile" class="form_name">대표사진</label>
+               <div class="form_name">사진 업로드</div>
+               <label for="sigFile" class="main_photo">대표사진</label>
                <input type="file" name="sigFile" id="sigFile" style="display:none"/>
-               <label for="uploadFile">소개 사진</label>
+
+               <label for="uploadFile" class="moim_photos">소개사진</label>
                <input type="file" name="uploadFile" id="uploadFile" style="display:none" multiple />
             </div>
 
