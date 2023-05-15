@@ -12,6 +12,7 @@ import moimmoimProject.domain.userDomain.ProfileDo;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -220,6 +221,12 @@ public class MoimService {
 
     public String findName(MoimDo moimDo) {
         return moimMapper.findName(moimDo);
+    }
+
+    @Scheduled(fixedDelay = 60000)
+    public void checkDeadLine() {
+        moimMapper.updateDeadCheckUsingPage();
+        moimMapper.updateDeadCheckJoinMoim();
     }
 
 

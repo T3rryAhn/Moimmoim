@@ -245,6 +245,20 @@
         WHERE USERID_NUM = #{moimHostUserIdNum}
     </select>
 
+    <update id="updateDeadCheckUsingPage">
+        <![CDATA[
+        UPDATE MOIM_POST mp
+        SET
+            mp.MOIM_DEAD_CHECK = 1
+        WHERE mp.MOIM_DEADLINE < SYSDATE
+        ]]>
+    </update>
 
+    <update id="updateDeadCheckJoinMoim" parameterType="moimDo">
+        UPDATE MOIM_POST mp
+        SET
+            mp.MOIM_DEAD_CHECK = 1
+        WHERE mp.MOIM_MEMBER_COUNT = mp.MOIM_MEMBER_MAX
+    </update>
 
 </mapper>

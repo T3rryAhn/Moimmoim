@@ -54,6 +54,7 @@ public class MoimController {
 
         List<Map<String, Object>> list = moimService.moimList(moimCategoryNum, keyword, cri, sorting);
         List<LocationDo> locList = moimService.getLocList(list);
+        moimService.checkDeadLine();
 
         model.addAttribute("moimCategoryNum",moimCategoryNum);      // 페이징 용
         moimCategoryNum = null;
@@ -78,6 +79,7 @@ public class MoimController {
         String category = moimService.getCatName(moimDo.getMoimCategoryNum());          // 카테고리 이름 반환
         moimService.CountView(moimNum);// 조회수 증가
         List<ImageDTO> imageList = moimService.imageList(moimNum);
+        moimService.checkDeadLine();
 
 
         // 세션에서 사용자 ID를 검색합니다.

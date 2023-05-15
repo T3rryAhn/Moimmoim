@@ -25,6 +25,7 @@ public class ProfilePageController {
     @GetMapping("/{userIdNum}")
     public String getProfilePage(@PathVariable Long userIdNum, Model model) {
         MyPageController.profileEditor(userIdNum, model, profileMapper, profilePageAssembler, moimService, profileService);
+        moimService.checkDeadLine();
 
         /*return "/myPageService/profilePage";*/
         return "/myPageService/Profile_Detail";
