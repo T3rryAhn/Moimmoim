@@ -149,6 +149,5 @@
         </div>
     </footer>
     <script src="/js/Profile_Detail.js"></script>
-
 </body>
 </html>

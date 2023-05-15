@@ -49,7 +49,6 @@
 <!--header 끝-->
 <!--main 시작 -->
     <main>
-
     <div class="section_profile">
         <h1>마이페이지</h1>
       <p>
