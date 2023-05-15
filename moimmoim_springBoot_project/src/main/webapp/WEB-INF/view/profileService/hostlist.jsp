@@ -95,11 +95,10 @@
                 <figure>
                     <img src=/files/${proList.userProfileImage} alt="사진1"; class="photo">
                     <div class="host_info">
-                        <div class="host_level">${levelList[status.index]}</div>
-                        <div class="host_reputation">
-                            <span class="host_stars"> <!--${proList.userMoimReviewScoreAvg}</span>점 / --><span class="number_of_times">${proList.userHostingCount}</span>회
-                        </div>
                         <div class="host_name">${list[status.index]}</div>
+                        <div class="host_reputation">
+                            <span class="number_of_times">${proList.userHostingCount}</span>회
+                        </div>
                         <div class="host_introduction">${proList.userIntroduction}</div>
                     </div>
                 </figure></a>
