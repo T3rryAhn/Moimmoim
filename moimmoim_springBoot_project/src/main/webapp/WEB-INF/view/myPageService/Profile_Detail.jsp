@@ -70,6 +70,13 @@
                 <div class="oc_state">OPEN</div>
                 <div class="open_moim">
                     <div>
+                        <c:choose>
+                        <c:when test="${openMoimDoList.size() == 0}">
+                            <ol class="slider-container list no_moim">
+                                모임이 없습니다!
+                            </ol>
+                        </c:when>
+                        <c:otherwise>
                         <ol class="slider-container list">
                             <c:forEach var="openMoimDoList" items="${openMoimDoList}" varStatus="openstatus">
                             <li class="slide">
@@ -86,6 +93,8 @@
                             </li>
                             </c:forEach>
                         </ol>
+                        </c:otherwise>
+                        </c:choose>
                     </div>
                     <a href="#" id="prev"></a>
                     <a href="#" id="next"></a>
@@ -95,6 +104,13 @@
             <div class="oc_state">CLOSED</div>
             <div class="closed_moim">
                 <div>
+                    <c:choose>
+                    <c:when test="${closedMoimDoList.size() == 0}">
+                        <ol class="slider-container2 list no_moim">
+                            모임이 없습니다!
+                        </ol>
+                    </c:when>
+                    <c:otherwise>
                     <ol class="slider-container2 list">
                         <c:forEach var="closedMoimDoList" items="${closedMoimDoList}" varStatus="closedstatus">
                             <li class="slide2">
@@ -111,6 +127,8 @@
                             </li>
                         </c:forEach>
                     </ol>
+                    </c:otherwise>
+                    </c:choose>
                 </div>
                 <a href="#" id="prev2"></a>
                 <a href="#" id="next2"></a>
