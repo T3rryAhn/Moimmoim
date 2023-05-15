@@ -2,9 +2,8 @@ package moimmoimProject.controller.userController;
 
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.userDomain.UserProfileDto;
+import moimmoimProject.service.Assembler.UserProfileAssembler;
 import moimmoimProject.service.MoimService;
-import moimmoimProject.service.UserProfileAssembler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
