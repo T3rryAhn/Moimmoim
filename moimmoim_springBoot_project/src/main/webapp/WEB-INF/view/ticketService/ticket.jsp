@@ -34,7 +34,7 @@
     <div class="ticket">
         <!-- 티켓 왼쪽 -->
         <div class="ticket-left">
-            <img src="/imgs/moimmoimUi/whitelogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;">
+            <img src="/imgs/moimmoimUi/whiteLogo.png" alt="logo" style="width: 80px; height: auto; display: inline-block;">
             <b style="display: inline-block;">Ticket</b>
             <br><br><br>
             <p>date: ${moimDo.moimStartDate}<br>
@@ -54,7 +54,7 @@
     <!-- 티켓 끝-->
 
 <!-- 구매 버튼 -->
-<button  style="float:right; font-size: 30px;" 'disabled'}>
+<button style="float:right; font-size: 30px;" disabled>
   구매완료
 </button>
 

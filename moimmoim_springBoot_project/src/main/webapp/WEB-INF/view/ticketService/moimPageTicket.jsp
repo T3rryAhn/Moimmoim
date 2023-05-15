@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
 
     <meta charset="UTF-8">
@@ -13,7 +14,6 @@
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-
         window.addEventListener('message', function(event) {
           if (event.data === 'closeModal') {
             const moimNum = '<%= request.getAttribute("moimNum") %>';
@@ -77,7 +77,8 @@
             $('#user-profile').html(data);
         });
     });
-</script>
+    </script>
+
     <!-- JavaScript 끝-->
 
 </head>

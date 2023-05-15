@@ -38,7 +38,7 @@
 
 
     <div class="profile-container">
-        <img class="profile-image" src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="User_Profile_Image">
+        <img class="profile-image" src="/files/${userSimpleProfileDto.userProfileImage}" alt="User_Profile_Image">
         <div class="name-nickname">
             <div class="name">${userSimpleProfileDto.userName}</div>
             <span class="separator">/</span>
