@@ -21,7 +21,7 @@ public class MainController {
     private final MoimMapper moimMapper;
     private final MoimService moimService;
 
-    @GetMapping("/main")
+    @GetMapping("/")
     public String mainPage(Model model) {
         List<MoimDo> moimListEat = moimMapper.findByCategory(1L);
         List<LocationDo> moimListEatLocation = new ArrayList<>();
@@ -53,7 +53,7 @@ public class MainController {
         model.addAttribute("moimListHealLocation", moimListHealLocation);// 4개 힐링하기 리스트
         model.addAttribute("moimListActiveLocation", moimListActiveLocation);// 4개 체험하기 리스트
 
-        return "/main";
+        return "/";
     }
 
 }

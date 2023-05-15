@@ -159,7 +159,7 @@
                 <c:forEach items="${moimListActive}" var="list" varStatus="status">
                     <li class="cat_moim"><a href="moim/getMoim/getMoim?moimNum=${list.moimNum}">
                         <figure>
-                            <img src="/files/${i.moimImage}" alt="사진1" class="photo">
+                            <img src="/files/${list.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
                                 <div class="moim_location">${moimListActiveLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>

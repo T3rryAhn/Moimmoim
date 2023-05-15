@@ -59,7 +59,7 @@
     <hr>
         <div class="profile_list">
                     <div class="prolist one">
-                        <img src="img/profilepic.jpg" alt="프사"; class="picture">
+                        <img src="/files/${profilePageDto.userProfileDto.userProfileImage}" alt="프사"; class="picture">
                         <div class="profile_info">
                             <div class="profile_text level">${hostLevelName}</div>
                             <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>

@@ -28,7 +28,7 @@
 
     <div id="mainPage" style="display: inline-block;" >
       <h3>mainPage</h3>
-      <a href="/main"><button>메인페이지로 이동</button></a>
+      <a href="/"><button>메인페이지로 이동</button></a>
     </div>
     <div id="moimPage" style="display: inline-block;">
         <h3>moimPage</h3>

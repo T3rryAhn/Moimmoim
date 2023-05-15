@@ -34,7 +34,7 @@
                    <a onclick="window.open('/profileImg', '이미지 등록')"><%--<label for="profileImageInput">--%>업로드</label></a>
                    <%--<input type="file" id="profileImageInput" onchange="previewImage(event)" style="display: none">--%>
 
-                   <script src="profile_edit.js"></script>
+                   <script src="/js/Profile_Detail.js"></script>
 
                     <div class="prolist one">
                             <div class="profile_info">

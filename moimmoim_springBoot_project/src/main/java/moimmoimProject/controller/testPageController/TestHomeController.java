@@ -25,7 +25,7 @@ public class TestHomeController {
     private final UserMapper userMapper;
 
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public String testHome() {
         return "/testHome";
     }
