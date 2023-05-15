@@ -46,7 +46,9 @@
     <div class="container">
         <h1>티켓 구매 오류</h1>
         <p>${errorMsg}</p>
+        <!--
         <button type="button" onclick="closeModal()">닫기</button>
+        -->
 
 
     </div>

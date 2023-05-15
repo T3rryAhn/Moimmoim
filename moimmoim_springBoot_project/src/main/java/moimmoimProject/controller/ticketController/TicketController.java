@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
+import moimmoimProject.mapper.TicketMapper;
 import moimmoimProject.mapper.UserMapper;
 import moimmoimProject.service.MoimService;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpSession;
 public class TicketController {
     private final MoimMapper moimMapper;
     private final UserMapper userMapper;
+    private final TicketMapper ticketMapper;
 
     @GetMapping("/forDetailMoim/{moimNum}")
     public ModelAndView showTicket(@PathVariable Long moimNum, HttpSession session) {
@@ -35,6 +37,14 @@ public class TicketController {
 
             mav.addObject("moimDo", moimDo);
             mav.setViewName("/ticketService/notLoginMoimPageTicket");
+            return mav;
+        }
+        if(ticketMapper.findByMoimNum(moimNum).getUserIdNum() == userIdNum){
+            mav.addObject(ticketMapper.findByUserIdNum(userIdNum));
+            UserDo userDo = userMapper.findByUserIdNum(userIdNum);
+            mav.addObject("moimDo", moimDo);
+            mav.addObject("userDo", userDo);
+            mav.setViewName("/ticketService/ticket");
             return mav;
         }
 

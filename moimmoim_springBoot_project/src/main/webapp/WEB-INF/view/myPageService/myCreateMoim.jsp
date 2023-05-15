@@ -54,30 +54,32 @@
                 OPEN </h1>
 <!-- 모임이 있을 때 -->
             <div>
+                <c:choose>
+                <c:when test="${openList.size() == 0}">
+                    <ol class="slider-container list no_moim">
+                        모임이 없습니다!
+                    </ol>
+                </c:when>
+                <c:otherwise>
                 <ol class="slider-container list">
                 <c:forEach items="${openList}" var="openList" varStatus="status">
-                    <li class="slide">
-                        <a href=/moim/getMoim/getMoim?moimNum=${openList.moimNum}><figure>
-                            <img src="/files/${openList.moimImage}" alt="사진1"; class="photo">
-                            <div class="info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
-                                <div class="title">${openList.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${openList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
-                                <div class="moim_price">${openList.moimPrice}원</div>
-                                <div class="num_of_people">${openList.moimMemberCount}명 참여중</div>
-                            </div>
-                        </figure></a>
-                    </li>
-                    </c:forEach>
+                <li class="slide">
+                    <a href=/moim/getMoim/getMoim?moimNum=${openList.moimNum}><figure>
+                        <img src="/files/${openList.moimImage}" alt="사진1"; class="photo">
+                        <div class="info">
+                            <div class="moim_location">${locList[status.index].locationName}</div>
+                            <div class="title">${openList.moimTitle}</div>
+                            <div class="moim_time"><tf:formatDateTime value="${openList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                            <div class="moim_price">${openList.moimPrice}원</div>
+                            <div class="num_of_people">${openList.moimMemberCount}명 참여중</div>
+                        </div>
+                    </figure></a>
+                </li>
+                </c:forEach>
                 </ol>
+                </c:otherwise>
+                </c:choose>
             </div>
-<!-- 모임이 없을 때 시작-->
-            <div>
-                <ol class="slider-container list no_moim">
-                        모임이 없습니다!
-                </ol>
-            </div>
-<!-- 모임이 없을 때 끝-->
             <a href="#" id="prev"></a>
             <a href="#" id="next"></a>
         </div>
@@ -89,32 +91,36 @@
                 CLOSE </h1>
 <!-- 모임이 있을 때 -->
             <div>
-                <ol class="slider-container2 list">
-                <c:forEach items="${closeList}" var="closeList" varStatus="status">
-                    <li class="slide">
-                    <a href=/moim/getMoim/getMoim?moimNum=${closeList.moimNum}><figure>
-                        <img src="/files/${closeList.moimImage}" alt="사진1"; class="photo">
-                        <div class="info">
-                            <div class="moim_location">${locList[status.index].locationName}</div>
-                            <div class="title">${closeList.moimTitle}</div>
-                            <div class="moim_time"><tf:formatDateTime value="${closeList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
-                            <div class="moim_price">${closeList.moimPrice}원</div>
-                            <div class="num_of_people">${closeList.moimMemberCount}명 참여</div>
-                        </div>
-                        </figure></a>
-                    </li>
-                </c:forEach>
+            <c:choose>
+            <c:when test="${closeList.size() == 0}">
+                <ol class="slider-container2 list no_moim">
+                    모임이 없습니다!
                 </ol>
+            </c:when>
+            <c:otherwise>
+            <ol class="slider-container2 list">
+            <c:forEach items="${closeList}" var="closeList" varStatus="status">
+                <li class="slide2">
+                <a href=/moim/getMoim/getMoim?moimNum=${closeList.moimNum}><figure>
+                    <img src="/files/${closeList.moimImage}" alt="사진1"; class="photo">
+                    <div class="info">
+                        <div class="moim_location">${locList[status.index].locationName}</div>
+                        <div class="title">${closeList.moimTitle}</div>
+                        <div class="moim_time"><tf:formatDateTime value="${closeList.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                        <div class="moim_price">${closeList.moimPrice}원</div>
+                        <div class="num_of_people">${closeList.moimMemberCount}명 참여</div>
+                    </div>
+                    </figure></a>
+                </li>
+            </c:forEach>
+            </ol>
+            </c:otherwise>
+            </c:choose>
             </div>
-<!-- 모임이 없을 때 시작-->
-            <div>
-                <ol class="slider-container list no_moim">
-                        모임이 없습니다!
-                </ol>
-            </div>
-<!-- 모임이 없을 때 끝-->
             <a href="#" id="prev2"></a>
             <a href="#" id="next2"></a>
+</div>
+</div>
 </div>
 </main>
 
