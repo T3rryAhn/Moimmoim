@@ -78,7 +78,6 @@
         });
     });
 
-    </script>
     <!-- JavaScript 끝-->
 
 </head>
