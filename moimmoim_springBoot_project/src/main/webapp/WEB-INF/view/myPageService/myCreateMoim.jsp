@@ -53,6 +53,7 @@
             <h1 class="status">
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar">
                 OPEN </h1>
+<!-- 모임이 있을 때 -->
             <div>
                 <ol class="slider-container list">
                 <c:forEach items="${openList}" var="openList" varStatus="status">
@@ -71,6 +72,13 @@
                     </c:forEach>
                 </ol>
             </div>
+<!-- 모임이 없을 때 시작-->
+            <div>
+                <ol class="slider-container list no_moim">
+                        모임이 없습니다!
+                </ol>
+            </div>
+<!-- 모임이 없을 때 끝-->
             <a href="#" id="prev"></a>
             <a href="#" id="next"></a>
         </div>
@@ -80,6 +88,7 @@
             <h1 class="status">
                 <img src="/imgs/moimmoimUi/bar.png"; class="green_bar">
                 CLOSE </h1>
+<!-- 모임이 있을 때 -->
             <div>
                 <ol class="slider-container2 list">
                 <c:forEach items="${closeList}" var="closeList" varStatus="status">
@@ -98,6 +107,13 @@
                 </c:forEach>
                 </ol>
             </div>
+<!-- 모임이 없을 때 시작-->
+            <div>
+                <ol class="slider-container list no_moim">
+                        모임이 없습니다!
+                </ol>
+            </div>
+<!-- 모임이 없을 때 끝-->
             <a href="#" id="prev2"></a>
             <a href="#" id="next2"></a>
 </div>
