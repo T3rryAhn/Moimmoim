@@ -138,7 +138,7 @@
         </ol>
         <!--모임 작성 버튼-->
         <div class="create_moim">
-            <button class="create_moim"><a href="/moim/new">
+            <button class="create_moim"><a href=${sessionScope.userIdNum!=null ? '/moim/new' : '/login'}>
                 <img src="\imgs\moimmoimUi\createMoim.png" alt="create moim" width="55px" height="53px">
             </a></button>
         </div>
