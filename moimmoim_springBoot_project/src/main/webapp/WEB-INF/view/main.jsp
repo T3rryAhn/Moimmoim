@@ -61,33 +61,6 @@
                 </a>
                 </li>
             </c:forEach>
-<%--            <li class="popular"><a href="#">
-                <figure>
-                    <img src="/imgs/moim_img/image1.jpg" alt="사진1"; class="popular_photo">
-                    <div class="moim_info">
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                    </div>
-                </figure>
-            </a>
-            </li>
-            <li class="popular"><a href="#">
-                <figure>
-                    <img src="/imgs/moim_img/image2.jpg" alt="사진1"; class="popular_photo">
-                    <div class="moim_info">
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                    </div>
-                </figure>
-            </a>
-            </li>
-            <li class="popular"><a href="#">
-                <figure>
-                    <img src="/imgs/moim_img/image3.jpg" alt="사진1"; class="popular_photo">
-                    <div class="moim_info">
-                        <div class="moim_title">모임의 이름이 들어갈곳 길어지면 밑줄...</div>
-                    </div>
-                </figure>
-            </a>
-            </li>--%>
         </ol>
     </div>
     <!--POPULAR MOIM 끝-->
@@ -116,7 +89,7 @@
                         <figure>
                             <img src="/files/${list.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_location">${moimListEatLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
                                 <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
@@ -134,9 +107,11 @@
                         <figure>
                             <img src="/files/${list.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_location">${moimListLookLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>
@@ -150,9 +125,11 @@
                         <figure>
                             <img src="/files/${list.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_location">${moimListLearnLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>
@@ -166,9 +143,11 @@
                         <figure>
                             <img src="/files/${list.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_location">${moimListHealLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>
@@ -182,9 +161,11 @@
                         <figure>
                             <img src="/files/${i.moimImage}" alt="사진1" class="photo">
                             <div class="moim_info">
-                                <div class="moim_location">${locList[status.index].locationName}</div>
+                                <div class="moim_location">${moimListActiveLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
+                                <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
                         </figure>
                     </a></li>
