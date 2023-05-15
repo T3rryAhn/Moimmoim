@@ -46,7 +46,7 @@ public class FindIdPwService {
     public String sendIdToEmail(UserDo user) throws Exception{
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("huiung011@naver.com");
+            message.setFrom("javatree6@naver.com");
             message.setTo(user.getUserEmail());
             message.setSubject("모임모임 아이디찾기 서비스");
             message.setText("id:"+user.getUserId());
@@ -85,7 +85,7 @@ public class FindIdPwService {
         session.setAttribute("userIdNum", user.getUserIdNum());
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("huiung011@naver.com");
+            message.setFrom("javatree6@naver.com");
             message.setTo(user.getUserEmail());
             message.setSubject("모임모임 비밀번호 찾기 서비스");
             message.setText("code: "+session.getAttribute("code") +"\n" +"userIdNum:"+session.getAttribute("userIdNum"));

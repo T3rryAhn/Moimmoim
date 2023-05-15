@@ -98,9 +98,6 @@
                 <textarea class="textbox main" type="text" id="moimMainContent" name="moimMainContent" placeholder="모임 소개글을 작성해 주세요.">${moimDo.moimMainContent}</textarea>
             </div>
         </div>
-
-        <label for="moimHostUserIdNum">모임 유저 넘버</label>
-        <input type="Long" id="moimHostUserIdNum" name="moimHostUserIdNum" placeholder="테스트를 위한 유저넘버 입력">
         <input type="hidden" id="num" name="moimNum" value=${moimDo.moimNum}>
         <button type="submit" class="submit">등록하기</button>
     </form>
