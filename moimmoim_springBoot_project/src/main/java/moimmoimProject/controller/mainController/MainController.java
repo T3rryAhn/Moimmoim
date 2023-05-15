@@ -53,7 +53,7 @@ public class MainController {
         model.addAttribute("moimListHealLocation", moimListHealLocation);// 4개 힐링하기 리스트
         model.addAttribute("moimListActiveLocation", moimListActiveLocation);// 4개 체험하기 리스트
 
-        return "/";
+        return "/main";
     }
 
 }

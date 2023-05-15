@@ -73,7 +73,7 @@
             </div>
             <div class="box box6">
                 <label for="moimMemberMax" class="form_name">모임 최대 인원</label>
-                <input class="textbox" type="text" id="moimMemberMax" name="moimMemberMax" placeholder="모임 최대 인원을 작성해 주세요(또는 선택해 주세요? 형식 어떻게 하실건가요?)" value=${moimDo.moimMemberMax}>
+                <input class="textbox" type="text" id="moimMemberMax" name="moimMemberMax" placeholder="모임 최대 인원을 작성해 주세요" value=${moimDo.moimMemberMax}>
             </div>
             <div class="box box7">
                 <label for="moimDeadLine" class="form_name">모집 마감일</label>

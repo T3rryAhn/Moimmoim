@@ -113,7 +113,7 @@ public class MoimController {
         }   // end for
 
         moimService.imageEnroll(list);
-        return "redirect:/main";
+        return "redirect:/";
     }
 
     @GetMapping("/moim/count/{moimNum}")          // 조회수 카운트
