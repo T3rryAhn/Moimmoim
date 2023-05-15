@@ -188,5 +188,16 @@ background-image: url('/imgs/moimmoimUi/arrow-right-over.png');
   overflow: hidden;
 }
 
-
+.no_moim{
+  width: 1045px;
+  height: 250px;
+  background-color: rgb(250, 255, 253);
+  border-radius: 10px;
+  border: 3px rgb(17, 151, 65) dotted;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: lighter;
+}
 
