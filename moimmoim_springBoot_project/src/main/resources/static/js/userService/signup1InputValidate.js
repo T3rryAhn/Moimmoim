@@ -160,7 +160,7 @@ codeInput.addEventListener("input", function(){
 //2. 숫자, 대문자, 소문자, 특수문자 최소 1개 있어야함
 var pwInput = document.getElementById("pwInput");
 var firstPwInput;
-pwInput.addEventListener("input",function(){
+pwInput.addEventListener("blur",function(){
     var pwRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     var pw = pwInput.value;
     //8자~20자 검사
@@ -170,7 +170,7 @@ pwInput.addEventListener("input",function(){
        inputCountArry[3]=0;
    }
     else if(!pwRegex.test(pw)){
-        alert("숫자,대문자,소문자,특수문자를 포함해야합니다.");
+     alert("숫자,대문자,소문자,특수문자를 포함해야합니다.");
         inputCountArry[3]=0;
     }
    else{

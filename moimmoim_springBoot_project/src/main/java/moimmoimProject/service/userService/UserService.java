@@ -56,7 +56,7 @@ public class UserService {
 
         //회원가입 시도한 email에 코드 보내기
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("huiung011@naver.com");
+        message.setFrom("javatree6@naver.com");
         message.setTo(userEmail);
         message.setSubject("모임모임 회원가입 인증 코드");
         message.setText("code:"+code);
