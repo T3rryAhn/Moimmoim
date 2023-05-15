@@ -89,7 +89,7 @@
                             <div class="moim_info">
                                 <div class="moim_location">${moimListEatLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimStartDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
                                 <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
@@ -107,7 +107,7 @@
                             <div class="moim_info">
                                 <div class="moim_location">${moimListLookLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimStartDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
                                 <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
@@ -125,7 +125,7 @@
                             <div class="moim_info">
                                 <div class="moim_location">${moimListLearnLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimStartDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
                                 <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
@@ -143,7 +143,7 @@
                             <div class="moim_info">
                                 <div class="moim_location">${moimListHealLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimStartDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
                                 <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
@@ -161,7 +161,7 @@
                             <div class="moim_info">
                                 <div class="moim_location">${moimListActiveLocation[status.index].locationName}</div>
                                 <div class="moim_title">${list.moimTitle}</div>
-                                <div class="moim_time"><tf:formatDateTime value="${list.moimCreateDate}" pattern="yyyy-MM-dd" /></div>
+                                <div class="moim_time"><tf:formatDateTime value="${list.moimStartDate}" pattern="yyyy-MM-dd" /></div>
                                 <div class="moim_price">${list.moimPrice}원/1명</div>
                                 <div class="num_of_people">${list.moimMemberCount}명 참여중</div>
                             </div>
