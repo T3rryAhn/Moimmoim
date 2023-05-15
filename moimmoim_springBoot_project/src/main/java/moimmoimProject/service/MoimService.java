@@ -87,6 +87,24 @@ public class MoimService {
         return list;
     }
 
+    public List<LocationDo> getLocListByMoimDo(List<MoimDo> moimList){
+        List<LocationDo> list = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        int i = 0;
+        while (true) {
+            MoimDo convertedMoimDo = objectMapper.convertValue(moimList.get(i), MoimDo.class);
+            LocationDo locName = moimMapper.findLocationName(convertedMoimDo);
+            list.add(locName);
+            if(moimList.size()-1 > i){
+                i++;
+            }else{
+                break;
+            }
+        }
+        return list;
+    }
+
     public List<MoimDo> getMoimByCategory(Long moimCategoryNum) {
         return moimMapper.findByCategory(moimCategoryNum);
     }

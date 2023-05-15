@@ -3,6 +3,7 @@ package moimmoimProject.controller.myPageController;
 
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.Criteria;
+import moimmoimProject.domain.moimDomain.LocationDo;
 import moimmoimProject.domain.moimDomain.MoimDo;
 import moimmoimProject.domain.pageDomain.ProfilePageDto;
 import moimmoimProject.domain.userDomain.ProfileDo;
@@ -84,6 +85,8 @@ public class MyPageController {
         List<MoimDo> closeList = new ArrayList<>();
         moimService.checkDeadLine();
 
+        List<LocationDo> locList = moimService.getLocListByMoimDo(list);
+
         int i = 0;
         while (true) {
             MoimDo moimDo = list.get(i);
@@ -98,6 +101,7 @@ public class MyPageController {
                 break;
             }
         }
+            model.addAttribute("locList", locList);
             model.addAttribute("make","1");
             model.addAttribute("openList", openList);
             model.addAttribute("closeList", closeList);
