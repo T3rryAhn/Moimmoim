@@ -96,7 +96,9 @@ public class MoimController {
     }
 
     @PostMapping("/moim/new")               // 새로운 모임 생성
-    public String createNewMoim(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile){
+    public String createNewMoim(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile, HttpSession session){
+        moimDo.setMoimHostUserIdNum((Long)session.getAttribute("userIdNum"));
+
         File uploadPath =  moimService.makeFolder();    // 폴더 생성
         List<ImageDTO> list = new ArrayList<>();        //  ImageDTO 리스트
 
@@ -111,7 +113,7 @@ public class MoimController {
         }   // end for
 
         moimService.imageEnroll(list);
-        return "moimService/index";
+        return "redirect:/main";
     }
 
     @GetMapping("/moim/count/{moimNum}")          // 조회수 카운트
@@ -137,7 +139,9 @@ public class MoimController {
     }
 
     @PostMapping("/moim/getMoim/update/run")          // 모임 수정
-    public String updateMoimRun(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile){
+    public String updateMoimRun(@Param("MoimDo") MoimDo moimDo,@Param("uploadFile") MultipartFile[] uploadFile,@Param("sigFile")MultipartFile sigFile, HttpSession session){
+        moimDo.setMoimHostUserIdNum((Long)session.getAttribute("userIdNum"));
+
         moimService.lmageDelete(moimDo.getMoimNum());   // 기존 사진들 삭제
 
         File uploadPath =  moimService.makeFolder();    // 폴더 생성
