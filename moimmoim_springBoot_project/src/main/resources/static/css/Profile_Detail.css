@@ -128,17 +128,6 @@ main {
     position: relative;
   }
 
-  .moimcount::before{
-    content: "/";
-    margin: 0 0.5px;
-    padding-right: 2px;
-  }
-
-  .avgstar, .moimcount{
-    display: inline-block;
-
-  }
-
   .profile_text {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;

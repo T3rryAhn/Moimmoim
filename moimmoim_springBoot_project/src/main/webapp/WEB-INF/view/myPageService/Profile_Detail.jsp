@@ -35,7 +35,7 @@
                         <div class="profile_text level">${hostLevelName}</div>
                         <div class="profile_text nick">${profilePageDto.userProfileDto.userNickName}</div>
                         <div class="profile_text name">${profilePageDto.userProfileDto.userName}</div>
-                        <div class="profile_text moimcount">${profilePageDto.userProfileDto.userHostingCount}회</div>
+                        <div class="profile_text moimcount">모임 개최: ${profilePageDto.userProfileDto.userHostingCount}회</div>
                     </div>
                 </div>
                 <div class="prolist two">
