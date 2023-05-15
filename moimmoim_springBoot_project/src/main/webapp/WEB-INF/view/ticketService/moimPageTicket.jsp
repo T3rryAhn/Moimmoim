@@ -77,7 +77,7 @@
             $('#user-profile').html(data);
         });
     });
-
+</script>
     <!-- JavaScript 끝-->
 
 </head>

@@ -53,18 +53,9 @@
     <!-- 티켓 끝-->
 
 <!-- 구매 버튼 -->
-<button onclick="openBuyPageModal()" style="float:right; font-size: 30px;" ${moimDo.moimMemberMax == moimDo.moimMemberCount ? 'disabled' : ''}>
+<button  style="float:right; font-size: 30px;" ${moimDo.moimMemberMax == moimDo.moimMemberCount ? 'disabled' : ''}>
   ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '로그인 필요'}
 </button>
-
-
-<!-- Buy Page Modal -->
-<div id="buy-page-modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeBuyPageModal()">&times;</span>
-    <iframe id="buy-page-iframe" src="" width="100%" height="100%"></iframe>
-  </div>
-</div>
 
 
 </body>

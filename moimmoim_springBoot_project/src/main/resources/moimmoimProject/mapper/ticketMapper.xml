@@ -23,6 +23,11 @@
         FROM TICKET
         WHERE MOIM_NUM = #{moimNum}
     </select>
+    <select id="findByMoimNumAndUserIdNum" parameterType="map" resultMap="ticketResultMap">
+        SELECT *
+        FROM TICKET
+        WHERE MOIM_NUM = #{moimNum} AND USERID_NUM = #{userIdNum}
+    </select>
     <insert id="insertTicket" parameterType="moimmoimProject.domain.ticketDomain.TicketDo">
         INSERT INTO TICKET(ORDER_NUM, TICKET_NUM, IMP_UID, MOIM_NUM, USERID_NUM)
         VALUES(#{orderNum}, #{ticketNum}, #{imp_uid}, #{moimNum}, #{userIdNum})

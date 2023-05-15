@@ -2,6 +2,7 @@ package moimmoimProject.controller.ticketController;
 
 import lombok.RequiredArgsConstructor;
 import moimmoimProject.domain.moimDomain.MoimDo;
+import moimmoimProject.domain.ticketDomain.TicketDo;
 import moimmoimProject.domain.userDomain.UserDo;
 import moimmoimProject.mapper.MoimMapper;
 import moimmoimProject.mapper.TicketMapper;
@@ -39,8 +40,18 @@ public class TicketController {
             mav.setViewName("/ticketService/notLoginMoimPageTicket");
             return mav;
         }
-        if(ticketMapper.findByMoimNum(moimNum).getUserIdNum() == userIdNum){
+        /*if(ticketMapper.findByMoimNum(moimNum).getUserIdNum() == userIdNum){
             mav.addObject(ticketMapper.findByUserIdNum(userIdNum));
+            UserDo userDo = userMapper.findByUserIdNum(userIdNum);
+            mav.addObject("moimDo", moimDo);
+            mav.addObject("userDo", userDo);
+            mav.setViewName("/ticketService/ticket");
+            return mav;
+        }*/
+
+        TicketDo ticketDo = ticketMapper.findByMoimNumAndUserIdNum(moimNum, userIdNum);
+        if (ticketDo != null) {
+            mav.addObject("ticketDo", ticketDo);
             UserDo userDo = userMapper.findByUserIdNum(userIdNum);
             mav.addObject("moimDo", moimDo);
             mav.addObject("userDo", userDo);

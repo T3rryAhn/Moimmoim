@@ -8,6 +8,23 @@
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
     <link rel="stylesheet" href="/css/myPageUi/profileEdit.css">
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+
+    <script>
+    //아무것도 입력하지 않은칸은 placeholder 값 전송
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // Get all input elements
+        var inputs = this.querySelectorAll('input, textarea');
+
+        // Iterate over the inputs
+        for (var i = 0; i < inputs.length; i++) {
+            // If the input has a placeholder and no value
+            if (!inputs[i].value) {
+                // Set the value to the placeholder if it exists, else to an empty string
+                inputs[i].value = inputs[i].placeholder ? inputs[i].placeholder : '';
+            }
+        }
+    });
+    </script>
 </head>
 <body>
     <header>

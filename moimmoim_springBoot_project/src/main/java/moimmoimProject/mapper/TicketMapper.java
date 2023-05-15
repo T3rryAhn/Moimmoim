@@ -13,5 +13,7 @@ public interface TicketMapper {
 
     TicketDo findByMoimNum(@Param("moimNum") Long moimNum);
 
+    TicketDo findByMoimNumAndUserIdNum(@Param("moimNum") Long moimNum, Long userIdNum);
+
     void insertTicket(TicketDo ticketDo);
 }
