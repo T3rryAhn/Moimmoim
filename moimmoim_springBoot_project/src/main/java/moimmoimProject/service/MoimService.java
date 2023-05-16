@@ -241,7 +241,7 @@ public class MoimService {
         return moimMapper.findName(moimDo);
     }
 
-    @Scheduled(fixedDelay = 60000)
+    @Scheduled(fixedDelay = 10000)
     public void checkDeadLine() {
         moimMapper.updateDeadCheckUsingPage();
         moimMapper.updateDeadCheckJoinMoim();
