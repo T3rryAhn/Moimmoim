@@ -121,8 +121,8 @@
         <ol class="list">
             <c:forEach items="${list}" var="list" varStatus="status">
             <li>
-                <div class="closed">모집마감</div> <!-- 모집이 마감된 모임일 경우-->
                 <a href="getMoim?moimNum=${list.moimNum}">
+                <div class=${list.moimDeadCheck==1? 'closed' : ''}>${list.moimDeadCheck==1? '모집마감' : ''}</div> <!-- 모집이 마감된 모임일 경우-->
                 <figure>
                     <img src=/files/${list.moimImage} alt="사진1"; class="photo">
                     <div class="info">
