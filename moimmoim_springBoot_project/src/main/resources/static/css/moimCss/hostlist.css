@@ -93,6 +93,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  grid-row-gap: 20px;
 }
 .list figure{
   width: 100%;

@@ -1,71 +1,83 @@
 /* Web Font Load*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+KR:wght@400;500&display=swap');
 
-{
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
 /* main 설정 */
 .main_container {
-  width: 1060px;                         
+  width: 1060px;
   height: 420x;
-  margin: 20px auto 40px auto;
+  margin: 50px auto;
 }
 
-/* 정렬 */
-.dropdown{
-  position: relative;
+
+/* 툴바 */
+.toolbar{
+  width: 100%;
+  margin-bottom: 20px;
   display: flex;
+  justify-content: space-between;
+}
+
+.filter{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: flex-start;
-  margin-bottom: 30px;
+  grid-gap: 20px;
+}
+/* 호스트 레벨 필터 */
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+.dropbtn_icon{
+  font-family: 'Montserrat', sans-serif;
 }
 .dropbtn{
-  width : 30px;
-  background-color: transparent;
-  margin-right: 10px;
+  border : 1px solid  darkgreen;
+  background-color:white;
+  font-weight: bold;
+  color : rgb(37, 37, 37);
+  padding : 12px;
+  width : 180px;
+  text-align: center;
+  cursor : pointer;
+  font-size : 14px;
 }
+.dropdown-hostlevel,
+.dropdown-stars,
 .dropdown-sort{
-  position: relative;
-  z-index: 1; /*다른 요소들보다 앞에 배치*/
+  display : none; /*마우스 올리기 전에는 보이지 않음 */
+  position : absolute; /*마우스 올렸을 때 다른 요소의 위치 이동 없음*/
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
   font-weight: 500;
-  width: 100px;
-  height: 30px;
-  border: 1px solid lightgray;
-  display: inline-block;
-  margin: auto 5px;
-  border-radius: 5px;
-}
-.sort_box {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.sort_button{
-  display: inline-block;
-  width: 85px;
-  height: 30px;
-  background-color: rgb(91, 201, 131);
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 400;
-  border-radius: 5px;
-  margin: auto 5px;
-}
-.dropdown-sort a{
-  display: block;
-  text-decoration: none;
-  color: rgb(37, 37, 37);
-  text-align: left;
-  padding: 6px 0px 6px 13px;
+  background-color: white;
+  width : 178px;
+  border: 1px solid darkgreen;
+  border-top: 0px;
+  padding: 0px;
   margin: 0px;
-  font-size: 14px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 400;
-  background-color: #f6f6f6;
 }
+.dropdown-hostlevel a,
+.dropdown-stars a,
+.dropdown-sort a{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding : 13px 0px;
+  margin: 0px;
+}
+
+.dropdown-hostlevel a:hover,
+.dropdown-stars a:hover,
 .dropdown-sort a:hover{
-  background-color: rgb(17, 151, 65);
+  background-color : darkgreen;
   color: white;
 }
+
+.dropdown:hover .dropdown-hostlevel,
+.dropdown:hover .dropdown-stars,
 .dropdown:hover .dropdown-sort {
   display: block;
 }
@@ -78,10 +90,10 @@ ul {
   padding: 0px;
 }
 .list{
-  margin: 10px 0px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  grid-row-gap: 20px;
 }
 .list figure{
   width: 100%;
@@ -92,30 +104,26 @@ ul {
   display: flex;
   flex-direction: column;
 }
-.photo{
+.host_photo{
   width: 100%;
   height: 150px;
 }
 .host_info{
-  width: 230px;
+  width: 275.5;
   height: 90px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   margin: 3px 0px;
   padding: 5px;
-}
-.host_level{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgb(17, 151, 65);
-  line-height: 25px;
-  grid-column: 1/2;
+  grid-template-areas:
+  'host_name host_reputation'
+  'host_introduction host_introduction'
+  'host_introduction host_introduction'
 }
 .host_reputation {
-  grid-column: 2/3;
   text-align: right;
+  grid-area: host_reputation;
 }
 .host_reputation,
 .host_stars,
@@ -124,7 +132,7 @@ ul {
   font-size: 13px;
   font-weight: 400;
   color: rgb(153, 153, 153);
-  line-height: 20px;  
+  line-height: 20px;
 }
 .host_name{
   font-family: 'Noto Sans KR', sans-serif;
@@ -132,8 +140,7 @@ ul {
   font-weight: 500;
   color: rgb(51, 51, 51);
   line-height: 25px;
-  grid-row: 2/3;
-  grid-column:1/3;
+  grid-area: host_name;
 }
 .host_introduction {
   font-family: 'Noto Sans KR', sans-serif;
@@ -141,36 +148,79 @@ ul {
   font-weight: 400;
   color: rgb(153, 153, 153);
   line-height: 20px;
-  grid-row: 3/4;
-  grid-column: 1/3;
+  grid-area: host_introduction;
+}
+.d-none {
+  display: none;
 }
 
-/*페이지네이션*/
-.paging{
+
+
+
+/* hostlist에서 미사용 */
+.tab {
   display: flex;
-  width: 100%;
-  justify-content: center;
-  column-gap: 4px;
-  margin: 20px 0px;
-}
-.paging_num{
-  display: flex;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  align-content: center;
+  }
+
+.tab button {
+  width: 300px;
+  height: 47px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: 0.5px solid lightgray;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
-  line-height: 38px;
-  letter-spacing: -0.5px;
-  background-color: transparent;
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(24, 39, 19);
+  font-size: 15px;
+  line-height: 20px;
 }
-.paging_icon{
+/* 선택된 탭 버튼 스타일 */
+.tab button.active {
+  background:rgb(17, 151, 65);
+  color: white;
+  border: 0.5px solid lightgray;
+}
+/* 탭 컨텐츠 스타일 */
+.tabcontent {
+  display: none;
+  clear: both;
+}
+/* 선택된 탭 컨텐츠 스타일 */
+.tabcontent.active {
+  display: block;
+}
+
+/* 카테고리별 컨텐츠*/
+.cat_moim_list{
   display: flex;
-  justify-content: center;
-  padding: 8px;
-  width: 10px;
-  height: 15px;
-  background-color: transparent;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  align-content: center;
+}
+.cat_moim{
+  width: 260.5px;
+  height: 270px;
+  margin: 5px 0px;
+}
+.left{
+  border-right: 3px solid white;
+}
+.middle{
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+}
+.right{
+  border-left: 3px solid white;
+}
+.photo{
+  width: 100%;
+  height: 150px;
 }
