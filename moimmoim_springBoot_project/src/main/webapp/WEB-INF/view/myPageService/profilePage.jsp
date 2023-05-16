@@ -14,7 +14,7 @@
             <div id="header_container">
                 <div id="header_logo"><a href="/"><img src="img/logo.png" alt="logo" width="180px"></a></div>
                 <div class="header_font">USER PROFILE</div>
-                    <div id="login_icon"><a href="/myPageService/myPage"><img src="img/login.png" alt="login" width="40px"></a></div>
+                    <div id="login_icon"><a href=/myPage/${sessionScope.userIdNum}><img src="img/login.png" alt="login" width="40px"></a></div>
 
             </div>
         </header>
