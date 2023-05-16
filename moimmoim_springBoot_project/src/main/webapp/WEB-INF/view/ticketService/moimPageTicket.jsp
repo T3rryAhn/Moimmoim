@@ -108,8 +108,8 @@
     <!-- 티켓 끝-->
 
 <!-- 구매 버튼 -->
-<button onclick="openBuyPageModal()" style="float:right; font-size: 30px;" ${moimDo.moimMemberMax == moimDo.moimMemberCount ? 'disabled' : ''}>
-  ${moimDo.moimMemberMax == moimDo.moimMemberCount ? '모집 마감' : '구매하기'}
+<button onclick="openBuyPageModal()" style="float:right; font-size: 30px;" ${moimDo.moimDeadCheck == 1 ? 'disabled' : ''}>
+  ${moimDo.moimDeadCheck == 1 ? '모집 마감' : '구매하기'}
 </button>
 
 
