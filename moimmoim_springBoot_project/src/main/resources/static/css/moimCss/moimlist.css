@@ -220,3 +220,17 @@ ul {
   height: 15px;
   background-color: transparent;
 }
+
+.closed {
+  width: 257.5px;
+  height: 270px;
+  color: white;
+  background-color: rgb(153, 153, 153, 0.5);
+  z-index: 1;
+  position: absolute;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 8;
+}
