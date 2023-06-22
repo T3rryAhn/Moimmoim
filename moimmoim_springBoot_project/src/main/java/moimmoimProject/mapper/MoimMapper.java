@@ -31,7 +31,7 @@ public interface MoimMapper {
 
     LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환
 
-    void plusMemberCount(Long moimNum);
+    void plusMemberCount(Long moimNum);                 //
 
     void imageEnroll(ImageDTO imageDTO);
 
