@@ -12,7 +12,4 @@ public class MoimMemDo {
     private Long joinNum;
     private Long no;
 
-    public MoimMemDo() {
-
-    }
 }

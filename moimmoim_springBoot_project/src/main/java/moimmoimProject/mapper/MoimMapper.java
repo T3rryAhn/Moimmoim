@@ -49,11 +49,7 @@ public interface MoimMapper {
 
     List<MoimDo> findByCategory(Long moimCategoryNum);
 
-    List<MoimDo> findAllex(String keyword, Long moimCategoryNum);
-
     List<Long> findMoimed(@Param("joinNum") Long joinNum);
-
-    List<Long> findByHost(Long userIdNum);
 
     List<Map<String, Object>> joinMoimList(Long moimCategoryNum, String keyword, Criteria cri, Long sorting);
 
