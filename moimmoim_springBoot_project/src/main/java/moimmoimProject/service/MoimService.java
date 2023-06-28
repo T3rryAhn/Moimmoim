@@ -3,6 +3,7 @@ package moimmoimProject.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import exception.NoSuchDataException;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import moimmoimProject.domain.moimDomain.Criteria;
@@ -30,11 +31,16 @@ public class MoimService {
     private final MoimMapper moimMapper;
 
     public MoimDo getMoimByMoimNum(Long moimNum){
-        return moimMapper.findAllByMoimNum(moimNum);
+        MoimDo allByMoimNum = moimMapper.findAllByMoimNum(moimNum);
+        return allByMoimNum;
     }
 
     public List<MoimDo> getMoimByUserIdNum(Long userIdNum){
-        return moimMapper.findAllByUserIdNum(userIdNum);
+        List<MoimDo> allByUserIdNum = moimMapper.findAllByUserIdNum(userIdNum);
+        if (allByUserIdNum.isEmpty()) {
+            throw new NoSuchDataException("no such data exists");
+        }
+        return allByUserIdNum;
     }
 
     public void createMoim(MoimDo moimDo) {
@@ -58,10 +64,15 @@ public class MoimService {
     }
 
     public List<Map<String, Object>> moimList(Long moimCategoryNum, String keyword,Criteria cri, Long sorting){
-        return moimMapper.moimList(moimCategoryNum, keyword, cri, sorting);
+        List<Map<String, Object>> list = moimMapper.moimList(moimCategoryNum, keyword, cri, sorting);
+        if(list.isEmpty()){
+            throw new NoSuchDataException("NO such data exists");
+        }
+        return list;
     }
 
     public List<Map<String, Object>> findJoinMoim(Long joinNum, String keyword, Criteria cri, Long moimCategoryNum){       // 내가 참가한 모임 구매 컨트롤러에 추가해야 함
+
         return moimMapper.findJoinMoim(joinNum, keyword, cri, moimCategoryNum);
     }
 
@@ -105,10 +116,6 @@ public class MoimService {
         return list;
     }
 
-    public List<MoimDo> getMoimByCategory(Long moimCategoryNum) {
-        return moimMapper.findByCategory(moimCategoryNum);
-    }
-
     public String getCatName(int moimCategoryNum){
         String catName="";
         switch (moimCategoryNum){
@@ -127,7 +134,6 @@ public class MoimService {
     }
 
     public void imageEnroll(List<ImageDTO> list){
-
 
         if(list == null || list.size() <= 0) {
             return;
@@ -217,6 +223,7 @@ public class MoimService {
     public List<LocationDo> locList1(){
         return moimMapper.locList1();
     }
+
     public List<Map<String, Object>> findAll(Criteria cri){
         return moimMapper.findAll(cri);
     }

@@ -31,7 +31,7 @@ public interface MoimMapper {
 
     LocationDo findLocationName(MoimDo moimDo);         // 지역번호로 지역 이름 반환
 
-    void plusMemberCount(Long moimNum);
+    void plusMemberCount(Long moimNum);                 //
 
     void imageEnroll(ImageDTO imageDTO);
 
@@ -49,11 +49,7 @@ public interface MoimMapper {
 
     List<MoimDo> findByCategory(Long moimCategoryNum);
 
-    List<MoimDo> findAllex(String keyword, Long moimCategoryNum);
-
     List<Long> findMoimed(@Param("joinNum") Long joinNum);
-
-    List<Long> findByHost(Long userIdNum);
 
     List<Map<String, Object>> joinMoimList(Long moimCategoryNum, String keyword, Criteria cri, Long sorting);
 
